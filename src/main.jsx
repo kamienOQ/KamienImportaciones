@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import { HelloWorldApp } from './HelloWorldApp'
-import './index.css'
+import  App from './App';
+import './Firebase/Firebase';
+import 'bootswatch/dist/superhero/bootstrap.min.css';
 
-// <App />
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelloWorldApp></HelloWorldApp>
+    <>
+      <App />
+    </>
   </React.StrictMode>,
 )
