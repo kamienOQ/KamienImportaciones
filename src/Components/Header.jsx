@@ -11,9 +11,7 @@ export const Header = () => {
       if ( location.pathname === "/" ){
         setActiveTab("Home")
       } else if ( location.pathname === "/add" ) {
-            setActiveTab("AddProduct")
-      } else if ( location.pathname === "/view" ) {
-
+            setActiveTab("ProductsCrud")
       } else if ( location.pathname === "/about" ) {
             setActiveTab("About")
       }
@@ -34,18 +32,10 @@ export const Header = () => {
             </Link>
             <Link to="/add">
                 <p 
-                    className={`${activeTab === "AddProduct" ? "active": ""}`}
-                    onClick={() => setActiveTab("AddProduct")}
+                    className={`${activeTab === "ProductsCrud" ? "active": ""}`}
+                    onClick={() => setActiveTab("ProductsCrud")}
                 >
                     Agregar Producto
-                </p>
-            </Link>
-            <Link to="/view">
-                <p 
-                    className={`${activeTab === "ViewProduct" ? "active": ""}`}
-                    onClick={() => setActiveTab("ViewProduct")}
-                >
-                    Visualizar Producto
                 </p>
             </Link>
             <Link to="/about">

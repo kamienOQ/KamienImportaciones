@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FirebaseDB } from '../Firebase/Firebase';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import { toast } from 'react-toastify';
 
 export const Home = () => {
 
@@ -21,6 +22,20 @@ export const Home = () => {
         };
     }, []);
 
+    const onDelete = (id) => {
+        if (
+            window.confirm("¿Está seguro de querer borrar el producto?")
+        ) {
+            FirebaseDB.child(`productos/${id}`).remove( (err) => {
+                if ( err ) {
+                    toast.error( err );
+                } else {
+                    toast.success("Contacto borrado exitosamente")
+                }
+            });
+        }
+    };
+
   return (
     <div style={ {marginTop: "100px"} }>
         <table className='styled-table'>
@@ -28,7 +43,7 @@ export const Home = () => {
                 <tr>
                     <th style={ {textAlign: "center"} }>No.</th>
                     <th style={ {textAlign: "center"} }>Nombre</th>
-                    <th style={ {textAlign: "center"} }>Precio.</th>
+                    <th style={ {textAlign: "center"} }>Precio</th>
                     <th style={ {textAlign: "center"} }>Categoria</th>
                     <th style={ {textAlign: "center"} }>Atributos</th>
                     <th style={ {textAlign: "center"} }>Imagen</th>
@@ -49,6 +64,15 @@ export const Home = () => {
                                 <Link to={`/update/${id}`}>
                                     <button className='btn btn-edit'>Editar</button>
                                 </Link>
+                                <button 
+                                className='btn btn-delete'
+                                onClick={ () => onDelete(id)}
+                                >
+                                    Borrar
+                                </button>
+                                <Link to={`/view/${id}`}>
+                                    <button className='btn btn-view'>Editar</button>
+                                </Link>
                             </td>
                         </tr>
                     );
@@ -57,4 +81,4 @@ export const Home = () => {
         </table>
     </div>
   )
-}
+};
