@@ -1,17 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom';
-
-import { App } from './App';
-//import Navbar from './Components/Navbar';
-import './Firebase/Firebase';
-import 'bootswatch/dist/superhero/bootstrap.min.css';
-import './styles.css';
+import App from './App'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
 )
