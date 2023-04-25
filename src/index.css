@@ -55,6 +55,46 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Ocultar la barra de desplazamiento en navegadores basados en WebKit */
+::-webkit-scrollbar {
+  width: 8px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: none;  /* Ocultar scroll */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* Ocultar la barra de desplazamiento en navegadores basados en Firefox */
+/* Nota: Firefox no admite personalización de colores en la barra de desplazamiento */
+/* Por lo tanto, la barra de desplazamiento se oculta pero se muestra en color gris por defecto */
+body::-webkit-scrollbar {
+  width: 8px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: none;  /* Ocultar scroll */
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* Ocultar la barra de desplazamiento en navegadores basados en IE/Edge */
+/* Nota: Microsoft Edge no admite personalización de colores en la barra de desplazamiento */
+/* Por lo tanto, la barra de desplazamiento se oculta pero se muestra en color gris por defecto */
+body::-ms-scrollbar {
+  width: 8px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: none;  /* Ocultar scroll */
+}
+
+body::-ms-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
