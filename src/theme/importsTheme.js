@@ -38,5 +38,8 @@ export const importsTheme = createTheme({
     lightError: {
       main: '#B63939'
     },
+    brown: {
+      main: '#643A07'
+    },
   },
 });

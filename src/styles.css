@@ -32,12 +32,27 @@ a{
     padding: 0px 100px 0px 100px;
 } 
 
+.filter-products-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-products-container a{
+    padding: 8px !important;
+}
+
 .navbar-shoppingCar{
     display: inline-flex;
     margin: 0;
-    padding: 4px 0px 0px;
+    padding: 4px 12px 0px;
     cursor: pointer;
     transition: all .2s ease 0s;
+    border-radius: 50%;
+}
+
+.navbar-shoppingCar:hover {
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .badge{
@@ -90,6 +105,10 @@ a{
     padding: 30px 0px 30px 0px;
 }
 
+.footer-socialNetworks a{
+    height: 24px;
+}
+
 .socialNetworks-background{
     display: flex;
     justify-content: center;
@@ -119,5 +138,19 @@ a{
 @media (max-width: 600px) {
     .header-navbar {
         padding: 0px 20px 0px 20px;
+    }
+}
+
+@media (max-width: 410px) {
+    .MuiToggleButton-root{
+        font-size: 10px !important;
+        /* font-weight: lighter !important; */
+        padding: 5px !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .MuiToggleButton-root{
+        padding: 2px !important;
     }
 }
