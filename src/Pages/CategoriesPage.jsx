@@ -8,7 +8,15 @@ export const CategoriesPage = () => {
   return (
     <>
       <MasterPage filterType='Categories'>
-        <CategoriesCards/>
+        <div className="grid-container">
+          <CategoriesCards/>
+          <CategoriesCards/>
+          <CategoriesCards/>
+          <CategoriesCards/>
+          <CategoriesCards/>
+          <CategoriesCards/>
+          <CategoriesCards/>
+        </div>
       </MasterPage>
     </>
 
