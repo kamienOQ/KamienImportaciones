@@ -17,7 +17,7 @@ const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
   },
 }));
 
-export const MasterPage = ({filterType}) => {
+export const MasterPage = ({ filterType, children }) => {
   const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useMasterPageStore();
   const { instagram, whatsapp, startGetAbout } = useAboutStore();
 
@@ -71,7 +71,7 @@ export const MasterPage = ({filterType}) => {
               </div>
             </div>
         </header>
-
+            {children}
         <footer className='footer'>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
