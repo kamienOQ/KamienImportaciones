@@ -1,0 +1,161 @@
+:root {
+    --main-color: #D1B000;
+    --hover-main:   #643A07;
+    --hover-success: #3aac54;
+    --green: #23d64d;
+    --hover-error:   #b63939;
+    --border: #c9c9c9;
+    --white: #ffffff;
+    --backgroud: #383838;
+    --black: #000000;
+    --hover-info: #457ef0;
+    --header: #256EFF;
+    --footer: #d4d4d4;
+    --roboto: 'Roboto', sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+a{
+    color: var(--backgroud);
+}
+
+/* *MasterPage Styles */
+.header-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 100px 0px 100px;
+} 
+
+.filter-products-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-products-container a{
+    padding: 8px !important;
+}
+
+.navbar-shoppingCar{
+    display: inline-flex;
+    margin: 0;
+    padding: 4px 12px 0px;
+    cursor: pointer;
+    transition: all .2s ease 0s;
+    border-radius: 50%;
+}
+
+.navbar-shoppingCar:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.badge{
+    display: inline-block;
+    padding: 0.60em 0;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+.span-icon{
+    background-color: var(--hover-error);
+    border-radius: 50%;
+    color: var(--white);
+    padding: 1px 4px;
+}
+
+.page-wrapper {
+    min-height: 100%;
+    position: relative;
+    /* padding-bottom: 100px; */
+    box-sizing: border-box;
+}
+
+.footer {
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* font-weight: lighter; */
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.footer-socialNetworks, .footer-contactInfo{
+    background-color: var(--footer);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-socialNetworks{
+    padding: 30px 0px 30px 0px;
+}
+
+.footer-socialNetworks a{
+    height: 24px;
+}
+
+.socialNetworks-background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.footer-contactInfo{
+    padding-bottom: 30px;
+}
+
+.footer-copyright{
+    padding: 20px 0px;
+}
+
+.phoneNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+
+
+@media (max-width: 600px) {
+    .header-navbar {
+        padding: 0px 20px 0px 20px;
+    }
+}
+
+@media (max-width: 410px) {
+    .MuiToggleButton-root{
+        font-size: 10px !important;
+        /* font-weight: lighter !important; */
+        padding: 5px !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .MuiToggleButton-root{
+        padding: 2px !important;
+    }
+}
