@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Avatar, IconButton, ToggleButtonGroup} from '@mui/material';
+import { Avatar, Badge, Button, IconButton, ToggleButtonGroup} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
@@ -64,12 +64,21 @@ export const MasterPage = ({ filterType, children }) => {
                 NIÑOS
               </ToggleButton>
             </ToggleButtonGroup>)}
-            <div className='navbar-shoppingCar'>
+            {/* <div className='navbar-shoppingCar'>
               <ShoppingCartIcon color='quaternary' sx={{marginTop: 2}}/>
               <div className='badge'>
                 <span className='span-icon'>1</span>
               </div>
-            </div>
+            </div> */}
+            <Button
+              aria-controls="carrito-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <Badge badgeContent={3} color="error">
+                <ShoppingCartIcon />
+              </Badge>
+            </Button>
         </header>
             {children}
         <footer className='footer'>

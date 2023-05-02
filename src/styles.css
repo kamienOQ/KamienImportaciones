@@ -20,6 +20,15 @@
 
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  body {
+    padding-bottom: 60px; /* Altura del footer */
+  }
+
 a{
     color: var(--backgroud);
 }
@@ -34,6 +43,7 @@ a{
     display: flex;
     justify-content: space-between;
     padding: 0px 100px 0px 100px;
+    z-index: 1;
 }
 
 .filter-products-container{
@@ -46,7 +56,7 @@ a{
     padding: 8px !important;
 }
 
-.navbar-shoppingCar{
+/* .navbar-shoppingCar{
     display: inline-flex;
     margin: 0;
     padding: 4px 12px 0px;
@@ -68,7 +78,7 @@ a{
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-}
+} */
 
 .span-icon{
     background-color: var(--hover-error);
@@ -142,51 +152,119 @@ a{
 .grid-container {
     margin-top: 64px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    grid-auto-rows: 375px; /* altura de cada grid en 340px */
     gap: 5px;
     width: 100%;
+    height: 100%;
   }
 
 /* *CategoriesCards Styles */
 .container-categoriesCards{
+    margin: 0;
+    position: relative;
+    height: 375px;
+    overflow: hidden;
+}
+
+.container-figure-img{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 375px;
+    overflow: hidden;
+}
+
+.categoriesCards-img{
+    max-width: 100%;
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    box-shadow: none;
+    border-top: none;
+}
+
+.main-container-categoriesCards-icon{
+    transition: transform 0.3s ease;
+    background: rgba(0,0,0,.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.main-container-categoriesCards-icon:hover {
+    background: rgba(63, 63, 62, 0.3);
+
+}
+
+.info-container-categoriesCards{
+    transition: transform 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
-.container-categoriesCards-img{
+.info-container-categoriesCards:hover {
+    transform: translateY(-5px);
+}
+
+.container-categoriesCards-icon{
+    display: table;
+}
+
+.container-categoriesCards-content{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 50px;
+    text-align: center;
+}
+
+.container-figure-icon{
+    margin: 0;
+}
+
+.categoriesCards-icon{
+    transition: transform 0.3s ease;
+    height: 94px;
+    width: auto;
+    max-width: 100%;
+}
+
+.categoriesCards-text{
+    transition: transform 0.3s ease;
+    color: var(--white);
+    background: none!important;
+    display: inline-block;
+    padding: 0;
+    margin: 0 0 5px;
+    white-space: nowrap;
+    position: relative;
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 700;
+    display: inline-block;
+    width: 100%;
+}
+
+/* *CategoriesEmpty Styles */
+
+.container-emptyCategories{
+    margin: 114px 0px 44px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    outline: none;
-    text-align: center;
     width: 100%;
     height: 100%;
 }
 
-.categoriesCards-img{
-    width: 100%;
-}
-
-.main-container-categoriesCards-icon{
-    font-size: 20px;
-    position: absolute;
-    width: 70%;
-    height: 65%;
-    top: 55%;
-    left: 50%;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-}
-
-.container-categoriesCards-icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 0.1rem;
+.emptyCategories-image{
+    width: 30%;
 }
 
 @media (max-width: 600px) {
@@ -201,6 +279,14 @@ a{
         /* font-weight: lighter !important; */
         padding: 5px !important;
     }
+
+    .emptyCategories-image{
+        width: 40%;
+    }
+
+    .container-emptyCategories h2{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 300px) {
@@ -209,7 +295,7 @@ a{
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 580px) {
     .grid-container {
       grid-template-columns: repeat(2, minmax(200px, 1fr)); /* máximo de 2 columnas a partir de 768px */
     }
