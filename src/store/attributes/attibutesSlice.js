@@ -11,6 +11,7 @@ export const attibutesSlice = createSlice({
         numberCategories: undefined,
         attributes: [],
         categories: [],
+        products: [],
         isLoading: false,
         editing: false,
         filtering: false,
@@ -41,31 +42,20 @@ export const attibutesSlice = createSlice({
             state.attributes = payload;
             state.isLoading = false;
         },
-        onSetNumberAttributes: ( state, { payload } ) => {
-            state.numberCategories = payload;
+        onSetProducts: ( state, { payload } ) => {
+            state.products = payload;
+            state.isLoading = false;
         },
-        onAddAttributeAtStart: ( state, { payload } ) => {
-            state.attributes.unshift(payload);
-        },
+        
+        
        onAddErrorMessage: ( state, { payload } ) => {
             state.message.error = payload;
         },
         onAddSuccessMessage: ( state, { payload } ) => {
             state.message.success = payload;
         },
-        onChangeActive: ( state ) => {
-            state.activeAttribute.active = !state.activeAttribute.active
-
-            state.attributes = state.attributes.map( category => {
-                if (category.attributeName === state.activeAttribute.attributeName ){
-                    return state.activeAttribute;
-                }
-                return category;
-            });
-        },
-        onChangeEditing: ( state, { payload } ) => {
-            state.editing = payload;
-        },
+        
+        
         onChangePreCategoryName: ( state, { payload } ) => {
             state.preCategory.name = payload;
         },
@@ -87,19 +77,14 @@ export const attibutesSlice = createSlice({
             state.activeAttribute = null;
             state.isLoading = true;
         },
+
+        onCleanProducts: ( state ) => {
+            state.products = []
+            state.activeAttribute = null;
+            state.isLoading = true;
+        },
         onCleanActiveCategory: ( state ) => {
             state.activeAttribute = null;
-        },
-        onSetAttributesRelated: ( state, { payload } ) => {
-            state.activeAttribute.attributesRelated = payload;
-        },
-        onSetCategoriesRelated: ( state, { payload } ) => {
-            state.activeAttribute.categoriesRelated = payload;
-        },
-        
-
-        onCleanCategories: ( state ) => {
-            state.categories = [];
         },
 
     }
@@ -135,4 +120,6 @@ export const {
     onSetCategoriesRelated,
     onSetCategories,
     onCleanCategories,
+    onCleanProducts,
+    onSetProducts,
 } = attibutesSlice.actions;

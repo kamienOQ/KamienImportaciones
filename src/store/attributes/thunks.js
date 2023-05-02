@@ -1,14 +1,14 @@
 import { collection, doc, getDocs, limit, orderBy, query, setDoc, startAfter, where } from "firebase/firestore/lite";
 
 import { FirebaseDB, FirebaseStorage } from "../../firebase/config";
-import {  onCleanAttributes, onSetAttributes, onSetNumberAttributes} from ".";
+import {  onCleanAttributes, onSetAttributes, onSetNumberAttributes,onCleanProducts,onSetProducts} from ".";
 
 
 export const onStartGetAttributesByCategory = (categoryName) => {
   return async (dispatch) => {
     dispatch(onCleanAttributes());
     const collectionRef = collection(FirebaseDB, "/attributes");
-    const q = query(collectionRef, where("categoriesRelated", "array-contains", categoryName));
+    const q = query(collectionRef, where("categoriesRelated", "array-contains", "Relojes"));
     const querySnapshot = await getDocs(q);
 
     const attributes = querySnapshot.docs.map((doc) => {
@@ -24,6 +24,46 @@ export const onStartGetAttributesByCategory = (categoryName) => {
   };
 };
 
+export const onStartGetProductsByAttributes = (attributesList) => {
+  return async (dispatch) => {
+    dispatch(onCleanProducts());
+
+    const promises = attributesList.map((attribute) => {
+      const q = query(
+        collection(FirebaseDB, "products"),
+        where("relatedAttributes", "array-contains", attribute)
+      );
+
+      return getDocs(q);
+    });
+
+    const snapshots = await Promise.all(promises);
+    const products = snapshots.flatMap((snapshot) => {
+      return snapshot.docs.map((doc) => doc.data());
+    });
+
+    dispatch(onSetProducts(products));
+  };
+};
+
+// export const onStartGetProductsByAttributes = (attributesList) => {
+//   return async (dispatch) => {
+//     dispatch(onCleanProducts());
+//     const collectionRef = collection(FirebaseDB, "/products");
+//     let q = query(collectionRef);
+//     attributesList.forEach((attribute) => {
+//       q = query(q, where("relatedAttributes", "array-contains", attribute));
+//     });
+//     const querySnapshot = await getDocs(q);
+
+//     const products = querySnapshot.docs.map((doc) => {
+//       return doc.data();
+//     });
+//     console.log(products)
+//     //dispatch(onSetProducts(products));
+//   };
+
+// };
 
 
 
