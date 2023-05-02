@@ -1,7 +1,10 @@
-import { Box, Button, Grid, Tooltip, Typography } from "@mui/material";
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from "react-redux";
-import { onDecreaseQuantity, onDeleteProduct, onIncreaseQuantity } from "../store/cart/cartSlice";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import {
+  onDecreaseQuantity,
+  onIncreaseQuantity,
+} from "../store/cart/cartSlice";
+import { RemoveProductModal } from "./RemoveProductModal";
 
 export const CartItem = ({ id, name, image, price, quantity }) => {
   const dispatch = useDispatch();
@@ -16,12 +19,9 @@ export const CartItem = ({ id, name, image, price, quantity }) => {
     dispatch(onIncreaseQuantity(id));
   };
 
-  const handleRemoveFromCart = () => {
-    dispatch(onDeleteProduct(id));
-  }
-
   return (
-    <Tooltip title="Dele click para más detalles">
+    <>
+      {/* <Tooltip title="Dele click para más detalles"> */}
       <Grid
         container
         direction="row"
@@ -31,7 +31,7 @@ export const CartItem = ({ id, name, image, price, quantity }) => {
           mb: 1,
           px: 1,
           pt: 0.5,
-          cursor: "pointer",
+          //cursor: "pointer",
           "&:hover": { backgroundColor: "#f5f5f5" },
         }}
       >
@@ -124,12 +124,10 @@ export const CartItem = ({ id, name, image, price, quantity }) => {
           </Typography>
         </Grid>
         <Grid item width="10%" textAlign="end">
-          <DeleteIcon
-            color="error"
-            onClick={handleRemoveFromCart}
-          />
+          <RemoveProductModal id={id} />
         </Grid>
       </Grid>
-    </Tooltip>
+      {/* </Tooltip> */}
+    </>
   );
 };
