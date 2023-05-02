@@ -26,7 +26,10 @@ export const cartSlice = createSlice({
         product.quantity += 1;
       }
     },
+    onCleanProducts: (state) => {
+      state.products = [];
+    },
   }
 });
 
-export const { onSetProducts, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity } = cartSlice.actions;
+export const { onSetProducts, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity, onCleanProducts } = cartSlice.actions;
