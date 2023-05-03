@@ -14,11 +14,17 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
     "@reduxjs/toolkit": "^1.9.5",
+<<<<<<< HEAD
     "firebase": "^9.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0"
+=======
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
+>>>>>>> 65fffe22c9d2faa5093be291310becbde282acec
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
