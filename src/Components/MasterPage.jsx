@@ -81,10 +81,11 @@ export const MasterPage = ({ filterType, children }) => {
             </Button>
         </header>
             {children}
+
         <footer className='footer'>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
-              <a href={instagram}><InstagramIcon/></a>
+              <a href='https:/www.instagram.com/kamien.cr/?igshid=NmQ2ZmYxZjA%3D'><InstagramIcon/></a>
             </div>
           </div>
           <div className='footer-contactInfo'>
