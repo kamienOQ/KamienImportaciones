@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { aboutSlice } from './about/aboutSlice';
-import { masterPageSlice } from './masterPage/masterPageSlice';
+import { filtersPageSlice } from './filters/filtersPageSlice';
+
 
 
 export const store = configureStore({
     reducer: {
         about: aboutSlice.reducer,
-        masterPage: masterPageSlice.reducer,
+        filtersPage: filtersPageSlice.reducer,
     }
 });
