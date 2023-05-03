@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const masterPageSlice = createSlice({
-    name: 'masterPage',
+export const filtersPageSlice = createSlice({
+    name: 'filtersPage',
     initialState: {
         isproductsFilterOpen: false,
         categoriesFilter: ''
@@ -21,4 +21,4 @@ export const masterPageSlice = createSlice({
 export const { 
     onOpenCloseProductsFilter,
     onSetCategoriesFilter
-} = masterPageSlice.actions;
+} = filtersPageSlice.actions;
