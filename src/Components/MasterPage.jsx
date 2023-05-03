@@ -100,7 +100,6 @@ export const MasterPage = ({ filterType, children }) => {
             </Button>
         </header>
             {children}
-
         <footer className='footer'>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
