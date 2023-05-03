@@ -159,3 +159,11 @@ a{
         padding: 2px !important;
     }
 }
+
+.counter {
+    width: fit-content;
+    background-color: --main-color;
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
+}
