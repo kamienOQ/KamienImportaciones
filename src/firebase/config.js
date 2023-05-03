@@ -13,7 +13,20 @@ import { getStorage } from "firebase/storage";
 //   projectId: "project-kamien",
 //   storageBucket: "project-kamien.appspot.com",
 //   messagingSenderId: "237921208573",
+<<<<<<< HEAD
 //   appId: "1:237921208573:web:b18d13984139377091d694"
+=======
+//   appId: "1:237921208573:web:b18d13984139377091d694",
+// };
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAJu-3VPPHsgx8pMJTffmwYb9RXoXkh_jE",
+//   authDomain: "project-kamien.firebaseapp.com",
+//   projectId: "project-kamien",
+//   storageBucket: "project-kamien.appspot.com",
+//   messagingSenderId: "237921208573",
+//   appId: "1:237921208573:web:b18d13984139377091d694",
+>>>>>>> bba5ec00504c2015b5f491422a435ee1d7bbedfe
 // };
 
 const firebaseConfig = {
@@ -25,6 +38,10 @@ const firebaseConfig = {
   appId: "1:86678841516:web:2fca0057eea81c6671d709"
 };
 
+<<<<<<< HEAD
+=======
+// Produccion Firebase configuration
+>>>>>>> bba5ec00504c2015b5f491422a435ee1d7bbedfe
 // const firebaseConfig = {
 //   apiKey: "AIzaSyDQmUwAf5t9_lYYJZD9IEPuRYzkhFzlbB8",
 //   authDomain: "project-kamien-main.firebaseapp.com",

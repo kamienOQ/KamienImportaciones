@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
@@ -25,6 +26,13 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5"
 >>>>>>> 65fffe22c9d2faa5093be291310becbde282acec
+=======
+    "@reduxjs/toolkit": "^1.9.5",
+    "firebase": "^9.21.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
+>>>>>>> bba5ec00504c2015b5f491422a435ee1d7bbedfe
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
