@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { onOpenCloseProductsFilter, onSetCategoriesFilter } from "../store/masterPage/masterPageSlice";
+import { onOpenCloseProductsFilter, onSetCategoriesFilter } from "../store/filters/filtersPageSlice";
 
-export const useMasterPageStore = () => {
+export const useFiltersPageStore = () => {
     const dispatch = useDispatch();
 
     const { 
