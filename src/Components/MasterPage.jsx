@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { doc, getDocs } from 'firebase/firestore/lite';
-import { FirebaseDB } from '../firebase/config';
+import { useEffect } from 'react';
 import { Avatar, Badge, Button, IconButton, ToggleButtonGroup} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
@@ -19,22 +16,6 @@ const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
     backgroundColor: selectedcolor,
   },
 }));
-
-export const ItemDetailContainer = () => {
-  const [data, setData] = useState({});
-  const { detailledId } = useParams();
-
-  useEffect(() => {
-    const queryDb = FirebaseDB;
-    const queryDoc = doc(queryDb, 'products', 'DgF9p6IU42XSYB7YpfLZ');
-    getDocs(queryDoc)
-    .then( res => setData({ id: res.id, ...res.data() })) 
-  }, [])
-  
-  return (
-    data = { data }
-  );
-}
 
 export const MasterPage = ({ filterType, children }) => {
   const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useMasterPageStore();

@@ -1,4 +1,4 @@
-import { MasterPage } from "../Components/masterPage"
+import { MasterPage } from '../Components/MasterPage';
 
 export const CategoriesPage = () => {
   return (
@@ -7,3 +7,5 @@ export const CategoriesPage = () => {
     </>
   )
 }
+
+MasterPage
