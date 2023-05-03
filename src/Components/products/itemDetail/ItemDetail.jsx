@@ -6,7 +6,7 @@ export const ItemDetail = () => {
 
     const [gotoCart, setGotoCart] = useState(false);
 
-    const onAdd = (quantity) => {
+    const onAdd = () => {
         setGotoCart(true);
     }
 

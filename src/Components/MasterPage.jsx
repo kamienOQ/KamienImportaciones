@@ -33,6 +33,8 @@ export const MasterPage = ({ filterType, children }) => {
     openCloseProductsFilter();
   };
 
+  console.log(children)
+
   return (
     <div className="page-wrapper">
         <header className='header-navbar'>
