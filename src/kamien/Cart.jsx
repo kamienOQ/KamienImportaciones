@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EastIcon from '@mui/icons-material/East';
 import { CartItem } from "./CartItem";
+import { CleanProductsModal } from "./CleanProductsModal";
 
 export const Cart = () => {
   const { products } = useSelector((state) => state.cart);
@@ -50,9 +51,10 @@ export const Cart = () => {
       >
         <Grid container sx={{ width: "360px" }}>
           <Grid container display="flex" direction="row" justifyContent="space-between" alignItems="center" sx={{ p: 2, backgroundColor: "white", borderBottom: "1px solid #d0d0d0" }}>
-          <Typography variant="h6" noWrap component="h2" sx={{ display: "flex", alignItems: "center" }}>
-            <ShoppingCartIcon /> Pedido
-          </Typography>
+            <Typography variant="h6" noWrap component="h2" sx={{ display: "flex", alignItems: "center" }}>
+              <ShoppingCartIcon /> Pedido
+            </Typography>
+            <CleanProductsModal />
             <IconButton
               edge="end"
               color="inherit"
