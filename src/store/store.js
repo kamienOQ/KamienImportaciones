@@ -15,5 +15,7 @@ export const store = configureStore({
         uiAtt: uiAttSlice.reducer,
         attributes: attibutesSlice.reducer,
         filtersPage: filtersPageSlice.reducer,
+        filtersPage: filtersPageSlice.reducer,
+        categories: categoriesSlice.reducer,
     }
 });
