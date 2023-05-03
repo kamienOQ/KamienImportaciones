@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Avatar, Badge, Button, IconButton, ToggleButtonGroup} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
@@ -81,7 +81,6 @@ export const MasterPage = ({ filterType, children }) => {
             </Button>
         </header>
             {children}
-
         <footer className='footer'>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
