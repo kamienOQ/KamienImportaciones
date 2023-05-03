@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { Avatar, Badge, Button, IconButton, ToggleButtonGroup} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+// import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import logo from '../assets/logo.png'
-import { useMasterPageStore } from '../hooks/useMasterPageStore';
+// import { useFiltersPageStore } from '../hooks/useFiltersPageStore';
 import { useAboutStore } from '../hooks/useAboutStore';
 
 const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
@@ -17,21 +17,22 @@ const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
   },
 }));
 
-export const MasterPage = ({ filterType, children }) => {
-  const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useMasterPageStore();
+export const MasterPage = ({ children }) => {
+  // const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useFiltersPageStore();
   const { instagram, whatsapp, startGetAbout } = useAboutStore();
 
   useEffect(() => {
     startGetAbout()
   }, [])
   
-  const handleAlignment = (event, newAlignment) => {
-    setCategoriesFilter(newAlignment);
-  };
-
-  const onHandleFilters = () => {
-    openCloseProductsFilter();
-  };
+  //* Función para asignar los filtros de hombre, mujer o niño
+  // const handleAlignment = (event, newAlignment) => {
+  //   setCategoriesFilter(newAlignment);
+  // };
+  //* Función para abrir y cerrar el sidebar de filtros
+  // const onHandleFilters = () => {
+  //   openCloseProductsFilter();
+  // };
 
   return (
     <div className="page-wrapper">
@@ -40,13 +41,14 @@ export const MasterPage = ({ filterType, children }) => {
               <IconButton sx={{ mr: 1 }} to="/">
                 <Avatar src = {logo}/>
               </IconButton>
-              {filterType === 'Products' && 
+              {/* Boton para abrir y cerrar el sidebar de filtros */}
+              {/* {filterType === 'Products' && 
               <IconButton sx={{paddingY: 3}} to="/" onClick={onHandleFilters}>
                 <FilterAltIcon color='quaternary'/>
-              </IconButton>}
+              </IconButton>} */}
             </div>
-
-            {filterType === 'Categories' && (<ToggleButtonGroup
+            {/* Botones para asignar el filtro de hombre mujer y niño */}
+            {/* {filterType === 'Categories' && (<ToggleButtonGroup
               exclusive
               aria-label="text alignment"
               onChange={handleAlignment}
@@ -63,13 +65,8 @@ export const MasterPage = ({ filterType, children }) => {
               <ToggleButton value="ninos" aria-label="right aligned" selectedcolor="#643A07" sx={{color: 'black'}}>
                 NIÑOS
               </ToggleButton>
-            </ToggleButtonGroup>)}
-            {/* <div className='navbar-shoppingCar'>
-              <ShoppingCartIcon color='quaternary' sx={{marginTop: 2}}/>
-              <div className='badge'>
-                <span className='span-icon'>1</span>
-              </div>
-            </div> */}
+            </ToggleButtonGroup>)} */}
+
             <Button
               aria-controls="carrito-menu"
               aria-haspopup="true"
