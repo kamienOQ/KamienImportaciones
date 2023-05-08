@@ -38,7 +38,7 @@ export const MasterPage = ({ children }) => {
     <div className="page-wrapper">
         <header className='header-navbar'>
             <div className='filter-products-container'>
-              <IconButton sx={{ mr: 1 }} to="/">
+              <IconButton sx={{ mr: 1 }} href="/categorias">
                 <Avatar src = {logo}/>
               </IconButton>
               {/* Boton para abrir y cerrar el sidebar de filtros */}
@@ -89,7 +89,7 @@ export const MasterPage = ({ children }) => {
               <LocalPhoneIcon sx={{fontSize: 'small'}}/>
               <p>{whatsapp}</p>
             </div>
-              <a href="/">Acerca de nosotros</a>
+              <a href="/Nosotros">Acerca de nosotros</a>
           </div>
           <div className='footer-copyright'>
             Todos los derechos reservados hasta 2024.
