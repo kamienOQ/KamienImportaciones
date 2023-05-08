@@ -1,10 +1,4 @@
 import { useEffect, useState } from 'react';
-<<<<<<< HEAD
-=======
-import { useParams } from 'react-router-dom';
-import { doc, getDocs } from 'firebase/firestore/lite';
-import { FirebaseDB } from '../firebase/config';
->>>>>>> US-25-Visualize
 import { Avatar, Badge, Button, IconButton, ToggleButtonGroup} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
@@ -23,29 +17,8 @@ const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
   },
 }));
 
-<<<<<<< HEAD
 export const MasterPage = ({ children }) => {
   // const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useFiltersPageStore();
-=======
-export const ItemDetailContainer = () => {
-  const [data, setData] = useState({});
-  const { detailledId } = useParams();
-
-  useEffect(() => {
-    const queryDb = FirebaseDB;
-    const queryDoc = doc(queryDb, 'products', 'DgF9p6IU42XSYB7YpfLZ');
-    getDocs(queryDoc)
-    .then( res => setData({ id: res.id, ...res.data() })) 
-  }, [])
-  
-  return (
-    data = { data }
-  );
-}
-
-export const MasterPage = ({ filterType, children }) => {
-  const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useMasterPageStore();
->>>>>>> US-25-Visualize
   const { instagram, whatsapp, startGetAbout } = useAboutStore();
 
   useEffect(() => {
