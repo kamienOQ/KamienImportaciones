@@ -22,8 +22,8 @@ export const onGetProductsByCategory = ( categoryId ) => {
 
         const queryCollection = collection(FirebaseDB, '/products'); 
         if (categoryId) {
-        const queryFilter = query(queryCollection, where('category', '==', categoryId));
-        getDocs(queryFilter)
+            const queryFilter = query(queryCollection, where('category', '==', categoryId));
+            getDocs(queryFilter)
             .then( res => dispatch(onSetProductsByCategorySelect(res.docs.map( product => ({ id: product .id, ...product  .data() })))));
         } else {
         getDocs(queryCollection)

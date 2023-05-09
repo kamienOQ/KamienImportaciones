@@ -1,12 +1,13 @@
-import { usePorductsStore } from "../../hooks/useProductsStore"
+import { useProductsStore } from "../../hooks/useProductsStore"
+import { ItemListContainer } from "./itemListContainer/ItemListContainer";
 
-export const PorductsCards = ({urlImage, urlIcon, productName}) => {
+export const ProductsCards = ({urlImage, urlIcon, productName}) => {
 
-  const { setProductSelected } = usePorductsStore();
+  const { startGetProducts } = useProductsStore();
 
   const onhandleSelectProduct = () => {
     console.log(productName)
-    setProductSelected(productName)
+    startGetProducts(productName)
   }
 
   return (
@@ -31,3 +32,4 @@ export const PorductsCards = ({urlImage, urlIcon, productName}) => {
     </div>
   )
 }
+

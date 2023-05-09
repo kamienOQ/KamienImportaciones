@@ -4,11 +4,14 @@ export const productsSlice = createSlice({
     name: 'products',
     initialState: {
         products: [],
-        productsSelected: []
+        productsSelected: '',
     },
     reducers: {
         onSetProducts: ( state, { payload } ) => {
             state.products = payload;
+        },
+        onSetProductSelected: ( state, { payload } ) => {
+            state.productsSelected = payload;
         },
         onSetProductsByCategorySelect: ( state, { payload } ) => {
             state.productsSelected = payload;
@@ -18,4 +21,8 @@ export const productsSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { onSetProducts, onSetProductsByCategorySelect } = productsSlice.actions;
+export const { 
+    onSetProducts, 
+    onSetProductSelected, 
+    onSetProductsByCategorySelect 
+} = productsSlice.actions;
