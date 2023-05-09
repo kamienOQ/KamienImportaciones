@@ -8,8 +8,8 @@ export const HelloWorldApp = () => {
   const attributesList = ["attribute1", "attribute2", "attribute3"];
 
   function handleClick() {
-    startGetAttributesByCategory("Reloj");
-    startGetProductsByAttributes(attributesList);
+    startGetAttributesByCategory();
+    startGetProductsByAttributes();
   }
 
   return (      

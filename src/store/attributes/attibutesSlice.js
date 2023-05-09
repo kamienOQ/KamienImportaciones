@@ -10,32 +10,17 @@ export const attibutesSlice = createSlice({
         },
         numberCategories: undefined,
         attributes: [],
-        categories: [],
+        category: "Relojes",
         products: [],
         isLoading: false,
         editing: false,
         filtering: false,
         filter: {},
-        preCategory: {
-            name: '',
-            updatedName: false
-        },
-        page: 0,
-        pageSize: 5,
         activeAttribute: null, 
     },
     reducers: {
-        onChangeSavingNewAttribute: ( state, { payload } ) => {
-            state.isSaving = payload;
-        },
-        onSetActiveCategory: ( state, { payload } ) => {
-            //console.log(payload);
-            state.activeAttribute = payload;
-        },
-       
-        
         onSetCategories: ( state, { payload } ) => {
-            state.categories.push( payload );
+            state.category.push( payload );
             state.isLoading = false;    
         },
         onSetAttributes: ( state, { payload } ) => {
@@ -47,6 +32,17 @@ export const attibutesSlice = createSlice({
             state.isLoading = false;
         },
         
+        onGetAttributes: (state) => {
+            return state.attributes;
+        },
+        onGetCategory: (state) => {
+            console.log(state.category)
+            return state.category;
+        },
+        onGetProducts: (state) => {
+            return state.products;
+        },
+        
         
        onAddErrorMessage: ( state, { payload } ) => {
             state.message.error = payload;
@@ -56,30 +52,22 @@ export const attibutesSlice = createSlice({
         },
         
         
-        onChangePreCategoryName: ( state, { payload } ) => {
-            state.preCategory.name = payload;
-        },
-        onChangePreAttributeUpdated: ( state, { payload } ) => {
-            state.preCategory.updatedName = payload;
-        },
+        
         onChangeFiltering: ( state, { payload } )=> {
             state.filtering = payload
         },
         onChangeFilter: ( state, { payload } )=> {
             state.filter = payload
         },
-        onChangePageAndSize: ( state, { payload } )=> {
-            state.page = payload.page;
-            state.pageSize = payload.pageSize;
-        },
+
         onCleanAttributes: ( state ) => {
-            state.attributes = []
+            state.attributes = [];
             state.activeAttribute = null;
             state.isLoading = true;
         },
 
         onCleanProducts: ( state ) => {
-            state.products = []
+            state.products = [];
             state.activeAttribute = null;
             state.isLoading = true;
         },
@@ -93,33 +81,19 @@ export const attibutesSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { 
-    // onChargeCategoriesUploaded,
-    onAddAttributeAtStart,
-    onAddAttributeNameLowerCase, 
     onAddErrorMessage,
-    onAddIcon, 
-    onAddImage, 
-    onAddNewCategory, 
     onAddSuccessMessage,
-    onChangeActive,
-    onChangeEditing,
     onChangeFilter,
     onChangeFiltering,
-    onChangePageAndSize,
-    onChangePreCategoryName,
-    onChangePreAttributeUpdated,
-    onChangeSavingNewAttribute, 
     onCleanActiveCategory,
-    onCleanAttributes,
-    onDeleteCategory,
-    onSetActiveCategory,
+
     onSetAttributes,
-    onSetNumberAttributes,
-    onUpdateAttribute,
-    onSetAttributesRelated,
-    onSetCategoriesRelated,
+    onCleanAttributes,
     onSetCategories,
     onCleanCategories,
     onCleanProducts,
     onSetProducts,
+    onGetAttributes,
+    onGetProducts,
+    onGetCategory,
 } = attibutesSlice.actions;

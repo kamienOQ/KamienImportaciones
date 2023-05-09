@@ -5,11 +5,11 @@ export const useAttributesStore = () => {
     const dispatch = useDispatch();
 
     //*Thunks
-    const startGetAttributesByCategory = (categoryName) => {
-        dispatch( onStartGetAttributesByCategory(categoryName) );
+    const startGetAttributesByCategory = () => {
+        dispatch( onStartGetAttributesByCategory() );
     }
-    const startGetProductsByAttributes = (attributes) => {
-        dispatch( onStartGetProductsByAttributes(attributes) );
+    const startGetProductsByAttributes = () => {
+        dispatch( onStartGetProductsByAttributes() );
     }
 
     return {
@@ -19,4 +19,3 @@ export const useAttributesStore = () => {
     }
 }
 
-//export { startGetAttributesByCategory };
