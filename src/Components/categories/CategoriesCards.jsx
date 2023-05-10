@@ -1,18 +1,19 @@
 import { useCategoriesStore } from "../../hooks/useCategoriesStore"
+import { ProductsCards } from "../products/ProductsCards";
 
 export const CategoriesCards = ({urlImage, urlIcon, categoryName}) => {
 
-  const { setCategorySelected } = useCategoriesStore();
+  const { setCategorySelected, startGetCategories } = useCategoriesStore();
 
   const onhandleSelectCategory = () => {
     console.log(categoryName)
-    setCategorySelected(categoryName)
+    startGetCategories()
   }
 
   return (
     <div className='container-categoriesCards'>
       <a 
-        href="#" 
+        href="/Productos" 
         onClick={onhandleSelectCategory}
       >
         <figure className='container-figure-img'>
