@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import {onStartGetAttributesByCategory,onStartGetProductsByAttributes} from "../store/attributes/";
+import {onStartGetAttributesByCategory,onStartGetProductsByAttributes} from "../store/filters";
 
 export const useAttributesStore = () => {
     const dispatch = useDispatch();

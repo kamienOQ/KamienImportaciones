@@ -1,5 +1,2 @@
-export * from './attributes';
-export * from './ui/uiAttSlice';
-
-
+export * from './filters';
 export * from './store';
