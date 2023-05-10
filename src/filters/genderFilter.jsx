@@ -1,5 +1,8 @@
 import { Button, Dialog, DialogTitle,DialogContent ,List, ListItem,ListItemButton,ListItemText,} from '@mui/material';
-import Chip from '@mui/material/Chip';
+import FaceIcon from '@mui/icons-material/Face';
+import Face3Icon from '@mui/icons-material/Face3';
+import ChildCareIcon from '@mui/icons-material/ChildCare';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import React from 'react';
 import {useAttributesStore} from "../hooks";
 
@@ -8,11 +11,6 @@ export const HelloWorldApp = () => {
   const { startGetAttributesByCategory,startGetProductsByAttributes,startGetProductsByGender} = useAttributesStore();
   const attributesList = ["attribute1", "attribute2", "attribute3"];
 
-  function handleClick() {
-    startGetAttributesByCategory();
-    startGetProductsByAttributes();
-
-  }
   const maleClick = () =>  {
     startGetProductsByGender("Hombre");
 
@@ -29,6 +27,11 @@ export const HelloWorldApp = () => {
   return (
 
     <List >
+      <ListItem>
+      <FilterAltIcon/>
+      <ListItemText primary={"Opciones de Filtrado"} sx={{ opacity: open ? 1 : 0 }}/>
+      </ListItem>
+      
       <ListItem key= "Niño" disablePadding sx={{ display: 'black' }}>
               <ListItemButton
                 sx={{
@@ -38,6 +41,7 @@ export const HelloWorldApp = () => {
                 }}
                 onClick={childClick}
               >
+                <ChildCareIcon/>
                 <ListItemText
                   primary={"Niño"}
                   sx={{ opacity: open ? 1 : 0 }}
@@ -54,6 +58,7 @@ export const HelloWorldApp = () => {
                 }}
                 onClick={femaleClick}
               >
+                <Face3Icon/>
                 <ListItemText
                   primary={"Mujer"}
                   sx={{ opacity: open ? 1 : 0 }}
@@ -70,20 +75,15 @@ export const HelloWorldApp = () => {
                 }}
                 onClick={maleClick}
               >
+                
+                <FaceIcon />
                 <ListItemText
                   primary={"Hombre"}
                   sx={{ opacity: open ? 1 : 0 }}
                 />
               </ListItemButton>
       </ListItem>
-
-        
-        <div>
-          <Button variant="contained" onClick={handleClick}>
-          Filtrar
-          </Button> 
-        </div>
-     </List>
+    </List>
     
 
     
