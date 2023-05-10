@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
-import { HelloWorldApp } from './filters/HelloWorldApp'
+import { ImportsApp } from './ImportsApp'
+import './styles.css'
 import { store } from './store/store'
 import { Provider } from 'react-redux'
 

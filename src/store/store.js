@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { filterSlice } from './'
+import { aboutSlice } from './about/aboutSlice';
+import { filtersPageSlice } from './filters/filtersPageSlice';
+
+
 
 export const store = configureStore({
     reducer: {
-        filter: filterSlice.reducer,
+        about: aboutSlice.reducer,
+        filtersPage: filtersPageSlice.reducer,
     }
 });
