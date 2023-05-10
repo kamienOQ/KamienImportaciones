@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import {onStartGetAttributesByCategory,onStartGetProductsByAttributes} from "../store/filters";
+import {onStartGetAttributesByCategory,onStartGetProductsByAttributes,onStartGetProductsByGender} from "../store/attributes";
 
 export const useAttributesStore = () => {
     const dispatch = useDispatch();
@@ -12,10 +12,15 @@ export const useAttributesStore = () => {
         dispatch( onStartGetProductsByAttributes() );
     }
 
+    const startGetProductsByGender = (preValue) => {
+        dispatch( onStartGetProductsByGender(preValue) );
+    }
+
     return {
         //*Métodos
         startGetAttributesByCategory,
-        startGetProductsByAttributes
+        startGetProductsByAttributes,
+        startGetProductsByGender
     }
 }
 

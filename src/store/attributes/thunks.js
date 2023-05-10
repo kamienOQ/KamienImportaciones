@@ -52,3 +52,22 @@ export const onStartGetProductsByAttributes = () => {
     dispatch(onSetProducts(products));
   };
 };
+
+export const onStartGetProductsByGender = (preValue) => {
+  return async (dispatch,getState) => {
+    const {category} = getState().filter;//Traer category del storage
+    dispatch(onCleanProducts());
+    
+    const q = query(
+      collection(FirebaseDB, "products"),
+      where("relatedAttributes", "array-contains", preValue),
+      where("relatedCategories", "==", category),
+      where("active", "==", true)
+    );
+    
+    const promises = await getDocs(q);
+    const products = promises.docs.map((doc) => doc.data())
+    console.log(products)
+    dispatch(onSetProducts(products));
+  };
+};
