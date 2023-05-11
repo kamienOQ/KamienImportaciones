@@ -6,27 +6,29 @@ import { Button, Grid, Typography } from "@mui/material";
 import { useUiStore } from '../hooks/useUiStore';
 import { ProductsDetail } from '../Components/products/ProductsDetail';
 import { useCategoriesStore } from '../hooks/useCategoriesStore';
+import { ProductView } from '../Components/products/ProductView';
 
 export const ProductsPage = ({productName}) => {
   
-  // const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
+  const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
   const { products, startGetProducts, message, isSaving } = useProductsStore();
 
   const { categorySelected } = useCategoriesStore();
 
-  // useEffect(() => {
-  //   if (!!message.success) {
-  //     closeProductModal();
-  //   }
-  // }, [message.success]);
-
   useEffect(() => {
+    if (!!message.success) {
+      closeProductModal();
+    }
+  }, [message.success]);
+  
+  useEffect(() => {
+    console.log(categorySelected)
     startGetProducts(categorySelected);
   }, [])
 
-  // const onOpenModal = () => {
-  //   openProductModal();
-  // }
+  const onOpenModal = () => {
+    openProductModal();
+  }
 
   return (
     <div>
@@ -51,6 +53,7 @@ export const ProductsPage = ({productName}) => {
         {/* {isProductModalOpen && 
           <ProductsDetail />
         } */}
+        <ProductView />
     </div>
   )
 }

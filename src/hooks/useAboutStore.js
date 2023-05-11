@@ -10,7 +10,8 @@ export const useAboutStore = () => {
         description,
         instagram,
         name,
-        whatsapp
+        whatsapp,
+        logo
     } = useSelector( state => state.about );
 
     //*Slice
@@ -29,6 +30,7 @@ export const useAboutStore = () => {
         instagram,
         name,
         whatsapp,
+        logo,
         
         //*Métodos
         setData,

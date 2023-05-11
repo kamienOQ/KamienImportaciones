@@ -6,7 +6,8 @@ export const aboutSlice = createSlice({
         description: '',
         instagram: '',
         name: '',
-        whatsapp: ''
+        whatsapp: '',
+        logo: ''
     },
     reducers: {
 
@@ -14,6 +15,7 @@ export const aboutSlice = createSlice({
             state.description = payload[0].description;
             state.instagram = payload[0].instagram;
             state.name = payload[0].name;
+            state.logo = payload[0].logo;
             const whatsapp = payload[0].whatsapp.toString();
             if (whatsapp.includes('-') || whatsapp.length < 8){
                 state.whatsapp = whatsapp;

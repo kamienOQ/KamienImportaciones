@@ -1,20 +1,25 @@
+import { useNavigate } from "react-router-dom";
 import { useCategoriesStore } from "../../hooks/useCategoriesStore"
-import { ProductsCards } from "../products/ProductsCards";
 
 export const CategoriesCards = ({urlImage, urlIcon, categoryName}) => {
 
-  const { setCategorySelected, startGetCategories } = useCategoriesStore();
+  const { setCategorySelected } = useCategoriesStore();
+
+  const navigate = useNavigate();
 
   const onhandleSelectCategory = () => {
     console.log(categoryName)
-    startGetCategories()
+    setCategorySelected(categoryName)
+    navigate('/Producto');
   }
 
   return (
     <div className='container-categoriesCards'>
-      <a 
-        href="/Productos" 
-        onClick={onhandleSelectCategory}
+      <button
+        onClick={event => {
+          event.preventDefault();
+          onhandleSelectCategory(); 
+        }}
       >
         <figure className='container-figure-img'>
           <img src={urlImage} alt="" className='categoriesCards-img'/>
@@ -31,7 +36,7 @@ export const CategoriesCards = ({urlImage, urlIcon, categoryName}) => {
             </div>
           </div>
         </div>
-      </a>
+      </button>
     </div>
   )
 }

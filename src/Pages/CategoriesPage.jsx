@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { MasterPage } from "../Components/MasterPage"
 import { CategoriesCards } from "../Components/categories/CategoriesCards"
 import { useCategoriesStore } from "../hooks/useCategoriesStore"
 import { CategoriesEmpty } from "../Components/categories/CategoriesEmpty"
@@ -25,11 +24,11 @@ export const CategoriesPage = () => {
               categoryName={category.categoryName}
             />
           ))}
-        </div>)
-        : (
-          <CategoriesEmpty />
-        )}
-    </>
+        </div>) 
+    : (
+      <CategoriesEmpty />
+    )}
+  </>
 
   )
 }

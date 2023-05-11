@@ -7,7 +7,7 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
 
   const onhandleSelectProduct = () => {
     console.log(productName)
-    getProductsByCategory()
+    startGetProducts()
   }
 
   return (
@@ -26,7 +26,7 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
                 <h2 className='productsCards-text'>{productName}</h2>
                 <h2 className='productsCards-text'>Precio: ₡{price}</h2>
                 {/* <h2 className='productsCards-text'>{relatedAttributes}</h2> */}
-                {/* <h2 className='productsCards-text'>{relatedListAttributes}</h2> */}
+                <h2 className='productsCards-text'>Lista de atributos{relatedListAttributes}</h2>
               </div>
             </div>
           </div>
@@ -36,7 +36,6 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
             <Button
               className="addProduct-modal-button"
               //onClick={onOpenModal}
-              //startIcon={<AddCircleIcon />}
               sx={{ backgroundColor: 'success.main', minWidth: 0, color: "tertiary.main" }}
               variant='contained'
               disabled={isSaving}
@@ -46,6 +45,19 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
           </Grid>
         </div>
       </a>
+      <div className='info-container-productsCards'>
+            <div className='container-productsCards-icon'>
+              <div className='container-productsCards-content'>
+                <figure className='container-figure-icon'>
+                  <img src={urlIcon} alt="" className='productsCards-icon' />
+                </figure>
+                <h2 className='productsCards-text'>{productName}</h2>
+                <h2 className='productsCards-text'>Precio: ₡{price}</h2>
+                {/* <h2 className='productsCards-text'>{relatedAttributes}</h2> */}
+                <h2 className='productsCards-text'>Lista de atributos{relatedListAttributes}</h2>
+              </div>
+            </div>
+          </div>
     </div>
   )
 }

@@ -16,8 +16,8 @@ export const useProductsStore = () => {
     }
 
     //*Thunks
-    const startGetProducts = () => {
-        dispatch( onStartGetProducts() );
+    const startGetProducts = (categorySelected) => {
+        dispatch( onStartGetProducts(categorySelected) );
     }
 
     const getProductsByCategory = () => {
