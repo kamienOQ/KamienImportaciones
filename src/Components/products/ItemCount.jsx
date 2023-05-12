@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Button, ButtonGroup } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import CloseIcon from '@mui/icons-material/Close';
+import { useProductsStore, useUiStore } from '../../hooks';
 
 export const ItemCount = ( { initial, onAdd } ) => {
+
+  const { closeProductModal, isProductModalOpen, categoriesSelected, attributesSelected, 
+    listAttributesSelected  } = useUiStore();
+
+  const { isSaving } = useProductsStore();
   
   const [count, setCount] = useState(parseInt(initial));
 
@@ -18,6 +25,9 @@ export const ItemCount = ( { initial, onAdd } ) => {
     setCount(parseInt(initial));
   }, [initial])
     
+  const onCloseModa = () => {
+    closeProductModal();
+  }
 
   return (
     <>
@@ -50,11 +60,28 @@ export const ItemCount = ( { initial, onAdd } ) => {
           <Button 
             startIcon={<AddShoppingCartIcon />}
             variant="contained"
-            color="success" disabled={count <= 0} onClick={() => onAdd(count)}
+            color="success" 
+            disabled={count <= 0} 
+            onClick={() => onAdd(count)}
           >
             Agregar al carrito
           </Button>
-        </div>
+      </div>
+      <div
+        sx={{ mb: 2 }}
+      >
+        <Button 
+          className="cancelProduct-button"
+          startIcon={<CloseIcon />}
+          variant="contained"
+          color="error" 
+          onClick={onCloseModa}
+          sx={{ backgroundColor: "error.main", borderRadius: 20, mt: 2 }}
+          disabled={isSaving}
+        >
+          Salir
+        </Button>
+      </div>
     </>
   )
 }

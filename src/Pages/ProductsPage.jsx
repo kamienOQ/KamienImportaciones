@@ -11,6 +11,7 @@ import { ProductView } from '../Components/products/ProductView';
 export const ProductsPage = ({productName}) => {
   
   const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
+  
   const { products, startGetProducts, message, isSaving } = useProductsStore();
 
   const { categorySelected } = useCategoriesStore();
