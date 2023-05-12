@@ -8,11 +8,20 @@ export const useProductsStore = () => {
     const { 
         products,
         productSelected,
+        message,
     } = useSelector( state => state.products );
 
     //*Slice
     const setProductSelected = (productName) => {
         dispatch( onSetProductSelected(productName) );
+    }
+
+    const addErrorMessage = ( message ) => {
+        dispatch( onAddErrorMessage( message ) );
+    }   
+
+    const addSuccessMessage = ( message ) => {
+        dispatch( onAddSuccessMessage( message ) );
     }
 
     //*Thunks
@@ -28,11 +37,14 @@ export const useProductsStore = () => {
         //*Propiedades
         products,
         productSelected,
+        message,
         
         //*Métodos
         startGetProducts,
         setProductSelected,
         getProductsByCategory,
+        addErrorMessage,
+        addSuccessMessage,
     }
 
 }

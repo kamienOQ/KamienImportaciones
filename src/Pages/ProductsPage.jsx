@@ -26,15 +26,11 @@ export const ProductsPage = ({productName}) => {
     startGetProducts(categorySelected);
   }, [])
 
-  const onOpenModal = () => {
-    openProductModal();
-  }
-
   return (
     <div>
         <>
             {products.length > 0 ? (
-            <div className="grid-container">
+            <div className="grid-container-product">
               {products.map((product) => (
                   <ProductsCards
                     key={product.productName}
@@ -50,9 +46,9 @@ export const ProductsPage = ({productName}) => {
             <ProductsEmpty />
             )}
         </>
-        {/* {isProductModalOpen && 
+        {isProductModalOpen && 
           <ProductsDetail />
-        } */}
+        }
         <ProductView />
     </div>
   )

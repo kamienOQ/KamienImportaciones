@@ -1,8 +1,10 @@
+import { useUiStore } from "../../hooks";
 import { useProductsStore } from "../../hooks/useProductsStore"
 import { Button, Grid, Typography } from "@mui/material";
 
 export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAttributes, relatedListAttributes}) => {
 
+  const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
   const { startGetProducts, isSaving } = useProductsStore();
 
   const onhandleSelectProduct = () => {
@@ -10,9 +12,12 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
     startGetProducts()
   }
 
+  const onOpenModal = () => {
+    openProductModal();
+  }
+
   return (
     <div className='container-productsCards'>
-      <a href="#" onClick={onhandleSelectProduct}>
         <figure className='container-figure-img'>
           <img src={urlImage} alt="" className='productsCards-img'/>
         </figure>
@@ -26,7 +31,7 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
                 <h2 className='productsCards-text'>{productName}</h2>
                 <h2 className='productsCards-text'>Precio: ₡{price}</h2>
                 {/* <h2 className='productsCards-text'>{relatedAttributes}</h2> */}
-                <h2 className='productsCards-text'>Lista de atributos{relatedListAttributes}</h2>
+                <h2 className='productsCards-text'>Lista de atributos: {relatedAttributes}</h2>
               </div>
             </div>
           </div>
@@ -35,7 +40,7 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
           >
             <Button
               className="addProduct-modal-button"
-              //onClick={onOpenModal}
+              onClick={onOpenModal}
               sx={{ backgroundColor: 'success.main', minWidth: 0, color: "tertiary.main" }}
               variant='contained'
               disabled={isSaving}
@@ -44,20 +49,6 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
             </Button>
           </Grid>
         </div>
-      </a>
-      <div className='info-container-productsCards'>
-            <div className='container-productsCards-icon'>
-              <div className='container-productsCards-content'>
-                <figure className='container-figure-icon'>
-                  <img src={urlIcon} alt="" className='productsCards-icon' />
-                </figure>
-                <h2 className='productsCards-text'>{productName}</h2>
-                <h2 className='productsCards-text'>Precio: ₡{price}</h2>
-                {/* <h2 className='productsCards-text'>{relatedAttributes}</h2> */}
-                <h2 className='productsCards-text'>Lista de atributos{relatedListAttributes}</h2>
-              </div>
-            </div>
-          </div>
     </div>
   )
 }

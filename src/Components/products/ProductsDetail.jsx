@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { TextField, Dialog, DialogTitle, Button, MenuItem, IconButton, DialogContent, Avatar, Typography, Alert, Grid } from "@mui/material"
 import { useUiStore } from '../../hooks/useUiStore';
+import { ItemCount } from './ItemCount'
+import { Link } from 'react-router-dom';
 
-export const ProductsDetail = () => {
+export const ProductsDetail = ({urlImage, urlIcon, productName, price, relatedAttributes, relatedListAttributes}) => {
 
     const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
 
-    const [gotoCart, setGotoCart] = useState(false);
+    const [ gotoCart, setGotoCart ] = useState(false);
 
     const onAdd = () => {
         setGotoCart(true);
@@ -36,12 +38,18 @@ export const ProductsDetail = () => {
         </DialogTitle >
         <div>
             <div className='detail'>
-                <img className='detail_image' src="{data.image}" alt="" />
+                <figure className='container-figure-img'>
+                    <img src={urlImage} alt="" className='productsCards-img'/>
+                </figure>
+                <h2 className='productsDetailCards-text'>{productName}</h2>
+                <h2 className='productsDetailCards-text'>Precio: ₡{price}</h2>
+                {/* <h2 className='productsDetailCards-text'>{relatedAttributes}</h2> */}
+                <h2 className='productsDetailCards-text'>Lista de atributos: {relatedAttributes}</h2>
                 <div className='content'>
-                    <h1>{data.title}</h1>
+                    <h1>{productName}</h1>
                     {
                         gotoCart
-                            ? <Link to={'/cart'}>Terminar Compra</Link>
+                            ? <Link to={'/Cart'}>Terminar Compra</Link>
                             : <ItemCount initial={1} onAdd = { onAdd } />
                     }
                 </div>
