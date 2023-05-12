@@ -8,17 +8,18 @@ export const CategoriesCards = ({urlImage, urlIcon, categoryName}) => {
   const navigate = useNavigate();
 
   const onhandleSelectCategory = () => {
-    console.log(categoryName)
-    setCategorySelected(categoryName)
+    console.log(categoryName);
+    setCategorySelected(categoryName);
+    localStorage.setItem('categorySelected', categoryName);
     navigate('/Producto');
   }
 
   return (
     <div className='container-categoriesCards'>
-      <button
+      <button 
         onClick={event => {
           event.preventDefault();
-          onhandleSelectCategory(); 
+          onhandleSelectCategory();
         }}
       >
         <figure className='container-figure-img'>

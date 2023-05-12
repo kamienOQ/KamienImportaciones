@@ -8,6 +8,7 @@ export const CategoriesPage = () => {
   const { categories, startGetCategories } = useCategoriesStore();
 
   useEffect(() => {
+    localStorage.setItem('categorySelected', '');
     startGetCategories();
   }, [])
 
