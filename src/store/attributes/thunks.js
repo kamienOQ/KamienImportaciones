@@ -1,14 +1,19 @@
 import { collection, doc, getDocs, limit, orderBy, query, setDoc, startAfter, where } from "firebase/firestore/lite";
-
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FirebaseDB, FirebaseStorage } from "../../firebase/config";
-import {  onCleanAttributes, onSetAttributes, onSetNumberAttributes,onCleanProducts,onSetProducts} from ".";
+import {  onCleanAttributes, onSetAttributes, onCleanProducts,onSetProducts,onGetAttributes, onGetCategory} from ".";
 
 
-export const onStartGetAttributesByCategory = (categoryName) => {
-  return async (dispatch) => {
+
+export const onStartGetAttributesByCategory = () => {
+  return async (dispatch,getState) => {
+    const {category} = getState().filter;
+    console.log(category);
     dispatch(onCleanAttributes());
-    const collectionRef = collection(FirebaseDB, "/attributes");
-    const q = query(collectionRef, where("categoriesRelated", "array-contains", "Relojes"));
+    const q = query(
+      collection(FirebaseDB, "/attributes"),
+      where("categoriesRelated", "array-contains", category),
+      where("active", "==", true));
     const querySnapshot = await getDocs(q);
 
     const attributes = querySnapshot.docs.map((doc) => {
@@ -20,20 +25,22 @@ export const onStartGetAttributesByCategory = (categoryName) => {
     });
     console.log(attributes)
 
-    //dispatch(onSetAttributes(attributes));
+    dispatch(onSetAttributes(attributes));
   };
 };
 
-export const onStartGetProductsByAttributes = (attributesList) => {
-  return async (dispatch) => {
+export const onStartGetProductsByAttributes = () => {
+  return async (dispatch,getState) => {
+    const {attributes} = getState().filter;//Traer attributes del storage
+    const {category} = getState().filter;//Traer category del storage
     dispatch(onCleanProducts());
-
-    const promises = attributesList.map((attribute) => {
+    const promises = attributes.map((attribute) => {
       const q = query(
         collection(FirebaseDB, "products"),
-        where("relatedAttributes", "array-contains", attribute)
+        where("relatedAttributes", "array-contains", attribute),
+        where("relatedCategories", "==", category),
+        where("active", "==", true)
       );
-
       return getDocs(q);
     });
 
@@ -41,133 +48,26 @@ export const onStartGetProductsByAttributes = (attributesList) => {
     const products = snapshots.flatMap((snapshot) => {
       return snapshot.docs.map((doc) => doc.data());
     });
-
+    console.log(products)
     dispatch(onSetProducts(products));
   };
 };
 
-// export const onStartGetProductsByAttributes = (attributesList) => {
-//   return async (dispatch) => {
-//     dispatch(onCleanProducts());
-//     const collectionRef = collection(FirebaseDB, "/products");
-//     let q = query(collectionRef);
-//     attributesList.forEach((attribute) => {
-//       q = query(q, where("relatedAttributes", "array-contains", attribute));
-//     });
-//     const querySnapshot = await getDocs(q);
-
-//     const products = querySnapshot.docs.map((doc) => {
-//       return doc.data();
-//     });
-//     console.log(products)
-//     //dispatch(onSetProducts(products));
-//   };
-
-// };
-
-
-
-
-
-export const onStartGetAttributes = (page = 0, size = 5) => {
-  return async (dispatch) => {
-    dispatch(onCleanAttributes());
-
-    const collectionRef = collection(FirebaseDB, `/attributes`);
-    let q;
-
-    if (page === 0) {
-      q = query( collectionRef, orderBy("date", "desc"), limit(size) );
-    } else {
-      const lastVisibleDoc = query( collectionRef,  orderBy("date", "desc"), limit(page * size) );
-      const lastVisibleDocSnapshot = await getDocs(lastVisibleDoc);
-      const lastVisible = lastVisibleDocSnapshot.docs[lastVisibleDocSnapshot.docs.length-1];
-      q = query( collectionRef,  orderBy("date", "desc"), startAfter(lastVisible), limit(size) );
-    }
-
-    const querySnapshot = await getDocs(q);
-
-    const newAttribute = querySnapshot.docs.map((doc, index) => {
-      return { id: index + 1 + page * size, ...doc.data() };
-    });
-    dispatch(onSetAttributes(newAttribute));
+export const onStartGetProductsByGender = (preValue) => {
+  return async (dispatch,getState) => {
+    const {category} = getState().filter;//Traer category del storage
+    dispatch(onCleanProducts());
     
-  }
-}
-
-
-
-export const onStartFiltersAttributes = (page = 0, size = 5, preValue) => {
-  return async (dispatch, getState) => {
-
-    const { filter } = getState().attributes;
-    if(!!filter){
-      const { field, value } = filter;
-      dispatch(onCleanAttributes());
-      const collectionRef = collection(FirebaseDB, `/attributes`);
-      let q, undersized = false;
-      if(field?.toLowerCase().includes('name')){
-        if(value==='asc'){
-          if (page === 0) {
-            q = query( collectionRef, orderBy("attributeNameLowerCase", "asc"), limit(size) );
-            dispatch(onStartNumberAttributes());
-          } else {
-            const lastVisibleDoc = query( collectionRef,  orderBy("attributeNameLowerCase", "asc"), limit(page * size) );
-            const lastVisibleDocSnapshot = await getDocs(lastVisibleDoc);
-            const lastVisible = lastVisibleDocSnapshot.docs[lastVisibleDocSnapshot.docs.length-1];
-            q = query( collectionRef,  orderBy("attributeNameLowerCase", "asc"), startAfter(lastVisible), limit(size) );
-          }
-        }if(value==='desc'){
-          if (page === 0) {
-            q = query( collectionRef, orderBy("attributeNameLowerCase", "desc"), limit(size) );
-            dispatch(onStartNumberAttributes());
-          } else {
-            const lastVisibleDoc = query( collectionRef,  orderBy("attributeNameLowerCase", "desc"), limit(page * size) );
-            const lastVisibleDocSnapshot = await getDocs(lastVisibleDoc);
-            const lastVisible = lastVisibleDocSnapshot.docs[lastVisibleDocSnapshot.docs.length-1];
-            q = query( collectionRef,  orderBy("attributeNameLowerCase", "desc"), startAfter(lastVisible), limit(size) );
-          }
-        }if(value!=='asc' && value !== 'desc'){
-          const formattedName = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          if(preValue !== value){
-            q = query( collectionRef, where('attributeNameLowerCase', '>=', formattedName), where('attributeNameLowerCase', '<', formattedName + '\uf8ff'));
-            const querySnapshot = await getDocs(q);
-            undersized = (querySnapshot.size <= size) ? true : false;
-            dispatch(onSetNumberAttributes(querySnapshot.size));
-          } if (page === 0 || undersized) {
-            q = query( collectionRef, where('attributeNameLowerCase', '>=', formattedName), where('attributeNameLowerCase', '<', formattedName + '\uf8ff'), limit(size) );
-          } else {
-            const lastVisibleDoc = query( collectionRef,  where('attributeNameLowerCase', '>=', formattedName), where('attributeNameLowerCase', '<', formattedName + '\uf8ff'), limit(page * size) );
-            const lastVisibleDocSnapshot = await getDocs(lastVisibleDoc);
-            const lastVisible = lastVisibleDocSnapshot.docs[lastVisibleDocSnapshot.docs.length-1];
-            q = query( collectionRef,  where('attributeNameLowerCase', '>=', formattedName), where('attributeNameLowerCase', '<', formattedName + '\uf8ff'), startAfter(lastVisible), limit(size) );
-          }
-        }
-      }
-      if(field?.toLowerCase().includes('date')){
-        const dateObject = new Date(value)
-        if(preValue !== value){
-          q = query( collectionRef, where("date", ">=", dateObject.getTime()));
-          const querySnapshot = await getDocs(q);
-          undersized = (querySnapshot.size <= size) ? true : false;
-          dispatch(onSetNumberAttributes(querySnapshot.size));
-        } if (page === 0 || undersized) {
-          q = query( collectionRef, where("date", ">=", dateObject.getTime()), limit(size) );
-        } else {
-          const lastVisibleDoc = query( collectionRef,  where("date", ">=", dateObject.getTime()), limit(page * size) );
-          const lastVisibleDocSnapshot = await getDocs(lastVisibleDoc);
-          const lastVisible = lastVisibleDocSnapshot.docs[lastVisibleDocSnapshot.docs.length-1];
-          q = query( collectionRef,  where("date", ">=", dateObject.getTime()), startAfter(lastVisible), limit(size) );
-        }
-      }
-
-      const querySnapshot = await getDocs(q);
-      const newAttribute = querySnapshot.docs.map((doc, index) => {
-        return { id: index + 1 + page * size, ...doc.data() };
-      });
-  
-      dispatch(onSetAttributes(newAttribute));
-    }
-  }
-}
-
+    const q = query(
+      collection(FirebaseDB, "products"),
+      where("relatedAttributes", "array-contains", preValue),
+      where("relatedCategories", "==", category),
+      where("active", "==", true)
+    );
+    
+    const promises = await getDocs(q);
+    const products = promises.docs.map((doc) => doc.data())
+    console.log(products)
+    dispatch(onSetProducts(products));
+  };
+};

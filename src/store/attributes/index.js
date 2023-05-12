@@ -1,2 +1,2 @@
-export * from './attibutesSlice';
+export * from './filterSlice';
 export * from './thunks';

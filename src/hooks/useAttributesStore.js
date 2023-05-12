@@ -1,22 +1,26 @@
 import { useDispatch } from "react-redux";
-import {onStartGetAttributesByCategory,onStartGetProductsByAttributes} from "../store/attributes/";
+import {onStartGetAttributesByCategory,onStartGetProductsByAttributes,onStartGetProductsByGender} from "../store/attributes";
 
 export const useAttributesStore = () => {
     const dispatch = useDispatch();
 
     //*Thunks
-    const startGetAttributesByCategory = (categoryName) => {
-        dispatch( onStartGetAttributesByCategory(categoryName) );
+    const startGetAttributesByCategory = () => {
+        dispatch( onStartGetAttributesByCategory() );
     }
-    const startGetProductsByAttributes = (attributes) => {
-        dispatch( onStartGetProductsByAttributes(attributes) );
+    const startGetProductsByAttributes = () => {
+        dispatch( onStartGetProductsByAttributes() );
+    }
+
+    const startGetProductsByGender = (preValue) => {
+        dispatch( onStartGetProductsByGender(preValue) );
     }
 
     return {
         //*Métodos
         startGetAttributesByCategory,
-        startGetProductsByAttributes
+        startGetProductsByAttributes,
+        startGetProductsByGender
     }
 }
 
-//export { startGetAttributesByCategory };

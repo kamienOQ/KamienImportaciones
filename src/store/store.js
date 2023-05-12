@@ -5,6 +5,8 @@ import { categoriesSlice } from './categories/categoriesSlice';
 import { attibutesSlice, uiAttSlice, uiSlice } from './'
 import { filtersPageSlice } from './filters/filtersPageSlice';
 import { productsSlice } from "./products/productsSlice";
+import {filterSlice} from './'
+
 
 
 export const store = configureStore({
@@ -17,5 +19,6 @@ export const store = configureStore({
         uiAtt: uiAttSlice.reducer,
         attributes: attibutesSlice.reducer,
         filtersPage: filtersPageSlice.reducer,
+        filter: filterSlice.reducer,
     }
 });
