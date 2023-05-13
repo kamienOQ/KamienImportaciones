@@ -3,7 +3,7 @@ import { MasterPage } from "../MasterPage";
 import { CategoriesPage } from "../../Pages/CategoriesPage";
 import { AboutPage } from "../../Pages/AboutPage";
 import { ProductsPage } from "../../Pages/ProductsPage";
-import { ProductsDetail } from "../products/ProductsDetail";
+import { ProductsModalDetail } from "../products/ProductsModalDetail";
 import { Cart } from '../../kamien/Cart'
 
 export const ImportRoutes = () => {
@@ -13,7 +13,7 @@ export const ImportRoutes = () => {
      <Routes>
        {/* <Route path="/" element={<MasterPage />} /> */}
        <Route path="/" element={<CategoriesPage />} />
-       <Route path="/ProductoDetalle" element={<ProductsDetail />} />
+       <Route path="/ProductoDetalle" element={<ProductsModalDetail />} />
        <Route path= "/Producto" element = {<ProductsPage />}/>
        <Route path= "/Categorias" element = {<CategoriesPage/>}/>
        <Route path= "/Cart" element = {<Cart />}/>

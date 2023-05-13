@@ -6,8 +6,7 @@ import { useProductsStore, useUiStore } from '../../hooks';
 
 export const ItemCount = ( { initial, onAdd } ) => {
 
-  const { closeProductModal, isProductModalOpen, categoriesSelected, attributesSelected, 
-    listAttributesSelected  } = useUiStore();
+  const { closeProductModal } = useUiStore();
 
   const { isSaving } = useProductsStore();
   
@@ -33,7 +32,7 @@ export const ItemCount = ( { initial, onAdd } ) => {
     <>
       <div>
         <ButtonGroup 
-          sx={{ mb: 2 }}
+          sx={{ m: 2 }}
           className='addCart-modal-button'
           color="success" 
           size="small" 
@@ -67,9 +66,7 @@ export const ItemCount = ( { initial, onAdd } ) => {
             Agregar al carrito
           </Button>
       </div>
-      <div
-        sx={{ mb: 2 }}
-      >
+      <div>
         <Button 
           className="cancelProduct-button"
           startIcon={<CloseIcon />}

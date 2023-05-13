@@ -8,7 +8,7 @@ import {useAttributesStore} from "../hooks";
 
 export const HelloWorldApp = () => {
   
-  const { startGetAttributesByCategory,startGetProductsByAttributes,startGetProductsByGender} = useAttributesStore();
+  const { startGetAttributesByCategory,startGetProductsByAttributes, startGetProductsByGender} = useAttributesStore();
   const attributesList = ["attribute1", "attribute2", "attribute3"];
 
   const maleClick = () =>  {
@@ -26,18 +26,19 @@ export const HelloWorldApp = () => {
 
   return (
 
-    <List >
+    <List>
       <ListItem>
       <FilterAltIcon/>
       <ListItemText primary={"Opciones de Filtrado"} sx={{ opacity: open ? 1 : 0 }}/>
       </ListItem>
       
-      <ListItem key= "Niño" disablePadding sx={{ display: 'black' }}>
+      <ListItem key= "Niño" disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                   minHeight: 48,
+                  flexDirection: 'column'
                 }}
                 onClick={childClick}
               >
@@ -55,6 +56,7 @@ export const HelloWorldApp = () => {
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  flexDirection: 'column'
                 }}
                 onClick={femaleClick}
               >
@@ -72,6 +74,7 @@ export const HelloWorldApp = () => {
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  flexDirection: 'column'
                 }}
                 onClick={maleClick}
               >

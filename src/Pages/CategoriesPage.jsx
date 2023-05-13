@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { CategoriesCards } from "../Components/categories/CategoriesCards"
 import { useCategoriesStore } from "../hooks/useCategoriesStore"
 import { CategoriesEmpty } from "../Components/categories/CategoriesEmpty"
+import { HelloWorldApp } from "../filters"
 
 
 export const CategoriesPage = () => {
@@ -15,21 +16,23 @@ export const CategoriesPage = () => {
 
   return (
     <>
-      {categories.length > 0 ? (
-        <div className="grid-container">
-          {categories.map((category) => (
-            <CategoriesCards
-              key={category.categoryName}
-              urlImage={category.image?.url}
-              urlIcon={category.icon?.url}
-              categoryName={category.categoryName}
-            />
-          ))}
-        </div>) 
-    : (
-      <CategoriesEmpty />
-    )}
+      <HelloWorldApp />
+      <>
+        {categories.length > 0 ? (
+          <div className="grid-container">
+            {categories.map((category) => (
+              <CategoriesCards
+                key={category.categoryName}
+                urlImage={category.image?.url}
+                urlIcon={category.icon?.url}
+                categoryName={category.categoryName}
+              />
+            ))}
+          </div>) 
+      : (
+        <CategoriesEmpty />
+      )}
+    </>
   </>
-
   )
 }
