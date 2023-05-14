@@ -8,6 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 // import { useFiltersPageStore } from '../hooks/useFiltersPageStore';
 import { useAboutStore } from '../hooks/useAboutStore';
+import { Cart } from '../kamien/Cart';
 
 const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
   '&.Mui-selected, &.Mui-selected:hover': {
@@ -68,7 +69,7 @@ export const MasterPage = ({ children }) => {
               </ToggleButton>
             </ToggleButtonGroup>)} */}
 
-            <Button
+            {/* <Button
               aria-controls="carrito-menu"
               aria-haspopup="true"
               color="inherit"
@@ -76,7 +77,9 @@ export const MasterPage = ({ children }) => {
               <Badge badgeContent={3} color="error">
                 <ShoppingCartIcon />
               </Badge>
-            </Button>
+            </Button> */}
+            <Cart />
+            
         </header>
             {children}
         <footer className='footer'>

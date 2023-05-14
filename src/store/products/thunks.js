@@ -10,8 +10,8 @@ export const onStartGetProducts = (categorySelected) => {
         let q = query( collectionRef, where('active', '==', true), where('relatedCategories', '==', categorySelected) );
         const querySnapshot = await getDocs(q);
 
-        const product = querySnapshot.docs.map((doc) => {
-            return doc.data();
+        const product = querySnapshot.docs.map((doc, index) => {
+            return { ...doc.data(), id: index };
         });
         dispatch(onSetProducts(product));
       

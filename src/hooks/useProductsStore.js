@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { onGetProductsByCategory, onStartGetProducts } from "../store/products/thunks";
-import { onSetProductSelected } from "../store/products/productsSlice";
+import { onSetActiveProduct, onSetProductSelected } from "../store/products/productsSlice";
 
 export const useProductsStore = () => {
     const dispatch = useDispatch();
@@ -9,11 +9,16 @@ export const useProductsStore = () => {
         products,
         productSelected,
         message,
+        activeProduct,
     } = useSelector( state => state.products );
 
     //*Slice
     const setProductSelected = (productName) => {
         dispatch( onSetProductSelected(productName) );
+    }
+
+    const setActiveProduct = ( product ) => {
+        dispatch( onSetActiveProduct( product ) );
     }
 
     const addErrorMessage = ( message ) => {
@@ -38,10 +43,12 @@ export const useProductsStore = () => {
         products,
         productSelected,
         message,
+        activeProduct,
         
         //*Métodos
         startGetProducts,
         setProductSelected,
+        setActiveProduct,
         getProductsByCategory,
         addErrorMessage,
         addSuccessMessage,

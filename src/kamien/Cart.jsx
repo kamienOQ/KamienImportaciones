@@ -8,6 +8,7 @@ import { CartItem } from "./CartItem";
 import { CleanProductsModal } from "./CleanProductsModal";
 
 export const Cart = () => {
+  
   const { products } = useSelector((state) => state.cart);
 
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -30,6 +31,8 @@ export const Cart = () => {
     const total = products.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     return total;
   }
+
+  console.log(products)
 
   return (
     <div>
@@ -66,7 +69,7 @@ export const Cart = () => {
             </IconButton>
           </Grid>
           <Box className="scrollable-container" sx={{ maxHeight: "570px", overflow: "auto" }}>
-            {products.map(item => (
+            {products.map((item) => (
               <CartItem key={item.id} {...item}/>
             ))}
           </Box>

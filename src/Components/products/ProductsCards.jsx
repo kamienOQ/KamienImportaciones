@@ -1,18 +1,23 @@
 import { useUiStore } from "../../hooks";
 import { useProductsStore } from "../../hooks/useProductsStore"
 import { Button, Grid } from "@mui/material";
+import { ProductsModalDetail } from "./ProductsModalDetail";
+import { useDispatch } from "react-redux";
 
-export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAttributes, relatedListAttributes}) => {
+export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAttributes, relatedListAttributes, product}) => {
 
   const { openProductModal } = useUiStore();
-  const { isSaving } = useProductsStore();
+
+  const { isSaving, setActiveProduct } = useProductsStore();
 
   const onOpenModal = () => {
+    console.log(product)
+    setActiveProduct(product);
     openProductModal();
   }
 
   return (
-    <div>
+    <>
       <div className="main-container-productsCards-img">
         <figure className='container-figure-img-product'>
             <img src={urlImage} alt="" className='productsCards-img'/>
@@ -20,10 +25,11 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
         <div className='container-productsCards'>
           <div className='main-container-productsCards-icon'>
             <div className='container-productsCards-content'>
-              <figure className='container-figure-icon'>
+              {/* <figure className='container-figure-icon'>
                 <img src={urlIcon} alt="" className='productsCards-icon' />
-              </figure>
-              <h2 className='productsCards-text'>{productName}</h2>
+              </figure> */}
+              {/* cambiar esto product name el tamaño */}
+              <h1 className='productsCards-text'>{productName}</h1>  
               <h2 className='productsCards-text'>Precio: ₡{price}</h2>
               <h2 className='productsCards-text'>Lista de atributos: {relatedListAttributes}</h2>
             </div>
@@ -43,7 +49,7 @@ export const ProductsCards = ({urlImage, urlIcon, productName, price, relatedAtt
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

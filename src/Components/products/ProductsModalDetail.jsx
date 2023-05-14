@@ -2,29 +2,34 @@ import { useState } from 'react';
 import { TextField, Dialog, DialogTitle, Button, MenuItem, IconButton, DialogContent, Avatar, Typography, Alert, Grid } from "@mui/material"
 import { useUiStore } from '../../hooks/useUiStore';
 import { ItemCount } from './ItemCount'
-import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import Checkbox from '@mui/material/Checkbox';
 
-export const ProductsModalDetail = ({urlImage, urlIcon, productName, price, relatedListAttributes}) => {
+export const ProductsModalDetail = ({product,urlImage, urlIcon, productName, price, relatedListAttributes}) => {
 
     const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
 
-    const [ gotoCart, setGotoCart ] = useState(false);
-
-    const onAdd = () => {
-        setGotoCart(true);
-    }
-
+    /* Ejemplo de checkbox */
+    const [ state, setState ] = useState({
+        gilad: true,
+        jason: false,
+        antoine: false,
+    });
+    
     const handleChange = (event) => {
-        const {
-          target: { value },
-        } = event;
-        setPersonName(
-          // On autofill we get a stringified value.
-          typeof value === 'string' ? value.split(',') : value,
-        );
+        setState({
+          ...state,
+          [event.target.name]: event.target.checked,
+        });
     };
 
-    //console.log(urlImage)
+    const { gilad, jason, antoine } = state;
+    const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
 
   return (
     <Dialog 
@@ -33,30 +38,68 @@ export const ProductsModalDetail = ({urlImage, urlIcon, productName, price, rela
         align="center"
     >
         <DialogContent>
-            <DialogTitle 
-                variant="h7"  
-                sx={ { borderRadius: '16px', backgroundColor: "dark.main", color: "tertiary.main" } }
-            >
-                Comprar el producto seleccionado
-            </DialogTitle >
             <div>
                 <div className='product-form'>
-                    {/* <figure 
-                        className='container-figure-img-modal'
-                    >
-                        <img src={urlImage} alt="" className='productsCards-img-modal'/>
-                        <img src={urlIcon} alt="" className='productsCards-icon-modal' />
-                    </figure> */}
                     <h1>{productName}</h1>
                     <h2 className='productsDetailCards-text'>Precio: ₡{price}</h2>
+                    <Box sx={{ display: 'flex' }}>
+                        <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                            <FormLabel component="legend">Assign responsibility</FormLabel>
+                            <FormGroup>
+                            <FormControlLabel
+                                control={
+                                <Checkbox checked={gilad} onChange={handleChange} name="gilad" />
+                                }
+                                label="Gilad Gray"
+                            />
+                            <FormControlLabel
+                                control={
+                                <Checkbox checked={jason} onChange={handleChange} name="jason" />
+                                }
+                                label="Jason Killian"
+                            />
+                            <FormControlLabel
+                                control={
+                                <Checkbox checked={antoine} onChange={handleChange} name="antoine" />
+                                }
+                                label="Antoine Llorca"
+                            />
+                            </FormGroup>
+                            <FormHelperText>Be careful</FormHelperText>
+                        </FormControl>
+                    </Box>
+                    <FormControl
+                        required
+                        error={error}
+                        component="fieldset"
+                        sx={{ m: 3 }}
+                        variant="standard"
+                    >
+                        <FormLabel component="legend">Pick two</FormLabel>
+                        <FormGroup>
+                        <FormControlLabel
+                            control={
+                            <Checkbox checked={gilad} onChange={handleChange} name="gilad" />
+                            }
+                            label="Gilad Gray"
+                        />
+                        <FormControlLabel
+                            control={
+                            <Checkbox checked={jason} onChange={handleChange} name="jason" />
+                            }
+                            label="Jason Killian"
+                        />
+                        <FormControlLabel
+                            control={
+                            <Checkbox checked={antoine} onChange={handleChange} name="antoine" />
+                            }
+                            label="Antoine Llorca"
+                        />
+                        </FormGroup>
+                        <FormHelperText>You can display an error</FormHelperText>
+                    </FormControl>
                     <h2 className='productsDetailCards-text'>Lista de atributos: {relatedListAttributes}</h2>
-                    <div className='content'>
-                        {
-                            gotoCart
-                                ? <Link to={'/Cart'}>Terminar Compra</Link>
-                                : <ItemCount initial={1} onAdd = { onAdd } />
-                        }
-                    </div>
+                    <ItemCount product = { product } />
                 </div>
             </div>
         </DialogContent>

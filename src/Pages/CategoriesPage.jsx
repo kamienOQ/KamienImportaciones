@@ -2,8 +2,6 @@ import { useEffect } from "react"
 import { CategoriesCards } from "../Components/categories/CategoriesCards"
 import { useCategoriesStore } from "../hooks/useCategoriesStore"
 import { CategoriesEmpty } from "../Components/categories/CategoriesEmpty"
-import { HelloWorldApp } from "../filters"
-
 
 export const CategoriesPage = () => {
   const { categories, startGetCategories } = useCategoriesStore();
@@ -16,7 +14,6 @@ export const CategoriesPage = () => {
 
   return (
     <>
-      <HelloWorldApp />
       <>
         {categories.length > 0 ? (
           <div className="grid-container">

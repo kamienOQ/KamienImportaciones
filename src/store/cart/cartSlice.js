@@ -7,7 +7,12 @@ export const cartSlice = createSlice({
   },
   reducers: {
     onSetProducts: (state, action) => {
-      state.products = action.payload;
+      const product = state.products.find(product => product.id === action.payload.id);
+      if (product) {
+        product.quantity += action.payload.quantity;
+      } else {
+        state.products.push(action.payload);
+      }
     },
     onDeleteProduct: (state, action) => {
       state.products = state.products.filter(product => product.id !== action.payload);

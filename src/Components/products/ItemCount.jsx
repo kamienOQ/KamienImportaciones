@@ -3,14 +3,32 @@ import { Button, ButtonGroup } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import { useProductsStore, useUiStore } from '../../hooks';
+import { onSetProducts } from '../../store/cart/cartSlice';
+import { useDispatch } from 'react-redux';
 
-export const ItemCount = ( { initial, onAdd } ) => {
+export const ItemCount = ( { product } ) => {
 
   const { closeProductModal } = useUiStore();
 
   const { isSaving } = useProductsStore();
   
-  const [count, setCount] = useState(parseInt(initial));
+  const [ count, setCount ] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const onAdd = () => {
+    const tempProduct = {
+      id: product.id,
+      name: product.productName,
+      image: product.image.url,
+      attributes: product.relatedAttributes,
+      price: product.price,
+      quantity: count
+    }
+    console.log(tempProduct)
+    dispatch(onSetProducts(tempProduct));
+    closeProductModal();
+  }
 
   const decrease = () => {
     setCount(count - 1);
@@ -19,10 +37,6 @@ export const ItemCount = ( { initial, onAdd } ) => {
   const increase = () => {
     setCount(count + 1);
   }
-
-  useEffect(() => {
-    setCount(parseInt(initial));
-  }, [initial])
     
   const onCloseModa = () => {
     closeProductModal();
@@ -69,14 +83,13 @@ export const ItemCount = ( { initial, onAdd } ) => {
       <div>
         <Button 
           className="cancelProduct-button"
-          startIcon={<CloseIcon />}
           variant="contained"
           color="error" 
           onClick={onCloseModa}
           sx={{ backgroundColor: "error.main", borderRadius: 20, mt: 2 }}
           disabled={isSaving}
         >
-          Salir
+          <CloseIcon />
         </Button>
       </div>
     </>
