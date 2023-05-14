@@ -518,14 +518,26 @@ a{
     align-items: center;
   }
 
-.product-form{
-    /* revisar el gap */
-    gap: 1rem; 
+.product-form {
+    gap: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 595px;
-    width: 510px;
-    margin: .4rem 1rem .4rem 1rem !important;
+    height: 600px;
+    width: 350px;
+    /* margin: 0.4rem 1rem; */
 }
+
+@media (max-width: 768px) {
+    .product-form {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-form {
+      height: auto;
+    }
+  }

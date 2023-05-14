@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { onGetProductsByCategory, onStartGetProducts } from "../store/products/thunks";
-import { onSetActiveProduct, onSetProductSelected } from "../store/products/productsSlice";
+import { onAddErrorMessage, onAddSuccessMessage, onSetActiveProduct, 
+    onSetProductSelected } from "../store/products/productsSlice";
 
 export const useProductsStore = () => {
     const dispatch = useDispatch();

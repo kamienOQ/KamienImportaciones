@@ -1,17 +1,16 @@
 import { useEffect } from 'react';
 import { useProductsStore } from '../hooks/useProductsStore';
-import { ProductsEmpty } from "../Components/products/ProductsEmpty"
-import { ProductsCards } from "../Components/products/ProductsCards"
+import { ProductsEmpty } from '../Components/products/ProductsEmpty';
+import { ProductsCards } from '../Components/products/ProductsCards';
 import { useUiStore } from '../hooks/useUiStore';
 import { ProductsModalDetail } from '../Components/products/ProductsModalDetail';
 import { useCategoriesStore } from '../hooks/useCategoriesStore';
-import { HelloWorldApp } from '../filters';
 
-export const ProductsPage = ({productName}) => {
+export const ProductsPage = () => {
   
-  const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
+  const { closeProductModal, isProductModalOpen } = useUiStore();
 
-  const { products, startGetProducts, message, isSaving, activeProduct } = useProductsStore();
+  const { products, startGetProducts, message, activeProduct } = useProductsStore();
 
   const { categorySelected, setCategorySelected } = useCategoriesStore();
 
@@ -25,7 +24,6 @@ export const ProductsPage = ({productName}) => {
     console.log(categorySelected)
     setCategorySelected(localStorage.getItem('categorySelected'));
     startGetProducts(categorySelected);
-    console.log("Hola pa")
   }, [categorySelected])
 
   return (
@@ -47,17 +45,18 @@ export const ProductsPage = ({productName}) => {
         : (
         <ProductsEmpty />
         )}
-        {isProductModalOpen && (
+        {isProductModalOpen && products.map((product) => (
           <ProductsModalDetail 
             key={activeProduct.productName}
             price={activeProduct.price}
             relatedListAttributes={Array.isArray(activeProduct.relatedListAttributes) ? activeProduct.relatedListAttributes.map(item => item.feature) : []}
+            relatedAttributes={product.relatedAttributes}
             urlImage={activeProduct.urlImage}
             urlIcon={activeProduct.urlIcon}
             productName={activeProduct.productName}
             product={activeProduct}
           />
-        )}
+        ))}
       </>
   )
 }

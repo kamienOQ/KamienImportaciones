@@ -10,26 +10,36 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 
-export const ProductsModalDetail = ({product,urlImage, urlIcon, productName, price, relatedListAttributes}) => {
+export const ProductsModalDetail = ({product, urlImage, urlIcon, productName, price, relatedAttributes, relatedListAttributes}) => {
 
     const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
 
     /* Ejemplo de checkbox */
-    const [ state, setState ] = useState({
-        gilad: true,
-        jason: false,
-        antoine: false,
-    });
-    
-    const handleChange = (event) => {
-        setState({
-          ...state,
-          [event.target.name]: event.target.checked,
-        });
+    /* Estado para los checkboxes */
+    const [ state, setState ] = useState(relatedListAttributes.map(() => false));
+
+    const handleChange = (index, checked) => {
+        const updatedCheckboxState = [...setState];
+        updatedCheckboxState[index] = checked;
+        setState(updatedCheckboxState);
     };
 
-    const { gilad, jason, antoine } = state;
-    const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
+    console.log(relatedAttributes)
+
+    const relatedAttributesList = relatedAttributes.map((attributeSelected, index) => (
+        relatedListAttributes.map((attribute, innerIndex) => (
+          <FormControlLabel
+            key={innerIndex}
+            control={
+              <Checkbox
+                checked={state[innerIndex]}
+                onChange={(e) => handleChange(innerIndex, e.target.checked)}
+              />
+            }
+            label={attributeSelected + ' :' + ' ' + attribute}
+          />
+        ))
+    ));
 
   return (
     <Dialog 
@@ -44,61 +54,24 @@ export const ProductsModalDetail = ({product,urlImage, urlIcon, productName, pri
                     <h2 className='productsDetailCards-text'>Precio: ₡{price}</h2>
                     <Box sx={{ display: 'flex' }}>
                         <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-                            <FormLabel component="legend">Assign responsibility</FormLabel>
+                            <FormLabel component="legend">Atributos relacionados</FormLabel>
                             <FormGroup>
-                            <FormControlLabel
-                                control={
-                                <Checkbox checked={gilad} onChange={handleChange} name="gilad" />
-                                }
-                                label="Gilad Gray"
-                            />
-                            <FormControlLabel
-                                control={
-                                <Checkbox checked={jason} onChange={handleChange} name="jason" />
-                                }
-                                label="Jason Killian"
-                            />
-                            <FormControlLabel
-                                control={
-                                <Checkbox checked={antoine} onChange={handleChange} name="antoine" />
-                                }
-                                label="Antoine Llorca"
-                            />
+                                {relatedListAttributes.map((attribute, index) => (
+                                    <FormControlLabel
+                                        key={index}
+                                        control={
+                                            <Checkbox
+                                                checked={setState[index]}
+                                                onChange={(e) => handleChange(index, e.target.checked)}
+                                            />
+                                        }
+                                        label={relatedAttributes + ' :' + ' ' + attribute}
+                                  />
+                                ))}
                             </FormGroup>
-                            <FormHelperText>Be careful</FormHelperText>
+                            <FormHelperText>Selecciona los atributos relacionados</FormHelperText>
                         </FormControl>
                     </Box>
-                    <FormControl
-                        required
-                        error={error}
-                        component="fieldset"
-                        sx={{ m: 3 }}
-                        variant="standard"
-                    >
-                        <FormLabel component="legend">Pick two</FormLabel>
-                        <FormGroup>
-                        <FormControlLabel
-                            control={
-                            <Checkbox checked={gilad} onChange={handleChange} name="gilad" />
-                            }
-                            label="Gilad Gray"
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox checked={jason} onChange={handleChange} name="jason" />
-                            }
-                            label="Jason Killian"
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox checked={antoine} onChange={handleChange} name="antoine" />
-                            }
-                            label="Antoine Llorca"
-                        />
-                        </FormGroup>
-                        <FormHelperText>You can display an error</FormHelperText>
-                    </FormControl>
-                    <h2 className='productsDetailCards-text'>Lista de atributos: {relatedListAttributes}</h2>
                     <ItemCount product = { product } />
                 </div>
             </div>

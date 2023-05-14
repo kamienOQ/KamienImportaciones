@@ -22,6 +22,7 @@ export const ItemCount = ( { product } ) => {
       name: product.productName,
       image: product.image.url,
       attributes: product.relatedAttributes,
+      relatedListAttributes: product.relatedListAttributes,
       price: product.price,
       quantity: count
     }
