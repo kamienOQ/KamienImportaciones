@@ -247,7 +247,6 @@ a{
     font-size: 22px;
     line-height: 1.25;
     font-weight: 700;
-    display: inline-block;
     width: 100%;
 }
 
@@ -261,6 +260,16 @@ a{
     width: 100%;
     justify-content: center;
     overflow: hidden;
+
+    /* Propiedades responsivas */
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+    }
+
+    @media (max-width: 580px) {
+        grid-template-columns: repeat(1, minmax(300px, 1fr));
+    }
+  
 }
 
 
@@ -347,12 +356,17 @@ a{
 .main-container-productsCards-img{
     background: rgba(0, 0, 0, 0.87);
     position: relative;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
+    width: 90%;
+    height: 95%;
     object-fit: cover; /* Ajusta la imagen al tamaño del contenedor sin deformarla */
+
+    /* Propiedades responsivas */
+    @media (max-width: 400px) {
+        /* Estilos para pantallas más pequeñas */
+        width: 90%;
+        margin: 0 auto;
+        /* Ajusta el ancho y centra el contenedor */
+    }
 }
 
 /* *ProductsCards Styles */
@@ -378,15 +392,11 @@ a{
     text-align: center;
 }
 
-.container-figure-icon{
-    margin: 0;
-}
-
 /* *ProductsCards Styles */
 .productsCards-icon{
-    margin-top: 5px;
+    margin-top: 1px;
     transition: transform 0.3s ease;
-    height: 60px;
+    height: 50px;
     width: auto;
     max-width: 60%;
 }
@@ -396,15 +406,21 @@ a{
     transition: transform 0.3s ease;
     color: var(--white);
     background: none!important;
-    padding: 0;
     margin: 0 0 5px;
+    bottom: 20px;
     white-space: nowrap;
     position: relative;
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1.25;
     font-weight: 700;
     display: inline-block;
     width: 100%;
+
+    /* Propiedades responsivas */
+    @media (max-width: 768px) {
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
 }
 
 .productsDetailCards-text{
@@ -502,11 +518,11 @@ a{
     }
   }
 
-  @media screen and (min-width: 1024px) {
-    .grid-container {
-      grid-template-columns: repeat(3, minmax(200px, 1fr)); /* máximo de 4 columnas a partir de 1024px */
-    }
-  }
+@media screen and (min-width: 1024px) {
+.grid-container {
+    grid-template-columns: repeat(3, minmax(200px, 1fr)); /* máximo de 4 columnas a partir de 1024px */
+}
+}
 
   .addProduct-modal-button:hover{
     background-color: var(--hover-success) !important;
@@ -524,20 +540,22 @@ a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 600px;
-    width: 350px;
-    /* margin: 0.4rem 1rem; */
+    height: auto;
+    width: auto;
+    margin: 0.4rem 1rem;
 }
 
 @media (max-width: 768px) {
     .product-form {
-      width: 100%;
-      padding: 1rem;
+        width: auto;
+        height: auto;
+        padding: auto;
     }
-  }
+}
   
-  @media (max-width: 480px) {
-    .product-form {
-      height: auto;
-    }
-  }
+@media (max-width: 480px) {
+.product-form {
+    width: auto;
+    height: auto;
+}
+}

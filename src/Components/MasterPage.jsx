@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Avatar, Badge, Button, IconButton, ToggleButtonGroup} from '@mui/material';
+import { Avatar, Badge, Button, IconButton, ToggleButtonGroup, Typography} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
 // import FilterAltIcon from '@mui/icons-material/FilterAlt';
@@ -34,8 +34,6 @@ export const MasterPage = ({ children }) => {
   //   openCloseProductsFilter();
   // };
 
-  console.log(children)
-
   return (
     <div className="page-wrapper">
         <header className='header-navbar'>
@@ -43,6 +41,9 @@ export const MasterPage = ({ children }) => {
               <IconButton sx={{ mr: 1 }} href="/categorias">
                 <Avatar src = {logo}/>
               </IconButton>
+              <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+                Kámien
+              </Typography>
               {/* Boton para abrir y cerrar el sidebar de filtros */}
               {/* {filterType === 'Products' && 
               <IconButton sx={{paddingY: 3}} to="/" onClick={onHandleFilters}>

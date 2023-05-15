@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, ButtonGroup } from "@mui/material";
+import { Button, ButtonGroup, Grid } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import { useProductsStore, useUiStore } from '../../hooks';
@@ -16,12 +16,13 @@ export const ItemCount = ( { product } ) => {
 
   const dispatch = useDispatch();
 
+  console.log(product)
+
   const onAdd = () => {
     const tempProduct = {
       id: product.id,
       name: product.productName,
       image: product.image.url,
-      attributes: product.relatedAttributes,
       relatedListAttributes: product.relatedListAttributes,
       price: product.price,
       quantity: count
@@ -81,18 +82,23 @@ export const ItemCount = ( { product } ) => {
             Agregar al carrito
           </Button>
       </div>
-      <div>
+      <Grid 
+        container justifyContent="flex-end" sx={{ position: 'absolute', bottom: '99%', right: '1%' }}
+      >
         <Button 
-          className="cancelProduct-button"
           variant="contained"
           color="error" 
           onClick={onCloseModa}
-          sx={{ backgroundColor: "error.main", borderRadius: 20, mt: 2 }}
+          sx={{ 
+            backgroundColor: "error.main", 
+            borderRadius: '50%',
+            position: "absolute", 
+          }}
           disabled={isSaving}
         >
           <CloseIcon />
         </Button>
-      </div>
+      </Grid>
     </>
   )
 }

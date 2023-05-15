@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField, Dialog, DialogTitle, Button, MenuItem, IconButton, DialogContent, Avatar, Typography, Alert, Grid } from "@mui/material"
+import { TextField, Dialog, DialogTitle, Button, MenuItem, IconButton, DialogContent, Avatar, Typography, Alert, Grid, ListItem } from "@mui/material"
 import { useUiStore } from '../../hooks/useUiStore';
 import { ItemCount } from './ItemCount'
 import Box from '@mui/material/Box';
@@ -10,40 +10,27 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 
-export const ProductsModalDetail = ({product, urlImage, urlIcon, productName, price, relatedAttributes, relatedListAttributes}) => {
+export const ProductsModalDetail = ({product, productName, price, relatedAttributes, relatedListAttributes}) => {
 
-    const { openProductModal, closeProductModal, isProductModalOpen } = useUiStore();
+    const { isProductModalOpen } = useUiStore();
 
-    /* Ejemplo de checkbox */
     /* Estado para los checkboxes */
-    const [ state, setState ] = useState(relatedListAttributes.map(() => false));
+    const [ attributesSelected, setAttributesSelected ] = useState([]);
 
-    const handleChange = (index, checked) => {
-        const updatedCheckboxState = [...setState];
-        updatedCheckboxState[index] = checked;
-        setState(updatedCheckboxState);
-    };
+    function handleAttributeSelected(event) {
+        const { id, checked } = event.target;
+        if (checked) {
+            setAttributesSelected([...attributesSelected, id]); // agregar el atributo seleccionado al estado
+        } else {
+            setAttributesSelected(attributesSelected.filter(attribute => attribute !== id)); // quitar el atributo seleccionado del estado
+        }
+    }
 
     console.log(relatedAttributes)
 
-    const relatedAttributesList = relatedAttributes.map((attributeSelected, index) => (
-        relatedListAttributes.map((attribute, innerIndex) => (
-          <FormControlLabel
-            key={innerIndex}
-            control={
-              <Checkbox
-                checked={state[innerIndex]}
-                onChange={(e) => handleChange(innerIndex, e.target.checked)}
-              />
-            }
-            label={attributeSelected + ' :' + ' ' + attribute}
-          />
-        ))
-    ));
 
   return (
     <Dialog 
-        className='modal-container-product'
         open={isProductModalOpen} 
         align="center"
     >
@@ -54,28 +41,48 @@ export const ProductsModalDetail = ({product, urlImage, urlIcon, productName, pr
                     <h2 className='productsDetailCards-text'>Precio: ₡{price}</h2>
                     <Box sx={{ display: 'flex' }}>
                         <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-                            <FormLabel component="legend">Atributos relacionados</FormLabel>
-                            <FormGroup>
-                                {relatedListAttributes.map((attribute, index) => (
-                                    <FormControlLabel
-                                        key={index}
-                                        control={
-                                            <Checkbox
-                                                checked={setState[index]}
-                                                onChange={(e) => handleChange(index, e.target.checked)}
-                                            />
-                                        }
-                                        label={relatedAttributes + ' :' + ' ' + attribute}
-                                  />
-                                ))}
-                            </FormGroup>
-                            <FormHelperText>Selecciona los atributos relacionados</FormHelperText>
+                            <FormLabel component="legend">Atributos relacionados al producto</FormLabel>
+                               <FormGroup>
+                                    {/* {relatedAttributes.map((attribute, index) => (  
+                                        <div key={index}
+                                            // control={
+                                            //     <Checkbox
+                                            //         checked={setState[index]}
+                                            //         onChange={(e) => handleChange(index, e.target.checked)}
+                                            //     />
+                                            // }
+                                            // label={`${relatedAttributesLabels} : ${attribute}`}
+                                        >
+                                            <ListItem  sx={{ display: 'block'}}>
+                                                <FormLabel>{attribute.attributeSelected}</FormLabel>
+                                            </ListItem>
+                                        </div>
+                                    ))} */}
+                                    <ListItem sx={{ display: 'grid', justifyContent:"center", ml: 2}}>
+                                        {relatedListAttributes.map((relatedAttribute, index) => (
+                                        <FormControlLabel
+                                            key={index}
+                                            control={
+                                                <Checkbox 
+                                                    id={relatedAttribute} 
+                                                    name={relatedAttribute} 
+                                                    checked={attributesSelected.includes(relatedAttribute)}
+                                                    onChange={handleAttributeSelected}
+                                                />
+                                            }
+                                            label={relatedAttribute}
+                                        />
+                                        ))}
+                                    </ListItem>
+                                </FormGroup> 
+                            <FormHelperText>Selecciona los atributos que deseas</FormHelperText>
                         </FormControl>
                     </Box>
-                    <ItemCount product = { product } />
+                    <ItemCount product = { product } selectedAttributes={attributesSelected} />
                 </div>
             </div>
         </DialogContent>
     </Dialog>
   )
 }
+

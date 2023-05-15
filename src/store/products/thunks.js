@@ -6,7 +6,6 @@ export const onStartGetProducts = (categorySelected) => {
     return async (dispatch) => {
 
         const collectionRef = collection(FirebaseDB, `/products`);  
-        console.log(categorySelected)
         let q = query( collectionRef, where('active', '==', true), where('relatedCategories', '==', categorySelected) );
         const querySnapshot = await getDocs(q);
 

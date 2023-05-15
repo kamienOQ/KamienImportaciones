@@ -32,8 +32,6 @@ export const Cart = () => {
     return total;
   }
 
-  console.log(products)
-
   return (
     <div>
       <Button
