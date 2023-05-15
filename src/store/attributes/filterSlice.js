@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 export const filterSlice = createSlice({
     name: 'filter',
     initialState: {  
-        attributes: [],
+        //attributes: [],
         category: 'Relojes',
         //category: 'Lentes',
-        products: [],
+        //products: [],
         attributesSelected: [],
     },
     reducers: {
@@ -18,6 +18,7 @@ export const filterSlice = createSlice({
         },
         onGetAttributes: (state) => {
             console.log(state.attributes);
+            return state.attributes;
         },
         onGetCategory: (state) => {
             return state.category;

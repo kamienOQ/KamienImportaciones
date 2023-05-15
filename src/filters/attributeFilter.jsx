@@ -4,28 +4,10 @@ import React from 'react';
 import { useState } from 'react';
 import {useAttributesStore} from "../hooks";
 
-export const AttributeFilter = () => {
+export const AttributeFilter = (attributesList) => {
     const [attributesSelected, writeAttributesSelected] = useState([]);
     const { startGetAttributesByCategory,startGetProductsByAttributes, setAttributesSelected,getAttributes} = useAttributesStore();
-    const attributesList = [  
-        {    attributeName: "attribute1",    
-        attributesRelated: ["relatedAttribute1", "relatedAttribute2"]
-        },
-        {
-            attributeName: "attribute2",
-            attributesRelated: ["relatedAttribute3", "relatedAttribute4"]
-        },
-        {
-            attributeName: "attribute3",
-            attributesRelated: ["relatedAttribute5", "relatedAttribute6","relatedAttribute7"]
-        }
-    ];
-
     
-
-
-
-
     function handleClick() {
         //console.log(getAttributes);
         setAttributesSelected(attributesSelected);
@@ -50,7 +32,8 @@ export const AttributeFilter = () => {
                 <ListItemText primary={"Filtrar por Atributos"} sx={{ opacity: open ? 1 : 0 }}/>
             </ListItem>
             <FormGroup>
-            {attributesList.map((attribute, index) => (
+                {console.log(attributesList.attributesList)}
+            {attributesList.attributesList.map((attribute, index) => (
                 <div key={index}>
                     <ListItem  sx={{ display: 'block'}}>  
                         <FormLabel>{attribute.attributeName}</FormLabel>

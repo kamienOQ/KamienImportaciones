@@ -6,7 +6,7 @@ import {useAttributesStore} from "../hooks";
 
 export const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { startGetAttributesByCategory,cleanAttributesSelected} = useAttributesStore();
+    const { startGetAttributesByCategory,cleanAttributesSelected,attributes} = useAttributesStore();
 
     function handleOpen() {
         startGetAttributesByCategory();
@@ -17,6 +17,20 @@ export const Sidebar = () => {
         setIsOpen(false);
     }
 
+    const attributesExample = [  
+        {    attributeName: "attribute1",    
+        attributesRelated: ["relatedAttribute1", "relatedAttribute2"]
+        },
+        {
+            attributeName: "attribute2",
+            attributesRelated: ["relatedAttribute3", "relatedAttribute4"]
+        },
+        {
+            attributeName: "attribute3",
+            attributesRelated: ["relatedAttribute5", "relatedAttribute6","relatedAttribute7"]
+        }
+    ];
+
     return (
         <div>
         <button onClick={handleOpen}>Abrir sidebar</button>
@@ -24,7 +38,7 @@ export const Sidebar = () => {
             <div style={{ width: 300 }}>
             <GenderFilter />
             <Divider />
-            <AttributeFilter />
+            <AttributeFilter attributesList = {attributes} />
             </div>
         </Drawer>
         </div>

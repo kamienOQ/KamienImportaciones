@@ -1,8 +1,13 @@
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector  } from "react-redux";
 import {onStartGetAttributesByCategory,onStartGetProductsByAttributes,onStartGetProductsByGender,onSetAttributesSelected, onCleanAttributesSelected} from "../store/attributes";
 
 export const useAttributesStore = () => {
     const dispatch = useDispatch();
+
+    const { 
+        productsSelected,
+        attributes,
+    } = useSelector( state => state.filter);
 
     //Slide
     const setAttributesSelected = (attributesSelected)=>{
@@ -32,6 +37,9 @@ export const useAttributesStore = () => {
     }
 
     return {
+        productsSelected,
+        attributes,
+
         //*Métodos
         startGetAttributesByCategory,
         startGetProductsByAttributes,
