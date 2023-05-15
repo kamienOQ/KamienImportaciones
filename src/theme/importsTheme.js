@@ -41,5 +41,8 @@ export const importsTheme = createTheme({
     brown: {
       main: '#643A07'
     },
+    grayCoco : {
+      main: '#383838'
+    }
   },
 });

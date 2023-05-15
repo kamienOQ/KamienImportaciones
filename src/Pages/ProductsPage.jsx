@@ -31,9 +31,9 @@ export const ProductsPage = () => {
       <Grid container className="secundary-products-container" spacing={2} sx={{ padding: 2, mt: 6, borderRadius: 1.2, display: 'flex', direction: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <Grid item sx={{ width: "90%", display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Typography variant="h4">{categorySelected}</Typography>
-          <IconButton sx={{ mr: 1 }}>
-            <Avatar src = {products.icon?.url}/>
-          </IconButton>
+          {/* <figure className='container-figure-img-product'>
+                <img src={products.icon?.url} alt=""/>
+          </figure> */}
         </Grid>
       </Grid>
       {products.length > 0 ? (
@@ -57,8 +57,8 @@ export const ProductsPage = () => {
         <ProductsModalDetail
           key={activeProduct.productName}
           price={activeProduct.price}
-          relatedListAttributes={Array.isArray(activeProduct.relatedListAttributes) ? activeProduct.relatedListAttributes.map(item => item.feature) : []}
-          relatedAttributes={Array.isArray(activeProduct.relatedListAttributes) ? activeProduct.relatedListAttributes.map(item => item.attributeSelected) : []}
+          relatedListAttributes={activeProduct.relatedListAttributes}
+          relatedAttributes={Array.from(new Set(activeProduct.relatedListAttributes.map(item => item.attributeSelected)))}
           urlImage={activeProduct.urlImage}
           urlIcon={activeProduct.urlIcon}
           productName={activeProduct.productName}

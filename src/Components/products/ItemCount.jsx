@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Button, ButtonGroup, Grid } from "@mui/material";
+import { Button, ButtonGroup, Grid, IconButton } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import { useProductsStore, useUiStore } from '../../hooks';
 import { onSetProducts } from '../../store/cart/cartSlice';
 import { useDispatch } from 'react-redux';
 
-export const ItemCount = ( { product } ) => {
+export const ItemCount = ( { product, selectedAttributes } ) => {
 
   const { closeProductModal } = useUiStore();
 
@@ -16,14 +16,12 @@ export const ItemCount = ( { product } ) => {
 
   const dispatch = useDispatch();
 
-  console.log(product)
-
   const onAdd = () => {
     const tempProduct = {
       id: product.id,
       name: product.productName,
       image: product.image.url,
-      relatedListAttributes: product.relatedListAttributes,
+      relatedListAttributes: selectedAttributes,
       price: product.price,
       quantity: count
     }
@@ -83,21 +81,21 @@ export const ItemCount = ( { product } ) => {
           </Button>
       </div>
       <Grid 
-        container justifyContent="flex-end" sx={{ position: 'absolute', bottom: '99%', right: '1%' }}
+        container justifyContent="flex-end" sx={{ position: 'absolute', bottom: '98%', right: '4%' }}
       >
-        <Button 
+        <IconButton 
           variant="contained"
-          color="error" 
+          color="grayCoco" 
           onClick={onCloseModa}
           sx={{ 
-            backgroundColor: "error.main", 
+            backgroundColor: "tertiary.main", 
             borderRadius: '50%',
             position: "absolute", 
           }}
           disabled={isSaving}
         >
           <CloseIcon />
-        </Button>
+        </IconButton>
       </Grid>
     </>
   )
