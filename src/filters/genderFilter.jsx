@@ -1,15 +1,21 @@
-import { Button, Dialog, DialogTitle,DialogContent ,List, ListItem,ListItemButton,ListItemText,} from '@mui/material';
+import { Button, Dialog, DialogTitle,DialogContent ,List, ListItem,ListItemButton,ListItemText, ToggleButton, ToggleButtonGroup,} from '@mui/material';
 import FaceIcon from '@mui/icons-material/Face';
 import Face3Icon from '@mui/icons-material/Face3';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import React from 'react';
-import {useAttributesStore} from "../hooks";
+import React, { useState } from 'react';
+import {useAttributesStore, useProductsStore} from "../hooks";
+import { useCategoriesStore } from '../hooks/useCategoriesStore';
 
-export const HelloWorldApp = () => {
+export const GenderFilter = () => {
   
-  const { startGetAttributesByCategory,startGetProductsByAttributes, startGetProductsByGender} = useAttributesStore();
-  const attributesList = ["attribute1", "attribute2", "attribute3"];
+  const {startGetProductsByGender} = useAttributesStore();
+
+  const [ categoriesFilter, setCategoriesFilter ] = useState('');
+
+  const { startGetProducts } = useProductsStore();
+
+  const { categorySelected } = useCategoriesStore();
 
   const maleClick = () =>  {
     startGetProductsByGender("Hombre");
@@ -24,74 +30,54 @@ export const HelloWorldApp = () => {
 
   }
 
+    //* Función para asignar los filtros de hombre, mujer o niño
+    const handleAlignment = (event, newAlignment) => {
+      console.log(newAlignment)
+      if (newAlignment === null) {
+        startGetProducts(categorySelected);
+      } else {
+        startGetProductsByGender(newAlignment);  
+      }
+      setCategoriesFilter(newAlignment);
+    };
+
+  //* Función para abrir y cerrar el sidebar de filtros
+  // const onHandleFilters = () => {
+  //   openCloseProductsFilter();
+  // };
+
   return (
 
-    <List>
+    <List  sx={{ backgroundColor: '#f2f2f2' }}>
       <ListItem>
       <FilterAltIcon/>
-      <ListItemText primary={"Opciones de Filtrado"} sx={{ opacity: open ? 1 : 0 }}/>
-      </ListItem>
-      
-      <ListItem key= "Niño" disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                  minHeight: 48,
-                  flexDirection: 'column'
-                }}
-                onClick={childClick}
-              >
-                <ChildCareIcon/>
-                <ListItemText
-                  primary={"Niño"}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-      </ListItem>
-      
-      <ListItem key= "Mujer" disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                  flexDirection: 'column'
-                }}
-                onClick={femaleClick}
-              >
-                <Face3Icon/>
-                <ListItemText
-                  primary={"Mujer"}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
+      <ListItemText primary={<span style={{fontWeight: 'bold'}}>Opciones de Busqueda</span>} sx={{ opacity: open ? 1 : 0}}/>
       </ListItem>
 
-      <ListItem key= "Hombre" disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                  flexDirection: 'column'
-                }}
-                onClick={maleClick}
-              >
-                
-                <FaceIcon />
-                <ListItemText
-                  primary={"Hombre"}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-      </ListItem>
+      {/* Botones para asignar el filtro de hombre mujer y niño */}
+      <ToggleButtonGroup
+        exclusive
+        aria-label="text alignment"
+        onChange={handleAlignment}
+        sx={{ width: '100%', marginTop: 1, marginBottom: 1, color: 'tertiary.main', display: 'flex', flexDirection: 'column'}}
+        value={categoriesFilter}
+        
+      >
+        <ToggleButton value="hombre" aria-label="left aligned" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}> 
+          <FaceIcon />
+          Hombre
+        </ToggleButton>
+        <ToggleButton value="mujer" aria-label="centered" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}>
+          <Face3Icon/>
+            Mujer
+        </ToggleButton>
+        <ToggleButton value="ninos" aria-label="right aligned" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}>
+          <ChildCareIcon/>
+          Niño
+        </ToggleButton>
+      </ToggleButtonGroup>
     </List>
-    
-
-    
-
-      
+   
   )
 }
 

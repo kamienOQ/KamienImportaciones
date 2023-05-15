@@ -13,5 +13,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ImportsApp />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
