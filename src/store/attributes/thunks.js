@@ -31,10 +31,10 @@ export const onStartGetAttributesByCategory = () => {
 
 export const onStartGetProductsByAttributes = () => {
   return async (dispatch,getState) => {
-    const {attributes} = getState().filter;//Traer attributes del storage
+    const {attributesSelected} = getState().filter;//Traer attributes del storage
     const {category} = getState().filter;//Traer category del storage
     dispatch(onCleanProducts());
-    const promises = attributes.map((attribute) => {
+    const promises = attributesSelected.map((attribute) => {
       const q = query(
         collection(FirebaseDB, "products"),
         where("relatedAttributes", "array-contains", attribute),
@@ -44,12 +44,18 @@ export const onStartGetProductsByAttributes = () => {
       return getDocs(q);
     });
 
-    const snapshots = await Promise.all(promises);
-    const products = snapshots.flatMap((snapshot) => {
-      return snapshot.docs.map((doc) => doc.data());
-    });
-    console.log(products)
-    dispatch(onSetProducts(products));
+    const product = promises.docs.map((doc, index) => {
+        return { ...doc.data(), id: index };
+      });
+    dispatch(onSetProducts(product));
+    console.log(product)
+
+    // const snapshots = await Promise.all(promises);
+    // const products = snapshots.flatMap((snapshot) => {
+    //   return snapshot.docs.map((doc) => doc.data());
+    // });
+    // console.log(products)
+    // dispatch(onSetProducts(products));
   };
 };
 
@@ -65,9 +71,15 @@ export const onStartGetProductsByGender = (preValue) => {
       where("active", "==", true)
     );
     
-    const promises = await getDocs(q);
-    const products = promises.docs.map((doc) => doc.data())
-    console.log(products)
-    dispatch(onSetProducts(products));
+    const querySnapshot = await getDocs(q);
+
+    const product = querySnapshot.docs.map((doc, index) => {
+      return { ...doc.data(), id: index };
+    });
+    dispatch(onSetProducts(product));
+    console.log(product)
+
+    // const products = promises.docs.map((doc) => doc.data())
+    // console.log(products)
   };
 };

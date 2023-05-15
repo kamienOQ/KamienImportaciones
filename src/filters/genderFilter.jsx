@@ -6,10 +6,10 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import React from 'react';
 import {useAttributesStore} from "../hooks";
 
-export const HelloWorldApp = () => {
+export const GenderFilter = () => {
   
-  const { startGetAttributesByCategory,startGetProductsByAttributes,startGetProductsByGender} = useAttributesStore();
-  const attributesList = ["attribute1", "attribute2", "attribute3"];
+  const {startGetProductsByGender} = useAttributesStore();
+  
 
   const maleClick = () =>  {
     startGetProductsByGender("Hombre");
@@ -26,10 +26,10 @@ export const HelloWorldApp = () => {
 
   return (
 
-    <List >
+    <List  sx={{ backgroundColor: '#f2f2f2' }}>
       <ListItem>
       <FilterAltIcon/>
-      <ListItemText primary={"Opciones de Filtrado"} sx={{ opacity: open ? 1 : 0 }}/>
+      <ListItemText primary={<span style={{fontWeight: 'bold'}}>Opciones de Busqueda</span>} sx={{ opacity: open ? 1 : 0}}/>
       </ListItem>
       
       <ListItem key= "Niño" disablePadding sx={{ display: 'black' }}>
@@ -44,7 +44,7 @@ export const HelloWorldApp = () => {
                 <ChildCareIcon/>
                 <ListItemText
                   primary={"Niño"}
-                  sx={{ opacity: open ? 1 : 0 }}
+                  sx={{ opacity: open ? 1 : 0, ml: 2}}
                 />
               </ListItemButton>
       </ListItem>
@@ -61,7 +61,7 @@ export const HelloWorldApp = () => {
                 <Face3Icon/>
                 <ListItemText
                   primary={"Mujer"}
-                  sx={{ opacity: open ? 1 : 0 }}
+                  sx={{ opacity: open ? 1 : 0, ml: 2 }}
                 />
               </ListItemButton>
       </ListItem>
@@ -79,7 +79,7 @@ export const HelloWorldApp = () => {
                 <FaceIcon />
                 <ListItemText
                   primary={"Hombre"}
-                  sx={{ opacity: open ? 1 : 0 }}
+                  sx={{ opacity: open ? 1 : 0, ml: 2 }}
                 />
               </ListItemButton>
       </ListItem>

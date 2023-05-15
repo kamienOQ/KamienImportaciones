@@ -5,23 +5,21 @@ export const filterSlice = createSlice({
     initialState: {  
         attributes: [],
         category: 'Relojes',
+        //category: 'Lentes',
         products: [],
+        attributesSelected: [],
     },
     reducers: {
         onSetAttributes: ( state, { payload } ) => {
-            //state.attributes = payload;
-            state.attributes.push( payload );
-            state.isLoading = false;
+            state.attributes = payload;
         },
         onSetProducts: ( state, { payload } ) => {
             state.products = payload;
-            state.isLoading = false;
         },
         onGetAttributes: (state) => {
-            return state.attributes;
+            console.log(state.attributes);
         },
         onGetCategory: (state) => {
-            //console.log(state.category)
             return state.category;
         },
         onGetProducts: (state) => {
@@ -29,13 +27,15 @@ export const filterSlice = createSlice({
         },
         onCleanAttributes: ( state ) => {
             state.attributes = [];
-            state.activeAttribute = null;
-            state.isLoading = true;
         },
         onCleanProducts: ( state ) => {
             state.products = [];
-            state.activeAttribute = null;
-            state.isLoading = true;
+        },
+        onSetAttributesSelected: (state, { payload }) => {
+            state.attributesSelected = payload;
+        },
+        onCleanAttributesSelected: (state) => {
+            state.attributesSelected = [];
         },
 
     }
@@ -51,4 +51,6 @@ export const {
     onGetAttributes,
     onGetProducts,
     onGetCategory,
+    onSetAttributesSelected,
+    onCleanAttributesSelected,
 } = filterSlice.actions;
