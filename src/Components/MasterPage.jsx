@@ -3,12 +3,13 @@ import { Avatar, Badge, Button, IconButton, ToggleButtonGroup, Typography} from 
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
 // import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 // import { useFiltersPageStore } from '../hooks/useFiltersPageStore';
 import { useAboutStore } from '../hooks/useAboutStore';
-import { Cart } from '../kamien/Cart';
+import { Cart } from './cart/Cart';
+import { useDispatch } from 'react-redux';
+import { onSetAllProducts } from '../store/cart/cartSlice';
 
 const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
   '&.Mui-selected, &.Mui-selected:hover': {
@@ -18,12 +19,18 @@ const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
 }));
 
 export const MasterPage = ({ children }) => {
+  const dispatch = useDispatch();
   // const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useFiltersPageStore();
   const { instagram, whatsapp, logo, startGetAbout } = useAboutStore();
 
   useEffect(() => {
-    startGetAbout()
-  }, [])
+    const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
+    console.log(cartProducts);
+    if (cartProducts) {
+      dispatch(onSetAllProducts(cartProducts));
+    }
+    startGetAbout();
+  }, []);
   
   //* Función para asignar los filtros de hombre, mujer o niño
   // const handleAlignment = (event, newAlignment) => {

@@ -11,7 +11,6 @@ import { GenderFilter, AttributeFilter } from '../filters'
 import { useAttributesStore } from "../hooks";
 
 export const ProductsPage = () => {
-  
   const [ isOpen, setIsOpen ] = useState(false);
 
   const { startGetAttributesByCategory, attributes } = useAttributesStore();

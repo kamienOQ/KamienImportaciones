@@ -3,7 +3,7 @@ import { Box, Button, Grid, List, ListItem, ListItemText, Typography } from "@mu
 import {
   onDecreaseQuantity,
   onIncreaseQuantity,
-} from "../store/cart/cartSlice";
+} from "../../store/cart/cartSlice";
 import { RemoveProductModal } from "./RemoveProductModal";
 
 export const CartItem = ({ id, name, image, price, relatedListAttributes, quantity }) => {
