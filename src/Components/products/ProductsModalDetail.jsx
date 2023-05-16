@@ -1,12 +1,7 @@
 import { useState } from 'react';
-import { Dialog, DialogContent, ListItem, RadioGroup, Radio } from "@mui/material"
+import { Box, Dialog, DialogContent, FormControl, FormGroup, FormControlLabel, FormHelperText, ListItem, RadioGroup, Radio } from "@mui/material";
 import { useUiStore } from '../../hooks/useUiStore';
-import { ItemCount } from './ItemCount'
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
+import { ItemCount } from './ItemCount';
 
 export const ProductsModalDetail = ({product, productName, price, relatedAttributes, relatedListAttributes}) => {
 
