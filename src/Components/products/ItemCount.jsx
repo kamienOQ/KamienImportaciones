@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Button, ButtonGroup, Grid, IconButton } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
@@ -18,7 +19,7 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
 
   const onAdd = () => {
     const tempProduct = {
-      id: product.id,
+      id: uuidv4(),
       name: product.productName,
       image: product.image.url,
       relatedListAttributes: selectedAttributes,
