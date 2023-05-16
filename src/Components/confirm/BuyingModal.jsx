@@ -1,0 +1,385 @@
+import { useState,useEffect,useRef } from 'react'
+import { Modal,Box,Button, Table,TextField,TableContainer,MenuItem,TableHead,TableCell,TableRow,TableBody, Typography,InputLabel, Select, FormControl, drawerClasses } from '@mui/material'
+import AccountCircle from '@mui/icons-material/AccountCircle';  
+import PaidIcon from '@mui/icons-material/Paid';
+import ClearIcon from '@mui/icons-material/Clear';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import GppBadIcon from '@mui/icons-material/GppBad';
+import { crearPedido } from '../../firebase/providers';
+import { MapContainer,Marker,TileLayer } from "react-leaflet"
+import "./BuyingModal.css"
+
+const BuyingModal = ({open,setOpen,datosCompra}) => {
+  const [unitaryPricetotal,setunitaryPriceTotal] = useState(0)
+  const [metodoPago,setMetodoPago] = useState("")
+  const [name,setname] = useState("")
+  const [numero, setNumero] = useState("")
+  const [envio, setenvio] = useState("")
+  const [mensajeEnvio ,setMensajeEnvio] = useState("")
+  const [direccion, setDireccion] = useState("")
+  const [disable, setdisable] = useState(false)
+  const [position,setPosition] = useState(undefined)
+  const [markerPosition, setMarkerPosition] = useState(undefined)
+  const mapRef = useRef(null)
+  const [numeroAdmin,setNumeroAdmin] = useState("62805962")
+  const SendMessage = async() => {
+    let fecha = new Date();
+    const data = {
+      address : direccion,
+      cellphone : numero,
+      date : fecha,
+      name : name,
+      nameLowerCase: name.toLowerCase(),
+      status : "En Espera",
+      wayToPay : metodoPago,
+      sendMethod : envio
+    }
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${numeroAdmin}`
+    window.open(url);
+    setNumero("")
+    setname("")
+    setDireccion("")
+    setenvio("")
+    setMetodoPago("")
+    setdisable(false)
+    setOpen(!open)
+    // await crearPedido(data);
+  }
+  const checkNull = () =>
+  {
+    if (numero.length < 7 || envio === "" || metodoPago === "" || name.length < 4  ){
+      setdisable(false)
+    }else{
+    setdisable(true)
+    }
+  }
+  const calculateTotal = () => {
+    const total = datosCompra.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    return total;
+  }
+
+  const manageMsg = () =>{
+    setMensajeEnvio(
+      "Compra kamein \nNombre: " + name + 
+      "\n Método de pago : " + metodoPago +
+      "\n Método de envío: " + envio +
+      "\n Número de teléfono: " + numero +
+      "\n Precio Total de la compra: " + calculateTotal() +
+      "\n Dirección: " + direccion +
+      "\n Total de Artículos: \n" +
+      datosCompra.map((row) => {
+        let fila = "x"+row.quantity+ "   " + row.name + " " + Object.keys(row.relatedListAttributes).map((key) =>
+        {
+            return " " + row.relatedListAttributes[key]
+        }
+        )
+          + "                " + row.price * row.quantity +  "\n" 
+        return fila
+      })
+      + "\n Ubicación: "
+    )
+  }
+  const handleMetodoPago = (event) => {
+    setMetodoPago(event.target.value)
+    manageMsg()
+    checkNull()
+  }
+  const handleMetodoEnvio = (event) => {
+    setenvio(event.target.value)
+    manageMsg()
+    checkNull()
+  } 
+  const handleDireccion = (event) =>{
+    setDireccion(event.target.value)
+    manageMsg()
+    checkNull()
+  } 
+  const handleName = (event) =>{
+    setname(event.target.value)
+    manageMsg()
+    checkNull()
+  }
+  const handleNumber = (event) => {
+    const regex = /^[0-9\b]+$/;
+    if (regex.test(event.target.value)){
+      setNumero(event.target.value)
+      manageMsg()
+      checkNull()
+    }
+  }
+  const handleClose = () => {
+    setOpen(!open)
+  }
+  useEffect(() => {
+    const add = (accumulator, a) => {
+      return accumulator + a;
+    }
+    const getunitaryPriceTotal = () =>{
+      let price_array = datosCompra.map((row) =>{
+        let unitaryPrice_total = 0
+        unitaryPrice_total = (unitaryPrice_total + row.unitaryPrice) * row.quantity 
+        return unitaryPrice_total
+      })
+      setunitaryPriceTotal(price_array.reduce(add,0))
+    }
+    getunitaryPriceTotal()
+  }, [])
+
+  const handleMarkerDrag = (e) => { 
+    setMarkerPosition([e.target._latlng.lat,e.target._latlng.lng])
+  };
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+        setPosition([position.coords.latitude,position.coords.longitude])
+        setMarkerPosition([position.coords.latitude, position.coords.longitude]);
+    });
+    checkNull()
+    }, []);
+    
+  useEffect(() => {
+    if (mapRef.current && position) {
+        mapRef.current.flyTo(position, mapRef.current.getZoom(), {
+        duration: 1
+        });
+    }
+    }, [position]);
+
+  if (datosCompra?.length === 0) {
+    return(
+        <Modal open = {open} onClose={handleClose} sx = {{display:"flex",justifyContent:"center",alignItems:"center"}}>
+            <Box sx = {{
+            width:"25%",
+            height:"25%",
+            background:"white",
+            border: "2px solid gray",
+            borderRadius:"20px",
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center"
+            }}>
+                <GppBadIcon sx = {{marginRight:"5%"}}/>
+                <Typography sx = {{fontWeight:"bolder"}}>
+                    No Hay Productos en el carrito
+                </Typography>
+            </Box>
+        </Modal>
+    )
+  }
+  return (
+    <>
+    <Modal className = "modal" open = {open} onClose={handleClose}>
+      <Box sx = {{
+        background:"#FFFFFF",
+        color:"black",
+        marginLeft: "22%",
+        marginRight:"15%",
+        marginBottom:"15%",
+        width:"50%",
+        height:"100%",
+        border: "4px solid black",
+        borderRadius:"20px"
+        }}>
+          <div style={{display : "flex",justifyContent: "space-between"}}>
+            <h5 style={{marginLeft: "5%"}}>
+              Confirmar Pedido
+            </h5>
+            <Button 
+            sx={{color: "white",  
+              background:"gray",
+              marginRight: "5%",
+              minWidth:"30px",
+              height:"30px",
+              marginTop:"1%"
+              }}
+            onClick={handleClose}
+            >
+              <ClearIcon/>
+            </Button>
+          </div>
+          <div>
+          <div style={{display:"flex",justifyContent:"space-between" }}>
+            <Box sx = {{minWidth: "50%", maxWidth:"50%",maxHeight:"50%" ,marginLeft:"2%"}}>
+            <MapContainer center={position ? position : [0,0]} zoom={13} scrollWheelZoom={false} ref = {mapRef}>
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker 
+                position={markerPosition ? markerPosition : [0,0]}
+                draggable
+                eventHandlers={{
+                    dragend : handleMarkerDrag
+                }}
+                >
+                </Marker>
+              </MapContainer>
+              <div  style={{display: "flex",mr: 3,justifyContent:"space-between",marginTop:"2%",marginRight:"5%"}}>
+              <LocationOnIcon sx = {{marginTop:"5%"}}/>
+              <TextField 
+              fullWidth
+                label="Dirección para el envío" 
+                variant="standard" 
+                onChange={(e) => handleDireccion(e)}
+                sx = {{fontSize:"small",height:"5px",marginLeft:"5%"}}
+                inputlabelprops={{
+                  style: { fontSize: "x-small" }
+                }}
+                inputProps={{maxLength:10}}
+                value = {direccion}
+              />
+              </div>
+            </Box>  
+            <Box sx={{ display: 'grid', alignItems: 'flex-end' ,width:"45%"}}>
+            <div style={{display:"flex",justifyContent:"space-between"}}>
+              <AccountCircle sx={{ color: 'action.active', mr: 3, my:3,maxWidth:"20px"}} />
+              <TextField 
+                id="input-with-sx" 
+                label="name" 
+                variant="standard" 
+                fullWidth
+                onChange={(e) => handleName(e)}
+                sx = {{marginRight:"5%",fontSize:"small",height:"5px", mr: 3}}
+                inputlabelprops={{
+                  style: { fontSize: "x-small" }
+                }}
+                inputProps={{maxLength:50}}
+                value={name}
+              />
+            </div>
+              <div style={{display:"flex",justifyContent:"space-between"}}>
+              <PaidIcon sx={{ color: 'action.active', mr: 3, my:3}} />
+              <FormControl fullWidth sx = {{marginRight:"5%"}}>
+                <InputLabel>
+                  Método de Pago
+                </InputLabel>
+                <Select
+                  sx = {{marginRight:"5%",fontSize:"small",mr: 3}}
+                  id="outlined-select-currency"
+                  label="Método de Pago"
+                  fullWidth
+                  onChange={handleMetodoPago}
+                  value={metodoPago}
+                  inputlabelprops={{
+                    style: { fontSize: "x-small" },
+                  }}
+                >
+                    <MenuItem value = {"Efectivo"} sx = {{fontSize:"x-small"}}>Efectivo</MenuItem>
+                    <MenuItem value = {"Sinpe Móvil"} sx = {{fontSize:"x-small"}}>Sinpe Móvil</MenuItem>
+                    <MenuItem value = {"Tarjeta de Crédito"} sx = {{fontSize:"x-small"}}>Tarjeta de Crédito</MenuItem>
+                </Select>
+              </FormControl>
+              </div>
+              <div style={{display:"flex",justifyContent:"space-between"}}>
+              <LocalPhoneIcon sx={{ color: 'action.active', mr: 3, my: 3, maxWidth:"20px"}}  />
+              <TextField 
+                id="input-with-sx" 
+                label="Número de teléfono" 
+                variant="standard"  
+                fullWidth 
+                inputProps={{maxLength:12}}
+                sx = {{marginRight:"5%",height:"10%"}} 
+                inputlabelprops={{
+                  style: { fontSize: "x-small" },
+                }}
+                onChange={(e) => handleNumber(e)}
+                value={numero}
+                />
+              </div>
+              <div style={{display:"flex",justifyContent:"space-between" }}>
+                <LocalShippingIcon sx={{ color: 'action.active', mr: 3, my: 3, maxWidth:"20px" }} />
+                <FormControl fullWidth sx = {{marginRight:"5%"}}>
+                <InputLabel>
+                  Método de Envío
+                </InputLabel>
+                <Select
+                  fullWidth
+                  sx = {{
+                    marginRight:"5%"
+                  }}
+                  inputlabelprops={{
+                    style: { fontSize: "small" },
+                  }}
+                  onChange={handleMetodoEnvio}
+                  value = {envio}
+                  label = "Metodo de Envio"
+                >
+                  <MenuItem value = {"Correo"} sx = {{fontSize:"x-small"}}> Correo </MenuItem>
+                  <MenuItem value = {"Presencial"} sx = {{fontSize:"x-small"}}> Presencial </MenuItem>
+                  <MenuItem value = {"Express"} sx = {{fontSize:"x-small"}}> Express </MenuItem>
+                </Select>
+                </FormControl>
+              </div>
+            </Box>
+                </div>
+          </div>
+      <div style={{display:"flex",justifyContent:"space-between"}}>
+        <h5 style={{marginLeft:"10%"}}>
+          Productos añadidos al pedido
+        </h5>
+        
+        <Box sx = {{marginRight:"5%",marginBottom:"2%"}}>
+          <Typography sx = {disable ? {color:"green",fontSize:10} : {color:"lightgray",fontSize:8} }>
+            {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
+          </Typography>
+          <Button 
+
+          onClick = {SendMessage} 
+          disabled = {!disable}
+          sx = {{ background:"green",marginRight:"5%",color:"white"}}
+          >
+            Confirmar
+          </Button>
+        </Box>
+      </div>
+      <TableContainer sx = {{marginLeft:"10%",width:"80%",maxHeight:"25%",border: "1px solid gray",borderRadius:"20px"}}>
+        <Table aria-label="simple table">
+          <TableHead >
+            <TableRow  >
+              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}} >Nombre del Producto</TableCell>
+              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}}>Cantidad</TableCell>
+              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}}>Precio Unitario </TableCell>
+              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}}>Precio Total del Artículo</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody >
+            {
+              datosCompra.map((row) => {
+                return(
+                <TableRow sx = {{maxWidth:"30px"}} >
+                  <TableCell sx = {{fontSize:"x-small"}} >{row.name}</TableCell>
+                  <TableCell sx = {{fontSize:"x-small"}}>{row.quantity} </TableCell>
+                  <TableCell sx = {{fontSize:"x-small"}}>{row.price} ₡</TableCell>
+                  <TableCell sx = {{fontSize:"x-small"}}>{row.price * row.quantity}  ₡</TableCell>
+                </TableRow>
+                )
+              }) 
+            }
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Box sx ={{
+          display:"flex",
+          alignItems:"center",
+          justifyContent:"space-between",
+          background:"lightblue",
+          marginLeft:"5%",
+          marginRight:"5%",
+          marginTop: "3%",
+          height:"8%",
+          alignSelf:"center"
+          }}>  
+        <Typography sx = {{fontWeight:"bolder",marginLeft:"5%"}}>
+            Total De Pago: 
+        </Typography>
+        <Typography sx = {{fontWeight:"bolder",marginRight:"15%"}}>
+        ₡  {calculateTotal()}
+        </Typography>
+      </Box>
+      </Box>
+    </Modal>
+    </>
+  )
+}
+export default BuyingModal

@@ -6,23 +6,25 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EastIcon from '@mui/icons-material/East';
 import { CartItem } from "./CartItem";
 import { CleanProductsModal } from "./CleanProductsModal";
-
+import BuyingModal from "../Components/confirm/BuyingModal";
 export const Cart = () => {
   
   const { products } = useSelector((state) => state.cart);
 
   const [openDrawer, setOpenDrawer] = useState(false);
   // const [cartItems, setCartItems] = useState(products);
-
   /* const handleRemoveFromCart = (itemId) => {
     const updatedCartItems = cartItems.filter(item => item.id !== itemId);
     setCartItems(updatedCartItems);
   }; */
-
+  const [open, setopen] = useState(false)
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
 
+  const handleModalClose = () =>{
+    setopen(!open)
+  }
   const handleDrawerClose = () => {
     setOpenDrawer(false);
   };
@@ -84,8 +86,8 @@ export const Cart = () => {
                 variant="contained"
                 color="primary"
                 endIcon={<EastIcon />}
-                onClick={() => console.log("Botón finalizar pedido clickeado")}
                 sx={{ fontSize: "20px", borderRadius: "0", textTransform: "none" }}
+                onClick={handleModalClose}
               >
                 Finalizar Pedido
               </Button>
@@ -93,6 +95,7 @@ export const Cart = () => {
           </Grid>
         </Grid>
       </Drawer>
+      <BuyingModal open = {open} setOpen = {setopen} datosCompra = {products}/>
     </>
   );
 };
