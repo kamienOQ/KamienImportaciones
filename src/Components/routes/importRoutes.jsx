@@ -10,7 +10,6 @@ export const ImportRoutes = () => {
     <>
     <MasterPage>
      <Routes>
-       {/* <Route path="/" element={<MasterPage />} /> */}
        <Route path="/" element={<CategoriesPage />} />
        <Route path="/ProductoDetalle" element={<ProductsModalDetail />} />
        <Route path= "/Producto" element = {<ProductsPage />}/>
