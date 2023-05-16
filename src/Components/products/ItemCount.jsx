@@ -25,7 +25,6 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
       price: product.price,
       quantity: count
     }
-    console.log(tempProduct)
     dispatch(onSetProducts(tempProduct));
     closeProductModal();
   }

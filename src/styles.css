@@ -494,6 +494,8 @@ a{
 
 /* *ProductsCards Styles */
 .productsCards-text{
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease;
     color: var(--white);
     background: none!important;
@@ -506,6 +508,67 @@ a{
     font-weight: 700;
     display: inline-block;
     width: 100%;
+}
+
+/* Propiedades responsivas */
+@media screen and (min-width: 768px) {
+    .productsCards-text{
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        margin-bottom: 3px;
+    }
+}
+
+.product-form {
+    gap: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    margin: 0.2rem 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .product-form {
+        width: auto;
+        height: auto;
+        padding: auto;
+    }
+}
+  
+@media screen and (max-width: 480px) {
+    .product-form {
+        width: auto;
+        height: auto;
+    }
+}
+
+.TableContainer{
+    align-content: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 80%;
+    border: "1px solid gray";
+    margin-left: 10%;
+}
+
+@media (max-width: 767px) {
+.TableContainer {
+    width: 100%;
+    margin-left: 0;
+}
+
+.TableContainer table {
+    width: 100%;
+}
+
+.TableContainer th,
+.TableContainer td {
+    font-size: small;
+}
 }
 
 .productsDetailCards-text{
@@ -535,14 +598,6 @@ a{
     
     .firstSection-img-container{
         display: none;
-    }
-}
-
-/* Propiedades responsivas */
-@media screen and (min-width: 768px) {
-    productsCards-text{
-        font-size: 12px;
-        margin-bottom: 3px;
     }
 }
 
@@ -630,28 +685,4 @@ a{
     align-items: center;
   }
 
-.product-form {
-    gap: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: auto;
-    width: auto;
-    margin: 0.4rem 1rem;
-}
 
-@media screen and (max-width: 768px) {
-    .product-form {
-        width: auto;
-        height: auto;
-        padding: auto;
-    }
-}
-  
-@media screen and (max-width: 480px) {
-    .product-form {
-        width: auto;
-        height: auto;
-    }
-}

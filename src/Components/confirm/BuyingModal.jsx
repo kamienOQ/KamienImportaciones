@@ -182,7 +182,11 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
 
   return (
     <>
-    <Modal className = "modal" open = {open} onClose={handleClose}>
+    <Modal 
+      className = "modal" 
+      open = {open} 
+      onClose={handleClose}
+    >
       <Box 
         sx = {{
         background:"#FFFFFF",
@@ -190,10 +194,10 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
         borderRadius:"20px"
         }}
       >
-          <div style={{display : "flex",justifyContent: "space-between"}}>
-            <h5 style={{marginLeft: "5%"}}>
+          <div style={{ display : "flex", justifyContent: "space-between", marginTop: "10px"}}>
+            <h3 style={{marginLeft: "5%"}}>
               Confirmar Pedido
-            </h5>
+            </h3>
             <Button 
             sx={{color: "white",  
               background:"gray",
@@ -232,11 +236,11 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                   label="Dirección para el envío" 
                   variant="standard" 
                   onChange={(e) => handleDireccion(e)}
-                  sx = {{fontSize:"small",height:"5px",marginLeft:"5%"}}
+                  sx = {{ fontSize:"small", height:"5px", marginLeft:"5%"}}
                   inputlabelprops={{
                     style: { fontSize: "x-small" }
                   }}
-                  inputProps={{maxLength:10}}
+                  inputProps={{ maxLength: 50 }}
                   value = {direccion}
                 />
               </div>
@@ -339,70 +343,74 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
             </Box>
                 </div>
           </div>
-      <div style={{display:"flex",justifyContent:"space-between"}}>
-        <h5 style={{ marginLeft:"10%", marginTop: '15px' }}>
-          Productos añadidos al pedido
-        </h5>
-        
-        <Box 
-          sx = {{marginRight:"5%", marginBottom:"2%", marginTop: "15px"}}
-        >
-          <Typography sx = {disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
-            {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
-          </Typography>
-          <Button 
-
-          onClick = {SendMessage} 
-          disabled = {!disable}
-          sx = {{ background:"green",marginRight:"5%",color:"white"}}
+        <div style={{display:"flex",justifyContent:"space-between"}}>
+          <h5 style={{ marginLeft:"10%", marginTop: '15px' }}>
+            Productos añadidos al pedido
+          </h5>
+          
+          <Box 
+            sx = {{marginRight:"5%", marginBottom:"2%", marginTop: "15px"}}
           >
-            Confirmar
-          </Button>
+            <Typography sx = {disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
+              {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
+            </Typography>
+            <Button 
+              onClick = {SendMessage} 
+              disabled = {!disable}
+              sx = {{ background:"green", marginRight:"5%", color:"white"}}
+            >
+              Confirmar
+            </Button>
+          </Box>
+        </div>
+        <TableContainer
+          className='TableContainer' 
+          sx = {{ marginLeft: "10%", width:"80%", border: "1px solid gray"}}
+        >
+          <Table aria-label="simple table">
+            <TableHead >
+              <TableRow>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Cantidad</TableCell>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }} >Nombre del Producto</TableCell>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Precio Unitario </TableCell>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Precio Total del Artículo</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody >
+              {
+                datosCompra.map((row) => {
+                  return(
+                  <TableRow sx = {{maxWidth:"30px"}} >
+                    <TableCell sx = {{fontSize:"x-small"}} >{row.name}</TableCell>
+                    <TableCell sx = {{fontSize:"x-small"}}>{row.quantity} </TableCell>
+                    <TableCell sx = {{fontSize:"x-small"}}>{row.price} ₡</TableCell>
+                    <TableCell sx = {{fontSize:"x-small"}}>{row.price * row.quantity}  ₡</TableCell>
+                  </TableRow>
+                  )
+                }) 
+              }
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Box 
+          className='ResponsiveBox'
+          sx ={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"space-between",
+            marginLeft:"5%",
+            marginRight:"5%",
+            marginTop: "5%",
+            marginBottom: "5%",
+            alignSelf:"center"}}
+        >  
+          <Typography sx = {{ fontWeight: "bolder", marginLeft: "5%" }}>
+              Total De Pago: 
+          </Typography>
+          <Typography sx = {{ fontWeight: "bolder", marginRight: "15%" }}>
+          ₡  {calculateTotal()}
+          </Typography>
         </Box>
-      </div>
-      <TableContainer sx = {{marginLeft:"10%",width:"80%",maxHeight:"25%",border: "1px solid gray",borderRadius:"20px"}}>
-        <Table aria-label="simple table">
-          <TableHead >
-            <TableRow  >
-              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}} >Nombre del Producto</TableCell>
-              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}}>Cantidad</TableCell>
-              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}}>Precio Unitario </TableCell>
-              <TableCell  sx = {{fontSize:"x-small",fontWeight:"bolder"}}>Precio Total del Artículo</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody >
-            {
-              datosCompra.map((row) => {
-                return(
-                <TableRow sx = {{maxWidth:"30px"}} >
-                  <TableCell sx = {{fontSize:"x-small"}} >{row.name}</TableCell>
-                  <TableCell sx = {{fontSize:"x-small"}}>{row.quantity} </TableCell>
-                  <TableCell sx = {{fontSize:"x-small"}}>{row.price} ₡</TableCell>
-                  <TableCell sx = {{fontSize:"x-small"}}>{row.price * row.quantity}  ₡</TableCell>
-                </TableRow>
-                )
-              }) 
-            }
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Box sx ={{
-          display:"flex",
-          alignItems:"center",
-          justifyContent:"space-between",
-          marginLeft:"5%",
-          marginRight:"5%",
-          marginTop: "3%",
-          marginBottom: "5%",
-          alignSelf:"center"
-          }}>  
-        <Typography sx = {{ fontWeight:"bolder", marginLeft:"5%" }}>
-            Total De Pago: 
-        </Typography>
-        <Typography sx = {{fontWeight:"bolder",marginRight:"15%"}}>
-        ₡  {calculateTotal()}
-        </Typography>
-      </Box>
       </Box>
     </Modal>
     </>
