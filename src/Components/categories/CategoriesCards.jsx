@@ -16,7 +16,7 @@ export const CategoriesCards = ({urlImage, urlIcon, categoryName}) => {
 
   return (
     <div className='container-categoriesCards'>
-      <button 
+      <button className="categoriesCards-button"
         onClick={event => {
           event.preventDefault();
           onhandleSelectCategory();

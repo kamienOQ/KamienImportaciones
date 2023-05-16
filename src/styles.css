@@ -167,6 +167,10 @@ a{
     overflow: hidden;
 }
 
+.categoriesCards-button{
+    width: 100%;
+}
+
 .container-figure-img{
     display: block;
     position: relative;
@@ -250,6 +254,97 @@ a{
     width: 100%;
 }
 
+/* *CategoriesEmpty Styles */
+
+.container-emptyCategories{
+    margin: 114px 0px 44px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.emptyCategories-image{
+    width: 30%;
+}
+
+/* *AboutPage Styles */
+.about-container{
+    height: 70vh;
+    margin-top: 70px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-container-firstSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.firstSection-data-container, .firstSection-img-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.firstSection-data-container{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 10%;
+}
+
+.firstSection-img-container{
+    width: 50%;
+    height: 60%;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstSection-img{
+    max-width: 100%;
+    height: auto;
+}
+
+.comunication-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40%;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.whatsapp-container, .instagram-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    
+}
+
+.instagram-container{
+    background: var(--footer);
+    border-radius: 50px;
+    padding: 5px 5px 0px 5px;
+}
+
+
 /* *ProductsPage Styles */
 .grid-container-product {
     margin: 0px 10px;
@@ -286,16 +381,6 @@ a{
     overflow: hidden;
 }
 
-.container-figure-img{
-    align-items: center;
-    top: 5%;
-    left: 20%;
-    display: block;
-    position: relative;
-    width: 55%;
-    height: 390px;
-    overflow: hidden;
-}
 
 .container-figure-img-product{
     align-items: center;
@@ -419,14 +504,6 @@ a{
     width: 100%;
 }
 
-/* Propiedades responsivas */
-@media screen and (min-width: 768px) {
-    productsCards-text{
-        font-size: 12px;
-        margin-bottom: 3px;
-    }
-}
-
 .productsDetailCards-text{
     transition: transform 0.3s ease;
     color: var(--black);
@@ -440,6 +517,29 @@ a{
     font-weight: 400;
     display: inline-block;
     width: 90%;
+}
+
+@media (max-width: 750px) {
+    .about-container-firstSection{
+        flex-direction: column;
+    }
+
+    .data-container{
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .firstSection-img-container{
+        display: none;
+    }
+}
+
+/* Propiedades responsivas */
+@media screen and (min-width: 768px) {
+    productsCards-text{
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -462,36 +562,6 @@ a{
     .container-emptyCategories h2{
         font-size: 12px;
     }
-}
-
-/* *ProductsEmpty Styles */
-
-.container-emptyProducts{
-    margin: 114px 0px 44px 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
-.emptyProducts-image{
-    width: 30%;
-}
-
-@media (max-width: 600px) {
-    .header-navbar {
-        padding: 0px 20px 0px 20px;
-    }
-}
-
-@media (max-width: 410px) {
-    .MuiToggleButton-root{
-        font-size: 10px !important;
-        /* font-weight: lighter !important; */
-        padding: 5px !important;
-    }
 
     .emptyProducts-image{
         width: 40%;
@@ -506,14 +576,6 @@ a{
     .MuiToggleButton-root{
         padding: 2px !important;
     }
-}
-
-.counter {
-    width: fit-content;
-    background-color: --main-color;
-    margin: auto;
-    padding: 1rem;
-    text-align: center;
 }
 
 @media screen and (min-width: 580px) {
@@ -531,6 +593,32 @@ a{
   .addProduct-modal-button:hover{
     background-color: var(--hover-success) !important;
   }
+
+
+/* *ProductsEmpty Styles */
+
+.container-emptyProducts{
+    margin: 114px 0px 44px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.emptyProducts-image{
+    width: 30%;
+}
+
+.counter {
+    width: fit-content;
+    background-color: --main-color;
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
+}
+
 
   .addCart-modal-button:hover{
     background-color: var(--footer) !important;

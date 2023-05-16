@@ -33,7 +33,7 @@ export const Cart = () => {
   }
 
   return (
-    <div>
+    <>
       <Button
         aria-controls="carrito-menu"
         aria-haspopup="true"
@@ -93,6 +93,6 @@ export const Cart = () => {
           </Grid>
         </Grid>
       </Drawer>
-    </div>
+    </>
   );
 };
