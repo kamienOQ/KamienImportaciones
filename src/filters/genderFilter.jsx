@@ -17,7 +17,6 @@ export const GenderFilter = () => {
 
     //* Función para asignar los filtros de hombre, mujer o niño
     const handleAlignment = (event, newAlignment) => {
-      console.log(newAlignment)
       setGenderFilter(newAlignment);
       if (newAlignment === null) {
         startGetProducts(categorySelected);
@@ -48,15 +47,15 @@ export const GenderFilter = () => {
         value={genderFilter}
         
       >
-        <ToggleButton value="hombre" aria-label="left aligned" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}> 
+        <ToggleButton value="Hombre" aria-label="left aligned" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}> 
           <FaceIcon />
           Hombre
         </ToggleButton>
-        <ToggleButton value="mujer" aria-label="centered" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}>
+        <ToggleButton value="Mujer" aria-label="centered" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}>
           <Face3Icon/>
             Mujer
         </ToggleButton>
-        <ToggleButton value="ninos" aria-label="right aligned" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}>
+        <ToggleButton value="Niños" aria-label="right aligned" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}>
           <ChildCareIcon/>
           Niño
         </ToggleButton>

@@ -53,26 +53,27 @@ export const onStartGetProductsByAttributes = () => {
   };
 };
 
-export const onStartGetProductsByGender = (preValue) => {
+export const onStartGetProductsByGender = () => {
   return async (dispatch,getState) => {
-    const {category} = getState().filter;//Traer category del storage
-    // dispatch(onCleanProducts());
+    const {genderFilter} = getState().filter;//Traer attributes del storage
+    const {categorySelected} = getState().categories;//Traer category del storage
     
     const q = query(
       collection(FirebaseDB, "products"),
-      where("relatedAttributes", "array-contains", preValue),
-      where("relatedCategories", "==", category),
+      where("relatedCategories", "==", categorySelected),
       where("active", "==", true)
     );
-    
     const querySnapshot = await getDocs(q);
-
-    const product = querySnapshot.docs.map((doc, index) => {
-      return { ...doc.data(), id: index };
+    
+    const categoryProducts = querySnapshot.docs.map((doc) => {
+      return doc.data();
     });
-    dispatch(onSetProducts(product));
-    console.log(product)
 
+    dispatch(onCleanProducts());
+      let products = categoryProducts.filter((filter) => filter.relatedListAttributes.some((obj) => obj.feature === genderFilter));
+      products.forEach(product => {
+        dispatch(onChargeProduct(product));
+      });
     // const products = promises.docs.map((doc) => doc.data())
     // console.log(products)
   };

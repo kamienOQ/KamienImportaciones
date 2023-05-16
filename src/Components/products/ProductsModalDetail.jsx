@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Dialog, DialogContent, FormControl, FormGroup, FormControlLabel, FormHelperText, ListItem, RadioGroup, Radio } from "@mui/material";
 import { useUiStore } from '../../hooks/useUiStore';
 import { ItemCount } from './ItemCount';
@@ -6,6 +6,24 @@ import { ItemCount } from './ItemCount';
 export const ProductsModalDetail = ({product, productName, price, relatedAttributes, relatedListAttributes}) => {
 
     const { isProductModalOpen } = useUiStore();
+
+    const [firstAttribute, setFirstAttribute] = useState([])
+
+    useEffect(() => {
+        let tempList = []
+        relatedAttributes.forEach(attribute => {
+            for (let i = 0; i < relatedListAttributes.length; i++){
+                if(attribute === relatedListAttributes[i].attributeSelected){
+                    tempList.push(relatedListAttributes[i].feature);
+                    break;
+                }
+            }
+        });
+        setFirstAttribute(tempList)
+    }, [])
+
+    // console.log(firstAttribute);
+    
 
     /* Estado para los checkboxes */
     const [ attributesSelected, setAttributesSelected ] = useState([]);
@@ -45,9 +63,11 @@ export const ProductsModalDetail = ({product, productName, price, relatedAttribu
                                                 <label>{attribute}</label>
                                             </ListItem>
                                             <ListItem sx={{ display: 'grid', ml: 2}}>
-                                                <RadioGroup 
+                                                {firstAttribute.length !== 0 &&
+                                                    <RadioGroup 
                                                     onChange={ ( event ) => handleAttributeSelected(event, attribute) }
-                                                > 
+                                                    defaultValue={firstAttribute[index]}
+                                                    > 
                                                     {relatedListAttributes.map((relatedAttribute, index) => (
                                                         relatedAttribute.attributeSelected === attribute && 
                                                         <FormControlLabel
@@ -60,9 +80,9 @@ export const ProductsModalDetail = ({product, productName, price, relatedAttribu
                                                                 />
                                                             }
                                                             label={relatedAttribute.feature}
-                                                        />
+                                                    />
                                                     ))}
-                                                </RadioGroup>
+                                                </RadioGroup>}
                                             </ListItem>
                                         </div>
                                     ))}

@@ -38,22 +38,23 @@ export const AttributeFilter = (attributesList) => {
             </ListItem>
             <FormGroup>
                 {attributesList.attributesList.map((attribute, index) => (
-                <div key={index}>
-                    <ListItem  sx={{ display: 'block'}}>  
-                        <FormLabel>{attribute.attributeName}</FormLabel>
-                    </ListItem>
-                    
-                    <ListItem sx={{ display: 'block', justifyContent:"center", ml: 2}}>
-                        {attribute.attributesRelated.map((relatedAttribute, index) => (
-                        <FormControlLabel
-                            key={index}
-                            control={<Checkbox id={relatedAttribute} name={relatedAttribute} onChange={handleAttributeSelected}/>}
-                            label={relatedAttribute}
-                            checked={attributesFilter.includes(relatedAttribute)? true : false}
-                        />
-                        ))}
-                    </ListItem>
-                </div>
+                    attribute.attributeName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") !== 'genero' &&
+                    <div key={index}>
+                        <ListItem  sx={{ display: 'block'}}>  
+                            <FormLabel>{attribute.attributeName}</FormLabel>
+                        </ListItem>
+                        
+                        <ListItem sx={{ display: 'block', justifyContent:"center", ml: 2}}>
+                            {attribute.attributesRelated.map((relatedAttribute, index) => (
+                            <FormControlLabel
+                                key={index}
+                                control={<Checkbox id={relatedAttribute} name={relatedAttribute} onChange={handleAttributeSelected}/>}
+                                label={relatedAttribute}
+                                checked={attributesFilter.includes(relatedAttribute)? true : false}
+                            />
+                            ))}
+                        </ListItem>
+                    </div>
             ))}
             <Button sx={{ backgroundColor: 'filter.main', color: 'tertiary.main' }} variant="contained" onClick={handleClick}>
                 Filtrar
