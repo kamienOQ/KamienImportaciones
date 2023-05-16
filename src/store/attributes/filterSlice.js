@@ -3,11 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 export const filterSlice = createSlice({
     name: 'filter',
     initialState: {  
-        //attributes: [],
-        category: 'Relojes',
-        //category: 'Lentes',
-        //products: [],
+        category: '',
         attributesSelected: [],
+        genderFilter: '',
+        attributesFilter: [],
     },
     reducers: {
         onSetAttributes: ( state, { payload } ) => {
@@ -15,16 +14,6 @@ export const filterSlice = createSlice({
         },
         onSetProducts: ( state, { payload } ) => {
             state.products = payload;
-        },
-        onGetAttributes: (state) => {
-            console.log(state.attributes);
-            return state.attributes;
-        },
-        onGetCategory: (state) => {
-            return state.category;
-        },
-        onGetProducts: (state) => {
-            return state.products;
         },
         onCleanAttributes: ( state ) => {
             state.attributes = [];
@@ -38,6 +27,15 @@ export const filterSlice = createSlice({
         onCleanAttributesSelected: (state) => {
             state.attributesSelected = [];
         },
+        onSetGenderFilter: (state, { payload }) => {
+            state.genderFilter = payload;
+        },
+        onSetAttributesFilter: (state, { payload }) => {
+            state.attributesFilter.push(payload);
+        },
+        onDeleteAttributesFilter: (state, { payload }) => {
+            state.attributesFilter =  state.attributesFilter.filter(attribute => attribute !== payload);
+        }
 
     }
 });
@@ -49,9 +47,9 @@ export const {
     onCleanAttributes,
     onCleanProducts,
     onSetProducts,
-    onGetAttributes,
-    onGetProducts,
-    onGetCategory,
     onSetAttributesSelected,
     onCleanAttributesSelected,
+    onSetGenderFilter,
+    onSetAttributesFilter,
+    onDeleteAttributesFilter,
 } = filterSlice.actions;

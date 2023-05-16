@@ -9,36 +9,21 @@ import { useCategoriesStore } from '../hooks/useCategoriesStore';
 
 export const GenderFilter = () => {
   
-  const {startGetProductsByGender} = useAttributesStore();
-
-  const [ categoriesFilter, setCategoriesFilter ] = useState('');
+  const {startGetProductsByGender, genderFilter, setGenderFilter} = useAttributesStore();
 
   const { startGetProducts } = useProductsStore();
 
   const { categorySelected } = useCategoriesStore();
 
-  const maleClick = () =>  {
-    startGetProductsByGender("Hombre");
-
-  }
-  const femaleClick = () =>  {
-    startGetProductsByGender("Mujer");
-
-  }
-  const childClick = () =>  {
-    startGetProductsByGender("Niño");
-
-  }
-
     //* Función para asignar los filtros de hombre, mujer o niño
     const handleAlignment = (event, newAlignment) => {
       console.log(newAlignment)
+      setGenderFilter(newAlignment);
       if (newAlignment === null) {
         startGetProducts(categorySelected);
       } else {
         startGetProductsByGender(newAlignment);  
       }
-      setCategoriesFilter(newAlignment);
     };
 
   //* Función para abrir y cerrar el sidebar de filtros
@@ -60,7 +45,7 @@ export const GenderFilter = () => {
         aria-label="text alignment"
         onChange={handleAlignment}
         sx={{ width: '100%', marginTop: 1, marginBottom: 1, color: 'tertiary.main', display: 'flex', flexDirection: 'column'}}
-        value={categoriesFilter}
+        value={genderFilter}
         
       >
         <ToggleButton value="hombre" aria-label="left aligned" selectedcolor="#643A07" sx={{gap: 2, width: '100%', color: 'black', display: 'flex'}}> 

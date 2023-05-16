@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore/lite";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { FirebaseDB } from "../../firebase/config";
 import { onSetProducts, onSetProductsByCategorySelect } from "./productsSlice";
 

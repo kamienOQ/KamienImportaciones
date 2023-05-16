@@ -1,4 +1,4 @@
-import { collection, getDocs, query } from "firebase/firestore/lite";
+import { collection, getDocs, query } from "firebase/firestore";
 import { FirebaseDB } from "../../firebase/config";
 import { onSetData } from "./aboutSlice";
 

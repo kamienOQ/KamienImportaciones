@@ -1,28 +1,33 @@
 import { Button,List, ListItem,ListItemButton,ListItemText,Checkbox, FormControlLabel, FormGroup, FormLabel} from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
-import React from 'react';
-import { useState } from 'react';
-import {useAttributesStore} from "../hooks";
+import {useAttributesStore, useProductsStore} from "../hooks";
+import { useCategoriesStore } from '../hooks/useCategoriesStore';
 
 export const AttributeFilter = (attributesList) => {
-    const [attributesSelected, writeAttributesSelected] = useState([]);
-    const { startGetAttributesByCategory,startGetProductsByAttributes, setAttributesSelected,getAttributes} = useAttributesStore();
+    const { startGetProductsByAttributes, setAttributesSelected, setAttributesFilter, attributesFilter, deleteAttributesFilter} = useAttributesStore();
+    const { startGetProducts } = useProductsStore();
+    const { categorySelected } = useCategoriesStore();
+
     
     function handleClick() {
-        //console.log(getAttributes);
-        setAttributesSelected(attributesSelected);
-        //startGetProductsByAttributes();
+        if(attributesFilter.length === 0){
+            startGetProducts(categorySelected);
+        }else{
+            setAttributesSelected(attributesFilter);
+            startGetProductsByAttributes();
+        }
     }
 
     function handleAttributeSelected(event) {
         const { id, checked } = event.target;
         if (checked) {
-            writeAttributesSelected([...attributesSelected, id]); // agregar el atributo seleccionado al estado
+            // writeAttributesSelected([...attributesSelected, id]); // agregar el atributo seleccionado al estado
+            setAttributesFilter(id);
         } else {
-            writeAttributesSelected(attributesSelected.filter(attribute => attribute !== id)); // quitar el atributo seleccionado del estado
+            // writeAttributesSelected(attributesSelected.filter(attribute => attribute !== id)); // quitar el atributo seleccionado del estado
+            deleteAttributesFilter(id);
         }
     }
-
 
 
     return (
@@ -32,7 +37,6 @@ export const AttributeFilter = (attributesList) => {
                 <ListItemText primary={"Filtrar por Atributos"} sx={{ opacity: open ? 1 : 0 }}/>
             </ListItem>
             <FormGroup>
-                {console.log(attributesList.attributesList)}
                 {attributesList.attributesList.map((attribute, index) => (
                 <div key={index}>
                     <ListItem  sx={{ display: 'block'}}>  
@@ -45,6 +49,7 @@ export const AttributeFilter = (attributesList) => {
                             key={index}
                             control={<Checkbox id={relatedAttribute} name={relatedAttribute} onChange={handleAttributeSelected}/>}
                             label={relatedAttribute}
+                            checked={attributesFilter.includes(relatedAttribute)? true : false}
                         />
                         ))}
                     </ListItem>

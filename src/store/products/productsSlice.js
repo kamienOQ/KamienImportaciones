@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const productsSlice = createSlice({
     name: 'products',
     initialState: {
-        products: '',
+        products: [],
         message: {      
             error: '',
             success: ''
@@ -16,6 +16,23 @@ export const productsSlice = createSlice({
         },
         onSetProducts: ( state, { payload } ) => {
             state.products = payload;
+        },
+        onChargeProduct: ( state, { payload } ) => {
+            let duplicate = false
+            if(state.products){
+                state.products.forEach(product => {
+                    if(product.productName === payload.productName)
+                        duplicate = true
+                });
+                if(!duplicate){
+                    state.products.push( payload );
+                }
+            }else{
+                state.products.push( payload );
+            }
+        },
+        onCleanProducts: ( state ) => {
+            state.products = [];
         },
         onSetProductSelected: ( state, { payload } ) => {
             state.productsSelected = payload;
@@ -45,4 +62,6 @@ export const {
     onAddSuccessMessage,
     onSetProductsByCategorySelect,
     onCleanActiveProduct,
+    onChargeProduct,
+    onCleanProducts
 } = productsSlice.actions;
