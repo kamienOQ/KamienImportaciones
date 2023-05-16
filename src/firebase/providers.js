@@ -7,6 +7,15 @@ import { collection, doc, getDoc,getDocs,updateDoc } from 'firebase/firestore'
 const db = getFirestore(FirebaseApp)
 
 const googleProvider = new GoogleAuthProvider();
+export const crearPedido = async(data)=>{
+    try{
+        console.log(data)
+        await addDoc(collection(db,"orders"),data)  
+    }catch(error){
+        console.log(error)
+    }
+}
+
 export const singInWithGoogle = async() => {
   
   try {

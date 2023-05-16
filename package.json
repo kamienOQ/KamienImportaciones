@@ -15,8 +15,10 @@
     "@mui/material": "^5.12.3",
     "@reduxjs/toolkit": "^1.9.5",
     "firebase": "^9.20.0",
+    "leaflet": "^1.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1"
   },
