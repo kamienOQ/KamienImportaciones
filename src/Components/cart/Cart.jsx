@@ -6,9 +6,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EastIcon from '@mui/icons-material/East';
 import { CartItem } from "./CartItem";
 import { CleanProductsModal } from "./CleanProductsModal";
-import BuyingModal from "../Components/confirm/BuyingModal";
+import BuyingModal from "../confirm/BuyingModal";
+
 export const Cart = () => {
-  
   const { products } = useSelector((state) => state.cart);
 
   const [openDrawer, setOpenDrawer] = useState(false);

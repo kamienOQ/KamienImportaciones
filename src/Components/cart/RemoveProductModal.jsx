@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Button, Typography, Modal } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { onDeleteProduct } from "../store/cart/cartSlice";
+import { onDeleteProduct } from "../../store/cart/cartSlice";
 
 export const RemoveProductModal = ({ id }) => {
   const dispatch = useDispatch();
