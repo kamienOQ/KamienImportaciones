@@ -66,15 +66,16 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
 
   const manageMsg = () =>{
     setMensajeEnvio(
-      "Compra kamein \nNombre: " + name + 
-      "\n Método de pago : " + metodoPago +
-      "\n Método de envío: " + envio +
-      "\n Número de teléfono: " + numero +
+      "Compra kamein"                  +
+      "\n Nombre: "                    + name + 
+      "\n Método de pago: "            + metodoPago +
+      "\n Método de envío: "           + envio +
+      "\n Número de teléfono: "        + numero +
       "\n Precio Total de la compra: " + calculateTotal() +
-      "\n Dirección: " + direccion +
+      "\n Dirección: "                 + direccion +
       "\n Total de Artículos: \n" +
       datosCompra.map((row) => {
-        let fila = "x"+row.quantity+ "   " + row.name + " " + Object.keys(row.relatedListAttributes).map((key) =>
+        let fila = "x" + row.quantity+ "   " + row.name + " " + Object.keys(row.relatedListAttributes).map((key) =>
         {
             return " " + row.relatedListAttributes[key]
         }
@@ -257,7 +258,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 label="Nombre" 
                 variant="standard" 
                 onChange={(e) => handleName(e)}
-                sx = {{ fontSize:"small", marginBottom: '5px', marginRight: '5px' }}
+                sx = {{ fontSize:"small", marginBottom: '5px', marginRight: '10px' }}
                 inputlabelprops={{
                   style: { fontSize: "x-small" }
                 }}

@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import {
   onDecreaseQuantity,
   onIncreaseQuantity,
 } from "../store/cart/cartSlice";
 import { RemoveProductModal } from "./RemoveProductModal";
 
-export const CartItem = ({ id, name, image, price, quantity }) => {
+export const CartItem = ({ id, name, image, price, relatedListAttributes, quantity }) => {
   const dispatch = useDispatch();
 
   const handleDecrease = () => {
@@ -18,6 +18,8 @@ export const CartItem = ({ id, name, image, price, quantity }) => {
   const handleIncrease = () => {
     dispatch(onIncreaseQuantity(id));
   };
+
+  console.log(Object.entries(relatedListAttributes))
 
   return (
     <>
@@ -110,13 +112,31 @@ export const CartItem = ({ id, name, image, price, quantity }) => {
               +
             </Button>
           </Box>
-          {/* <List sx={{ display: "flex", flexWrap: "wrap", p: 0, mx: 1, "& span": {fontSize: "14px"}, maxWidth: "100%", overflow: "hidden" }}>
-                    {item.attributes.map((attribute, index) => (
-                      <ListItem key={index} disableGutters sx={{ p: 0, pr: 1, width: "auto", whiteSpace: "nowrap" }}>
-                        <ListItemText variant="body2" primary={attribute} sx={{ color: "text.secondary" }} />
-                      </ListItem>
-                    ))}
-                  </List> */}
+          <List
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              p: 0,
+              mx: 1,
+              "& span": { fontSize: "14px" },
+              maxWidth: "100%",
+              overflow: "hidden",
+            }}
+          >
+            {Object.entries(relatedListAttributes).map((attribute, index) => (
+              <ListItem
+                key={index}
+                disableGutters
+                sx={{ p: 0, pr: 1, width: "auto", whiteSpace: "nowrap", height: "20px" }}
+              >
+                <ListItemText
+                  variant="body2"
+                  primary={attribute[1]}
+                  sx={{ color: "text.secondary" }}
+                />
+              </ListItem>
+            ))}
+          </List>
         </Grid>
         <Grid item width="20%">
           <Typography variant="body2" noWrap component="span">

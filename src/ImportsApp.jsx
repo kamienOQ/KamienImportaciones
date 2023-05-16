@@ -1,10 +1,10 @@
-import { AppRouter } from './router/AppRouter'
-import { AppTheme } from './theme'
+import { AppTheme } from "./theme";
+import { AppRouter } from "./router/AppRouter";
 
 export const ImportsApp = () => {
   return (
     <AppTheme>
       <AppRouter />
     </AppTheme>
-  )
-}
+  );
+};
