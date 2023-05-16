@@ -24,11 +24,16 @@ export const cartSlice = createSlice({
       } else {
         state.products.push(action.payload);
       }
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
+    },
+    onSetAllProducts: (state, action) => {
+      state.products = action.payload;
     },
     onDeleteProduct: (state, action) => {
       state.products = state.products.filter(
         (product) => product.id !== action.payload
       );
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
     onDecreaseQuantity: (state, action) => {
       const product = state.products.find(
@@ -39,6 +44,7 @@ export const cartSlice = createSlice({
           product.quantity -= 1;
         }
       }
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
     onIncreaseQuantity: (state, action) => {
       const product = state.products.find(
@@ -47,15 +53,18 @@ export const cartSlice = createSlice({
       if (product) {
         product.quantity += 1;
       }
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
     onCleanProducts: (state) => {
       state.products = [];
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
   },
 });
 
 export const {
   onSetProducts,
+  onSetAllProducts,
   onDeleteProduct,
   onDecreaseQuantity,
   onIncreaseQuantity,
