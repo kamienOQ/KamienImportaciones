@@ -1,3 +1,53 @@
+:root {
+  --main-color: #D1B000;
+  --hover-main:   #643A07;
+  --hover-success: #3aac54;
+  --green: #23d64d;
+  --hover-error:   #b63939;
+  --border: #c9c9c9;
+  --white: #ffffff;
+  --backgroud: #383838;
+  --black: #000000;
+  --hover-info: #457ef0;
+  --header: #256EFF;
+  --footer: #d4d4d4;
+  --roboto: 'Roboto', sans-serif;
+}
+
+.modal {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width:"auto";
+  height:"auto";
+  border: "4px solid black";
+  border-radius:"20px";
+}
+
+@media screen and (min-width: 580px) {
+  .modal { 
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    padding: 10px;
+  }
+}
+
+/* Propiedades responsivas */
+@media screen and (min-width: 1024px) {
+  .modal {  
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+.MetodoDePago{
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+}
+
 @media (max-width: 768px) {
     .modal {
       width: 100%;
