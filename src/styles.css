@@ -286,16 +286,6 @@ a{
     overflow: hidden;
 }
 
-.container-figure-img{
-    align-items: center;
-    top: 5%;
-    left: 20%;
-    display: block;
-    position: relative;
-    width: 55%;
-    height: 390px;
-    overflow: hidden;
-}
 
 .container-figure-img-product{
     align-items: center;
