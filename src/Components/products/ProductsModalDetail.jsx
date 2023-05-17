@@ -7,34 +7,37 @@ export const ProductsModalDetail = ({product, productName, price, relatedAttribu
 
     const { isProductModalOpen } = useUiStore();
 
+    /* Estado para los checkboxes */
+    const [ attributesSelected, setAttributesSelected ] = useState([]);
+
     const [firstAttribute, setFirstAttribute] = useState([])
 
     useEffect(() => {
         let tempList = []
+        let tempListObj = {}
         relatedAttributes.forEach(attribute => {
             for (let i = 0; i < relatedListAttributes.length; i++){
                 if(attribute === relatedListAttributes[i].attributeSelected){
                     tempList.push(relatedListAttributes[i].feature);
+                    tempListObj[attribute] = relatedListAttributes[i].feature;
                     break;
                 }
             }
         });
+        setAttributesSelected(tempListObj); 
+        
         setFirstAttribute(tempList)
     }, [])
 
     // console.log(firstAttribute);
-    
-
-    /* Estado para los checkboxes */
-    const [ attributesSelected, setAttributesSelected ] = useState([]);
-
+ 
     const handleAttributeSelected = (event, attribute) => {
         setAttributesSelected((prevState) => ({
           ...prevState,
           [attribute]: event.target.value,
         }));
     };
-
+    
   return (
     <Dialog 
         open={isProductModalOpen} 
