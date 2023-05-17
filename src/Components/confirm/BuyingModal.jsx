@@ -30,10 +30,10 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     const data = {
       address : direccion,
       cellphone : numero,
-      date : fecha,
+      date : fecha.getTime(),
       name : name,
       nameLowerCase: name.toLowerCase(),
-      status : "En Espera",
+      status : "Pendiente",
       wayToPay : metodoPago,
       sendMethod : envio
     }
@@ -47,7 +47,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     setMetodoPago("")
     setdisable(false)
     setOpen(!open)
-    // await crearPedido(data);
+    await crearPedido(data);
   }
 
   const checkNull = () =>
@@ -66,7 +66,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
 
   const manageMsg = () =>{
     setMensajeEnvio(
-      "Compra kamein"                  +
+      "Compra Kámien"                  +
       "\n Nombre: "                    + name + 
       "\n Método de pago: "            + metodoPago +
       "\n Método de envío: "           + envio +
