@@ -47,11 +47,15 @@ export const MasterPage = ({ children }) => {
     navigate('/Nosotros')
   }
 
+  const redirectCategories = () => {
+    navigate('/categorias')
+  }
+
   return (
     <div className="page-wrapper">
         <header className='header-navbar'>
             <div className='filter-products-container'>
-              <IconButton sx={{ mr: 1 }} href="/categorias">
+              <IconButton sx={{ mr: 1 }} onClick={redirectCategories}>
                 <Avatar src = {logo}/>
               </IconButton>
               <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
