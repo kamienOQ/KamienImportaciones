@@ -10,6 +10,7 @@ import { useAboutStore } from '../hooks/useAboutStore';
 import { Cart } from './cart/Cart';
 import { useDispatch } from 'react-redux';
 import { onSetAllProducts } from '../store/cart/cartSlice';
+import { useNavigate } from 'react-router';
 
 const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
   '&.Mui-selected, &.Mui-selected:hover': {
@@ -22,6 +23,8 @@ export const MasterPage = ({ children }) => {
   const dispatch = useDispatch();
   // const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useFiltersPageStore();
   const { instagram, whatsapp, logo, startGetAbout } = useAboutStore();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
@@ -39,6 +42,10 @@ export const MasterPage = ({ children }) => {
   // const onHandleFilters = () => {
   //   openCloseProductsFilter();
   // };
+
+  const redirectAbout = () => {
+    navigate('/Nosotros')
+  }
 
   return (
     <div className="page-wrapper">
@@ -92,7 +99,7 @@ export const MasterPage = ({ children }) => {
         <footer className='footer'>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
-              <a href='https:/www.instagram.com/kamien.cr/?igshid=NmQ2ZmYxZjA%3D'><InstagramIcon/></a>
+              <a href={instagram}><InstagramIcon/></a>
             </div>
           </div>
           <div className='footer-contactInfo'>
@@ -100,7 +107,7 @@ export const MasterPage = ({ children }) => {
               <LocalPhoneIcon sx={{fontSize: 'small'}}/>
               <p>{whatsapp}</p>
             </div>
-              <a href="/Nosotros">Acerca de nosotros</a>
+              <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
           </div>
           <div className='footer-copyright'>
             Todos los derechos reservados hasta 2024.

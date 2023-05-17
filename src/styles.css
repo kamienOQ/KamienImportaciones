@@ -152,6 +152,11 @@ a{
     gap: 2px;
 }
 
+.redirectToAbout{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 /* *CategoriesPage Styles */
 .grid-container {
     margin-top: 64px;
