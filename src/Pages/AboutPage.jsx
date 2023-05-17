@@ -16,7 +16,7 @@ export const AboutPage = () => {
           </div>
           <div className='comunication-container'>
             <div className='instagram-container'>
-              <a href={instagram}><InstagramIcon /></a>
+              <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon /></a>
             </div>
             
             <div className='whatsapp-container'> 

@@ -99,7 +99,7 @@ export const MasterPage = ({ children }) => {
         <footer className='footer'>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
-              <a href={instagram}><InstagramIcon/></a>
+              <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon/></a>
             </div>
           </div>
           <div className='footer-contactInfo'>
