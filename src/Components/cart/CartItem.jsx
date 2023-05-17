@@ -19,8 +19,6 @@ export const CartItem = ({ id, name, image, price, relatedListAttributes, quanti
     dispatch(onIncreaseQuantity(id));
   };
 
-  console.log(Object.entries(relatedListAttributes))
-
   return (
     <>
       {/* <Tooltip title="Dele click para más detalles"> */}

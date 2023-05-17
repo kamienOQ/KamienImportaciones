@@ -25,7 +25,6 @@ export const MasterPage = ({ children }) => {
 
   useEffect(() => {
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    console.log(cartProducts);
     if (cartProducts) {
       dispatch(onSetAllProducts(cartProducts));
     }

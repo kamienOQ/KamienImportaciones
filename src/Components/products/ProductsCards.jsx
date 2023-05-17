@@ -29,6 +29,7 @@ export const ProductsCards = ({urlImage, urlIcon, productName, relatedAttributes
               <h1 className='productsCards-text'>
                 {productName}
               </h1>  
+              <h1 className='productsCards-text'></h1>
               <h2 className='productsCards-text'>
                 Precio: ₡{price}
               </h2>
