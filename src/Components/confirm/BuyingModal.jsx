@@ -35,9 +35,11 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
       nameLowerCase: name.toLowerCase(),
       status : "En Espera",
       wayToPay : metodoPago,
-      sendMethod : envio
+      sendMethod : envio,
+      products : datosCompra,
+      totalPrice : calculateTotal()
     }
-
+    await crearPedido(data);
     const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${numeroAdmin}`
     window.open(url);
     setNumero("")
@@ -47,7 +49,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     setMetodoPago("")
     setdisable(false)
     setOpen(!open)
-    // await crearPedido(data);
+
   }
 
   const checkNull = () =>
