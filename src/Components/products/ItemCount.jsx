@@ -81,7 +81,7 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
           </Button>
       </div>
       <Grid 
-        container justifyContent="flex-end" sx={{ position: 'absolute', bottom: '98%', right: '4%' }}
+        container justifyContent="flex-end" sx={{ position: 'absolute', bottom: '99%', right: '4%' }}
       >
         <IconButton 
           variant="contained"

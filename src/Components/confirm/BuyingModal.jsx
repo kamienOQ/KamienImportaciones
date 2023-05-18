@@ -232,7 +232,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
               <div  style={{display: "flex",mr: 3,justifyContent:"space-between",marginTop:"2%",marginRight:"5%"}}>
                 <LocationOnIcon sx = {{marginTop:"5%"}}/>
                 <TextField 
-                fullWidth
+                  fullWidth
                   color='quaternary'
                   label="Dirección para el envío" 
                   variant="standard" 
@@ -258,6 +258,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 label="Nombre" 
                 variant="standard" 
                 onChange={(e) => handleName(e)}
+                fullWidth
                 sx = {{ fontSize:"small", marginBottom: '5px', marginRight: '10px' }}
                 inputlabelprops={{
                   style: { fontSize: "x-small" }
@@ -304,8 +305,8 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 label="Número de teléfono" 
                 variant="standard"  
                 fullWidth 
-                inputProps={{maxLength:12}}
-                sx = {{marginRight:"5%",height:"10%"}} 
+                inputProps={{ maxLength:12 }}
+                sx = {{ marginRight:"5%", height:"10%" }} 
                 inputlabelprops={{
                   style: { fontSize: "x-small" },
                 }}
@@ -352,13 +353,13 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
           <Box 
             sx = {{marginRight:"5%", marginBottom:"2%", marginTop: "15px"}}
           >
-            <Typography sx = {disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
+            <Typography sx = { disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
               {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
             </Typography>
             <Button 
               onClick = {SendMessage} 
               disabled = {!disable}
-              sx = {{ background:"green", marginRight:"5%", color:"white"}}
+              sx = {{ background:"green", marginRight:"5%", color:"white" }}
             >
               Confirmar
             </Button>
