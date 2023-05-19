@@ -77,14 +77,21 @@
 }
   
 .TableContainer {
+<<<<<<< HEAD
   text-align: center;
+=======
+>>>>>>> 8e4eb69423594ce8c6e8a7f2f93f716aaeb7bb63
   align-content: center;
   justify-content: center;
   border-radius: auto;
   border: 1px solid gray;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 767px) {
+=======
+@media screen and (max-width: 767px), (max-width: 1024px) {
+>>>>>>> 8e4eb69423594ce8c6e8a7f2f93f716aaeb7bb63
   .TableContainer {
     margin-left: auto;
     margin-right: auto;
@@ -92,7 +99,11 @@
   
   .TableContainer th,
   .TableContainer td {
+<<<<<<< HEAD
     font-size: x-small;
+=======
+    font-size: small;
+>>>>>>> 8e4eb69423594ce8c6e8a7f2f93f716aaeb7bb63
     text-align: center;
     align-content: center;
     align-items: center;

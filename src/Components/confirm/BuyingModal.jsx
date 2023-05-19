@@ -268,119 +268,59 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                   value={name}
                 />
                 </div>
-                <div 
-                  className='MetodoDePago'
-                  style={{ display:"flex", marginTop:'5px' }}
-                >
-                  <PaidIcon sx={{ color: 'action.active', marginRight: '5px' }} />
-                  <FormControl fullWidth sx = {{ marginRight:"4%", fontSize: "x-small"}}>
-                    <InputLabel color= 'quaternary'>
-                      Método de Pago
-                    </InputLabel>
-                    <Select
-                      color= 'quaternary'
-                      sx = {{marginRight:"5%",fontSize:"small",mr: 3}}
-                      id="outlined-select-currency"
-                      label="Método de Pago"
-                      fullWidth
-                      onChange={handleMetodoPago}
-                      value={metodoPago}
-                      inputlabelprops={{
-                        style: { fontSize: "x-small" },
-                      }}
-                    >
-                        <MenuItem value = {"Efectivo"} sx = {{fontSize:"x-small"}}>Efectivo</MenuItem>
-                        <MenuItem value = {"Sinpe Móvil"} sx = {{fontSize:"x-small"}}>Sinpe Móvil</MenuItem>
-                        <MenuItem value = {"Tarjeta de Crédito"} sx = {{fontSize:"x-small"}}>Tarjeta de Crédito</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
-                <div 
-                  className='MetodoDePago'
-                  style={{ display:"flex" }}
-                >
-                <LocalPhoneIcon sx={{ color: 'action.active', marginRight: '5px' }}  />
-                <TextField 
-                  color= 'quaternary'
-                  id="input-with-sx" 
-                  label="Número de teléfono" 
-                  variant="standard"  
-                  fullWidth 
-                  inputProps={{ maxLength:12 }}
-                  sx = {{ marginRight:"5%", height:"10%" }} 
-                  inputlabelprops={{
-                    style: { fontSize: "x-small" },
-                  }}
-                  onChange={(e) => handleNumber(e)}
-                  value={numero}
-                  />
-                </div>
-                <div 
-                  className='MetodoDePago'
-                  style={{ display:"flex", marginTop:'10px' }}
-                >
-                  <LocalShippingIcon sx={{ color: 'action.active', marginRight: '5px', marginTop: '5px' }} />
-                  <FormControl fullWidth sx = {{marginRight:"5%"}}>
-                    <InputLabel color= 'quaternary'>
-                      Método de Envío
-                    </InputLabel>
-                    <Select
-                      color= 'quaternary'
-                      fullWidth
-                      sx = {{
-                        marginRight:"5%"
-                      }}
-                      inputlabelprops={{
-                        style: { fontSize: "small" },
-                      }}
-                      onChange={handleMetodoEnvio}
-                      value = {envio}
-                      label = "Metodo de Envio"
-                    >
-                        <MenuItem value = {"Correo"} sx = {{fontSize:"x-small"}}> Correo </MenuItem>
-                        <MenuItem value = {"Presencial"} sx = {{fontSize:"x-small"}}> Presencial </MenuItem>
-                        <MenuItem value = {"Express"} sx = {{fontSize:"x-small"}}> Express </MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
-              </Box>
-            </div>
-            </div>
-            <div style={{ display:"flex", justifyContent:"space-between" }}>
-              <h5 style={{ marginLeft:"10%", marginTop: '15px' }}>
-                Productos añadidos al pedido
-              </h5>
-            
-              <Box 
-                sx = {{ marginRight:"5%", marginBottom:"2%", marginTop: "15px" }}
-              >
-                <Typography sx = { disable ? { color:"green", fontSize: 10 } : { color:"quaternary", fontSize: 9 } }>
-                  {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
-                </Typography>
-                <Button 
-                  onClick = {SendMessage} 
-                  disabled = {!disable} 
-                  sx={{ 
-                    background: '#357A38', 
-                    marginRight: '5%', 
-                    color: 'white', '&:hover': { background: '#3aac54' 
-                  }}}
-                >
-                  Confirmar
-                </Button>
-              </Box>
-            </div>
-            <TableContainer
-              className='TableContainer' 
-              sx = {{ maxHeight: "250px", overflow: "auto", width:"85%", marginLeft: "10%" }}
+          </div>
+        <div style={{display:"flex",justifyContent:"space-between"}}>
+          <h5 style={{ marginLeft:"10%", marginTop: '15px' }}>
+            Productos añadidos al pedido
+          </h5>
+          
+          <Box 
+            sx = {{marginRight:"5%", marginBottom:"2%", marginTop: "15px"}}
+          >
+            <Typography sx = { disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
+              {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
+            </Typography>
+            <Button 
+              onClick = {SendMessage} 
+              disabled = {!disable}
+              sx={{
+                background: '#357A38',
+                marginRight: '5%',
+                color: 'white',
+                '&:hover': {
+                  background: '#00d084',
+                }
+              }}
             >
-              <Table aria-label="simple table">
-                <TableHead >
-                  <TableRow>
-                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }}>Cantidad</TableCell>
-                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }} >Nombre del Producto</TableCell>
-                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }}>Precio Unitario </TableCell>
-                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }}>Precio Total del Artículo</TableCell>
+              Confirmar
+            </Button>
+          </Box>
+        </div>
+        <TableContainer
+          className="TableContainer"
+          sx={{
+            marginLeft: "10%",
+            width: "80%",
+            border: "1px solid gray",
+            maxHeight: "240px", // Altura máxima del TableContainer
+            maxWidth: "800px",
+            overflow: "auto", // Habilitar scroll
+          }}
+        >
+          <Table aria-label="simple table">
+            <TableHead >
+              <TableRow>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Cantidad</TableCell>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }} >Nombre del Producto</TableCell>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Precio Unitario </TableCell>
+                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Precio Total del Artículo</TableCell>
+              </TableRow>
+            </TableHead>
+                  <TableRow key={row.id} sx = {{maxWidth:"30px"}} >
+                    <TableCell sx = {{fontSize:"x-small"}} >{row.name}</TableCell>
+                    <TableCell sx = {{fontSize:"x-small"}}>{row.quantity} </TableCell>
+                    <TableCell sx = {{fontSize:"x-small"}}>{row.price} ₡</TableCell>
+                    <TableCell sx = {{fontSize:"x-small"}}>{row.price * row.quantity}  ₡</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody >
