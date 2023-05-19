@@ -378,8 +378,8 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
             marginLeft: "10%",
             width: "80%",
             border: "1px solid gray",
-            maxHeight: "240px", // Altura máxima del TableContainer
-            maxWidth: "800px",
+            maxHeight: "260px", // Altura máxima del TableContainer
+            maxWidth: "700px",
             overflow: "auto", // Habilitar scroll
           }}
         >
