@@ -1,6 +1,11 @@
+Steven Alvarado Aguilar, [5/18/2023 7:17 PM]
 import { confirmPasswordReset, sendPasswordResetEmail, signInWithEmailAndPassword,reauthenticateWithCredential , createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup , updateEmail,updatePassword} from "firebase/auth";
-import { FirebaseAuth, FirebaseDB, FirebaseApp } from "./config";
-import { collection, doc, getDoc,getDocs,updateDoc, addDoc, getFirestore } from 'firebase/firestore'
+import { FirebaseAuth } from "./config";
+import { FirebaseDB } from "./config";
+import { FirebaseApp } from "./config";
+import { getFirestore } from "firebase/firestore";
+import { collection, doc, getDoc,getDocs,updateDoc,addDoc } from 'firebase/firestore'
+
 const db = getFirestore(FirebaseApp)
 
 const googleProvider = new GoogleAuthProvider();
@@ -42,7 +47,7 @@ export const singInWithGoogle = async() => {
 };
 
 export const loginWithEmailPassword = async (email, password) => {
-  try {
+  try { 
     const result = await signInWithEmailAndPassword(
       FirebaseAuth,
       email,
@@ -153,6 +158,7 @@ export const resetPassword = async (oobCode, password) => {
   }
 }
 
+Steven Alvarado Aguilar, [5/18/2023 7:17 PM]
 export const getUserInfo = async() =>{
   try{
     const usersRef = doc(db, "users" , FirebaseAuth.currentUser.uid)
@@ -228,4 +234,3 @@ export const eliminateUser = async(uid,newData) => {
     console.log("Error a la hora de eliminar el usuario : " ,error)
   }
 };
-

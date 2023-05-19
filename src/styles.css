@@ -561,19 +561,19 @@ a{
 }
 
 @media (max-width: 767px) {
-.TableContainer {
-    width: 100%;
-    margin-left: 0;
-}
+    .TableContainer {
+        width: 100%;
+        margin-left: 0;
+    }
 
-.TableContainer table {
-    width: 100%;
-}
+    .TableContainer table {
+        width: 100%;
+    }
 
-.TableContainer th,
-.TableContainer td {
-    font-size: small;
-}
+    .TableContainer th,
+    .TableContainer td {
+        font-size: small;
+    }
 }
 
 .productsDetailCards-text{

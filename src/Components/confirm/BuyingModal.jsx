@@ -1,5 +1,5 @@
-import { useState,useEffect,useRef } from 'react'
-import { Modal,Box,Button, Table,TextField,TableContainer,MenuItem,TableHead,TableCell,TableRow,TableBody, Typography,InputLabel, Select, FormControl, drawerClasses } from '@mui/material'
+import { useState, useEffect, useRef } from 'react'
+import { Modal, Box, Button, Table,                                                                       ,TableContainer,MenuItem,TableHead,TableCell,TableRow,TableBody, Typography,InputLabel, Select, FormControl, drawerClasses } from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle';  
 import PaidIcon from '@mui/icons-material/Paid';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -35,10 +35,12 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
       nameLowerCase: name.toLowerCase(),
       status : "Pendiente",
       wayToPay : metodoPago,
-      sendMethod : envio
+      sendMethod : envio,
+      products : datosCompra,
+      totalPrice : calculateTotal()
     }
-
-    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${numeroAdmin}`
+    await crearPedido(data);
+    const url = https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]})}&phone=${numeroAdmin}`
     window.open(url);
     setNumero("")
     setname("")
@@ -47,12 +49,11 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     setMetodoPago("")
     setdisable(false)
     setOpen(!open)
-    await crearPedido(data);
   }
 
   const checkNull = () =>
   {
-    if (numero.length < 7 || envio === "" || metodoPago === "" || name.length < 4  ){
+    if (numero.length < 7  envio === ""  metodoPago === "" || name.length < 4  ){
       setdisable(false)
     }else{
     setdisable(true)
@@ -124,7 +125,8 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     setOpen(!open)
   }
 
-  useEffect(() => {
+Steven Alvarado Aguilar, [5/18/2023 7:16 PM]
+useEffect(() => {
     const add = (accumulator, a) => {
       return accumulator + a;
     }
@@ -183,238 +185,246 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
 
   return (
     <>
-    <Modal 
-      className = "modal" 
-      open = {open} 
-      onClose={handleClose}
-    >
-      <Box 
-        sx = {{
-        background:"#FFFFFF",
-        color:"black",
-        borderRadius:"20px"
-        }}
+      <Modal 
+        className = "modal" 
+        open = {open} 
+        onClose={handleClose}
       >
-          <div style={{ display : "flex", justifyContent: "space-between", marginTop: "10px"}}>
-            <h3 style={{marginLeft: "5%"}}>
-              Confirmar Pedido
-            </h3>
-            <Button 
-            sx={{color: "white",  
-              background:"gray",
-              marginRight: "5%",
-              minWidth:"30px",
-              height:"30px",
-              marginTop:"1%"
-              }}
-            onClick={handleClose}
-            >
-              <ClearIcon/>
-            </Button>
-          </div>
-          <div>
-          <div style={{display:"flex",justifyContent:"space-between" }}>
-            <Box sx = {{minWidth: "50%", maxWidth:"50%",maxHeight:"50%" ,marginLeft:"2%"}}>
-            <MapContainer center={position ? position : [0,0]} zoom={13} scrollWheelZoom={false} ref = {mapRef}>
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker 
-                position={markerPosition ? markerPosition : [0,0]}
-                draggable
-                eventHandlers={{
-                    dragend : handleMarkerDrag
+        <Box 
+          sx = {{
+          background:"#FFFFFF",
+          color:"black",
+          borderRadius:"20px"
+          }}
+        >
+            <div style={{ display : "flex", justifyContent: "space-between", marginTop: "10px"}}>
+              <h3 style={{marginLeft: "5%"}}>
+                Confirmar Pedido
+              </h3>
+              <Button 
+              sx={{color: "white",  
+                background:"gray",
+                marginRight: "5%",
+                minWidth:"30px",
+                height:"30px",
+                marginTop:"1%"
                 }}
-                >
-                </Marker>
-              </MapContainer>
-              <div  style={{display: "flex",mr: 3,justifyContent:"space-between",marginTop:"2%",marginRight:"5%"}}>
-                <LocationOnIcon sx = {{marginTop:"5%"}}/>
+              onClick={handleClose}
+              >
+                <ClearIcon/>
+              </Button>
+            </div>
+            <div>
+            <div style={{display:"flex",justifyContent:"space-between" }}>
+              <Box sx = {{minWidth: "50%", maxWidth:"50%",maxHeight:"50%" ,marginLeft:"2%"}}>
+                <MapContainer center={position ? position : [0,0]} zoom={13} scrollWheelZoom={false} ref = {mapRef}>
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker 
+                    position={markerPosition ? markerPosition : [0,0]}
+                    draggable
+                    eventHandlers={{
+                        dragend : handleMarkerDrag
+                    }}
+                  >
+                  </Marker>
+                </MapContainer>
+                <div  style={{display: "flex",mr: 3,justifyContent:"space-between",marginTop:"2%",marginRight:"5%"}}>
+                  <LocationOnIcon sx = {{marginTop:"5%"}}/>
+                  <TextField 
+                    fullWidth
+                    color='quaternary'
+                    label="Dirección para el envío" 
+                    variant="standard" 
+                    onChange={(e) => handleDireccion(e)}
+                    sx = {{ fontSize:"small", height:"5px", marginLeft:"5%"}}
+                    inputlabelprops={{
+                      style: { fontSize: "x-small" }
+                    }}
+                    inputProps={{ maxLength: 50 }}
+
+Steven Alvarado Aguilar, [5/18/2023 7:16 PM]
+value = {direccion}
+                  />
+                </div>
+              </Box>  
+              <Box sx={{ display: 'grid', alignItems: 'flex-end' ,width:"45%"}}>
+              <div
+                className='MetodoDePago'
+                style={{display:"flex",justifyContent:"space-between"}}
+              >
+                <AccountCircle sx={{ color: 'action.active', marginRight: '5px' }} />
                 <TextField 
-                  fullWidth
-                  color='quaternary'
-                  label="Dirección para el envío" 
+                  color= 'quaternary'
+                  id="input-with-sx" 
+                  label="Nombre" 
                   variant="standard" 
-                  onChange={(e) => handleDireccion(e)}
-                  sx = {{ fontSize:"small", height:"5px", marginLeft:"5%"}}
+                  onChange={(e) => handleName(e)}
+                  fullWidth
+                  sx = {{ fontSize:"small", marginBottom: '5px', marginRight: '10px' }}
                   inputlabelprops={{
                     style: { fontSize: "x-small" }
                   }}
-                  inputProps={{ maxLength: 50 }}
-                  value = {direccion}
+                  inputProps={{maxLength:50}}
+                  value={name}
                 />
-              </div>
-            </Box>  
-            <Box sx={{ display: 'grid', alignItems: 'flex-end' ,width:"45%"}}>
-            <div
-              className='MetodoDePago'
-              style={{display:"flex",justifyContent:"space-between"}}
-            >
-              <AccountCircle sx={{ color: 'action.active', marginRight: '5px' }} />
-              <TextField 
-                color= 'quaternary'
-                id="input-with-sx" 
-                label="Nombre" 
-                variant="standard" 
-                onChange={(e) => handleName(e)}
-                fullWidth
-                sx = {{ fontSize:"small", marginBottom: '5px', marginRight: '10px' }}
-                inputlabelprops={{
-                  style: { fontSize: "x-small" }
-                }}
-                inputProps={{maxLength:50}}
-                value={name}
-              />
-            </div>
-              <div 
-                className='MetodoDePago'
-                style={{ display:"flex", marginTop:'5px' }}
-              >
-                <PaidIcon sx={{ color: 'action.active', marginRight: '5px' }} />
-                <FormControl fullWidth sx = {{ marginRight:"4%", fontSize: "x-small"}}>
-                  <InputLabel color= 'quaternary'>
-                    Método de Pago
-                  </InputLabel>
-                  <Select
-                    color= 'quaternary'
-                    sx = {{marginRight:"5%",fontSize:"small",mr: 3}}
-                    id="outlined-select-currency"
-                    label="Método de Pago"
-                    fullWidth
-                    onChange={handleMetodoPago}
-                    value={metodoPago}
-                    inputlabelprops={{
-                      style: { fontSize: "x-small" },
-                    }}
-                  >
-                      <MenuItem value = {"Efectivo"} sx = {{fontSize:"x-small"}}>Efectivo</MenuItem>
-                      <MenuItem value = {"Sinpe Móvil"} sx = {{fontSize:"x-small"}}>Sinpe Móvil</MenuItem>
-                      <MenuItem value = {"Tarjeta de Crédito"} sx = {{fontSize:"x-small"}}>Tarjeta de Crédito</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-              <div 
-                className='MetodoDePago'
-                style={{ display:"flex" }}
-              >
-              <LocalPhoneIcon sx={{ color: 'action.active', marginRight: '5px' }}  />
-              <TextField 
-                color= 'quaternary'
-                id="input-with-sx" 
-                label="Número de teléfono" 
-                variant="standard"  
-                fullWidth 
-                inputProps={{ maxLength:12 }}
-                sx = {{ marginRight:"5%", height:"10%" }} 
-                inputlabelprops={{
-                  style: { fontSize: "x-small" },
-                }}
-                onChange={(e) => handleNumber(e)}
-                value={numero}
-                />
-              </div>
-              <div 
-                className='MetodoDePago'
-                style={{ display:"flex", marginTop:'10px' }}
-              >
-                <LocalShippingIcon sx={{ color: 'action.active', marginRight: '5px', marginTop: '5px' }} />
-                <FormControl fullWidth sx = {{marginRight:"5%"}}>
-                <InputLabel color= 'quaternary'>
-                  Método de Envío
-                </InputLabel>
-                <Select
-                  color= 'quaternary'
-                  fullWidth
-                  sx = {{
-                    marginRight:"5%"
-                  }}
-                  inputlabelprops={{
-                    style: { fontSize: "small" },
-                  }}
-                  onChange={handleMetodoEnvio}
-                  value = {envio}
-                  label = "Metodo de Envio"
-                >
-                  <MenuItem value = {"Correo"} sx = {{fontSize:"x-small"}}> Correo </MenuItem>
-                  <MenuItem value = {"Presencial"} sx = {{fontSize:"x-small"}}> Presencial </MenuItem>
-                  <MenuItem value = {"Express"} sx = {{fontSize:"x-small"}}> Express </MenuItem>
-                </Select>
-                </FormControl>
-              </div>
-            </Box>
                 </div>
-          </div>
-        <div style={{display:"flex",justifyContent:"space-between"}}>
-          <h5 style={{ marginLeft:"10%", marginTop: '15px' }}>
-            Productos añadidos al pedido
-          </h5>
-          
-          <Box 
-            sx = {{marginRight:"5%", marginBottom:"2%", marginTop: "15px"}}
-          >
-            <Typography sx = { disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
-              {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
-            </Typography>
-            <Button 
-              onClick = {SendMessage} 
-              disabled = {!disable}
-              sx = {{ background:"green", marginRight:"5%", color:"white" }}
+                <div 
+                  className='MetodoDePago'
+                  style={{ display:"flex", marginTop:'5px' }}
+                >
+                  <PaidIcon sx={{ color: 'action.active', marginRight: '5px' }} />
+                  <FormControl fullWidth sx = {{ marginRight:"4%", fontSize: "x-small"}}>
+                    <InputLabel color= 'quaternary'>
+                      Método de Pago
+                    </InputLabel>
+                    <Select
+                      color= 'quaternary'
+                      sx = {{marginRight:"5%",fontSize:"small",mr: 3}}
+                      id="outlined-select-currency"
+                      label="Método de Pago"
+                      fullWidth
+                      onChange={handleMetodoPago}
+                      value={metodoPago}
+                      inputlabelprops={{
+                        style: { fontSize: "x-small" },
+                      }}
+                    >
+                        <MenuItem value = {"Efectivo"} sx = {{fontSize:"x-small"}}>Efectivo</MenuItem>
+                        <MenuItem value = {"Sinpe Móvil"} sx = {{fontSize:"x-small"}}>Sinpe Móvil</MenuItem>
+                        <MenuItem value = {"Tarjeta de Crédito"} sx = {{fontSize:"x-small"}}>Tarjeta de Crédito</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+                <div 
+                  className='MetodoDePago'
+                  style={{ display:"flex" }}
+                >
+                <LocalPhoneIcon sx={{ color: 'action.active', marginRight: '5px' }}  />
+                <TextField 
+                  color= 'quaternary'
+                  id="input-with-sx" 
+                  label="Número de teléfono" 
+                  variant="standard"  
+                  fullWidth 
+                  inputProps={{ maxLength:12 }}
+                  sx = {{ marginRight:"5%", height:"10%" }} 
+                  inputlabelprops={{
+                    style: { fontSize: "x-small" },
+                  }}
+                  onChange={(e) => handleNumber(e)}
+                  value={numero}
+                  />
+                </div>
+                <div 
+                  className='MetodoDePago'
+                  style={{ display:"flex", marginTop:'10px' }}
+                >
+                  <LocalShippingIcon sx={{ color: 'action.active', marginRight: '5px', marginTop: '5px' }} />
+                  <FormControl fullWidth sx = {{marginRight:"5%"}}>
+                    <InputLabel color= 'quaternary'>
+                      Método de Envío
+                    </InputLabel>
+                    <Select
+                      color= 'quaternary'
+                      fullWidth
+                      sx = {{
+                        marginRight:"5%"
+                      }}
+                      inputlabelprops={{
+                        style: { fontSize: "small" },
+                      }}
+                      onChange={handleMetodoEnvio}
+                      value = {envio}
+                      label = "Metodo de Envio"
+                    >
+
+Steven Alvarado Aguilar, [5/18/2023 7:16 PM]
+<MenuItem value = {"Correo"} sx = {{fontSize:"x-small"}}> Correo </MenuItem>
+                      <MenuItem value = {"Presencial"} sx = {{fontSize:"x-small"}}> Presencial </MenuItem>
+                      <MenuItem value = {"Express"} sx = {{fontSize:"x-small"}}> Express </MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+              </Box>
+            </div>
+            </div>
+            <div style={{ display:"flex", justifyContent:"space-between" }}>
+              <h5 style={{ marginLeft:"10%", marginTop: '15px' }}>
+                Productos añadidos al pedido
+              </h5>
+            
+              <Box 
+                sx = {{ marginRight:"5%", marginBottom:"2%", marginTop: "15px" }}
+              >
+                <Typography sx = { disable ? { color:"green", fontSize: 10 } : { color:"quaternary", fontSize: 9 } }>
+                  {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
+                </Typography>
+                <Button 
+                  onClick = {SendMessage} 
+                  disabled = {!disable} 
+                  sx={{ 
+                    background: '#357A38', 
+                    marginRight: '5%', 
+                    color: 'white', '&:hover': { background: '#3aac54' 
+                  }}}
+                >
+                  Confirmar
+                </Button>
+              </Box>
+            </div>
+            <TableContainer
+              className='TableContainer' 
+              sx = {{ maxHeight: "250px", overflow: "auto", width:"85%", marginLeft: "10%" }}
             >
-              Confirmar
-            </Button>
-          </Box>
-        </div>
-        <TableContainer
-          className='TableContainer' 
-          sx = {{ marginLeft: "10%", width:"80%", border: "1px solid gray"}}
-        >
-          <Table aria-label="simple table">
-            <TableHead >
-              <TableRow>
-                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Cantidad</TableCell>
-                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }} >Nombre del Producto</TableCell>
-                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Precio Unitario </TableCell>
-                <TableCell sx = {{ fontSize:"x-small", fontWeight:"bolder" }}>Precio Total del Artículo</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody >
-              {
-                datosCompra.map((row) => {
-                  return(
-                  <TableRow key={row.id} sx = {{maxWidth:"30px"}} >
-                    <TableCell sx = {{fontSize:"x-small"}} >{row.name}</TableCell>
-                    <TableCell sx = {{fontSize:"x-small"}}>{row.quantity} </TableCell>
-                    <TableCell sx = {{fontSize:"x-small"}}>{row.price} ₡</TableCell>
-                    <TableCell sx = {{fontSize:"x-small"}}>{row.price * row.quantity}  ₡</TableCell>
+              <Table aria-label="simple table">
+                <TableHead >
+                  <TableRow>
+                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }}>Cantidad</TableCell>
+                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }} >Nombre del Producto</TableCell>
+                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }}>Precio Unitario </TableCell>
+                    <TableCell sx = {{ fontSize:"small", fontWeight:"bolder" }}>Precio Total del Artículo</TableCell>
                   </TableRow>
-                  )
-                }) 
-              }
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <Box 
-          className='ResponsiveBox'
-          sx ={{
-            display:"flex",
-            alignItems:"center",
-            justifyContent:"space-between",
-            marginLeft:"5%",
-            marginRight:"5%",
-            marginTop: "5%",
-            marginBottom: "5%",
-            alignSelf:"center"}}
-        >  
-          <Typography sx = {{ fontWeight: "bolder", marginLeft: "5%" }}>
-              Total De Pago: 
-          </Typography>
-          <Typography sx = {{ fontWeight: "bolder", marginRight: "15%" }}>
-          ₡  {calculateTotal()}
-          </Typography>
-        </Box>
-      </Box>
-    </Modal>
+                </TableHead>
+                <TableBody >
+                  {
+                    datosCompra.map((row) => {
+                      return(
+                      <TableRow key={row.id} sx = {{maxWidth:"30px"}} >
+                        <TableCell sx = {{fontSize:"small"}} >{row.name}</TableCell>
+                        <TableCell sx = {{fontSize:"small"}}>{row.quantity} </TableCell>
+                        <TableCell sx = {{fontSize:"small"}}>{row.price} ₡</TableCell>
+                        <TableCell sx = {{fontSize:"small"}}>{row.price * row.quantity}  ₡</TableCell>
+                      </TableRow>
+                      )
+                    }) 
+                  }
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <Box 
+              className='ResponsiveBox'
+              sx ={{
+                display:"flex",
+                alignItems:"center",
+                justifyContent:"space-between",
+                marginLeft:"5%",
+                marginRight:"5%",
+                marginTop: "5%",
+                marginBottom: "5%",
+                alignSelf:"center"}}
+            >  
+              <Typography sx = {{ fontWeight: "bolder", marginLeft: "5%" }}>
+                  Total De Pago: 
+              </Typography>
+              <Typography sx = {{ fontWeight: "bolder", marginRight: "15%" }}>
+              ₡  {calculateTotal()}
+              </Typography>
+            </Box>
+          </Box>
+      </Modal>
     </>
   )
 }
