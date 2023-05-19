@@ -1,4 +1,3 @@
-Steven Alvarado Aguilar, [5/18/2023 7:17 PM]
 import { confirmPasswordReset, sendPasswordResetEmail, signInWithEmailAndPassword,reauthenticateWithCredential , createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup , updateEmail,updatePassword} from "firebase/auth";
 import { FirebaseAuth } from "./config";
 import { FirebaseDB } from "./config";
@@ -158,7 +157,6 @@ export const resetPassword = async (oobCode, password) => {
   }
 }
 
-Steven Alvarado Aguilar, [5/18/2023 7:17 PM]
 export const getUserInfo = async() =>{
   try{
     const usersRef = doc(db, "users" , FirebaseAuth.currentUser.uid)
