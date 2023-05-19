@@ -359,15 +359,29 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
             <Button 
               onClick = {SendMessage} 
               disabled = {!disable}
-              sx = {{ background:"green", marginRight:"5%", color:"white" }}
+              sx={{
+                background: '#357A38',
+                marginRight: '5%',
+                color: 'white',
+                '&:hover': {
+                  background: '#00d084',
+                }
+              }}
             >
               Confirmar
             </Button>
           </Box>
         </div>
         <TableContainer
-          className='TableContainer' 
-          sx = {{ marginLeft: "10%", width:"80%", border: "1px solid gray"}}
+          className="TableContainer"
+          sx={{
+            marginLeft: "10%",
+            width: "80%",
+            border: "1px solid gray",
+            maxHeight: "240px", // Altura máxima del TableContainer
+            maxWidth: "800px",
+            overflow: "auto", // Habilitar scroll
+          }}
         >
           <Table aria-label="simple table">
             <TableHead >

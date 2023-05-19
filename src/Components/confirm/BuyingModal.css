@@ -78,25 +78,25 @@
   }
 }
   
-.TableContainer{
+.TableContainer {
   align-content: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: auto;
+  border: 1px solid gray;
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px), (max-width: 1024px) {
   .TableContainer {
-    width: 100%;
-    margin-left: 0;
-  }
-  
-  .TableContainer table {
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .TableContainer th,
   .TableContainer td {
     font-size: small;
+    text-align: center;
+    align-content: center;
+    align-items: center;
   }
 }
 
