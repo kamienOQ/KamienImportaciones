@@ -1,10 +1,6 @@
 import { confirmPasswordReset, sendPasswordResetEmail, signInWithEmailAndPassword,reauthenticateWithCredential , createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup , updateEmail,updatePassword} from "firebase/auth";
-import { FirebaseAuth } from "./config";
-import { FirebaseDB } from "./config";
-import { FirebaseApp } from "./config";
-import { getFirestore } from "firebase/firestore";
-import { collection, doc, getDoc,getDocs,updateDoc,addDoc } from 'firebase/firestore'
-
+import { FirebaseAuth, FirebaseDB, FirebaseApp } from "./config";
+import { collection, doc, getDoc,getDocs,updateDoc, addDoc, getFirestore } from 'firebase/firestore'
 const db = getFirestore(FirebaseApp)
 
 const googleProvider = new GoogleAuthProvider();
@@ -46,7 +42,7 @@ export const singInWithGoogle = async() => {
 };
 
 export const loginWithEmailPassword = async (email, password) => {
-  try { 
+  try {
     const result = await signInWithEmailAndPassword(
       FirebaseAuth,
       email,
@@ -232,3 +228,4 @@ export const eliminateUser = async(uid,newData) => {
     console.log("Error a la hora de eliminar el usuario : " ,error)
   }
 };
+
