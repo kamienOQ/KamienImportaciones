@@ -12,18 +12,18 @@ import { MapContainer,Marker,TileLayer } from "react-leaflet"
 import "./BuyingModal.css"
 
 const BuyingModal = ({open,setOpen,datosCompra}) => {
-  const [unitaryPricetotal,setunitaryPriceTotal] = useState(0)
-  const [metodoPago,setMetodoPago] = useState("")
-  const [name,setname] = useState("")
-  const [numero, setNumero] = useState("")
-  const [envio, setenvio] = useState("")
-  const [mensajeEnvio ,setMensajeEnvio] = useState("")
-  const [direccion, setDireccion] = useState("")
-  const [disable, setdisable] = useState(false)
-  const [position,setPosition] = useState(undefined)
-  const [markerPosition, setMarkerPosition] = useState(undefined)
+  const [ unitaryPricetotal, setunitaryPriceTotal ] = useState(0)
+  const [ metodoPago, setMetodoPago ] = useState("")
+  const [ name, setname ] = useState("")
+  const [ numero, setNumero ] = useState("")
+  const [ envio, setenvio ] = useState("")
+  const [ mensajeEnvio, setMensajeEnvio ] = useState("")
+  const [ direccion, setDireccion ] = useState("")
+  const [ disable, setdisable ] = useState(false)
+  const [ position, setPosition ] = useState(undefined)
+  const [ markerPosition, setMarkerPosition ] = useState(undefined)
   const mapRef = useRef(null)
-  const [numeroAdmin,setNumeroAdmin] = useState("62805962")
+  const [ numeroAdmin, setNumeroAdmin ] = useState("62805962")
 
   const SendMessage = async() => {
     let fecha = new Date();
@@ -128,7 +128,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     const add = (accumulator, a) => {
       return accumulator + a;
     }
-    const getunitaryPriceTotal = () =>{
+    const getunitaryPriceTotal = () => {
       let price_array = datosCompra.map((row) =>{
         let unitaryPrice_total = 0
         unitaryPrice_total = (unitaryPrice_total + row.unitaryPrice) * row.quantity 
@@ -153,9 +153,9 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     
   useEffect(() => {
     if (mapRef.current && position) {
-        mapRef.current.flyTo(position, mapRef.current.getZoom(), {
-        duration: 1
-        });
+      mapRef.current.flyTo(position, mapRef.current.getZoom(), {
+      duration: 1
+      });
     }
   }, [position]);
 
@@ -163,17 +163,17 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     return(
         <Modal open = {open} onClose={handleClose} sx = {{ display:"flex",justifyContent:"center",alignItems:"center" }}>
             <Box sx = {{
-            width:"25%",
-            height:"25%",
-            background:"white",
+            width: "25%",
+            height: "25%",
+            background: "white",
             border: "2px solid gray",
-            borderRadius:"20px",
-            display:"flex",
-            justifyContent:"center",
-            alignItems:"center"
+            borderRadius: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
             }}>
-                <GppBadIcon sx = {{marginRight:"5%"}}/>
-                <Typography sx = {{fontWeight:"bolder"}}>
+                <GppBadIcon sx = {{ marginRight:"5%" }}/>
+                <Typography sx = {{ fontWeight:"bolder" }}>
                     No Hay Productos en el carrito
                 </Typography>
             </Box>
@@ -186,35 +186,36 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     <Modal 
       className = "modal" 
       open = {open} 
-      onClose={handleClose}
+      onClose= {handleClose}
     >
       <Box 
         sx = {{
-        background:"#FFFFFF",
-        color:"black",
-        borderRadius:"20px"
+        background: "#FFFFFF",
+        color: "black",
+        borderRadius: "20px"
         }}
       >
-          <div style={{ display : "flex", justifyContent: "space-between", marginTop: "10px"}}>
-            <h3 style={{marginLeft: "5%"}}>
+          <div style={{ display : "flex", justifyContent: "space-between", marginTop: "10px" }}>
+            <h3 style={{ marginLeft: "5%" }}>
               Confirmar Pedido
             </h3>
             <Button 
-            sx={{color: "white",  
+            sx={{ 
+              color: "white",  
               background:"gray",
               marginRight: "5%",
               minWidth:"30px",
               height:"30px",
               marginTop:"1%"
-              }}
+            }}
             onClick={handleClose}
             >
               <ClearIcon/>
             </Button>
           </div>
           <div>
-          <div style={{display:"flex",justifyContent:"space-between" }}>
-            <Box sx = {{minWidth: "50%", maxWidth:"50%",maxHeight:"50%" ,marginLeft:"2%"}}>
+          <div style={{ display:"flex",justifyContent:"space-between" }}>
+            <Box sx = {{ minWidth: "50%", maxWidth:"50%",maxHeight:"50%" ,marginLeft:"2%" }}>
             <MapContainer center={position ? position : [0,0]} zoom={13} scrollWheelZoom={false} ref = {mapRef}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -229,15 +230,15 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 >
                 </Marker>
               </MapContainer>
-              <div  style={{display: "flex",mr: 3,justifyContent:"space-between",marginTop:"2%",marginRight:"5%"}}>
-                <LocationOnIcon sx = {{marginTop:"5%"}}/>
+              <div  style={{ display: "flex",mr: 3,justifyContent:"space-between",marginTop:"2%",marginRight:"5%" }}>
+                <LocationOnIcon sx = {{ marginTop:"5%" }}/>
                 <TextField 
-                fullWidth
+                  fullWidth
                   color='quaternary'
                   label="Dirección para el envío" 
                   variant="standard" 
                   onChange={(e) => handleDireccion(e)}
-                  sx = {{ fontSize:"small", height:"5px", marginLeft:"5%"}}
+                  sx = {{ fontSize:"small", height:"5px", marginLeft:"5%" }}
                   inputlabelprops={{
                     style: { fontSize: "x-small" }
                   }}
@@ -246,10 +247,10 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 />
               </div>
             </Box>  
-            <Box sx={{ display: 'grid', alignItems: 'flex-end' ,width:"45%"}}>
+            <Box sx={{ display: 'grid', alignItems: 'flex-end' ,width:"45%" }}>
             <div
               className='MetodoDePago'
-              style={{display:"flex",justifyContent:"space-between"}}
+              style={{ display:"flex",justifyContent:"space-between" }}
             >
               <AccountCircle sx={{ color: 'action.active', marginRight: '5px' }} />
               <TextField 
@@ -258,6 +259,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 label="Nombre" 
                 variant="standard" 
                 onChange={(e) => handleName(e)}
+                fullWidth
                 sx = {{ fontSize:"small", marginBottom: '5px', marginRight: '10px' }}
                 inputlabelprops={{
                   style: { fontSize: "x-small" }
@@ -271,13 +273,13 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 style={{ display:"flex", marginTop:'5px' }}
               >
                 <PaidIcon sx={{ color: 'action.active', marginRight: '5px' }} />
-                <FormControl fullWidth sx = {{ marginRight:"4%", fontSize: "x-small"}}>
+                <FormControl fullWidth sx = {{ marginRight:"4%", fontSize: "x-small" }}>
                   <InputLabel color= 'quaternary'>
                     Método de Pago
                   </InputLabel>
                   <Select
                     color= 'quaternary'
-                    sx = {{marginRight:"5%",fontSize:"small",mr: 3}}
+                    sx = {{ marginRight:"5%",fontSize:"small",mr: 3 }}
                     id="outlined-select-currency"
                     label="Método de Pago"
                     fullWidth
@@ -287,9 +289,9 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                       style: { fontSize: "x-small" },
                     }}
                   >
-                      <MenuItem value = {"Efectivo"} sx = {{fontSize:"x-small"}}>Efectivo</MenuItem>
-                      <MenuItem value = {"Sinpe Móvil"} sx = {{fontSize:"x-small"}}>Sinpe Móvil</MenuItem>
-                      <MenuItem value = {"Tarjeta de Crédito"} sx = {{fontSize:"x-small"}}>Tarjeta de Crédito</MenuItem>
+                      <MenuItem value = {"Efectivo"} sx = {{ fontSize:"x-small" }}>Efectivo</MenuItem>
+                      <MenuItem value = {"Sinpe Móvil"} sx = {{ fontSize:"x-small" }}>Sinpe Móvil</MenuItem>
+                      <MenuItem value = {"Tarjeta de Crédito"} sx = {{ fontSize:"x-small" }}>Tarjeta de Crédito</MenuItem>
                   </Select>
                 </FormControl>
               </div>
@@ -300,12 +302,12 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
               <LocalPhoneIcon sx={{ color: 'action.active', marginRight: '5px' }}  />
               <TextField 
                 color= 'quaternary'
-                id="input-with-sx" 
-                label="Número de teléfono" 
-                variant="standard"  
+                id= "input-with-sx" 
+                label= "Número de teléfono" 
+                variant= "standard"  
                 fullWidth 
-                inputProps={{maxLength:12}}
-                sx = {{marginRight:"5%",height:"10%"}} 
+                inputProps={{ maxLength:12 }}
+                sx = {{ marginRight:"5%", height:"10%" }} 
                 inputlabelprops={{
                   style: { fontSize: "x-small" },
                 }}
@@ -318,7 +320,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                 style={{ display:"flex", marginTop:'10px' }}
               >
                 <LocalShippingIcon sx={{ color: 'action.active', marginRight: '5px', marginTop: '5px' }} />
-                <FormControl fullWidth sx = {{marginRight:"5%"}}>
+                <FormControl fullWidth sx = {{ marginRight:"5%" }}>
                 <InputLabel color= 'quaternary'>
                   Método de Envío
                 </InputLabel>
@@ -335,38 +337,52 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
                   value = {envio}
                   label = "Metodo de Envio"
                 >
-                  <MenuItem value = {"Correo"} sx = {{fontSize:"x-small"}}> Correo </MenuItem>
-                  <MenuItem value = {"Presencial"} sx = {{fontSize:"x-small"}}> Presencial </MenuItem>
-                  <MenuItem value = {"Express"} sx = {{fontSize:"x-small"}}> Express </MenuItem>
+                  <MenuItem value = {"Correo"} sx = {{ fontSize:"x-small" }}> Correo </MenuItem>
+                  <MenuItem value = {"Presencial"} sx = {{ fontSize:"x-small" }}> Presencial </MenuItem>
+                  <MenuItem value = {"Express"} sx = {{ fontSize:"x-small" }}> Express </MenuItem>
                 </Select>
                 </FormControl>
               </div>
             </Box>
                 </div>
           </div>
-        <div style={{display:"flex",justifyContent:"space-between"}}>
+        <div style={{ display:"flex",justifyContent:"space-between" }}>
           <h5 style={{ marginLeft:"10%", marginTop: '15px' }}>
             Productos añadidos al pedido
           </h5>
           
           <Box 
-            sx = {{marginRight:"5%", marginBottom:"2%", marginTop: "15px"}}
+            sx = {{ marginRight:"5%", marginBottom:"2%", marginTop: "15px" }}
           >
-            <Typography sx = {disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
+            <Typography sx = { disable ? { color:"green", fontSize:10 } : { color:"quaternary", fontSize: 9 } }>
               {disable ? "¡Datos Válidos para la compra!":"Los Datos ingresados son inválidos"}
             </Typography>
             <Button 
               onClick = {SendMessage} 
               disabled = {!disable}
-              sx = {{ background:"green", marginRight:"5%", color:"white"}}
+              sx={{
+                background: '#357A38',
+                marginRight: '5%',
+                color: 'white',
+                '&:hover': {
+                  background: '#00d084',
+                }
+              }}
             >
               Confirmar
             </Button>
           </Box>
         </div>
         <TableContainer
-          className='TableContainer' 
-          sx = {{ marginLeft: "10%", width:"80%", border: "1px solid gray"}}
+          className="TableContainer"
+          sx={{
+            marginLeft: "10%",
+            width: "80%",
+            border: "1px solid gray",
+            maxHeight: "240px", // Altura máxima del TableContainer
+            maxWidth: "800px",
+            overflow: "auto", // Habilitar scroll
+          }}
         >
           <Table aria-label="simple table">
             <TableHead >
@@ -381,11 +397,11 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
               {
                 datosCompra.map((row) => {
                   return(
-                  <TableRow key={row.id} sx = {{maxWidth:"30px"}} >
-                    <TableCell sx = {{fontSize:"x-small"}} >{row.name}</TableCell>
-                    <TableCell sx = {{fontSize:"x-small"}}>{row.quantity} </TableCell>
-                    <TableCell sx = {{fontSize:"x-small"}}>{row.price} ₡</TableCell>
-                    <TableCell sx = {{fontSize:"x-small"}}>{row.price * row.quantity}  ₡</TableCell>
+                  <TableRow key={ row.id } sx = {{ maxWidth:"30px" }} >
+                    <TableCell sx = {{ fontSize:"x-small" }} >{ row.name }</TableCell>
+                    <TableCell sx = {{ fontSize:"x-small" }}>{ row.quantity } </TableCell>
+                    <TableCell sx = {{ fontSize:"x-small" }}>{ row.price } ₡</TableCell>
+                    <TableCell sx = {{ fontSize:"x-small" }}>{ row.price * row.quantity }  ₡</TableCell>
                   </TableRow>
                   )
                 }) 
@@ -396,14 +412,14 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
         <Box 
           className='ResponsiveBox'
           sx ={{
-            display:"flex",
-            alignItems:"center",
-            justifyContent:"space-between",
-            marginLeft:"5%",
-            marginRight:"5%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginLeft: "5%",
+            marginRight: "5%",
             marginTop: "5%",
             marginBottom: "5%",
-            alignSelf:"center"}}
+            alignSelf: "center"}}
         >  
           <Typography sx = {{ fontWeight: "bolder", marginLeft: "5%" }}>
               Total De Pago: 
@@ -417,4 +433,5 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     </>
   )
 }
+
 export default BuyingModal
