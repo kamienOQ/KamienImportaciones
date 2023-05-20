@@ -20,6 +20,7 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
   const onAdd = () => {
     const tempProduct = {
       id: uuidv4(),
+      date: product.date,
       name: product.productName,
       image: product.image.url,
       relatedListAttributes: selectedAttributes,

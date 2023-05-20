@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFirestore, collection, onSnapshot } from "firebase/firestore";
 import { Badge, Box, Button, Divider, Drawer, Grid, IconButton, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -7,8 +8,11 @@ import EastIcon from '@mui/icons-material/East';
 import { CartItem } from "./CartItem";
 import { CleanProductsModal } from "./CleanProductsModal";
 import BuyingModal from "../confirm/BuyingModal";
+import { FirebaseDB } from "../../firebase/config";
+import { onSetAllProducts } from "../../store/cart/cartSlice";
 
 export const Cart = () => {
+  const dispatch = useDispatch();
   const { products } = useSelector((state) => state.cart);
 
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -18,6 +22,7 @@ export const Cart = () => {
     setCartItems(updatedCartItems);
   }; */
   const [open, setopen] = useState(false)
+
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getFirestore, collection, onSnapshot } from "firebase/firestore";
 import { Avatar, Badge, Button, IconButton, ToggleButtonGroup, Typography} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
@@ -9,6 +10,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useAboutStore } from '../hooks/useAboutStore';
 import { Cart } from './cart/Cart';
 import { useDispatch } from 'react-redux';
+import { FirebaseDB } from "../firebase/config";
 import { onSetAllProducts } from '../store/cart/cartSlice';
 
 const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
@@ -24,11 +26,65 @@ export const MasterPage = ({ children }) => {
   const { instagram, whatsapp, logo, startGetAbout } = useAboutStore();
 
   useEffect(() => {
-    const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    if (cartProducts) {
-      dispatch(onSetAllProducts(cartProducts));
-    }
+    const productsRef = collection(FirebaseDB, '/products');
+
+    const unsubscribe = onSnapshot(productsRef, (querySnapshot) => {
+      let type;
+      const modifiedProducts = querySnapshot.docChanges().map((change) => {
+        type = change.type;
+        return change.doc.data();
+      });
+
+      const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
+      if (cartProducts) {
+        let updatedCartProducts = [];
+        if (type === 'removed') {
+          updatedCartProducts = cartProducts.filter((cartProduct) => {
+            return modifiedProducts.some((modified) => modified.date !== cartProduct.date);
+          });
+        } else {
+          updatedCartProducts = cartProducts.reduce((accumulator, cartProduct) => {
+            const modifiedProduct = modifiedProducts.find((modified) => modified.date === cartProduct.date);
+            if (modifiedProduct) {
+              if (modifiedProduct.active === false) {
+                // El producto ha sido desactivado, no se incluirá en el carrito
+                return accumulator;
+              }
+              // Válida si ningún atributo del producto del carrito a cambiado
+              let equalAttributes = true
+              for (let attribute in cartProduct.relatedListAttributes) {
+                const equalAttribute = modifiedProduct.relatedListAttributes.filter(attributeM => attributeM.attributeSelected === attribute && attributeM.feature === cartProduct.relatedListAttributes[attribute]);
+                if (equalAttribute.length === 0) {
+                  equalAttributes = false;
+                }
+              }
+              if (!equalAttributes) {
+                return accumulator;
+              }
+              const tempProduct = {
+                ...cartProduct,
+                date: modifiedProduct.date,
+                name: modifiedProduct.productName,
+                image: modifiedProduct.image.url,
+                price: modifiedProduct.price,
+              };
+              return [...accumulator, tempProduct];
+            } else if (type === 'added' && modifiedProducts.length > 1) {
+              return accumulator;
+            }
+            return [...accumulator, cartProduct];
+          }, []);
+        }
+        dispatch(onSetAllProducts(updatedCartProducts));
+        localStorage.setItem('cartProducts', JSON.stringify(updatedCartProducts));
+      }
+    });
+
     startGetAbout();
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
   
   //* Función para asignar los filtros de hombre, mujer o niño
