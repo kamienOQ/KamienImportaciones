@@ -60,7 +60,7 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
           > 
             - 
           </Button>
-          {<Button disabled>{count}</Button>}
+          {<Button sx={{ "&:disabled": {bgcolor: "tertiary.main", color: "dark.main"} }} disabled>{count}</Button>}
           <Button  
             onClick={increase}
           > 
