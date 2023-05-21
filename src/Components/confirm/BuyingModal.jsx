@@ -10,6 +10,8 @@ import GppBadIcon from '@mui/icons-material/GppBad';
 import { crearPedido } from '../../firebase/providers';
 import { MapContainer,Marker,TileLayer } from "react-leaflet"
 import "./BuyingModal.css"
+import { useDispatch } from 'react-redux';
+import { onCleanProducts } from '../../store/cart/cartSlice';
 
 const BuyingModal = ({open,setOpen,datosCompra}) => {
   const [ unitaryPricetotal, setunitaryPriceTotal ] = useState(0)
@@ -24,6 +26,8 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
   const [ markerPosition, setMarkerPosition ] = useState(undefined)
   const mapRef = useRef(null)
   const [ numeroAdmin, setNumeroAdmin ] = useState("62805962")
+
+  const dispatch = useDispatch();
 
   const SendMessage = async() => {
     let fecha = new Date();
@@ -48,6 +52,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     setdisable(false)
     setOpen(!open)
     await crearPedido(data);
+    dispatch(onCleanProducts());
   }
 
   const checkNull = () =>
