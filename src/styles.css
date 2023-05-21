@@ -554,9 +554,7 @@ a{
 .TableContainer{
     align-content: center;
     justify-content: center;
-    border-radius: 20px;
     width: 80%;
-    border: "1px solid gray";
     margin-left: 10%;
 }
 

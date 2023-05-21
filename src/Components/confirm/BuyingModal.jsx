@@ -10,6 +10,8 @@ import GppBadIcon from '@mui/icons-material/GppBad';
 import { crearPedido } from '../../firebase/providers';
 import { MapContainer,Marker,TileLayer } from "react-leaflet"
 import "./BuyingModal.css"
+import { useDispatch } from 'react-redux';
+import { onChangeSuccess } from '../../store/buying/buyingSlice';
 
 const BuyingModal = ({open,setOpen,datosCompra}) => {
   const [unitaryPricetotal,setunitaryPriceTotal] = useState(0)
@@ -25,6 +27,8 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
   const mapRef = useRef(null)
   const [numeroAdmin,setNumeroAdmin] = useState("62805962")
 
+  const dispatch = useDispatch();
+
   const SendMessage = async() => {
     let fecha = new Date();
     const data = {
@@ -35,7 +39,9 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
       nameLowerCase: name.toLowerCase(),
       status : "Pendiente",
       wayToPay : metodoPago,
-      sendMethod : envio
+      sendMethod : envio,
+      products : datosCompra,
+      totalPrice : calculateTotal()
     }
 
     const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${numeroAdmin}`
@@ -48,6 +54,8 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     setdisable(false)
     setOpen(!open)
     await crearPedido(data);
+    dispatch(onChangeSuccess(true));
+    
   }
 
   const checkNull = () =>

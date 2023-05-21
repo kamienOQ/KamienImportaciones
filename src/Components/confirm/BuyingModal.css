@@ -82,7 +82,6 @@
   align-content: center;
   justify-content: center;
   border-radius: auto;
-  border: 1px solid gray;
 }
 
 @media screen and (max-width: 767px), (max-width: 1024px) {

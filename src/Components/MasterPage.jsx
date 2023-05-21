@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react';
-import { Avatar, Badge, Button, IconButton, ToggleButtonGroup, Typography} from '@mui/material';
+import { useEffect } from 'react';
+import { Alert, Avatar, IconButton, Snackbar, Typography} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
-// import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-// import { useFiltersPageStore } from '../hooks/useFiltersPageStore';
 import { useAboutStore } from '../hooks/useAboutStore';
 import { Cart } from './cart/Cart';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { onSetAllProducts } from '../store/cart/cartSlice';
 import { useNavigate } from 'react-router';
+import { onChangeSuccess } from '../store/buying/buyingSlice';
 
-const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
-  '&.Mui-selected, &.Mui-selected:hover': {
-    color: 'white',
-    backgroundColor: selectedcolor,
-  },
-}));
+// const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
+//   '&.Mui-selected, &.Mui-selected:hover': {
+//     color: 'white',
+//     backgroundColor: selectedcolor,
+//   },
+// }));
 
 export const MasterPage = ({ children }) => {
   const dispatch = useDispatch();
   // const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useFiltersPageStore();
   const { instagram, whatsapp, logo, startGetAbout } = useAboutStore();
+  const { success } = useSelector((state) => state.buying);
 
   const navigate = useNavigate();
 
@@ -33,15 +33,6 @@ export const MasterPage = ({ children }) => {
     }
     startGetAbout();
   }, []);
-  
-  //* Función para asignar los filtros de hombre, mujer o niño
-  // const handleAlignment = (event, newAlignment) => {
-  //   setCategoriesFilter(newAlignment);
-  // };
-  //* Función para abrir y cerrar el sidebar de filtros
-  // const onHandleFilters = () => {
-  //   openCloseProductsFilter();
-  // };
 
   const redirectAbout = () => {
     navigate('/Nosotros')
@@ -49,6 +40,10 @@ export const MasterPage = ({ children }) => {
 
   const redirectCategories = () => {
     navigate('/categorias')
+  }
+
+  const onCloseBuyingSuccess = () => {
+    dispatch(onChangeSuccess(false));
   }
 
   return (
@@ -61,41 +56,7 @@ export const MasterPage = ({ children }) => {
               <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
                 Kámien
               </Typography>
-              {/* Boton para abrir y cerrar el sidebar de filtros */}
-              {/* {filterType === 'Products' && 
-              <IconButton sx={{paddingY: 3}} to="/" onClick={onHandleFilters}>
-                <FilterAltIcon color='quaternary'/>
-              </IconButton>} */}
             </div>
-            {/* Botones para asignar el filtro de hombre mujer y niño */}
-            {/* {filterType === 'Categories' && (<ToggleButtonGroup
-              exclusive
-              aria-label="text alignment"
-              onChange={handleAlignment}
-              sx={{marginTop: 1, marginBottom: 1, color: 'tertiary.main'}}
-              value={categoriesFilter}
-              
-            >
-              <ToggleButton value="hombre" aria-label="left aligned" selectedcolor="#643A07" sx={{color: 'black'}}> 
-                HOMBRE
-              </ToggleButton>
-              <ToggleButton value="mujer" aria-label="centered" selectedcolor="#643A07" sx={{color: 'black'}}>
-                MUJER
-              </ToggleButton>
-              <ToggleButton value="ninos" aria-label="right aligned" selectedcolor="#643A07" sx={{color: 'black'}}>
-                NIÑOS
-              </ToggleButton>
-            </ToggleButtonGroup>)} */}
-
-            {/* <Button
-              aria-controls="carrito-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <Badge badgeContent={3} color="error">
-                <ShoppingCartIcon />
-              </Badge>
-            </Button> */}
             <Cart />
             
         </header>
@@ -117,6 +78,15 @@ export const MasterPage = ({ children }) => {
             Todos los derechos reservados hasta 2024.
           </div>
         </footer>
+        <Snackbar open={success} onClose={onCloseBuyingSuccess} sx={{alignItems: "flex-start", mt: "42px"}} 
+            anchorOrigin={{
+            vertical: "top", 
+            horizontal: "right"
+          }}>
+            <Alert onClose={onCloseBuyingSuccess} severity="success" variant="filled" sx={{ width: '100%'}}>
+              El pedido ha sido realizado correctamente
+            </Alert>
+        </Snackbar>
     </div>
   )
 }
