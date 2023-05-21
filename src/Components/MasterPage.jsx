@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router';
 import { onChangeSuccess } from '../store/buying/buyingSlice';
 import { FirebaseDB } from "../firebase/config";
 import { onCloseError, onCloseSuccess, onSetAllProducts } from '../store/cart/cartSlice';
+import { useAttributesStore } from '../hooks/useAttributesStore';
 
 // const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
 //   '&.Mui-selected, &.Mui-selected:hover': {
@@ -28,6 +29,23 @@ export const MasterPage = ({ children }) => {
 
   const navigate = useNavigate();
   const { message } = useSelector((state) => state.cart);
+
+  const { isOpen } = useAttributesStore();
+
+  useEffect(() => {
+    let headerElement = document.getElementById('masterHeader');
+    let footerElement = document.getElementById('masterFooter');
+    if(headerElement.classList !== undefined && footerElement.classList !== undefined){
+      if(isOpen){
+        headerElement.classList.add("move-header");
+        footerElement.classList.add("move-footer");
+      }else{
+        headerElement.classList.remove("move-header");
+        footerElement.classList.remove("move-footer");
+      }
+    }
+  }, [isOpen])
+  
 
   useEffect(() => {
     const productsRef = collection(FirebaseDB, '/products');
@@ -113,7 +131,7 @@ export const MasterPage = ({ children }) => {
 
   return (
     <div className="page-wrapper">
-        <header className='header-navbar'>
+        <header id="masterHeader" className='header-navbar'>
             <div className='filter-products-container'>
               <IconButton sx={{ mr: 1 }} onClick={redirectCategories}>
                 <Avatar src = {logo}/>
@@ -126,7 +144,7 @@ export const MasterPage = ({ children }) => {
             
         </header>
             {children}
-        <footer className='footer'>
+        <footer id='masterFooter' className='footer'>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
               <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon/></a>

@@ -12,9 +12,7 @@ import { GenderFilter, AttributeFilter } from '../filters'
 import { useAttributesStore } from "../hooks";
 
 export const ProductsPage = () => {
-  const [ isOpen, setIsOpen ] = useState(false);
-
-  const { startGetAttributesByCategory} = useAttributesStore();
+  const { startGetAttributesByCategory, setIsOpen, isOpen} = useAttributesStore();
 
   const { closeProductModal, isProductModalOpen } = useUiStore();
 
@@ -26,13 +24,7 @@ export const ProductsPage = () => {
   
 
   function handleOpen() {
-    if(isOpen){
-      setIsOpen(false);
-    }
-    else{
-      setIsOpen(true);
-    }
-    
+    setIsOpen(!isOpen);
   }
 
   function handleClose() {

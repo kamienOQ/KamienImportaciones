@@ -50,6 +50,16 @@ a{
     z-index: 1;
 }
 
+.move-header{
+    width: calc(100% - 258px) !important;
+    margin-left: 280px;
+}
+
+.move-footer{
+    width: calc(100% - 280px) !important;
+    margin-left: 280px;
+}
+
 .filter-products-container{
     display: flex;
     justify-content: center;

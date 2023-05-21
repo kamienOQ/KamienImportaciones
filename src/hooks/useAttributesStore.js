@@ -1,6 +1,6 @@
 import { useDispatch,useSelector  } from "react-redux";
 import {onStartGetAttributesByCategory,onStartGetProductsByAttributes,onStartGetProductsByGender,onSetAttributesSelected, 
-    onCleanAttributesSelected, onSetGenderFilter, onSetAttributesFilter, onDeleteAttributesFilter} from "../store/attributes";
+    onCleanAttributesSelected, onSetGenderFilter, onSetAttributesFilter, onDeleteAttributesFilter, onSetIsOpen} from "../store/attributes";
 
 export const useAttributesStore = () => {
     const dispatch = useDispatch();
@@ -9,7 +9,8 @@ export const useAttributesStore = () => {
         productsSelected,
         attributes,
         genderFilter,
-        attributesFilter
+        attributesFilter,
+        isOpen,
     } = useSelector( state => state.filter);
 
     //*Slide
@@ -37,6 +38,10 @@ export const useAttributesStore = () => {
         dispatch( onDeleteAttributesFilter(value) );
     }
 
+    const setIsOpen = (value) => {
+        dispatch( onSetIsOpen(value) );
+    }
+
     //*Thunks
     const startGetAttributesByCategory = () => {
         dispatch( onStartGetAttributesByCategory() );
@@ -54,6 +59,7 @@ export const useAttributesStore = () => {
         attributes,
         genderFilter,
         attributesFilter,
+        isOpen,
 
         //*Métodos
         startGetAttributesByCategory,
@@ -65,6 +71,7 @@ export const useAttributesStore = () => {
         setGenderFilter,
         setAttributesFilter,
         deleteAttributesFilter,
+        setIsOpen,
     }
 }
 

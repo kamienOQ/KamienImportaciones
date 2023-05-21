@@ -5,8 +5,7 @@ import { GenderFilter, AttributeFilter} from './'
 import {useAttributesStore} from "../hooks";
 
 export const Sidebar = () => {
-    const [ isOpen, setIsOpen ] = useState(false);
-    const { startGetAttributesByCategory, cleanAttributesSelected, attributes} = useAttributesStore();
+    const { startGetAttributesByCategory, cleanAttributesSelected, attributes, setIsOpen, isOpen} = useAttributesStore();
 
     function handleClose() {
         setIsOpen(false);

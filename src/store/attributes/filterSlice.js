@@ -7,6 +7,7 @@ export const filterSlice = createSlice({
         attributesSelected: [],
         genderFilter: '',
         attributesFilter: [],
+        isOpen: false,
     },
     reducers: {
         onSetAttributes: ( state, { payload } ) => {
@@ -35,7 +36,10 @@ export const filterSlice = createSlice({
         },
         onDeleteAttributesFilter: (state, { payload }) => {
             state.attributesFilter =  state.attributesFilter.filter(attribute => attribute !== payload);
-        }
+        },
+        onSetIsOpen: (state, { payload }) => {
+            state.isOpen = payload;
+        },
 
     }
 });
@@ -52,4 +56,5 @@ export const {
     onSetGenderFilter,
     onSetAttributesFilter,
     onDeleteAttributesFilter,
+    onSetIsOpen,
 } = filterSlice.actions;
