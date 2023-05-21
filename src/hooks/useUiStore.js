@@ -13,7 +13,7 @@ export const useUiStore = () => {
     const { 
         isProductModalOpen,
         isModalViewOpen,
-        isModalViewOpenProduct, 
+        isModalViewOpenProduct,
     } = useSelector( state => state.ui );
 
     const openProductModal = () => {

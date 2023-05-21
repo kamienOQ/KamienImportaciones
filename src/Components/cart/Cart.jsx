@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Badge, Box, Button, Divider, Drawer, Grid, IconButton, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -7,9 +7,10 @@ import EastIcon from '@mui/icons-material/East';
 import { CartItem } from "./CartItem";
 import { CleanProductsModal } from "./CleanProductsModal";
 import BuyingModal from "../confirm/BuyingModal";
+import { CartProductDetails } from "./CartProductDetail";
 
 export const Cart = () => {
-  const { products } = useSelector((state) => state.cart);
+  const { products, activeProduct } = useSelector((state) => state.cart);
 
   const [openDrawer, setOpenDrawer] = useState(false);
   // const [cartItems, setCartItems] = useState(products);
@@ -18,6 +19,7 @@ export const Cart = () => {
     setCartItems(updatedCartItems);
   }; */
   const [open, setopen] = useState(false)
+
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
@@ -96,6 +98,9 @@ export const Cart = () => {
         </Grid>
       </Drawer>
       <BuyingModal open = {open} setOpen = {setopen} datosCompra = {products}/>
+      {
+        activeProduct && <CartProductDetails />
+      }
     </>
   );
 };

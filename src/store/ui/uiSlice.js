@@ -31,4 +31,5 @@ export const {
     onCloseProductModal, 
     onOpenModalViewProduct,
     onCloseModalViewProduct,
+    isModalViewOpenProduct,
 } = uiSlice.actions;

@@ -20,6 +20,7 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
   const onAdd = () => {
     const tempProduct = {
       id: uuidv4(),
+      date: product.date,
       name: product.productName,
       image: product.image.url,
       relatedListAttributes: selectedAttributes,
@@ -59,7 +60,7 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
           > 
             - 
           </Button>
-          {<Button disabled>{count}</Button>}
+          {<Button sx={{ "&:disabled": {bgcolor: "tertiary.main", color: "dark.main"} }} disabled>{count}</Button>}
           <Button  
             onClick={increase}
           > 

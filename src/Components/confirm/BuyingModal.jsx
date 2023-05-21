@@ -12,6 +12,7 @@ import { MapContainer,Marker,TileLayer } from "react-leaflet"
 import "./BuyingModal.css"
 import { useDispatch } from 'react-redux';
 import { onChangeSuccess } from '../../store/buying/buyingSlice';
+import { onCleanProducts } from '../../store/cart/cartSlice';
 
 const BuyingModal = ({open,setOpen,datosCompra}) => {
   const [unitaryPricetotal,setunitaryPriceTotal] = useState(0)
@@ -55,7 +56,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
     setOpen(!open)
     await crearPedido(data);
     dispatch(onChangeSuccess(true));
-    
+    dispatch(onCleanProducts());
   }
 
   const checkNull = () =>
