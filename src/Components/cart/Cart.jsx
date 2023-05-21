@@ -7,9 +7,10 @@ import EastIcon from '@mui/icons-material/East';
 import { CartItem } from "./CartItem";
 import { CleanProductsModal } from "./CleanProductsModal";
 import BuyingModal from "../confirm/BuyingModal";
+import { CartProductDetails } from "./CartProductDetail";
 
 export const Cart = () => {
-  const { products } = useSelector((state) => state.cart);
+  const { products, activeProduct } = useSelector((state) => state.cart);
 
   const [openDrawer, setOpenDrawer] = useState(false);
   // const [cartItems, setCartItems] = useState(products);
@@ -97,6 +98,9 @@ export const Cart = () => {
         </Grid>
       </Drawer>
       <BuyingModal open = {open} setOpen = {setopen} datosCompra = {products}/>
+      {
+        activeProduct && <CartProductDetails />
+      }
     </>
   );
 };

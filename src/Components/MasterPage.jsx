@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, onSnapshot } from "firebase/firestore";
-import { Avatar, Badge, Button, IconButton, ToggleButtonGroup, Typography} from '@mui/material';
+import { Alert, Avatar, Badge, Button, IconButton, Snackbar, ToggleButtonGroup, Typography} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton from '@mui/material/ToggleButton';
 // import FilterAltIcon from '@mui/icons-material/FilterAlt';
@@ -9,9 +9,9 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 // import { useFiltersPageStore } from '../hooks/useFiltersPageStore';
 import { useAboutStore } from '../hooks/useAboutStore';
 import { Cart } from './cart/Cart';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FirebaseDB } from "../firebase/config";
-import { onSetAllProducts } from '../store/cart/cartSlice';
+import { onCloseError, onCloseSuccess, onSetAllProducts } from '../store/cart/cartSlice';
 
 const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
   '&.Mui-selected, &.Mui-selected:hover': {
@@ -24,6 +24,7 @@ export const MasterPage = ({ children }) => {
   const dispatch = useDispatch();
   // const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useFiltersPageStore();
   const { instagram, whatsapp, logo, startGetAbout } = useAboutStore();
+  const { message } = useSelector((state) => state.cart);
 
   useEffect(() => {
     const productsRef = collection(FirebaseDB, '/products');
@@ -96,6 +97,14 @@ export const MasterPage = ({ children }) => {
   //   openCloseProductsFilter();
   // };
 
+  const onCloseMessageError = () => {
+    dispatch(onCloseError());
+  }
+
+  const onCloseMessageSuccess = () => {
+    dispatch(onCloseSuccess());
+  }
+
   return (
     <div className="page-wrapper">
         <header className='header-navbar'>
@@ -162,6 +171,24 @@ export const MasterPage = ({ children }) => {
             Todos los derechos reservados hasta 2024.
           </div>
         </footer>
+        <Snackbar open={message.error} autoHideDuration={6000} onClose={onCloseMessageError} sx={{alignItems: "flex-start", mt: "42px"}} 
+          anchorOrigin={{
+          vertical: "top", 
+          horizontal: "right"
+        }}>
+          <Alert onClose={onCloseMessageError} severity="error" variant="filled" sx={{ width: '100%'}}>
+            Ya existe un producto en el carrito con los mismos atributos
+          </Alert>
+        </Snackbar>
+        <Snackbar open={message.success} autoHideDuration={6000} onClose={onCloseMessageSuccess} sx={{alignItems: "flex-start", mt: "42px"}} 
+            anchorOrigin={{
+            vertical: "top", 
+            horizontal: "right"
+          }}>
+            <Alert onClose={onCloseMessageSuccess} severity="success" variant="filled" sx={{ width: '100%'}}>
+              El producto del carrito ha sido actualizado correctamente
+            </Alert>
+        </Snackbar>
     </div>
   )
 }
