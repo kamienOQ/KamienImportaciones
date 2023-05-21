@@ -41,7 +41,7 @@ export const cartSlice = createSlice({
             equalAttributes = false;
           }
         }
-        if (product.name === action.payload.name && equalAttributes) {
+        if (product.id !== action.payload.id && equalAttributes) {
           return product;
         }
         return undefined;

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 export const CartItemCount = ({ selectedAttributes }) => {
   const { activeCartProduct } = useSelector((state) => state.cart);
 
-  const { name, quantity } = activeCartProduct;
+  const { id, quantity } = activeCartProduct;
 
   const [count, setCount] = useState(quantity);
 
@@ -28,7 +28,7 @@ export const CartItemCount = ({ selectedAttributes }) => {
 
   const onSave = () => {
     const newDetails = {
-      name,
+      id,
       quantity: count,
       relatedListAttributes: selectedAttributes
     }
