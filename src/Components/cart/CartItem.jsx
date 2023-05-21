@@ -1,12 +1,15 @@
 import { useDispatch } from "react-redux";
-import { Box, Button, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, Button, Grid, List, ListItem, ListItemText, Tooltip, Typography } from "@mui/material";
 import {
   onDecreaseQuantity,
   onIncreaseQuantity,
-} from "../../store/cart/cartSlice";
+  onOpenModalViewCart,
+  onSetActiveCartProduct,
+  onStartGetProductByDate,
+} from "../../store/cart";
 import { RemoveProductModal } from "./RemoveProductModal";
 
-export const CartItem = ({ id, name, image, price, relatedListAttributes, quantity }) => {
+export const CartItem = ({ id, date, name, image, price, relatedListAttributes, quantity }) => {
   const dispatch = useDispatch();
 
   const handleDecrease = () => {
@@ -19,9 +22,14 @@ export const CartItem = ({ id, name, image, price, relatedListAttributes, quanti
     dispatch(onIncreaseQuantity(id));
   };
 
+  const handleProductDetails = () => {
+    dispatch(onStartGetProductByDate(date));
+    dispatch(onSetActiveCartProduct({ id, date, name, image, price, relatedListAttributes, quantity }));
+    dispatch(onOpenModalViewCart());
+  }
+
   return (
     <>
-      {/* <Tooltip title="Dele click para más detalles"> */}
       <Grid
         container
         direction="row"
@@ -31,7 +39,6 @@ export const CartItem = ({ id, name, image, price, relatedListAttributes, quanti
           mb: 1,
           px: 1,
           pt: 0.5,
-          //cursor: "pointer",
           "&:hover": { backgroundColor: "#f5f5f5" },
         }}
       >
@@ -48,14 +55,16 @@ export const CartItem = ({ id, name, image, price, relatedListAttributes, quanti
           />
         </Grid>
         <Grid item width="50%">
-          <Typography
-            variant="subtitle1"
-            noWrap
-            component="h3"
-            sx={{ mx: 1, fontWeight: "bold" }}
-          >
-            {name}
-          </Typography>
+          <Tooltip title="Dele click para más detalles" onClick={handleProductDetails}>
+            <Typography
+              variant="subtitle1"
+              noWrap
+              component="h3"
+              sx={{ mx: 1, fontWeight: "bold", cursor: "pointer" }}
+            >
+              {name}
+            </Typography>
+          </Tooltip>
           <Typography
             variant="subtitle2"
             noWrap
@@ -145,7 +154,6 @@ export const CartItem = ({ id, name, image, price, relatedListAttributes, quanti
           <RemoveProductModal id={id} />
         </Grid>
       </Grid>
-      {/* </Tooltip> */}
     </>
   );
 };
