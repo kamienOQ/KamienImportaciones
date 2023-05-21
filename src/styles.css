@@ -688,4 +688,14 @@ a{
     align-items: center;
   }
 
-
+  .secundary-products-container {
+    flex-grow: 1;
+    padding-left: 0; 
+    transition: 0.3s;
+    margin-left: 0; 
+  }
+  
+  .secundary-products-container.open {
+    transition: 0.3s; 
+    margin-left: 300px;;
+  }

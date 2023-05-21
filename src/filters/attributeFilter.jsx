@@ -2,13 +2,13 @@ import { Button,List, ListItem,ListItemButton,ListItemText,Checkbox, FormControl
 import FilterListIcon from '@mui/icons-material/FilterList';
 import {useAttributesStore, useProductsStore} from "../hooks";
 import { useCategoriesStore } from '../hooks/useCategoriesStore';
+import { cartSlice } from '../store/cart/cartSlice';
 
-export const AttributeFilter = (attributesList) => {
-    const { startGetProductsByAttributes, setAttributesSelected, setAttributesFilter, attributesFilter, deleteAttributesFilter} = useAttributesStore();
+export const AttributeFilter = () => {
+    const { startGetProductsByAttributes, setAttributesSelected, setAttributesFilter, attributesFilter, deleteAttributesFilter,attributes} = useAttributesStore();
     const { startGetProducts } = useProductsStore();
     const { categorySelected } = useCategoriesStore();
 
-    
     function handleClick() {
         if(attributesFilter.length === 0){
             startGetProducts(categorySelected);
@@ -37,7 +37,7 @@ export const AttributeFilter = (attributesList) => {
                 <ListItemText primary={"Filtrar por Atributos"} sx={{ opacity: open ? 1 : 0 }}/>
             </ListItem>
             <FormGroup>
-                {attributesList.attributesList.map((attribute, index) => (
+                {attributes?.map((attribute, index) => (
                     attribute.attributeName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") !== 'genero' &&
                     <div key={index}>
                         <ListItem  sx={{ display: 'block'}}>  
@@ -63,4 +63,3 @@ export const AttributeFilter = (attributesList) => {
         </List>    
     )
 }
-
