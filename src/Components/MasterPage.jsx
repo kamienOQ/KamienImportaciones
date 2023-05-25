@@ -114,7 +114,11 @@ export const MasterPage = ({ children }) => {
   }
 
   const redirectCategories = () => {
-    navigate('/categorias')
+    navigate('/Categorias')
+  }
+
+  const redirectDevelopers = () => {
+    navigate('/Desarrolladores')
   }
 
   const onCloseBuyingSuccess = () => {
@@ -151,11 +155,14 @@ export const MasterPage = ({ children }) => {
             </div>
           </div>
           <div className='footer-contactInfo'>
-            <div className='phoneNumber'>
-              <LocalPhoneIcon sx={{fontSize: 'small'}}/>
-              <p>{whatsapp}</p>
-            </div>
+            <div className='footer-contactInfo-child'>
+              <div className='phoneNumber'>
+                <LocalPhoneIcon sx={{fontSize: 'small'}}/>
+                <p>{whatsapp}</p>
+              </div>
               <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
+            </div>
+            <a onClick={redirectDevelopers} className='redirectToAbout'>Desarrolladores</a>
           </div>
           <div className='footer-copyright'>
             Todos los derechos reservados hasta 2024.

@@ -4,6 +4,7 @@ import { CategoriesPage } from "../../Pages/CategoriesPage";
 import { AboutPage } from "../../Pages/AboutPage";
 import { ProductsPage } from "../../Pages/ProductsPage";
 import { ProductsModalDetail } from "../products/ProductsModalDetail";
+import { DevelopersPage } from "../../Pages/DevelopersPage";
 
 export const ImportRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const ImportRoutes = () => {
        <Route path= "/Producto" element = {<ProductsPage />}/>
        <Route path= "/Categorias" element = {<CategoriesPage/>}/>
        <Route path= "/Nosotros" element = {<AboutPage/>}/>
+       <Route path= "/Desarrolladores" element = {<DevelopersPage/>}/>
        <Route path="/*" element={<Navigate to="/" />} />
      </Routes>
     </MasterPage>
