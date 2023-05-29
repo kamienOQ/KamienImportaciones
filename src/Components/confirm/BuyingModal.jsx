@@ -13,8 +13,11 @@ import "./BuyingModal.css"
 import { useDispatch } from 'react-redux';
 import { onChangeSuccess } from '../../store/buying/buyingSlice';
 import { onCleanProducts } from '../../store/cart/cartSlice';
+import { useAboutStore } from '../../hooks/useAboutStore';
 
 const BuyingModal = ({open,setOpen,datosCompra}) => {
+  const { whatsapp } = useAboutStore();
+
   const [ unitaryPricetotal, setunitaryPriceTotal ] = useState(0)
   const [ metodoPago, setMetodoPago ] = useState("")
   const [ name, setname ] = useState("")
@@ -45,7 +48,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
       totalPrice : calculateTotal()
     }
 
-    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${numeroAdmin}`
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${whatsapp.replace('-', '')}`
     window.open(url);
     setNumero("")
     setname("")
