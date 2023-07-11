@@ -144,7 +144,10 @@ export const MasterPage = ({ children }) => {
                 Kámien
               </Typography>
             </div>
-            <Cart />
+            <IconButton sx={{ color: '#ffffff' }}>
+              <Cart />
+            </IconButton>
+            
             
         </header>
             {children}
