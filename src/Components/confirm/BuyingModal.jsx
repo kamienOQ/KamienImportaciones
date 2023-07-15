@@ -29,7 +29,7 @@ const BuyingModal = ({open,setOpen,datosCompra}) => {
   const [ position, setPosition ] = useState(undefined)
   const [ markerPosition, setMarkerPosition ] = useState(undefined)
   const mapRef = useRef(null)
-  const [ numeroAdmin, setNumeroAdmin ] = useState("62805962")
+  const [ numeroAdmin, setNumeroAdmin ] = useState("71095580")
 
   const dispatch = useDispatch();
 
