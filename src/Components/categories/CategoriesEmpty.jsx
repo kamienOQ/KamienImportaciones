@@ -1,10 +1,10 @@
-import emptyCategorites from '../../assets/emptyCategories.jpg'
+import emptyCategorites from '../../assets/Cargando.webp'
 
 export const CategoriesEmpty = () => {
   return (
     <div className='container-emptyCategories'>
-        <img src={emptyCategorites} alt="" className='emptyCategories-image' />
-        <h2>No hay categorías creadas</h2>
+        <img src={emptyCategorites} alt="" className='Cargando-image' />
+        <h2>Cargando espere</h2>
     </div>
   )
 }
