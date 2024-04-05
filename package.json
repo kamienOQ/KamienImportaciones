@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "start": "serve dist -s -n -L -p $PORT"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -22,7 +21,6 @@
     "react-leaflet": "^4.2.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",
-    "serve": "^14.2.1",
     "uuid": "^9.0.0",
     "uuidv4": "^6.2.13"
   },
