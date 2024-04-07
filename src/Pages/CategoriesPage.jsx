@@ -1,7 +1,7 @@
-import { useEffect } from "react"
-import { CategoriesCards } from "../Components/categories/CategoriesCards"
-import { useCategoriesStore } from "../hooks/useCategoriesStore"
-import { CategoriesEmpty } from "../Components/categories/CategoriesEmpty"
+import { useEffect } from 'react';
+import { CategoriesCards } from '../Components/categories/CategoriesCards';
+import { useCategoriesStore } from '../hooks/useCategoriesStore';
+import { CategoriesEmpty } from '../Components/categories/CategoriesEmpty';
 
 export const CategoriesPage = () => {
   const { categories, startGetCategories } = useCategoriesStore();

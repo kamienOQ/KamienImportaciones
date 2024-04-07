@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   Box,
   Dialog,
@@ -11,9 +11,9 @@ import {
   RadioGroup,
   Radio,
   TableContainer,
-} from "@mui/material";
-import { useSelector } from "react-redux";
-import { CartItemCount } from "./CartItemCount";
+} from '@mui/material';
+import { useSelector } from 'react-redux';
+import { CartItemCount } from './CartItemCount';
 
 export const CartProductDetails = () => {
   const { activeProduct, activeCartProduct, isModalViewOpenCart } = useSelector(
@@ -58,20 +58,11 @@ export const CartProductDetails = () => {
                   variant="standard"
                 >
                   <label component="legend">
-                    Atributos relacionados al producto
+                    Atributos relacionados al producto.
                   </label>
                   <FormGroup>
                     {relatedAttributes.map((attribute, index) => (
-                      <div
-                        key={index}
-                        // control={
-                        //     <Checkbox
-                        //         checked={setState[index]}
-                        //         onChange={(e) => handleChange(index, e.target.checked)}
-                        //     />
-                        // }
-                        // label={`${relatedAttributesLabels} : ${attribute}`}
-                      >
+                      <div key={index}>
                         <ListItem sx={{ display: "block" }}>
                           <label>{attribute}</label>
                         </ListItem>
@@ -104,9 +95,7 @@ export const CartProductDetails = () => {
                       </div>
                     ))}
                   </FormGroup>
-                  <FormHelperText>
-                    Selecciona los atributos que deseas
-                  </FormHelperText>
+                  <FormHelperText className='formHelperText'>Selecciona los atributos que deseas</FormHelperText>
                 </FormControl>
               </Box>
             </TableContainer>

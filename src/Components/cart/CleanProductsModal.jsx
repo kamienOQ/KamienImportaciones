@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
-import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import { onCleanProducts } from "../../store/cart/cartSlice";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box, Button, Typography, Modal, IconButton } from '@mui/material';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import { onCleanProducts } from '../../store/cart/cartSlice';
 
 export const CleanProductsModal = () => {
   const dispatch = useDispatch();

@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Button, ButtonGroup, Grid, IconButton } from "@mui/material";
+import { Button, ButtonGroup, Grid, IconButton } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import { useProductsStore, useUiStore } from '../../hooks';
 import { onSetProducts } from '../../store/cart/cartSlice';
 import { useDispatch } from 'react-redux';
 
-export const ItemCount = ( { product, selectedAttributes } ) => {
+export const ItemCount = ({ product, selectedAttributes }) => {
 
   const { closeProductModal } = useUiStore();
 
   const { isSaving } = useProductsStore();
-  
-  const [ count, setCount ] = useState(1);
+
+  const [count, setCount] = useState(1);
 
   const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
   const increase = () => {
     setCount(count + 1);
   }
-    
+
   const onCloseModa = () => {
     closeProductModal();
   }
@@ -46,52 +46,53 @@ export const ItemCount = ( { product, selectedAttributes } ) => {
   return (
     <>
       <div>
-        <ButtonGroup 
-          sx={{ m: 2 }}
+        <ButtonGroup
+          sx={{ m: 5 }}
           className='addCart-modal-button'
-          color="success" 
-          size="small" 
+          color="success"
+          size="small"
           aria-label="small outlined button group"
           variant="contained"
         >
-          <Button 
-            disabled={count <= 1} 
+          <Button
+            disabled={count <= 1}
             onClick={decrease}
-          > 
-            - 
+          >
+            -
           </Button>
-          {<Button sx={{ "&:disabled": {bgcolor: "tertiary.main", color: "dark.main"} }} disabled>{count}</Button>}
-          <Button  
+          {<Button sx={{ "&:disabled": { bgcolor: "tertiary.main", color: "dark.main" } }} disabled>{count}</Button>}
+          <Button
             onClick={increase}
-          > 
-            + 
+          >
+            +
           </Button>
         </ButtonGroup>
       </div>
-      <div 
+      <div
         className='addCart-modal-button'
       >
-          <Button 
-            startIcon={<AddShoppingCartIcon />}
-            variant="contained"
-            color="success" 
-            disabled={count <= 0} 
-            onClick={() => onAdd(count)}
-          >
-            Agregar al carrito
-          </Button>
-      </div>
-      <Grid 
-        container justifyContent="flex-end" sx={{ position: 'absolute', bottom: '99%', right: '4%' }}
-      >
-        <IconButton 
+        <Button
+          startIcon={<AddShoppingCartIcon />}
           variant="contained"
-          color="grayCoco" 
+          color="success"
+          disabled={count <= 0}
+          onClick={() => onAdd(count)}
+          sx={{ bottom: '12px', borderRadius: '15px' }}
+        >
+          Agregar al carrito
+        </Button>
+      </div>
+      <Grid
+        container justifyContent="flex-end" sx={{ position: 'absolute', bottom: '99%', right: '0%' }}
+      >
+        <IconButton
+          variant="contained"
+          color="grayCoco"
           onClick={onCloseModa}
-          sx={{ 
-            backgroundColor: "tertiary.main", 
+          sx={{
+            backgroundColor: "tertiary.main",
             borderRadius: '50%',
-            position: "absolute", 
+            position: "absolute",
           }}
           disabled={isSaving}
         >

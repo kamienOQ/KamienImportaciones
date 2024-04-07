@@ -1,5 +1,4 @@
-//import "./App.css";
-import { ImportRoutes } from "./Components/routes/ImportRoutes";
+import { ImportRoutes } from './Components/routes/ImportRoutes';
 
 ImportRoutes
 

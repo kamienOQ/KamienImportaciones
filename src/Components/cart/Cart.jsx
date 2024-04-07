@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Badge, Box, Button, Divider, Drawer, Grid, IconButton, Typography } from "@mui/material";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Badge, Box, Button, Divider, Drawer, Grid, IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EastIcon from '@mui/icons-material/East';
-import { CartItem } from "./CartItem";
-import { CleanProductsModal } from "./CleanProductsModal";
-import BuyingModal from "../confirm/BuyingModal";
-import { CartProductDetails } from "./CartProductDetail";
+import { CartItem } from './CartItem';
+import { CleanProductsModal } from './CleanProductsModal';
+import BuyingModal from '../confirm/BuyingModal';
+import { CartProductDetails } from './CartProductDetail';
 
 export const Cart = () => {
   const { products, activeProduct } = useSelector((state) => state.cart);
@@ -24,7 +24,7 @@ export const Cart = () => {
     setOpenDrawer(true);
   };
 
-  const handleModalClose = () =>{
+  const handleModalClose = () => {
     setopen(!open)
   }
   const handleDrawerClose = () => {
@@ -64,7 +64,7 @@ export const Cart = () => {
               edge="end"
               color="inherit"
               aria-label="close"
-              onClick={handleDrawerClose}
+              onClick={handleDrawerClose} 
               sx={{ border: 0 }}
             >
               <CloseIcon />
@@ -72,7 +72,7 @@ export const Cart = () => {
           </Grid>
           <Box className="scrollable-container" sx={{ maxHeight: "570px", overflow: "auto" }}>
             {products.map((item) => (
-              <CartItem key={item.id} {...item}/>
+              <CartItem key={item.id} {...item} />
             ))}
           </Box>
           <Grid item xs={12} sx={{ position: "fixed", bottom: 0, right: 0, backgroundColor: "white" }}>
@@ -88,7 +88,16 @@ export const Cart = () => {
                 variant="contained"
                 color="primary"
                 endIcon={<EastIcon />}
-                sx={{ fontSize: "20px", borderRadius: "0", textTransform: "none" }}
+                sx={{
+                  fontSize: "20px",
+                  borderRadius: "0",
+                  textTransform: "none",
+                  backgroundColor: "black",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "#707B7C", 
+                  },
+                }}
                 onClick={handleModalClose}
               >
                 Finalizar Pedido
@@ -97,7 +106,7 @@ export const Cart = () => {
           </Grid>
         </Grid>
       </Drawer>
-      <BuyingModal open = {open} setOpen = {setopen} datosCompra = {products}/>
+      <BuyingModal open={open} setOpen={setopen} datosCompra={products} />
       {
         activeProduct && <CartProductDetails />
       }

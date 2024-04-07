@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useProductsStore } from '../hooks/useProductsStore';
 import { ProductsEmpty } from '../Components/products/ProductsEmpty';
 import { ProductsCards } from '../Components/products/ProductsCards';
@@ -9,7 +9,7 @@ import { Divider, Drawer, Grid, IconButton, Typography, Tooltip,Box,} from '@mui
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { GenderFilter, AttributeFilter } from '../filters'
-import { useAttributesStore } from "../hooks";
+import { useAttributesStore } from '../hooks';
 
 export const ProductsPage = () => {
   const { startGetAttributesByCategory, setIsOpen, isOpen} = useAttributesStore();
@@ -18,10 +18,7 @@ export const ProductsPage = () => {
 
   const { products, startGetProducts, message, activeProduct } = useProductsStore();
 
-  const { categorySelected, setCategorySelected } = useCategoriesStore();
-
-  const drawerWidth = 300;
-  
+  const { categorySelected, setCategorySelected } = useCategoriesStore(); 
 
   function handleOpen() {
     setIsOpen(!isOpen);
@@ -42,9 +39,6 @@ export const ProductsPage = () => {
     startGetProducts(categorySelected);
     startGetAttributesByCategory();
   }, [categorySelected]);
-
-
-
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -67,10 +61,7 @@ export const ProductsPage = () => {
               <FilterListIcon fontSize="large"/>
             </IconButton>
           </Tooltip>
-          <Typography variant="h4">{categorySelected}</Typography>
-          {/* <figure className='container-figure-img-product'>
-                <img src={products.icon?.url} alt=""/>
-          </figure> */}
+          <Typography className='category' variant="h4">{categorySelected}</Typography>
         </Grid>
       
       

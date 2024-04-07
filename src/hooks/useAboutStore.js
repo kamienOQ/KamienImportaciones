@@ -9,6 +9,7 @@ export const useAboutStore = () => {
     const { 
         description,
         instagram,
+        facebook,
         name,
         whatsapp,
         logo
@@ -28,6 +29,7 @@ export const useAboutStore = () => {
         //*Propiedades
         description,
         instagram,
+        facebook,
         name,
         whatsapp,
         logo,

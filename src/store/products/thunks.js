@@ -3,34 +3,47 @@ import { FirebaseDB } from "../../firebase/config";
 import { onSetProducts, onSetProductsByCategorySelect } from "./productsSlice";
 
 export const onStartGetProducts = (categorySelected) => {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    const collectionRef = collection(FirebaseDB, `/products`);
+    let q = query(
+      collectionRef,
+      where("active", "==", true),
+      where("relatedCategories", "==", categorySelected)
+    );
+    const querySnapshot = await getDocs(q);
 
-        const collectionRef = collection(FirebaseDB, `/products`);  
-        let q = query( collectionRef, where('active', '==', true), where('relatedCategories', '==', categorySelected) );
-        const querySnapshot = await getDocs(q);
-
-        const product = querySnapshot.docs.map((doc) => {
-            return doc.data();
-        });
-        dispatch(onSetProducts(product));
-      
-    }
-}
+    const product = querySnapshot.docs.map((doc) => doc.data());
+    dispatch(onSetProducts(product));
+  };
+};
 
 export const onGetProductsByCategory = () => {
-    return async (dispatch, getState) => {
+  return async (dispatch, getState) => {
+    const { categorySelected } = getState().categories;
 
-        const {categorySelected} = getState().categories;
+    const collectionRef = collection(FirebaseDB, "/products");
+    let q;
 
-        const queryCollection = collection(FirebaseDB, '/products'); 
-        if (categorySelected) {
-            const queryFilter = query(queryCollection, where('active', '==', true), where('relatedCategories', '==', categorySelected));
-            getDocs(queryFilter)
-            .then( res => dispatch(onSetProductsByCategorySelect(res.docs.map( product => ({ id: product .id, ...product.data() })))));
-        } else {
-        getDocs(queryCollection)
-            .then( res => dispatch(onSetProductsByCategorySelect(res.docs.map( product => ({ id: product .id, ...product.data() })))));
-        };
-        dispatch(onSetProductsByCategorySelect(queryCollection))
+    if (categorySelected) {
+      q = query(
+        collectionRef,
+        where("active", "==", true),
+        where("relatedCategories", "==", categorySelected)
+      );
+    } else {
+      q = collectionRef;
     }
-}
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const products = querySnapshot.docs.map((product) => ({
+        id: product.id,
+        ...product.data(),
+      }));
+      dispatch(onSetProductsByCategorySelect(products));
+    });
+
+    // Devuelve la función de limpieza para limpiar el listener cuando el componente se desmonta
+    return () => {
+      unsubscribe();
+    };
+  };
+};

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
-import { Alert, Avatar, Badge, Button, IconButton, Snackbar, ToggleButtonGroup, Typography} from '@mui/material';
-import { styled } from '@mui/material/styles';
-import MuiToggleButton from '@mui/material/ToggleButton';
+import { useEffect } from 'react';
+import { collection, onSnapshot } from "firebase/firestore";
+import { Alert, Avatar, IconButton, Snackbar, ToggleButtonGroup, Typography } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useAboutStore } from '../hooks/useAboutStore';
 import { Cart } from './cart/Cart';
@@ -14,17 +14,9 @@ import { FirebaseDB } from "../firebase/config";
 import { onCloseError, onCloseSuccess, onSetAllProducts } from '../store/cart/cartSlice';
 import { useAttributesStore } from '../hooks/useAttributesStore';
 
-// const ToggleButton = styled(MuiToggleButton)(({ selectedcolor }) => ({
-//   '&.Mui-selected, &.Mui-selected:hover': {
-//     color: 'white',
-//     backgroundColor: selectedcolor,
-//   },
-// }));
-
 export const MasterPage = ({ children }) => {
   const dispatch = useDispatch();
-  // const { categoriesFilter, setCategoriesFilter, openCloseProductsFilter } = useFiltersPageStore();
-  const { instagram, whatsapp, logo, startGetAbout } = useAboutStore();
+  const { instagram, facebook, whatsapp, logo, startGetAbout } = useAboutStore();
   const { success } = useSelector((state) => state.buying);
 
   const navigate = useNavigate();
@@ -35,17 +27,17 @@ export const MasterPage = ({ children }) => {
   useEffect(() => {
     let headerElement = document.getElementById('masterHeader');
     let footerElement = document.getElementById('masterFooter');
-    if(headerElement.classList !== undefined && footerElement.classList !== undefined){
-      if(isOpen){
+    if (headerElement.classList !== undefined && footerElement.classList !== undefined) {
+      if (isOpen) {
         headerElement.classList.add("move-header");
         footerElement.classList.add("move-footer");
-      }else{
+      } else {
         headerElement.classList.remove("move-header");
         footerElement.classList.remove("move-footer");
       }
     }
   }, [isOpen])
-  
+
 
   useEffect(() => {
     const productsRef = collection(FirebaseDB, '/products');
@@ -135,71 +127,72 @@ export const MasterPage = ({ children }) => {
 
   return (
     <div className="page-wrapper">
-        <header id="masterHeader" className='header-navbar'>
-            <div className='filter-products-container'>
-              <IconButton sx={{ mr: 1 }} onClick={redirectCategories}>
-                <Avatar src = {logo}/>
-              </IconButton>
-              <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-                Kámien
-              </Typography>
-            </div>
-            <IconButton sx={{ color: '#ffffff' }}>
-              <Cart />
-            </IconButton>
-            
-            
-        </header>
-            {children}
-        <footer id='masterFooter' className='footer'>
-          <div className='footer-socialNetworks'>
-            <div className='socialNetworks-background'>
-              <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon/></a>
-            </div>
+      <header id="masterHeader" className='header-navbar'>
+        <div className='filter-products-container'>
+          <IconButton sx={{ mr: 1 }} onClick={redirectCategories}>
+            <Avatar src={logo} />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+            Kámien
+          </Typography>
+        </div>
+        <IconButton sx={{ color: '#ffffff' }}>
+          <Cart />
+        </IconButton>
+
+
+      </header>
+      {children}
+      <footer id='masterFooter' className='footer'>
+        <div className='footer-socialNetworks'>
+          <div className='socialNetworks-background'>
+            <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon style={{ color: '#DE3163' }} /></a>
           </div>
-          <div className='footer-contactInfo'>
-            <div className='footer-contactInfo-child'>
-              <div className='phoneNumber'>
-                <LocalPhoneIcon sx={{fontSize: 'small'}}/>
-                <p>{whatsapp}</p>
-              </div>
-              <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
-            </div>
-            <a onClick={redirectDevelopers} className='redirectToAbout'>Desarrolladores</a>
+          <div className='socialNetworks-background'>
+            <a href={facebook} target="_blank" rel="noopener noreferrer"><FacebookIcon style={{ color: '#0000FF' }} /></a>
           </div>
-          <div className='footer-copyright'>
-            Todos los derechos reservados hasta 2024.
+          <div className='socialNetworks-background'>
+            <a href={whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon style={{ color: 'SeaGreen' }} /></a>
           </div>
-        </footer>
-        <Snackbar open={message.error} autoHideDuration={6000} onClose={onCloseMessageError} sx={{alignItems: "flex-start", mt: "42px"}} 
-          anchorOrigin={{
-          vertical: "top", 
+        </div>
+        <div className='footer-contactInfo'>
+          <h4><LocalPhoneIcon sx={{ fontSize: 'small' }} /> 71095580</h4>
+          <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
+          <a onClick={redirectDevelopers} className='redirectToAbout'>Desarrolladores</a>
+        </div>
+        <div className='footer-copyright'>
+          Todos los derechos reservados hasta 2024.
+        </div>
+      </footer>
+      <Snackbar open={message.error} autoHideDuration={6000} onClose={onCloseMessageError} sx={{ alignItems: "flex-start", mt: "42px" }}
+        anchorOrigin={{
+          vertical: "top",
           horizontal: "right"
         }}>
-          <Alert onClose={onCloseMessageError} severity="error" variant="filled" sx={{ width: '100%'}}>
-            Ya existe un producto en el carrito con los mismos atributos
-          </Alert>
-        </Snackbar>
-        
-        <Snackbar open={message.success} autoHideDuration={6000} onClose={onCloseMessageSuccess} sx={{alignItems: "flex-start", mt: "42px"}} 
-            anchorOrigin={{
-            vertical: "top", 
-            horizontal: "right"
-          }}>
-            <Alert onClose={onCloseMessageSuccess} severity="success" variant="filled" sx={{ width: '100%'}}>
-              El producto del carrito ha sido actualizado correctamente
-            </Alert>
-        </Snackbar>
+        <Alert onClose={onCloseMessageError} severity="error" variant="filled" sx={{ width: '100%' }}>
+          Ya existe un producto en el carrito con los mismos atributos
+        </Alert>
+      </Snackbar>
 
-        <Snackbar open={success} onClose={onCloseBuyingSuccess} sx={{alignItems: "flex-start", mt: "42px"}} 
-          anchorOrigin={{
-            vertical: "top", 
-            horizontal: "right"
-          }}>
-          <Alert onClose={onCloseBuyingSuccess} severity="success" variant="filled" sx={{ width: '100%'}}>
-            El pedido ha sido realizado correctamente
-          </Alert>
-        </Snackbar>
+      <Snackbar open={message.success} autoHideDuration={6000} onClose={onCloseMessageSuccess} sx={{ alignItems: "flex-start", mt: "42px" }}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right"
+        }}>
+        <Alert onClose={onCloseMessageSuccess} severity="success" variant="filled" sx={{ width: '100%' }}>
+          El producto del carrito ha sido actualizado correctamente
+        </Alert>
+      </Snackbar>
+
+      <Snackbar open={success} onClose={onCloseBuyingSuccess} sx={{ alignItems: "flex-start", mt: "42px" }}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right"
+        }}>
+        <Alert onClose={onCloseBuyingSuccess} severity="success" variant="filled" sx={{ width: '100%' }}>
+          El pedido ha sido realizado correctamente
+        </Alert>
+      </Snackbar>
     </div>
   )
 }

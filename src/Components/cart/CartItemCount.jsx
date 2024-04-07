@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Button, ButtonGroup, Grid, IconButton } from "@mui/material";
+import { useState } from 'react';
+import { Button, ButtonGroup, Grid, IconButton } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
-import CloseIcon from "@mui/icons-material/Close";
-import { onCloseModalViewCart, onSetDetailsProducts } from "../../store/cart/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import CloseIcon from '@mui/icons-material/Close';
+import { onCloseModalViewCart, onSetDetailsProducts } from '../../store/cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const CartItemCount = ({ selectedAttributes }) => {
   const { activeCartProduct } = useSelector((state) => state.cart);
@@ -39,7 +39,7 @@ export const CartItemCount = ({ selectedAttributes }) => {
     <>
       <div>
         <ButtonGroup
-          sx={{ m: 2 }}
+          sx={{ m: 4 }}
           className="addCart-modal-button"
           color="success"
           size="small"
@@ -69,6 +69,7 @@ export const CartItemCount = ({ selectedAttributes }) => {
           color="success"
           disabled={count <= 0}
           onClick={onSave}
+          sx={{ bottom: "10px" }}
         >
           Guardar
         </Button>
@@ -76,7 +77,7 @@ export const CartItemCount = ({ selectedAttributes }) => {
       <Grid
         container
         justifyContent="flex-end"
-        sx={{ position: "absolute", bottom: "98%", right: "4%" }}
+        sx={{ position: "absolute", bottom: "99%", right: "0%" }}
       >
         <IconButton
           variant="contained"

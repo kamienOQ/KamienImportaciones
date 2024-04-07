@@ -1,133 +1,42 @@
-import { IconButton, Typography } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import steven from '../assets/steven.jpg'
-import cristopher from '../assets/cristopher.jpeg'
-import jose from '../assets/jose.jpeg'
-import victor from '../assets/victor.jpeg'
-import derian from '../assets/derian.jpeg'
+import { Typography } from '@mui/material';
+import steven from '../assets/steven.jpg';
+import cristopher from '../assets/cristopher.jpeg';
+import jose from '../assets/jose.jpeg';
+import victor from '../assets/victor.jpeg';
+import derian from '../assets/derian.jpeg';
+import Developers from './Developers';
 
 
-export const DevelopersPage = () => {
-  return (
-    <div className='main-developers-container'>
-        <div className='developers-container'>
-            <div className='developers-title-container'>
-                <Typography variant="h4">Desarrolladores</Typography>
-            </div>
-            <div className='developers-grid'>
-                <div className='developers-card'>
-                    <figure className='container-figure-img'>
-                        <img src={steven} alt="Steven" />
-                    </figure>
-                    <p>Steven Gerardo Alvarado Aguilar</p>
-                    <div className='main-developers-contactInfo'>
-                        <div className='developers-contactInfo'>
-                            <IconButton className='network-button' 
-                                sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://github.com/StevenAlvaradoAguilar'
-                            >
-                                <GitHubIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                            <IconButton 
-                                className='network-button' sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://www.linkedin.com/in/steven-gerardo-alvarado-aguilar-2868b014a/'
-                            >
-                                <LinkedInIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                        </div>
-                    </div>
+const DevelopersPage = () => {
+    // Array de objetos de desarrolladores
+    const developers = [
+        { name: 'Steven Gerardo Alvarado Aguilar', image: steven, github: 'https://github.com/StevenAlvaradoAguilar', linkedin: 'https://www.linkedin.com/in/stevenalvaradoa/' },
+        { name: 'Cristopher González Solís', image: cristopher, github: 'https://github.com/cris-gs', linkedin: 'https://www.linkedin.com/in/cristopher-gonzalez-solis-6832a0239/' },
+        { name: 'Jose Carlo Hidalgo Chacón', image: jose, github: 'https://github.com/JoseCHidalgo', linkedin: 'https://www.linkedin.com/in/josehidalgoch/' },
+        { name: 'Victor Julio Montero Alfaro', image: victor, github: 'https://github.com/VictorMA345', linkedin: 'https://www.linkedin.com/in/v%C3%ADctor-julio-montero-alfaro-9a270326a/' },
+        { name: 'Derian Martín Rodríguez Durán', image: derian, github: 'https://github.com/derianrddev', linkedin: 'https://www.linkedin.com/in/derian-rodriguez22/' }
+    ];
+
+    return (
+        <div className='main-developers-container'>
+            <div className='developers-container'>
+                <div className='developers-title-container'>
+                    <Typography variant="h4">Desarrolladores</Typography>
                 </div>
-                <div className='developers-card'>
-                    <figure className='container-figure-developers-img'>
-                        <img src={cristopher} alt="Cristopher" />
-                    </figure>
-                    <p>Cristopher González Solís</p>
-                    <div className='main-developers-contactInfo'>
-                        <div className='developers-contactInfo'>
-                        <IconButton className='network-button' 
-                                sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://github.com/cris-gs'
-                            >
-                                <GitHubIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                            <IconButton 
-                                className='network-button' sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://www.linkedin.com/in/cristopher-gonzalez-solis-6832a0239/'
-                            >
-                                <LinkedInIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                        </div>
-                    </div>
-                </div>
-                <div className='developers-card'>
-                    <figure className='container-figure-developers-img'>
-                        <img src={jose} alt="Jose" />
-                    </figure>
-                    <p>Jose Carlo Hidalgo Chacón</p>
-                    <div className='main-developers-contactInfo'>
-                        <div className='developers-contactInfo'>
-                        <IconButton className='network-button' 
-                                sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://github.com/JoseCHidalgo'
-                            >
-                                <GitHubIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                            <IconButton 
-                                className='network-button' sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://www.linkedin.com/in/josehidalgoch/'
-                            >
-                                <LinkedInIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                        </div>
-                    </div>
-                </div>
-                <div className='developers-card'>
-                    <figure className='container-figure-developers-img'>
-                        <img src={victor} alt="Victor" />
-                    </figure>
-                    <p>Victor Julio Montero Alfaro</p>
-                    <div className='main-developers-contactInfo'>
-                        <div className='developers-contactInfo'>
-                        <IconButton className='network-button' 
-                                sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://github.com/VictorMA345'
-                            >
-                                <GitHubIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                            <IconButton 
-                                className='network-button' sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://www.linkedin.com/in/v%C3%ADctor-julio-montero-alfaro-9a270326a/'
-                            >
-                                <LinkedInIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                        </div>
-                    </div>
-                </div>
-                <div className='developers-card'>
-                    <figure className='container-figure-developers-img'>
-                        <img src={derian} alt="Derian" />
-                    </figure>
-                    <p>Derian Martín Rodríguez Durán</p>
-                    <div className='main-developers-contactInfo'>
-                        <div className='developers-contactInfo'>
-                        <IconButton className='network-button' 
-                                sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://github.com/derianrddev'
-                            >
-                                <GitHubIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                            <IconButton 
-                                className='network-button' sx={{backgroundColor: 'tertiary.main', borderRadius: 5}}
-                                href='https://www.linkedin.com/in/derian-rodriguez22/'
-                            >
-                                <LinkedInIcon sx={{color: 'dark.main'}}/>
-                            </IconButton>
-                        </div>
-                    </div>
+                <div className='developers-grid'>
+                    {developers.map((developer, index) => (
+                        <Developers
+                            key={index}
+                            name={developer.name}
+                            image={developer.image}
+                            github={developer.github}
+                            linkedin={developer.linkedin}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
-    </div>
-  )
-}
+    );
+};
+
+export default DevelopersPage;

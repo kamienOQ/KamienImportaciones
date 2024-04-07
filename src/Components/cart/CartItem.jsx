@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import { Box, Button, Grid, List, ListItem, ListItemText, Tooltip, Typography } from "@mui/material";
 import {
   onDecreaseQuantity,
@@ -46,6 +46,7 @@ export const CartItem = ({ id, date, name, image, price, relatedListAttributes, 
           <img
             src={image}
             alt={name}
+            loading="lazy"
             style={{
               width: "100%",
               height: "auto",

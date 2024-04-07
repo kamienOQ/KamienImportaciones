@@ -1,5 +1,5 @@
-import { useState,useEffect,useRef } from 'react'
-import { Modal,Box,Button, Table,TextField,TableContainer,MenuItem,TableHead,TableCell,TableRow,TableBody, Typography,InputLabel, Select, FormControl, drawerClasses } from '@mui/material'
+import { useState,useEffect,useRef } from 'react';
+import { Modal,Box,Button, Table,TextField,TableContainer,MenuItem,TableHead,TableCell,TableRow,TableBody, Typography,InputLabel, Select, FormControl } from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle';  
 import PaidIcon from '@mui/icons-material/Paid';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -8,8 +8,8 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import GppBadIcon from '@mui/icons-material/GppBad';
 import { crearPedido } from '../../firebase/providers';
-import { MapContainer,Marker,TileLayer } from "react-leaflet"
-import "./BuyingModal.css"
+import { MapContainer,Marker,TileLayer } from 'react-leaflet';
+import './BuyingModal.css';
 import { useDispatch } from 'react-redux';
 import { onChangeSuccess } from '../../store/buying/buyingSlice';
 import { onCleanProducts } from '../../store/cart/cartSlice';

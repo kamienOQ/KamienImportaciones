@@ -1,11 +1,10 @@
 import { Drawer,Divider} from '@mui/material';
 import React from 'react';
-import { useState } from 'react';
 import { GenderFilter, AttributeFilter} from './'
-import {useAttributesStore} from "../hooks";
+import {useAttributesStore} from '../hooks';
 
 export const Sidebar = () => {
-    const { startGetAttributesByCategory, cleanAttributesSelected, attributes, setIsOpen, isOpen} = useAttributesStore();
+    const { attributes, setIsOpen, isOpen} = useAttributesStore();
 
     function handleClose() {
         setIsOpen(false);
