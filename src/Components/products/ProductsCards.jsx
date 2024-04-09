@@ -26,7 +26,8 @@ export const ProductsCards = ({ urlImage, urlIcon, productName, relatedAttribute
             id="product-image"
             className='productsCards-img'
             loading="lazy"
-            whileHover={{ scale: 1.2 }}
+            whileHover={{ scale: 1.2 }} 
+            whileTap={{ scale: 0.9 }}
           />
         </figure>
         <div className='container-productsCards'>

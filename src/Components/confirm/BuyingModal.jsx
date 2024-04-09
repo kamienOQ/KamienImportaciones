@@ -19,18 +19,17 @@ import PaidIcon from '@mui/icons-material/Paid';
 const BuyingModal = ({ open, setOpen, datosCompra }) => {
   const { whatsapp } = useAboutStore();
 
-  const [unitaryPricetotal, setunitaryPriceTotal] = useState(0)
-  const [metodoPago, setMetodoPago] = useState("")
-  const [name, setname] = useState("")
-  const [numero, setNumero] = useState("")
-  const [envio, setenvio] = useState("")
-  const [mensajeEnvio, setMensajeEnvio] = useState("")
-  const [direccion, setDireccion] = useState("")
-  const [disable, setdisable] = useState(false)
-  const [position, setPosition] = useState(undefined)
-  const [markerPosition, setMarkerPosition] = useState(undefined)
-  const mapRef = useRef(null)
-  const [numeroAdmin, setNumeroAdmin] = useState("71095580")
+  const [unitaryPricetotal, setunitaryPriceTotal] = useState(0);
+  const [metodoPago, setMetodoPago] = useState("");
+  const [name, setname] = useState("");
+  const [numero, setNumero] = useState("");
+  const [envio, setenvio] = useState("");
+  const [mensajeEnvio, setMensajeEnvio] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [disable, setdisable] = useState(false);
+  const [position, setPosition] = useState(undefined);
+  const [markerPosition, setMarkerPosition] = useState(undefined);
+  const mapRef = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -181,11 +180,35 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           borderRadius: "20px",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
+          '@media (min-width: 200px)': {
+            width: "280px",
+          },
+          '@media (min-width: 280px)': {
+            width: "220px",
+          },
+          '@media (min-width: 400px)': {
+            width: "320px",
+          },
+          '@media (min-width: 500px)': {
+            width: "400px",
+          },
+          '@media (min-width: 700px)': {
+            width: "460px",
+          },
+          '@media (min-width: 820px)': {
+            width: "460px",
+          },
+          '@media (min-width: 912px)': {
+            width: "460px",
+          },
+          '@media (min-width: 1024px)': {
+            width: "570px",
+          },
         }}>
           <GppBadIcon sx={{ marginRight: "5%" }} />
           <Typography sx={{ fontWeight: "bolder" }}>
-            <FaRegFaceSadCry color="blue" /> No Hay Productos en el carrito
+            <FaRegFaceSadCry color="blue" /> No Hay Productos en el carrito 
           </Typography>
         </Box>
       </Modal>
@@ -264,17 +287,20 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px" }}>
-            <h3 style={{ marginLeft: "5%" }}>
+            <h2 style={{ marginLeft: "5%" }}>
               Confirmar Pedido
-            </h3>
+            </h2>
             <Button
               sx={{
                 color: "white",
-                background: "gray",
+                background: "#2E4053",
                 marginRight: "5%",
                 minWidth: "30px",
                 height: "30px",
-                marginTop: "1%"
+                marginTop: "1%",
+                '&:hover': {
+                  background: "#ABB2B9"
+                }
               }}
               onClick={handleClose}
             >
@@ -284,7 +310,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           <div>
             <div style={{ display: "flex", justifyContent: "center", marginTop: "2%" }}>
               <Box sx={{ width: "80%" }}>
-                <h2>Datos personales</h2>
+                <h3>Datos personales</h3>
                 <div
                   className='MetodoDePago'
                   style={{ display: "flex", justifyContent: "space-between" }}
@@ -297,7 +323,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     variant="standard"
                     onChange={(e) => handleName(e)}
                     fullWidth
-                    sx={{ fontSize: "small", marginBottom: '5px', marginRight: '10px' }}
+                    sx={{
+                      fontSize: "small"
+                    }}
                     inputlabelprops={{
                       style: { fontSize: "x-small" }
                     }}
@@ -307,7 +335,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                 </div>
                 <div
                   className='MetodoDePago'
-                  style={{ display: "flex", marginTop: '5px' }}
+                  style={{ display: "flex" }}
                 >
                   <PaidIcon sx={{ color: 'action.active', marginRight: '5px' }} />
                   <FormControl fullWidth sx={{ marginRight: "4%", fontSize: "x-small" }}>
@@ -316,19 +344,23 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     </InputLabel>
                     <Select
                       color='quaternary'
-                      sx={{ marginRight: "5%", fontSize: "small", mr: 3 }}
+                      sx={{
+                        fontSize: "small",
+                        mr: 3,
+                        width: "105%"
+                      }}
                       id="outlined-select-currency"
                       label="Método de Pago"
                       fullWidth
                       onChange={handleMetodoPago}
                       value={metodoPago}
                       inputlabelprops={{
-                        style: { fontSize: "x-small" },
+                        style: { fontSize: "small" },
                       }}
                     >
-                      <MenuItem value={"Efectivo"} sx={{ fontSize: "x-small" }}>Efectivo</MenuItem>
-                      <MenuItem value={"Sinpe Móvil"} sx={{ fontSize: "x-small" }}>Sinpe Móvil</MenuItem>
-                      <MenuItem value={"Tarjeta de Crédito"} sx={{ fontSize: "x-small" }}>Tarjeta de Crédito</MenuItem>
+                      <MenuItem value={"Efectivo"} sx={{ fontSize: "small" }}>Efectivo</MenuItem>
+                      <MenuItem value={"Sinpe Móvil"} sx={{ fontSize: "small" }}>Sinpe Móvil</MenuItem>
+                      <MenuItem value={"Tarjeta de Crédito"} sx={{ fontSize: "small" }}>Tarjeta de Crédito</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -344,7 +376,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     variant="standard"
                     fullWidth
                     inputProps={{ maxLength: 12 }}
-                    sx={{ marginRight: "5%", height: "10%" }}
+                    sx={{
+                      height: "10%"
+                    }}
                     inputlabelprops={{
                       style: { fontSize: "x-small" },
                     }}
@@ -354,7 +388,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                 </div>
                 <div
                   className='MetodoDePago'
-                  style={{ display: "flex", marginTop: '10px' }}
+                  style={{ display: "flex" }}
                 >
                   <LocalShippingIcon sx={{ color: 'action.active', marginRight: '5px', marginTop: '5px' }} />
                   <FormControl fullWidth sx={{ marginRight: "5%" }}>
@@ -365,7 +399,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                       color='quaternary'
                       fullWidth
                       sx={{
-                        marginRight: "5%"
+                        fontSize: "small",
+                        mr: 3,
+                        width: "106%"
                       }}
                       inputlabelprops={{
                         style: { fontSize: "small" },
@@ -374,9 +410,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                       value={envio}
                       label="Metodo de Envio"
                     >
-                      <MenuItem value={"Correo"} sx={{ fontSize: "x-small" }}> Correo </MenuItem>
-                      <MenuItem value={"Presencial"} sx={{ fontSize: "x-small" }}> Presencial </MenuItem>
-                      <MenuItem value={"Express"} sx={{ fontSize: "x-small" }}> Express </MenuItem>
+                      <MenuItem value={"Correo"} sx={{ fontSize: "small" }}> Correo </MenuItem>
+                      <MenuItem value={"Presencial"} sx={{ fontSize: "small" }}> Presencial </MenuItem>
+                      <MenuItem value={"Express"} sx={{ fontSize: "small" }}> Express </MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -384,7 +420,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Box sx={{ width: "80%", height: "500px", marginTop: "8%" }}>
-                <h3>Dirección</h3>
+                <div className='title-direction'>
+                  <h3>Dirección</h3>
+                </div>
                 <MapContainer center={position ? position : [0, 0]} zoom={13} scrollWheelZoom={false} ref={mapRef}>
                   <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -419,9 +457,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             </div>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <h5 style={{ marginLeft: "10%", marginTop: '15px', textShadow: "0 0 #28B463" }}>
+            <h4 style={{ marginLeft: "10%", marginTop: '15px', textShadow: "0 0 #28B463", marginBottom: "15px" }}>
               Productos añadidos al pedido
-            </h5>
+            </h4>
           </div>
           <TableContainer
             className="TableContainer"
