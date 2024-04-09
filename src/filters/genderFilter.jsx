@@ -42,18 +42,24 @@ export const GenderFilter = () => {
         value={genderFilter}
 
       >
-        <ToggleButton value="Hombre" aria-label="left aligned" selectedcolor="#643A07" sx={{ gap: 2, width: '100%', color: 'black', display: 'flex' }}>
-          <FaceIcon />
-          Hombre
-        </ToggleButton>
-        <ToggleButton value="Mujer" aria-label="centered" selectedcolor="#643A07" sx={{ gap: 2, width: '100%', color: 'black', display: 'flex' }}>
-          <Face3Icon />
-          Mujer
-        </ToggleButton>
-        <ToggleButton value="Niños" aria-label="right aligned" selectedcolor="#643A07" sx={{ gap: 2, width: '100%', color: 'black', display: 'flex' }}>
-          <ChildCareIcon />
-          Niño
-        </ToggleButton>
+        <div>
+          <ToggleButton value="Hombre" aria-label="left aligned" selectedcolor="#643A07" sx={{ gap: 2, width: '100%', color: 'black', display: 'flex' }}>
+            <FaceIcon />
+            Hombre
+          </ToggleButton>
+        </div>
+        <div>
+          <ToggleButton value="Mujer" aria-label="centered" selectedcolor="#643A07" sx={{ gap: 2, width: '100%', color: 'black', display: 'flex' }}>
+            <Face3Icon />
+            Mujer
+          </ToggleButton>
+        </div>
+        <div>
+          <ToggleButton value="Niños" aria-label="right aligned" selectedcolor="#643A07" sx={{ gap: 2, width: '100%', color: 'black', display: 'flex' }}>
+            <ChildCareIcon />
+            Niño
+          </ToggleButton>
+        </div>
       </ToggleButtonGroup>
     </List>
   )
