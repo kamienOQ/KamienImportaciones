@@ -19,19 +19,13 @@ export const CartProductDetails = () => {
   const { activeProduct, activeCartProduct, isModalViewOpenCart } = useSelector(
     (state) => state.cart
   );
-
-  const {
-    name,
-    price,
-    relatedListAttributes: activeAttibutes,
-  } = activeCartProduct;
+  const { name, price, relatedListAttributes: activeAttibutes } = activeCartProduct;
   const { relatedAttributes, relatedListAttributes } = activeProduct;
-
   const [attributesSelected, setAttributesSelected] = useState(activeAttibutes);
 
   useEffect(() => {
     setAttributesSelected(activeAttibutes);
-  }, [activeAttibutes])
+  }, [activeAttibutes]);
 
   const handleAttributeSelected = (event, attribute) => {
     setAttributesSelected((prevState) => ({
@@ -49,7 +43,22 @@ export const CartProductDetails = () => {
             <h2 className="productsDetailCards-text">Precio: ₡{price}</h2>
             <TableContainer
               className="TableContainer"
-              sx={{ maxHeight: "400px", overflow: "auto" }}
+              sx={{
+                maxHeight: "400px",
+                overflow: "auto",
+                '@media (min-width: 200px)': {
+                  maxHeight: "250px",
+                },
+                '@media (min-width: 820px)': {
+                  width: "360px",
+                },
+                '@media (min-width: 912px)': {
+                  width: "460px",
+                },
+                '@media (min-width: 1024px)': {
+                  width: "460px",
+                }
+              }}
             >
               <Box sx={{ display: "flex" }}>
                 <FormControl
@@ -76,7 +85,7 @@ export const CartProductDetails = () => {
                             {relatedListAttributes.map(
                               (relatedAttribute, index) =>
                                 relatedAttribute.attributeSelected ===
-                                  attribute && (
+                                attribute && (
                                   <FormControlLabel
                                     value={relatedAttribute.feature}
                                     key={index}

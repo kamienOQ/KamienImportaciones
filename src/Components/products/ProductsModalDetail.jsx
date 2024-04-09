@@ -48,9 +48,24 @@ export const ProductsModalDetail = ({ product, productName, price, relatedAttrib
                         <h2 className='productsDetailCards-text'>Precio: ₡{price}</h2>
                         <TableContainer
                             className='TableContainer'
-                            sx={{ maxHeight: "400px" }}
+                            sx={{
+                                maxHeight: "400px",
+                                '@media (min-width: 200px)': {
+                                    marginLeft: '-45px',
+                                    overflow: 'unset'
+                                },
+                                '@media (min-width: 360px)': {
+                                    marginLeft: '-20px',
+                                },
+                                '@media (min-width: 912px)': {
+                                    maxHeight: "460px",
+                                },
+                                '@media (min-width: 1024px)': {
+                                    width: "460px",
+                                }
+                            }}
                         >
-                            <Box sx={{ textAlign: 'center', display: 'flex' }}>
+                            <Box sx={{ textAlign: 'center', display: 'flex', marginLeft: '50px' }}>
                                 <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                                     <label component="legend">Atributos relacionados al producto:</label>
                                     <FormGroup>

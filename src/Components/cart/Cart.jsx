@@ -54,7 +54,21 @@ export const Cart = () => {
         onClose={handleDrawerClose}
         variant="temporary"
       >
-        <Grid container sx={{ width: "360px" }}>
+        <Grid container sx={{
+          width: "570px",
+          '@media (min-width: 200px)': {
+            width: "280px",
+          },
+          '@media (min-width: 820px)': {
+            width: "360px",
+          },
+          '@media (min-width: 912px)': {
+            width: "460px",
+          },
+          '@media (min-width: 1024px)': {
+            width: "570px",
+          },
+        }}>
           <Grid container display="flex" direction="row" justifyContent="space-between" alignItems="center" sx={{ p: 2, backgroundColor: "white", borderBottom: "1px solid #d0d0d0" }}>
             <Typography variant="h6" noWrap component="h2" sx={{ display: "flex", alignItems: "center" }}>
               <ShoppingCartIcon /> Pedido
@@ -64,20 +78,59 @@ export const Cart = () => {
               edge="end"
               color="inherit"
               aria-label="close"
-              onClick={handleDrawerClose} 
+              onClick={handleDrawerClose}
               sx={{ border: 0 }}
             >
               <CloseIcon />
             </IconButton>
           </Grid>
-          <Box className="scrollable-container" sx={{ maxHeight: "570px", overflow: "auto" }}>
+          <Box className="scrollable-container"
+            sx={{
+              maxHeight: "570px",
+              overflow: "auto",
+              '@media (min-width: 200px)': {
+                maxHeight: "480px",
+              },
+              '@media (min-width: 820px)': {
+                width: "360px",
+              },
+              '@media (min-width: 912px)': {
+                width: "460px",
+              },
+              '@media (min-width: 1024px)': {
+                width: "570px",
+              },
+            }}>
             {products.map((item) => (
               <CartItem key={item.id} {...item} />
             ))}
           </Box>
-          <Grid item xs={12} sx={{ position: "fixed", bottom: 0, right: 0, backgroundColor: "white" }}>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              position: "fixed",
+              bottom: 0,
+              right: 0,
+              backgroundColor: "white",
+              '@media (min-width: 200px)': {
+                width: "280px",
+              },
+              '@media (min-width: 820px)': {
+                width: "360px",
+              },
+              '@media (min-width: 912px)': {
+                width: "460px",
+              },
+              '@media (min-width: 1024px)': {
+                width: "570px",
+              },
+            }}>
             <Divider sx={{ backgroundColor: "#d0d0d0" }} />
-            <Box sx={{ pt: 1, width: "360px" }}>
+            <Box
+              sx={{
+                pt: 1, width: "360px"
+              }}>
               <Typography variant="body1" component="p" sx={{ textAlign: "center", fontSize: "18px" }}>
                 Total: ₡{calculateTotal()}
               </Typography>
@@ -95,7 +148,19 @@ export const Cart = () => {
                   backgroundColor: "black",
                   color: "white",
                   "&:hover": {
-                    backgroundColor: "#707B7C", 
+                    backgroundColor: "#707B7C",
+                  },
+                  '@media (min-width: 200px)': {
+                    width: "280px",
+                  },
+                  '@media (min-width: 820px)': {
+                    width: "360px",
+                  },
+                  '@media (min-width: 912px)': {
+                    width: "460px",
+                  },
+                  '@media (min-width: 1024px)': {
+                    width: "570px",
                   },
                 }}
                 onClick={handleModalClose}

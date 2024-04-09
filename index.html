@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/logo.ico" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kámien</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/assets/logo.ico" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kámien</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Incluye la biblioteca de iconos de Material-UI -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <!-- Estilos para ocultar el icono SVG -->
+  <style>
+    #goToTopBtn {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- Botón para ir arriba -->
+  <button id="goToTopBtn" onclick="goToTop()">
+    <svg viewBox="0 0 1024 1024" fill="currentColor" height="2em" width="2em" {...props}>
+      <path
+        d="M868 545.5L536.1 163a31.96 31.96 0 00-48.3 0L156 545.5a7.97 7.97 0 006 13.2h81c4.6 0 9-2 12.1-5.5L474 300.9V864c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V300.9l218.9 252.3c3 3.5 7.4 5.5 12.1 5.5h81c6.8 0 10.5-8 6-13.2z" />
+    </svg>
+  </button>
+
+  <script src="scroll.js"></script>
+  <script type="module" src="/src/main.jsx"></script>
+  
+  <!-- Script para mostrar el icono SVG después de que la página se ha cargado completamente -->
+  <script>
+    // Función para mostrar el icono SVG
+    function showArrowIcon() {
+      document.getElementById('arrowIcon').style.display = 'block';
+    }
+
+    // Escucha el evento 'load' para asegurarse de que la página se ha cargado completamente
+    window.addEventListener('load', showArrowIcon);
+  </script>
+</body>
+
 </html>

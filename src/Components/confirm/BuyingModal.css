@@ -1,9 +1,9 @@
 :root {
   --main-color: #D1B000;
-  --hover-main:   #643A07;
+  --hover-main: #643A07;
   --hover-success: #3aac54;
   --green: #23d64d;
-  --hover-error:   #b63939;
+  --hover-error: #b63939;
   --border: #c9c9c9;
   --white: #ffffff;
   --backgroud: #383838;
@@ -18,15 +18,15 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  width:"auto";
-  height:"auto";
+  width: "auto";
+  height: "auto";
   border: "4px solid black";
-  border-radius:"20px";
+  border-radius: "20px";
 }
 
 /* Propiedades responsivas */
 @media screen and (max-width: 768px) {
-  .modal { 
+  .modal {
     max-width: none;
     max-height: none;
     padding: 10px;
@@ -34,20 +34,26 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .modal {  
+  .modal {
     max-width: none;
     max-height: none;
     padding: 10px;
   }
 }
 
-
-
-.MetodoDePago{
-  justify-content: center;
+.MetodoDePago {
+  display: flex;
   align-items: center;
-  width: auto;
-  height: auto;
+  margin-top: 10px;
+}
+
+.MetodoDePago-name {
+  @media (max-width: 200px) {}
+
+  @media (max-width: 375px) {
+    top: 10px;
+    position: relative;
+  }
 }
 
 @media (max-width: 768px) {
@@ -56,40 +62,45 @@
     margin: 0;
     border-radius: 0;
   }
-  
+
   .map-container {
     width: 100%;
     height: 200px;
   }
-  
+
   .form-control {
     width: 100%;
     margin-bottom: 10px;
   }
-  
+
   .table-container {
     width: 100%;
     max-height: 200px;
     overflow-y: auto;
   }
-  
+
   .total-payment {
     margin-right: 0 !important;
   }
 }
-  
+
 .TableContainer {
-  align-content: center;
-  justify-content: center;
-  border-radius: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  /* Cambiado el ancho máximo del TableContainer */
+  max-height: 240px;
+  /* Altura máxima del TableContainer */
+  overflow-y: auto;
+  /* Habilitar scroll vertical si es necesario */
 }
 
-@media screen and (max-width: 767px), (max-width: 1024px) {
+@media screen and (max-width: 767px) and (max-width: 1024px) {
   .TableContainer {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .TableContainer th,
   .TableContainer td {
     font-size: small;
@@ -103,35 +114,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  align-self: center;
-}
+  margin: 20px 5%;
+  /* Añadido margen superior e inferior */
 
-.ResponsiveBox h2 {
-  font-weight: bolder;
-  margin-left: 5%;
-}
+  & h2 {
+    font-weight: bolder;
+  }
 
-.ResponsiveBox h2:last-child {
-  font-weight: bolder;
-  margin-right: 15%;
-}
+  & h2:last-child {
+    font-weight: bolder;
+  }
 
-@media (max-width: 767px) {
-  .ResponsiveBox {
+  @media (max-width: 767px) {
     align-items: center;
     text-align: center;
-  }
-  
-  .ResponsiveBox h2 {
-    margin-left: 0;
-    margin-bottom: 5px;
-  }
-  
-  .ResponsiveBox h2:last-child {
-    margin-right: 0;
+
+    & h2 {
+      margin-left: 0;
+      margin-bottom: 5px;
+    }
+
+    & h2:last-child {
+      margin-right: 0;
+    }
   }
 }

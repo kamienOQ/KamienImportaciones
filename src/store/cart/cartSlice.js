@@ -34,31 +34,33 @@ export const cartSlice = createSlice({
       localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
     onSetDetailsProducts: (state, action) => {
-      const validProduct = state.products.find( (product) => {
-        let equalAttributes = true
-        for (let prop in product.relatedListAttributes) {
-          if (product.relatedListAttributes[prop] !== action.payload.relatedListAttributes[prop]) {
-            equalAttributes = false;
-          }
-        }
-        if (product.id !== action.payload.id && equalAttributes) {
-          return product;
-        }
-        return undefined;
+      const { id, quantity, relatedListAttributes } = action.payload;
+    
+      // Buscar si ya existe un producto en el carrito con los mismos atributos
+      const existingProductIndex = state.products.findIndex(product => {
+        return product.id === id && isEqualAttributes(product.relatedListAttributes, relatedListAttributes);
       });
-      if (!validProduct) {
-        const product = state.products.find((product) => product.id === state.activeCartProduct.id);
-        product.quantity = action.payload.quantity;
-        product.relatedListAttributes = action.payload.relatedListAttributes;
-        state.activeCartProduct = null;
-        state.activeProduct = null;
-        state.isModalViewOpenCart = false;
-        state.message.error = false;
-        state.message.success = true;
-        localStorage.setItem('cartProducts', JSON.stringify(state.products));
+    
+      if (existingProductIndex !== -1) {
+        // Producto existente encontrado
+        state.products[existingProductIndex].quantity = quantity;
       } else {
-        state.message.error = true;
+        // Producto no encontrado, agregarlo al carrito
+        state.products.push({
+          id,
+          quantity,
+          relatedListAttributes
+        });
       }
+    
+      // Restablecer el estado del carrito
+      state.activeCartProduct = null;
+      state.activeProduct = null;
+      state.isModalViewOpenCart = false;
+      state.message.error = false;
+      state.message.success = true;
+    
+      localStorage.setItem('cartProducts', JSON.stringify(state.products));
     },
     onSetAllProducts: (state, action) => {
       state.products = action.payload;
@@ -131,3 +133,21 @@ export const {
   onCloseError,
   onCloseSuccess
 } = cartSlice.actions;
+
+// Función de utilidad para verificar si los atributos son iguales
+const isEqualAttributes = (attributes1, attributes2) => {
+  const keys1 = Object.keys(attributes1);
+  const keys2 = Object.keys(attributes2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (let key of keys1) {
+    if (attributes1[key] !== attributes2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+};

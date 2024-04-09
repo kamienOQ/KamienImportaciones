@@ -18,10 +18,8 @@ export const MasterPage = ({ children }) => {
   const dispatch = useDispatch();
   const { instagram, facebook, whatsapp, logo, startGetAbout } = useAboutStore();
   const { success } = useSelector((state) => state.buying);
-
   const navigate = useNavigate();
   const { message } = useSelector((state) => state.cart);
-
   const { isOpen } = useAttributesStore();
 
   useEffect(() => {
@@ -144,18 +142,19 @@ export const MasterPage = ({ children }) => {
       </header>
       {children}
       <footer id='masterFooter' className='footer'>
-        <div className='footer-socialNetworks'>
-          <div className='socialNetworks-background'>
-            <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon style={{ color: '#DE3163' }} /></a>
-          </div>
-          <div className='socialNetworks-background'>
-            <a href={facebook} target="_blank" rel="noopener noreferrer"><FacebookIcon style={{ color: '#0000FF' }} /></a>
-          </div>
-          <div className='socialNetworks-background'>
-            <a href={whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon style={{ color: 'SeaGreen' }} /></a>
-          </div>
-        </div>
         <div className='footer-contactInfo'>
+          <h4>Redes Sociales</h4>
+          <div className='footer-socialNetworks'>
+            <div className='socialNetworks-background'>
+              <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon style={{ color: '#DE3163' }} /></a>
+            </div>
+            <div className='socialNetworks-background'>
+              <a href={facebook} target="_blank" rel="noopener noreferrer"><FacebookIcon style={{ color: '#0000FF' }} /></a>
+            </div>
+            <div className='socialNetworks-background'>
+              <a href={whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon style={{ color: 'SeaGreen' }} /></a>
+            </div>
+          </div>
           <h4><LocalPhoneIcon sx={{ fontSize: 'small' }} /> 71095580</h4>
           <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
           <a onClick={redirectDevelopers} className='redirectToAbout'>Desarrolladores</a>

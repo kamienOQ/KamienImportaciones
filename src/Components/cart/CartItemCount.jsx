@@ -24,7 +24,7 @@ export const CartItemCount = ({ selectedAttributes }) => {
 
   const onCloseModal = () => {
     dispatch(onCloseModalViewCart());
-  }
+  };
 
   const onSave = () => {
     const newDetails = {
@@ -33,7 +33,7 @@ export const CartItemCount = ({ selectedAttributes }) => {
       relatedListAttributes: selectedAttributes
     }
     dispatch(onSetDetailsProducts(newDetails));
-  }
+  };
 
   return (
     <>

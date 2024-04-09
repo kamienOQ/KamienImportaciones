@@ -1,15 +1,28 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Box, Button, Typography, Modal } from '@mui/material';
+import { Box, Button, Typography, Modal, Snackbar, Alert } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { onDeleteProduct } from '../../store/cart/cartSlice';
 
 export const RemoveProductModal = ({ id }) => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleRemoveFromCart = () => {
-    dispatch(onDeleteProduct(id));
+    setShowAlert(true);
+
+    // Establecer un temporizador para ocultar la alerta después de 2 segundos
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+
+    // Eliminar el producto del carrito después de un tiempo de espera
+    setTimeout(() => {
+      dispatch(onDeleteProduct(id));
+    }, 2000);
+    
+    setIsModalOpen(false); 
   };
 
   const handleOpenModal = () => {
@@ -18,6 +31,10 @@ export const RemoveProductModal = ({ id }) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
   };
 
   return (
@@ -80,6 +97,19 @@ export const RemoveProductModal = ({ id }) => {
           </Box>
         </Box>
       </Modal>
+      {/* Alerta */}
+      <Snackbar
+        open={showAlert}
+        onClose={handleCloseAlert}
+        sx={{ alignItems: "flex-start", mt: "42px" }}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left"
+        }}>
+        <Alert onClose={handleCloseAlert} severity="warning" sx={{ width: '100%' }}>
+          Se elimino correctamente el producto del carrito!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
