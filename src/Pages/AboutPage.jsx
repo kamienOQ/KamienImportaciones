@@ -1,9 +1,16 @@
 import React from 'react';
 import { useAboutStore } from '../hooks/useAboutStore';
+import Spinner from '../Spinner';
+import { useState } from 'react';
 
 export const AboutPage = () => {
-
   const { description, name, logo } = useAboutStore();
+  const [loading, setLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
+
   return (
     <div className='about-container'>
       <div className='about-container-firstSection'>
@@ -14,7 +21,15 @@ export const AboutPage = () => {
           </div>
         </div>
         <div className='firstSection-img-container'>
-          <img src={logo} alt="" className='firstSection-img' loading="lazy" />
+          {loading && <Spinner />}
+          <img
+            src={logo}
+            alt=""
+            className='firstSection-img'
+            loading="lazy"
+            onLoad={handleImageLoad}
+            style={{ display: loading ? 'none' : 'block' }}
+          />
         </div>
       </div>
 

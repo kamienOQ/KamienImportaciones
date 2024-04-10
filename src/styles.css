@@ -296,6 +296,7 @@ h4 {
     vertical-align: middle;
     padding: 0 50px;
     text-align: center;
+    filter: drop-shadow(0px 0px 10px rgb(204, 176, 176));
 }
 
 .container-figure-icon {
@@ -394,10 +395,6 @@ h4 {
     height: 60%;
     justify-content: center;
     align-items: center;
-
-    @media (max-width: 750px) {
-        display: none;
-    }
 }
 
 .firstSection-img {

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-const Developers = ({ name, image, github, linkedin }) => {
+const Developers = ({ name, image, github, linkedin }) => { 
     return (
         <div className='developers-card'>
             <figure className='container-figure-img'>
