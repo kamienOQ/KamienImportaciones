@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import emptyProducts from '../../assets/emptyProducts.jpg';
 
 export const ProductsEmpty = () => {
@@ -11,7 +10,7 @@ export const ProductsEmpty = () => {
         className='emptyProducts-image'
         loading="lazy"
       />
-      
+      <h2>No hay productos disponibles en este momento</h2>
     </div>
   )
 }
