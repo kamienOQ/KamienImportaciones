@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material';
-import steven from '../assets/steven.jpg';
-import cristopher from '../assets/cristopher.jpeg';
-import jose from '../assets/jose.jpeg';
-import victor from '../assets/victor.jpeg';
-import derian from '../assets/derian.jpeg';
+import steven from '../assets/steven.webp';
+import cristopher from '../assets/cristopher.webp';
+import jose from '../assets/jose.webp';
+import victor from '../assets/victor.webp';
+import derian from '../assets/derian.webp';
 import Developers from './Developers';
 
 

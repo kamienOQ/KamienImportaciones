@@ -6,7 +6,7 @@ import { useUiStore } from '../hooks/useUiStore';
 import { ProductsModalDetail } from '../Components/products/ProductsModalDetail';
 import { useCategoriesStore } from '../hooks/useCategoriesStore';
 import { Divider, Drawer, Grid, IconButton, Typography, Tooltip,Box,} from '@mui/material';
-import FilterListIcon from '@mui/icons-material/FilterList';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { GenderFilter, AttributeFilter } from '../filters'
 import { useAttributesStore } from '../hooks';
@@ -58,7 +58,7 @@ export const ProductsPage = () => {
         <Grid item sx={{ width: "90%", display: 'flex', alignItems: 'center' }}>
           <Tooltip title="Filtros">
             <IconButton onClick={handleOpen}>
-              <FilterListIcon fontSize="large"/>
+              <FilterAltIcon sx={{ fontSize: 45 }} />
             </IconButton>
           </Tooltip>
           <Typography className='category' variant="h4">{categorySelected}</Typography>

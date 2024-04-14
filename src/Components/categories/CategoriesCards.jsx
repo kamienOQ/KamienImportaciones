@@ -25,7 +25,7 @@ export const CategoriesCards = ({ urlImage, urlIcon, categoryName }) => {
           <img src={urlImage} alt="" className='categoriesCards-img' loading="lazy" />
         </figure>
         <div className='main-container-categoriesCards-icon'>
-          <div className='info-container-categoriesCards'>
+          <div className='info-container-categoriesCards '>
             <div className='container-categoriesCards-icon'>
               <div className='container-categoriesCards-content'>
                 <figure className='container-figure-icon'>

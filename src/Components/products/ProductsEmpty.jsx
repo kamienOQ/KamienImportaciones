@@ -1,4 +1,4 @@
-import emptyProducts from '../../assets/emptyProducts.jpg';
+import emptyProducts from '../../assets/emptyProducts.webp';
 
 export const ProductsEmpty = () => {
 
