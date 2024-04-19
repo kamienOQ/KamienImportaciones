@@ -11,13 +11,40 @@ export const CategoriesPage = () => {
     startGetCategories();
   }, [])
 
+  // Definimos el orden deseado de las categorias
+  const desiredOrder = [
+    "Lentes",
+    "Joyas",
+    "Perfumes",
+    "Relojes",
+    "Relojes deportivos",
+    "Bolsos",
+    "Tenis",
+    "Zapatos",
+    "Sandalias"
+  ];
+
+  // Copiamos el arreglo de categorías para evitar modificar el original
+  const sortedCategories = [...categories];
+
+  // Ordenamos el arreglo de categorías según el orden deseado
+  sortedCategories.sort((a, b) => {
+    // Obtenemos el índice de cada categoría en el arreglo de orden deseado
+    const indexA = desiredOrder.indexOf(a.categoryName);
+    const indexB = desiredOrder.indexOf(b.categoryName);
+
+    // Comparamos los índices y retornamos el resultado de la comparación
+    if (indexA === -1) return 1; // Si no se encuentra en desiredOrder, se coloca al final
+    if (indexB === -1) return -1; // Si no se encuentra en desiredOrder, se coloca al inicio
+    return indexA - indexB; // Ordenamos según los índices en desiredOrder
+  });
 
   return (
     <>
       <>
         {categories.length > 0 ? (
           <div className="grid-container">
-            {categories.map((category) => (
+            {sortedCategories.map((category) => (
               <CategoriesCards
                 key={category.categoryName}
                 urlImage={category.image?.url}
@@ -25,11 +52,14 @@ export const CategoriesPage = () => {
                 categoryName={category.categoryName}
               />
             ))}
-          </div>) 
-      : (
-        <CategoriesEmpty />
-      )}
+          </div>)
+          : (
+            <CategoriesEmpty />
+          )}
+      </>
     </>
-  </>
   )
 }
+
+
+
