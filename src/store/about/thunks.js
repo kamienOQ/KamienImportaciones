@@ -3,16 +3,19 @@ import { FirebaseDB } from "../../firebase/config";
 import { onSetData } from "./aboutSlice";
 
 export const onStartGetAbout = () => {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    const collectionRef = collection(FirebaseDB, `/about`);
+    let q = query(collectionRef);
 
-        const collectionRef = collection(FirebaseDB, `/about`);  
-        let q = query( collectionRef);
-        const querySnapshot = await getDocs(q);
+    try {
+      const querySnapshot = await getDocs(q);
 
-        const newAttribute = querySnapshot.docs.map((doc) => {
-            return doc.data();
-        });
-        dispatch(onSetData(newAttribute));
-      
+      const newAttribute = querySnapshot.docs.map((doc) => {
+        return doc.data();
+      });
+      dispatch(onSetData(newAttribute));
+    } catch (error) {
+      console.error("Error al obtener los documentos:", error);
     }
-  }
+  };
+};

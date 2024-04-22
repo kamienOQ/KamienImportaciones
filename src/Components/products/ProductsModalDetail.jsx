@@ -8,7 +8,7 @@ export const ProductsModalDetail = ({ product, productName, price, relatedAttrib
     const { isProductModalOpen } = useUiStore();
 
     /* Estado para los checkboxes */
-    const [attributesSelected, setAttributesSelected] = useState([]);
+    const [attributesSelected, setAttributesSelected] = useState([{}]);
 
     const [firstAttribute, setFirstAttribute] = useState([])
 

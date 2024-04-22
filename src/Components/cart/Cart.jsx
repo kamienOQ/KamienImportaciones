@@ -69,7 +69,14 @@ export const Cart = () => {
             width: "570px",
           },
         }}>
-          <Grid container display="flex" direction="row" justifyContent="space-between" alignItems="center" sx={{ p: 2, backgroundColor: "white", borderBottom: "1px solid #d0d0d0" }}>
+          <Grid
+            container
+            display="flex"
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ p: 2, backgroundColor: "white", borderBottom: "1px solid #d0d0d0" }}
+          >
             <Typography variant="h6" noWrap component="h2" sx={{ display: "flex", alignItems: "center" }}>
               <ShoppingCartIcon /> Pedido
             </Typography>

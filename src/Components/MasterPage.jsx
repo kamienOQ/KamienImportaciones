@@ -103,6 +103,10 @@ export const MasterPage = ({ children }) => {
     navigate('/Nosotros')
   }
 
+  const redirectHome = () => {
+    navigate('/')
+  }
+
   const redirectCategories = () => {
     navigate('/Categorias')
   }
@@ -127,7 +131,7 @@ export const MasterPage = ({ children }) => {
     <div className="page-wrapper">
       <header id="masterHeader" className='header-navbar'>
         <div className='filter-products-container'>
-          <IconButton sx={{ mr: 1 }} onClick={redirectCategories}>
+          <IconButton sx={{ mr: 1 }} onClick={redirectHome}>
             <Avatar src={logo} />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>

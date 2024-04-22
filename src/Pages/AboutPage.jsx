@@ -2,6 +2,7 @@ import React from 'react';
 import { useAboutStore } from '../hooks/useAboutStore';
 import Spinner from '../Spinner';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const AboutPage = () => {
   const { description, name, logo } = useAboutStore();
@@ -22,13 +23,15 @@ export const AboutPage = () => {
         </div>
         <div className='firstSection-img-container'>
           {loading && <Spinner />}
-          <img
+          <motion.img
             src={logo}
             alt=""
             className='firstSection-img'
             loading="lazy"
             onLoad={handleImageLoad}
             style={{ display: loading ? 'none' : 'block' }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           />
         </div>
       </div>

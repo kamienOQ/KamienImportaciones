@@ -1045,7 +1045,6 @@ h4 {
 }
 
 .addCart-modal-button:hover {
-    background-color: var(--footer) !important;
     border-radius: 0%;
     align-items: center;
 }

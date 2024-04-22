@@ -24,6 +24,10 @@ export const CategoriesPage = () => {
     "Sandalias"
   ];
 
+  /* Usamos el arreglo categories directamente después de obtenerlo del hook 
+  useCategoriesStore(). Sin embargo, los arrays retornados por hooks en 
+  React son inmutables, por lo que no puedes modificarlos directamente.*/
+
   // Copiamos el arreglo de categorías para evitar modificar el original
   const sortedCategories = [...categories];
 
