@@ -48,7 +48,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       totalPrice: calculateTotal()
     }
 
-    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${whatsapp.replace('-', '')}`
+    // Obtener el número de teléfono de la URL de WhatsApp
+    const phoneNumber = whatsapp.match(/\+\d+/)[0];
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${phoneNumber}`
     window.open(url);
     setNumero("")
     setname("")
@@ -60,7 +62,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     await crearPedido(data);
     dispatch(onChangeSuccess(true));
     dispatch(onCleanProducts());
-  }
+  };
+
+
 
   const checkNull = () => {
     if (numero.length < 7 || envio === "" || metodoPago === "" || name.length < 4) {
@@ -147,7 +151,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       setunitaryPriceTotal(price_array.reduce(add, 0))
     }
     getunitaryPriceTotal()
-  }, [])
+  }, []);
 
   const handleMarkerDrag = (e) => {
     setMarkerPosition([e.target._latlng.lat, e.target._latlng.lng])
@@ -208,7 +212,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
         }}>
           <GppBadIcon sx={{ marginRight: "5%" }} />
           <Typography sx={{ fontWeight: "bolder" }}>
-            <FaRegFaceSadCry color="blue" /> No Hay Productos en el carrito 
+            <FaRegFaceSadCry color="blue" /> No Hay Productos en el carrito
           </Typography>
         </Box>
       </Modal>
