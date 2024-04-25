@@ -264,8 +264,8 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               width: "600px"
             },
             '@media (min-width: 800px) and (min-height: 1000px)': {
-              width: "620px",
-              height: "1240px !important",
+              width: "730px",
+              height: "1100px !important",
               overflowY: "auto"
             },
             '@media (min-width: 912px) and (min-height: 600px)': {
@@ -279,13 +279,13 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               overflowY: "auto"
             },
             '@media (min-width: 1024px) and (min-height: 800px)': {
-              width: "550px",
-              height: "780px !important",
+              width: "960px",
+              height: "740px !important",
               overflowY: "auto"
             },
-            '@media (min-width: 1024px) and (min-height: 1000px)': {
-              width: "550px",
-              height: "1250px !important",
+            '@media (min-width: 1300px) and (min-height: 900px)': {
+              width: "620px",
+              height: "950px !important",
               overflowY: "auto"
             }
           }}
