@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './styless.css';
 import { useNavigate } from 'react-router-dom';
-//import CookieIcon from '@mui/icons-material/Cookie';
+import cookie from '../../assets/cookie.webp';
 
 const NoticeCookies = () => {
     const [showNotice, setShowNotice] = useState(true);
@@ -70,8 +70,7 @@ const NoticeCookies = () => {
         showNotice && (
             <div className="notice-cookies-container">
                 <div className="cookie-icon-container">
-                    {/* <CookieIcon sx={{ color: '#A04000', fontSize: 80 }} /> */}
-                    <img src="/src/assets/cookie.webp" alt="Cookies" className="cookie-icon" />
+                    <img src={cookie} alt="Cookies" className="cookie-icon" />
                 </div>
                 <div className="notice-cookies">
                     <p>Este sitio web utiliza cookies para mejorar la experiencia de usuario.</p>
