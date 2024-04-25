@@ -1,18 +1,19 @@
-import { useEffect } from 'react';
-import { collection, onSnapshot } from "firebase/firestore";
 import { Alert, Avatar, IconButton, Snackbar, ToggleButtonGroup, Typography } from '@mui/material';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import { useAboutStore } from '../hooks/useAboutStore';
 import { Cart } from './cart/Cart';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { onChangeSuccess } from '../store/buying/buyingSlice';
+import { collection, onSnapshot } from "firebase/firestore";
 import { FirebaseDB } from "../firebase/config";
+import { onChangeSuccess } from '../store/buying/buyingSlice';
 import { onCloseError, onCloseSuccess, onSetAllProducts } from '../store/cart/cartSlice';
+import { useAboutStore } from '../hooks/useAboutStore';
 import { useAttributesStore } from '../hooks/useAttributesStore';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import NoticeCookies from './Politic/NoticeCookies';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export const MasterPage = ({ children }) => {
   const dispatch = useDispatch();
@@ -107,14 +108,26 @@ export const MasterPage = ({ children }) => {
     navigate('/')
   }
 
-  const redirectCategories = () => {
-    navigate('/Categorias')
+  const redirectTermsAndConditions = () => {
+    navigate('/terms')
   }
 
   const redirectDevelopers = () => {
     navigate('/Desarrolladores')
   }
 
+  const redirectPoliticsCookies = () => {
+    navigate('/politica-cookies');
+  }
+
+  const redirectPrivacyPolitics = () => {
+    navigate('/policy-politics');
+  }
+
+  const redirectContactInfo = () => {
+    navigate('/contact-info');
+  }
+  
   const onCloseBuyingSuccess = () => {
     dispatch(onChangeSuccess(false));
   }
@@ -142,7 +155,6 @@ export const MasterPage = ({ children }) => {
           <Cart />
         </IconButton>
 
-
       </header>
       {children}
       <footer id='masterFooter' className='footer'>
@@ -162,6 +174,10 @@ export const MasterPage = ({ children }) => {
           <h4><LocalPhoneIcon sx={{ fontSize: 'small' }} /> 71095580</h4>
           <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
           <a onClick={redirectDevelopers} className='redirectToAbout'>Desarrolladores</a>
+          <a onClick={redirectTermsAndConditions} className='redirectToAbout'>Términos y Condiciones</a>
+          <a onClick={redirectPoliticsCookies} className='redirectToAbout'>Política de Cookies</a>
+          <a onClick={redirectPrivacyPolitics} className='redirectToAbout'>Política de Privacidad</a>
+          <a onClick={redirectContactInfo} className='redirectToAbout'>Contacto</a>
         </div>
         <div className='footer-copyright'>
           Todos los derechos reservados hasta 2024.
@@ -196,6 +212,7 @@ export const MasterPage = ({ children }) => {
           El pedido ha sido realizado correctamente
         </Alert>
       </Snackbar>
+      <NoticeCookies />
     </div>
   )
 }

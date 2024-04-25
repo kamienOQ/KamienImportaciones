@@ -1,0 +1,265 @@
+:root {
+    --background: #f0f0f0;
+    --blue: #007bff;
+    --darkBlue: #0056b3;
+    --white: #fff;
+    --black: #000;
+    --gray: rgba(235, 234, 234, 0.9);
+    --graydark: #c9c9c9;
+    --red: #e50909;
+    --border: #c9c9c9;
+    --colortable1: #ddd;
+    --colorTh: #f2f2f2;
+}
+
+iframe {
+    max-width: 100%;
+}
+
+.notice-cookies-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: slide-in 0.5s forwards;
+    filter: drop-shadow(0 0 12px var(--black));
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.cookie-icon-container {
+    width: 115px;
+    height: 90px;
+    margin-left: 15px;
+    margin-bottom: -15px;
+    filter: drop-shadow(0 0 15px var(--gray));
+}
+
+.cookie-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.notice-cookies {
+    background-color: var(--background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    & p {
+        margin-bottom: 10px;
+    }
+
+    & a {
+        text-decoration: none;
+        color: var(--red);
+        cursor: pointer;
+    }
+
+    & a:hover {
+        color: var(--blue);
+        text-decoration: underline;
+    }
+}
+
+.buttons-cookies {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+
+    & button:hover {
+        text-decoration: none;
+        background-color: var(--border);
+        color: var(--black);
+    }
+
+    & button {
+        margin-right: 20px;
+    }
+}
+
+.aceptar-cookies {
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.rechazar-cookies {
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* *CookiesPoliticsPage Styles */
+/* *TermsAndConditionsPage Styles */
+/* *PrivacyPoliticsPage Styles */
+/* *ContactInfoPage Styles */
+.main-contact-info-container,
+.main-privacy-politics-container,
+.main-cookies-politics-container,
+.main-terms-and-conditions-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.contact-info-container,
+.privacy-politics-container,
+.cookies-politics-container,
+.terms-and-conditions-container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    & .cookies-politics-container,
+    & .terms-and-conditions-container {
+        width: 1300px;
+    }
+}
+
+.contact-info-title-container,
+.privacy-politics-title-container,
+.cookies-politics-title-container,
+.terms-and-conditions-title-container {
+    width: 100%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    align-content: center;
+    text-align: center;
+}
+
+.privacy-politics-information,
+.cookies-politics-information,
+.terms-and-conditions-information {
+    width: calc(100% - 20px);
+    overflow: hidden;
+
+    /* Estilos para los encabezados */
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    & p,
+    div {
+        margin: 20px 20px;
+        margin-left: 30px;
+        line-height: 1.5;
+        text-align: justify;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid var(--colortable1);
+}
+
+th {
+    background-color: var(--colorTh);
+}
+
+tr:nth-child(even) {
+    background-color: var(--colorTh);
+}
+
+tr:hover {
+    background-color: var(--colortable1);
+}
+
+
+/* *ContactInfoPage Styles */
+.contact-info-information {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+
+    & label {
+        margin-bottom: 10px;
+        width: 100%;
+        margin-top: 8px;
+        text-align: left;
+        color: #555;
+        font-weight: bold;
+    }
+
+    & p {
+        color: var(--red);
+        font-weight: bold;
+    }
+
+    & button {
+        background-color: var(--blue);
+        color: var(--white);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 40%;
+        font-size: 16px;
+    }
+
+    & button:hover {
+        background-color: var(--darkBlue);
+    }
+}
+
+/* Estilo para el botón cuando está deshabilitado */
+button[type='submit']:disabled {
+    background-color: #ced4da;
+    /* Cambia el color de fondo cuando está deshabilitado */
+    color: #6c757d;
+    /* Cambia el color del texto cuando está deshabilitado */
+    cursor: not-allowed;
+}
+
+input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    display: inline;
+    width: 10%;
+}
+
+.contact-info-information input[type='text'],
+.contact-info-information input[type='email'],
+.contact-info-information input[type='number'],
+.contact-info-information textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.contact-info-information textarea {
+    resize: none;
+    min-height: 300px;
+}

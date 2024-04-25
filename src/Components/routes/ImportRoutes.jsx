@@ -6,6 +6,10 @@ import { ProductsPage } from '../../Pages/ProductsPage';
 import { ProductsModalDetail } from '../products/ProductsModalDetail';
 import DevelopersPage from '../../Pages/DevelopersPage';
 import { useEffect } from 'react';
+import TermsAndConditionsPage from '../Politic/TermsAndConditionsPage';
+import CookiesPolitics from '../Politic/CookiesPolitics';
+import PrivacyPolitic from '../Politic/PrivacyPolitic';
+import ContactInfo from '../Politic/ContactInfo';
 
 // Define la función scrollToTop aquí
 function scrollToTop() {
@@ -27,13 +31,17 @@ export const ImportRoutes = () => {
     <>
       <MasterPage>
         <Routes>
+          <Route path="/*" element={<Navigate to="/" />} />
           <Route path="/" element={<CategoriesPage />} />
           <Route path="/ProductoDetalle" element={<ProductsModalDetail />} />
           <Route path="/Producto" element={<ProductsPage />} />
           <Route path="/Categorias" element={<CategoriesPage />} />
           <Route path="/Nosotros" element={<AboutPage />} />
           <Route path="/Desarrolladores" element={<DevelopersPage />} />
-          <Route path="/*" element={<Navigate to="/" />} />
+          <Route path="/terms" element={<TermsAndConditionsPage />} />
+          <Route path="/politica-cookies" element={<CookiesPolitics />} />
+          <Route path="/policy-politics" element={<PrivacyPolitic />} />  
+          <Route path="/contact-info" element={<ContactInfo />} />      
         </Routes>
       </MasterPage>
     </>
