@@ -191,7 +191,7 @@ const PrivacyPolitic = () => {
                 </>
             )
         },
-    ]
+    ];
 
     return (
         <div className='main-privacy-politics-container'>
