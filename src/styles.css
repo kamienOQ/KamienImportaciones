@@ -477,12 +477,12 @@ h4 {
         margin-left: 20px;
     }
 
-    @media screen and (min-width: 1400px) {
+    @media screen and (min-width: 1550px) {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
         margin-left: 20px;
     }
 
-    @media screen and (min-width: 1655px) {
+    @media screen and (min-width: 1810px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
     }
@@ -493,7 +493,7 @@ h4 {
     margin-top: 3%;
     background: rgba(0, 0, 0, 0.87);
     position: relative;
-    width: 95%;
+    width: 75%;
     height: 80%;
     border-radius: 10%;
     box-shadow: 5px 5px 30px;
@@ -544,13 +544,19 @@ h4 {
     }
 
     @media screen and (min-width: 1200px) {
-        width: 235px;
+        width: 230px;
         margin: auto;
         height: 85%;
     }
 
     @media screen and (min-width: 1300px) {
         width: 250px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1810px) {
+        width: 245px;
         margin: auto;
         height: 85%;
     }
