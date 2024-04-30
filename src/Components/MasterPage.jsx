@@ -159,7 +159,13 @@ export const MasterPage = ({ children }) => {
       {children}
       <footer id='masterFooter' className='footer'>
         <div className='footer-contactInfo'>
-          <h4>Redes Sociales</h4>
+          <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
+          <a onClick={redirectTermsAndConditions} className='redirectToAbout'>Términos y Condiciones</a>
+          <a onClick={redirectPoliticsCookies} className='redirectToAbout'>Política de Cookies</a>
+          <a onClick={redirectPrivacyPolitics} className='redirectToAbout'>Política de Privacidad</a>
+          <a onClick={redirectContactInfo} className='redirectToAbout'>Contacto</a>
+          <a onClick={redirectDevelopers} className='redirectToAbout'>Desarrolladores</a>
+          <h4 style={{ marginTop: '15px' }}>Redes Sociales</h4>
           <div className='footer-socialNetworks'>
             <div className='socialNetworks-background'>
               <a href={instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon style={{ color: '#DE3163' }} /></a>
@@ -171,13 +177,7 @@ export const MasterPage = ({ children }) => {
               <a href={whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon style={{ color: 'SeaGreen' }} /></a>
             </div>
           </div>
-          <h4><LocalPhoneIcon sx={{ fontSize: 'small' }} /> 71095580</h4>
-          <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
-          <a onClick={redirectDevelopers} className='redirectToAbout'>Desarrolladores</a>
-          <a onClick={redirectTermsAndConditions} className='redirectToAbout'>Términos y Condiciones</a>
-          <a onClick={redirectPoliticsCookies} className='redirectToAbout'>Política de Cookies</a>
-          <a onClick={redirectPrivacyPolitics} className='redirectToAbout'>Política de Privacidad</a>
-          <a onClick={redirectContactInfo} className='redirectToAbout'>Contacto</a>
+          <h4 style={{ marginTop: '15px', marginBottom: '5px' }}><LocalPhoneIcon sx={{ fontSize: 'small' }} /> 71095580</h4>
         </div>
         <div className='footer-copyright'>
           Todos los derechos reservados hasta 2024.

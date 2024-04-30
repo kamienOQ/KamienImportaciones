@@ -47,7 +47,8 @@ const TermsAndConditionsPage = () => {
                         uso del Servicio, violar cualquier ley en tu jurisdicción (incluyendo, pero no limitado a las leyes
                         de derecho de autor).  
                         <br /> <br />
-                        No debes transmitir gusanos, virus o cualquier código de naturaleza destructiva. <br />
+                        No debes transmitir gusanos, virus o cualquier código de naturaleza destructiva.
+                        <br /> <br />
                         El incumplimiento o violación de cualquiera de estos Términos darán lugar al cese inmediato de
                         tus Servicios.
                     </>

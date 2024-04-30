@@ -141,6 +141,7 @@ a {
 
 .footer {
     margin-bottom: -60px;
+    margin-top: 410px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -161,7 +162,7 @@ a {
     gap: 10px;
     padding-top: 5px;
     padding-bottom: 15px;
-    margin-top: 16px;
+    margin-top: 100px;
 
     & a {
         height: 24px;
@@ -173,6 +174,7 @@ a {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-top: 8px;
 
     & a {
         height: 24px;
@@ -197,6 +199,8 @@ h4 {
 }
 
 .redirectToAbout {
+    margin-top: 15px;
+    margin-bottom: -12px;
     color: white;
     cursor: pointer;
     text-decoration: underline;
@@ -439,19 +443,50 @@ h4 {
     }
 
     @media screen and (min-width: 580px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 40px;
+    }
+
+    @media screen and (min-width: 800px) {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
         margin-left: 40px;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 900px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 20px;
+    }
+
+    @media screen and (min-width: 1000px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
-        margin-left: 40px;
+        margin-left: 38px;
     }
 
     @media screen and (min-width: 1025px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
-        margin-left: 40px;
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        margin-left: 20px;
     }
+
+    @media screen and (min-width: 1198px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+    }
+
+    @media screen and (min-width: 1400px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+    }
+
+    @media screen and (min-width: 1655px) {
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
+        margin-left: 20px;
+    }
+
 }
 
 .main-container-productsCards-img {
@@ -459,12 +494,65 @@ h4 {
     background: rgba(0, 0, 0, 0.87);
     position: relative;
     width: 95%;
-    height: 85%;
+    height: 80%;
+    border-radius: 10%;
+    box-shadow: 5px 5px 30px;
 
     /* Propiedades responsivas */
-    @media screen and (max-width: 400px) {
+    @media screen and (min-width: 200px) {
+        width: 190px;
+        margin: auto;
+        margin-right: 10px;
+        height: 95%;
+    }
+
+    @media screen and (min-width: 260px) {
+        width: 230px;
+        margin: auto;
+        margin-right: 25px;
+        height: 90%;
+    }
+
+    @media screen and (min-width: 320px) {
         width: 250px;
         margin: auto;
+        height: 90%;
+    }
+
+    @media screen and (min-width: 400px) {
+        width: 250px;
+        margin: auto;
+        height: 92%;
+    }
+
+    @media screen and (min-width: 540px) {
+        width: 245px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 900px) {
+        width: 270px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1000px) {
+        width: 225px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 235px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1300px) {
+        width: 250px;
+        margin: auto;
+        height: 85%;
     }
 }
 
@@ -475,6 +563,7 @@ h4 {
     align-items: center;
     height: 215px;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 .container-figure-img-product {
@@ -487,9 +576,11 @@ h4 {
     overflow: hidden;
     position: relative;
     /* Importante para posicionar correctamente el contenido */
+    border-radius: 10% 10% 0 0;
+    mask-image: linear-gradient(black 80%, transparent);
 
     /* Estilos para la imagen dentro del contenedor */
-    img {
+    & img {
         position: absolute;
         top: 0;
         left: 0;
@@ -577,6 +668,7 @@ h4 {
     text-align: center;
     position: relative;
     bottom: 10px;
+    top: 10px;
 
     /* Propiedades responsivas */
     @media screen and (min-width: 400px) {
