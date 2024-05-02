@@ -209,6 +209,7 @@ h4 {
 /* *CategoriesPage Styles */
 .grid-container {
     margin-top: 64px;
+    margin-bottom: -515px;
     display: grid;
     grid-template-columns: repeat(1, minmax(200px, 1fr));
     grid-auto-rows: 375px;
