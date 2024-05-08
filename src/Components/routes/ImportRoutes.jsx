@@ -1,15 +1,17 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import { MasterPage } from '../MasterPage';
-import { CategoriesPage } from '../../Pages/CategoriesPage';
 import { AboutPage } from '../../Pages/AboutPage';
-import { ProductsPage } from '../../Pages/ProductsPage';
+import { CategoriesPage } from '../../Pages/CategoriesPage';
+import { MasterPage } from '../MasterPage';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { ProductsModalDetail } from '../products/ProductsModalDetail';
-import DevelopersPage from '../../Pages/DevelopersPage';
+import { ProductsPage } from '../../Pages/ProductsPage';
 import { useEffect } from 'react';
-import TermsAndConditionsPage from '../Politic/TermsAndConditionsPage';
-import CookiesPolitics from '../Politic/CookiesPolitics';
-import PrivacyPolitic from '../Politic/PrivacyPolitic';
 import ContactInfo from '../Politic/ContactInfo';
+import CookiesPolitics from '../Politic/CookiesPolitics';
+import DevelopersPage from '../../Pages/DevelopersPage';
+import PaymentMethodCard from '../confirm/PaymentMethodCard';
+import PrivacyPolitic from '../Politic/PrivacyPolitic';
+import TermsAndConditionsPage from '../Politic/TermsAndConditionsPage';
+import ThankYouBuyProduct from '../confirm/ThankYouBuyProduct';
 
 // Define la función scrollToTop aquí
 function scrollToTop() {
@@ -41,7 +43,9 @@ export const ImportRoutes = () => {
           <Route path="/terms" element={<TermsAndConditionsPage />} />
           <Route path="/politica-cookies" element={<CookiesPolitics />} />
           <Route path="/policy-politics" element={<PrivacyPolitic />} />  
-          <Route path="/contact-info" element={<ContactInfo />} />      
+          <Route path="/contact-info" element={<ContactInfo />} />  
+          <Route path="/PaymenCard" element={<PaymentMethodCard />} /> 
+          <Route path="/ThankYouBuyer" element={<ThankYouBuyProduct />} /> 
         </Routes>
       </MasterPage>
     </>

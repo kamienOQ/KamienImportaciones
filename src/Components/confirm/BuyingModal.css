@@ -110,7 +110,7 @@
 .ResponsiveBox {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 20px 5%;
   /* Añadido margen superior e inferior */
 
@@ -135,4 +135,45 @@
       margin-right: 0;
     }
   }
+}
+
+.additional-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 5%;
+}
+
+/* Propiedades de el método de pago de PayPal*/
+.paypal-button {
+  display: flex;
+  /* Utiliza el modelo de caja flexible */
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+}
+
+.main-thanks-container {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin-bottom: -300px;
+}
+
+.thanks-container {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.thanks-title-container {
+  width: 100%;
+  margin-left: 20px;
+  margin-bottom: 200px;
+  align-content: center;
+  text-align: center;
 }

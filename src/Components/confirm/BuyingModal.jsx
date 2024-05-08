@@ -15,10 +15,11 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PaidIcon from '@mui/icons-material/Paid';
+import { useNavigate } from 'react-router-dom';
+import PaymentPayPal from './PaymentPayPal';
 
 const BuyingModal = ({ open, setOpen, datosCompra }) => {
   const { whatsapp } = useAboutStore();
-
   const [unitaryPricetotal, setunitaryPriceTotal] = useState(0);
   const [metodoPago, setMetodoPago] = useState("");
   const [name, setname] = useState("");
@@ -29,9 +30,12 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
   const [disable, setdisable] = useState(false);
   const [position, setPosition] = useState(undefined);
   const [markerPosition, setMarkerPosition] = useState(undefined);
+  const [camposCompletos, setCamposCompletos] = useState(false);
   const mapRef = useRef(null);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const SendMessage = async () => {
     let fecha = new Date();
@@ -46,7 +50,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       sendMethod: envio,
       products: datosCompra,
       totalPrice: calculateTotal()
-    }
+    };
 
     // Obtener el número de teléfono de la URL de WhatsApp
     const phoneNumber = whatsapp.match(/\+\d+/)[0];
@@ -64,7 +68,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     dispatch(onCleanProducts());
   };
 
-
+  // const confirmPaymend = () => {
+  //   navigate('/PaymenCard')
+  // };
 
   const checkNull = () => {
     if (numero.length < 7 || envio === "" || metodoPago === "" || name.length < 4) {
@@ -72,12 +78,12 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     } else {
       setdisable(true)
     }
-  }
+  };
 
   const calculateTotal = () => {
     const total = datosCompra.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     return total;
-  }
+  };
 
   const manageMsg = () => {
     setMensajeEnvio(
@@ -99,44 +105,65 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       })
       + "\n Ubicación: "
     )
-  }
+  };
 
   const handleMetodoPago = (event) => {
     setMetodoPago(event.target.value)
     manageMsg()
     checkNull()
-  }
+  };
 
   const handleMetodoEnvio = (event) => {
     setenvio(event.target.value)
     manageMsg()
     checkNull()
-  }
+  };
 
   const handleDireccion = (event) => {
+    // Verificar si el campo de nombre está lleno
+    if (event.target.value.trim() === '') {
+      setCamposCompletos(true);
+    } else {
+      setCamposCompletos(false);
+    }
+
     setDireccion(event.target.value)
     manageMsg()
     checkNull()
-  }
+  };
 
   const handleName = (event) => {
+    // Verificar si el campo de nombre está lleno
+    if (event.target.value.trim() === '') {
+      setCamposCompletos(true);
+    } else {
+      setCamposCompletos(false);
+    }
+
     setname(event.target.value)
     manageMsg()
     checkNull()
-  }
+  };
 
   const handleNumber = (event) => {
+    // Verificar si el campo de nombre está lleno
+    if (event.target.value.trim() === '') {
+      setCamposCompletos(true);
+    } else {
+      setCamposCompletos(false);
+    }
+
     const regex = /^[0-9\b]+$/;
     if (regex.test(event.target.value)) {
       setNumero(event.target.value)
       manageMsg()
       checkNull()
     }
-  }
+  };
 
   const handleClose = () => {
     setOpen(!open)
-  }
+  };
 
   useEffect(() => {
     const add = (accumulator, a) => {
@@ -172,6 +199,18 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       });
     }
   }, [position]);
+
+  let fecha = new Date();
+  const dataInfoBuyer = {
+    address: direccion,
+    cellphone: numero,
+    date: fecha.getTime(),
+    name: name,
+    nameLowerCase: name.toLowerCase(),
+    status: "Pendiente",
+    wayToPay: metodoPago,
+    sendMethod: envio
+  };
 
   if (datosCompra?.length === 0) {
     return (
@@ -217,7 +256,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
         </Box>
       </Modal>
     )
-  }
+  };
 
   return (
     <>
@@ -232,11 +271,13 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             color: "black",
             borderRadius: "20px",
             '@media (min-width: 200px)': {
-              width: "330px"
+              width: "250px",
+              height: "800px !important",
+              overflowY: "auto"
             },
             '@media (min-width: 280px) and (min-height: 500px)': {
-              width: "260px",
-              height: "570px !important",
+              width: "400px",
+              height: "800px !important",
               overflowY: "auto"
             },
             '@media (min-width: 360px) and (min-height: 700px)': {
@@ -245,8 +286,8 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               overflowY: "auto"
             },
             '@media (min-width: 375px) and (min-height: 600px)': {
-              width: "350px",
-              height: "620px !important",
+              width: "380px",
+              height: "800px !important",
               overflowY: "auto"
             },
             '@media (min-width: 412px) and (min-height: 800px)': {
@@ -255,22 +296,26 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               overflowY: "auto"
             },
             '@media (min-width: 414px)': {
-              width: "330px"
+              width: "400px"
             },
             '@media (min-width: 540px)': {
-              width: "480px"
+              width: "480px",
+              height: "800px !important",
+              overflowY: "auto"
             },
             '@media (min-width: 768px)': {
-              width: "600px"
+              width: "650px",
+              height: "910px !important",
+              overflowY: "auto"
             },
             '@media (min-width: 800px) and (min-height: 1000px)': {
               width: "730px",
-              height: "1100px !important",
+              height: "910px !important",
               overflowY: "auto"
             },
             '@media (min-width: 912px) and (min-height: 600px)': {
-              width: "600px",
-              height: "1250px !important",
+              width: "800px",
+              height: "940px !important",
               overflowY: "auto"
             },
             '@media (min-width: 1024px) and (min-height: 600px)': {
@@ -280,11 +325,11 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             },
             '@media (min-width: 1024px) and (min-height: 800px)': {
               width: "960px",
-              height: "740px !important",
+              height: "900px !important",
               overflowY: "auto"
             },
             '@media (min-width: 1300px) and (min-height: 900px)': {
-              width: "620px",
+              width: "1000px",
               height: "950px !important",
               overflowY: "auto"
             }
@@ -324,7 +369,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     color='quaternary'
                     id="input-with-sx"
                     label="Nombre"
-                    variant="standard"
+                    variant="filled"
                     onChange={(e) => handleName(e)}
                     fullWidth
                     sx={{
@@ -342,7 +387,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                   style={{ display: "flex" }}
                 >
                   <PaidIcon sx={{ color: 'action.active', marginRight: '5px' }} />
-                  <FormControl fullWidth sx={{ marginRight: "4%", fontSize: "x-small" }}>
+                  <FormControl fullWidth sx={{ marginRight: "4%", fontSize: "x-small" }} variant="filled">
                     <InputLabel color='quaternary'>
                       Método de Pago
                     </InputLabel>
@@ -355,6 +400,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                       }}
                       id="outlined-select-currency"
                       label="Método de Pago"
+                      type="number"
                       fullWidth
                       onChange={handleMetodoPago}
                       value={metodoPago}
@@ -364,7 +410,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     >
                       <MenuItem value={"Efectivo"} sx={{ fontSize: "small" }}>Efectivo</MenuItem>
                       <MenuItem value={"Sinpe Móvil"} sx={{ fontSize: "small" }}>Sinpe Móvil</MenuItem>
-                      <MenuItem value={"Tarjeta de Crédito"} sx={{ fontSize: "small" }}>Tarjeta de Crédito</MenuItem>
+                      <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -377,7 +423,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     color='quaternary'
                     id="input-with-sx"
                     label="Número de teléfono"
-                    variant="standard"
+                    variant="filled"
                     fullWidth
                     inputProps={{ maxLength: 12 }}
                     sx={{
@@ -395,7 +441,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                   style={{ display: "flex" }}
                 >
                   <LocalShippingIcon sx={{ color: 'action.active', marginRight: '5px', marginTop: '5px' }} />
-                  <FormControl fullWidth sx={{ marginRight: "5%" }}>
+                  <FormControl fullWidth sx={{ marginRight: "5%" }} variant="filled">
                     <InputLabel color='quaternary'>
                       Método de Envío
                     </InputLabel>
@@ -414,9 +460,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                       value={envio}
                       label="Metodo de Envio"
                     >
-                      <MenuItem value={"Correo"} sx={{ fontSize: "small" }}> Correo </MenuItem>
-                      <MenuItem value={"Presencial"} sx={{ fontSize: "small" }}> Presencial </MenuItem>
-                      <MenuItem value={"Express"} sx={{ fontSize: "small" }}> Express </MenuItem>
+                      <MenuItem value={"Correos"} sx={{ fontSize: "small" }}> Correo de Costa Rica</MenuItem>
+                      {/* <MenuItem value={"Presencial"} sx={{ fontSize: "small" }}> Presencial </MenuItem> */}
+                      <MenuItem value={"Express"} sx={{ fontSize: "small" }}> Express</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -447,7 +493,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     fullWidth
                     color='quaternary'
                     label="Dirección para el envío"
-                    variant="standard"
+                    variant="filled"
                     onChange={(e) => handleDireccion(e)}
                     sx={{ fontSize: "small", height: "5px", marginLeft: "5%" }}
                     inputlabelprops={{
@@ -490,8 +536,8 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                   datosCompra.map((row) => {
                     return (
                       <TableRow key={row.id} sx={{ maxWidth: "30px" }} >
-                        <TableCell sx={{ fontSize: "x-small", border: "2px solid black" }} >{row.name}</TableCell>
-                        <TableCell sx={{ fontSize: "x-small", border: "2px solid black" }}>{row.quantity} </TableCell>
+                        <TableCell sx={{ fontSize: "x-small", border: "2px solid black" }} >{row.quantity}</TableCell>
+                        <TableCell sx={{ fontSize: "x-small", border: "2px solid black" }}>{row.name} </TableCell>
                         <TableCell sx={{ fontSize: "x-small", border: "2px solid black" }}>{row.price} ₡</TableCell>
                         <TableCell sx={{ fontSize: "x-small", border: "2px solid black" }}>{row.price * row.quantity}  ₡</TableCell>
                       </TableRow>
@@ -521,34 +567,101 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               ₡  {calculateTotal()}
             </Typography>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: "3%",
-              marginBottom: "15px"
-            }}>
-            <Button
-              onClick={SendMessage}
-              disabled={!disable}
+
+          {metodoPago !== 'PayPal' && (
+            <Box
               sx={{
-                background: '#357A38',
-                border: "0.2em solid white",
-                marginRight: "10px",
-                marginBottom: '5px',
-                color: 'white',
-                '&:hover': {
-                  background: '#00d084',
-                }
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "3%",
+                marginBottom: "15px"
+              }}>
+              <Button
+                onClick={SendMessage}
+                disabled={!disable}
+                sx={{
+                  background: '#357A38',
+                  border: "0.2em solid white",
+                  marginRight: "10px",
+                  marginBottom: '5px',
+                  color: 'white',
+                  '&:hover': {
+                    background: '#00d084',
+                  }
+                }}
+              >
+                Confirmar
+              </Button>
+              <Typography sx={disable ? { color: "green", fontSize: 10 } : { color: "quaternary", fontSize: 9 }}>
+                {disable ? "¡Datos Válidos para la compra!" : "Los Datos ingresados son inválidos"}
+              </Typography>
+            </Box>
+          )}
+
+          {/* Renderizar el botón adicional si el método de pago es "Tarjeta de Crédito" */}
+          {/* {metodoPago === 'Tarjeta de Crédito' && (
+            <Box
+              className='ResponsiveBox'
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginLeft: "5%",
+                marginRight: "5%",
+                marginTop: "5%",
+                marginBottom: "5%",
+                alignSelf: "center"
               }}
             >
-              Confirmar
-            </Button>
-            <Typography sx={disable ? { color: "green", fontSize: 10 } : { color: "quaternary", fontSize: 9 }}>
-              {disable ? "¡Datos Válidos para la compra!" : "Los Datos ingresados son inválidos"}
-            </Typography>
-          </Box>
+              <button
+                onClick={confirmPaymend}
+                disabled={!disable}
+                sx={{
+                  background: '#357A38',
+                  border: "0.2em solid white",
+                  marginRight: "10px",
+                  marginBottom: '5px',
+                  color: 'white',
+                  '&:hover': {
+                    background: '#00d084',
+                  }
+                }}
+              >
+                Pagar con Tarjeta
+              </button>
+
+              <Typography sx={disable ? { color: "green", fontSize: 10 } : { color: "quaternary", fontSize: 9 }}>
+                {disable ? "¡Datos Válidos para la compra!" : "Los Datos ingresados son inválidos"}
+              </Typography>
+            </Box>
+          )} */}
+
+          {/* Renderizar el botón adicional si el método de pago es "PayPal" */}
+          {metodoPago === 'PayPal' && !camposCompletos && (
+            <div>
+              <Box
+                className='ResponsiveBox'
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-evenly",
+                  marginLeft: "3%",
+                  marginRight: "3%",
+                  marginTop: "5%",
+                  marginBottom: "3%",
+                  alignSelf: "center"
+                }}
+              >
+                <PaymentPayPal datosCompra={datosCompra} dataInfoBuyer={dataInfoBuyer} />
+              </Box>
+              <div className="additional-content">
+                <Typography sx={disable ? { color: "green", fontSize: 10 } : { color: "quaternary", fontSize: 9 }}>
+                  {disable ? "¡Datos Válidos para la compra!" : "Los Datos ingresados son inválidos"}
+                </Typography>
+              </div>
+            </div>
+          )}
         </Box>
       </Modal>
     </>
