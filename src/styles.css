@@ -1158,3 +1158,24 @@ h4 {
         ;
     }
 }
+
+.buttonProductsCard {
+    position: relative;
+    top: 5px;
+    left: 75%;
+    transform: translateX(-50%);
+}
+
+.buttonProductsCard button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: var(--border);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 5px;
+}
+
+.buttonProductsCard button:hover {
+    background-color: #ddd;
+}
