@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
-import { format } from "date-fns";
 
 const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
     const [message, setMessage] = useState('');
+    const [convertedPrice, setConvertedPrice] = useState(null);
+    const [convertedUnitPrice, setConvertedUnitPrice] = useState(null); 
+    const [loading, setLoading] = useState(true);
 
     const url = import.meta.env.VITE_APP_SERVER_URL;
     const clientId = import.meta.env.VITE_APP_PAYPAL_API_CLIENT;
-    const apiSecret = import.meta.env.VITE_APP_PAYPAL_API_SECRET;
+
+    const urlExchange = import.meta.env.VITE_APP_SERVER_URL_EXCHANGE;
 
     const initialOptions = {
         clientId: clientId,
@@ -18,7 +21,7 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
     const clearCart = () => {
         // Eliminar cartProducts del localStorage
         localStorage.removeItem('cartProducts');
-    }
+    };
 
     // Calculamos el valor total de la compra sumando el precio de todos los productos en el carrito
     const totalValue = datosCompra.reduce((total, product) => {
@@ -28,19 +31,84 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
         return total + price * product.quantity;
     }, 0);
 
+    const convertCurrency = async (from, to, amount) => {
+        try {
+            const response = await fetch(`${urlExchange}?from=${from}&to=${to}&amount=${amount}`);
+            if (!response.ok) {
+                throw new Error('Error en la solicitud de conversión de moneda');
+            }
+            const data = await response.json();
+            return data.conversion_result; // Devolver el resultado para usarlo más tarde
+        } catch (error) {
+            console.error('Error al convertir la moneda: ', error.message);
+            // Maneja el error según tu lógica de aplicación
+            throw error;
+        }
+    };
 
-    const product = datosCompra.map(product => ({
+    const convertCurrencyPrice = async (from, to, amount) => {
+        try {
+            const response = await fetch(`${urlExchange}?from=${from}&to=${to}&amount=${amount}`);
+            if (!response.ok) {
+                throw new Error('Error en la solicitud de conversión de moneda');
+            }
+            const data = await response.json();
+            return data.conversion_result; // Devolver el resultado para usarlo más tarde
+        } catch (error) {
+            console.error('Error al convertir la moneda: ', error.message);
+            // Maneja el error según tu lógica de aplicación
+            throw error;
+        }
+    };
+
+    useEffect(() => {
+        const convertCurrencyData = async () => {
+            try {
+                const fromCurrency = 'CRC';
+                const toCurrency = 'USD';
+                const amount = totalValue.toFixed(2);
+                const convertedPrice = await convertCurrency(fromCurrency, toCurrency, amount);
+                setConvertedPrice(convertedPrice);
+
+                const totalPrice = await Promise.all(datosCompra.map(async (product) => {
+                    try {
+                        const amount = parseFloat(product.price) * product.quantity;
+                        const convertUnitPrice = await convertCurrencyPrice(fromCurrency, toCurrency, amount);
+                        return { id: product.id, value: convertUnitPrice };
+                    } catch (error) {
+                        console.error(`Error al convertir el precio del producto ${product.id}: ${error.message}`);
+                        return null;
+                    }
+                })); 
+                
+                // Filtrar los productos que se pudieron convertir exitosamente
+                const convertedTotalPrice = totalPrice.filter(price => price !== null);
+
+                setConvertedUnitPrice(convertedTotalPrice);  
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setLoading(false); // Marcar la carga como completa, independientemente del resultado
+            }
+        };
+
+        convertCurrencyData();
+    }, [totalValue, urlExchange]);
+
+    if (loading) {
+        return <div>Cargando...</div>; // Muestra un mensaje de carga mientras se obtiene convertedPrice
+    }
+
+    const product = datosCompra.map((product, index) => ({
         id: product.id,
         name: product.name,
-        price: product.price,
+        price: convertedUnitPrice[index].value.toFixed(2),
         unit_amount: {
             currency_code: 'USD',
-            value: product.price * product.quantity // Ensure the value is formatted correctly
+            value: convertedUnitPrice[index].value.toFixed(2)
         },
         quantity: product.quantity
     }));
-
-    console.log(product);
 
     const datosCompraBuyer = {
         purchase_units: [
@@ -48,21 +116,20 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                 reference_id: 'default',
                 amount: {
                     currency_code: 'USD',
-                    value: totalValue.toFixed(2),
+                    value: convertedPrice.toFixed(2),
                     breakdown: {
                         item_total: {
                             currency_code: 'USD',
-                            value: totalValue.toFixed(2)
+                            value: convertedPrice.toFixed(2)
                         }
                     }
                 },
                 productos: product,
-                totalValue: totalValue.toFixed(2)
+                totalValue: convertedPrice.toFixed(2)
             }
         ]
     };
 
-    console.log(datosCompraBuyer);
 
     const createOrder = async () => {
         try {
@@ -72,12 +139,14 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    //id: product[0].id,
+                    id: 'default',
                     datosCompraBuyer,
                 }),
             });
 
             const orderData = await response.json();
+
+            console.log(orderData);
 
             if (orderData.id) {
                 return orderData.id;
@@ -86,11 +155,14 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                 const errorMessage = errorDetail
                     ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
                     : JSON.stringify(orderData);
+                
+                console.log(errorMessage);
 
                 throw new Error(errorMessage);
             }
         } catch (error) {
             console.error(error);
+            console.log(error);
             resultMessage(`Could not initiate PayPal Checkout...${error}`);
         }
     };
@@ -128,10 +200,16 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                 // (3) Successful transaction -> Show confirmation or thank you message
                 // Or go to another URL:  actions.redirect('thank_you.html');
                 const transaction =
-                    orderData.purchase_units[0].payments.captures[0];
+                    orderData?.purchase_units?.[0].payments?.captures[0] ||
+                    orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
                 setMessage(
                     `Transaction ${transaction.status}: ${transaction.id}`,
                 );
+                console.log(
+                    "Capture result",
+                    orderData,
+                    JSON.stringify(orderData, null, 2),
+                  );
 
                 // Si la transacción se ha completado con éxito, redirige al usuario a otra página
                 if (transaction.status === 'COMPLETED') {
@@ -179,3 +257,6 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
 };
 
 export default PaymentPayPal
+
+
+

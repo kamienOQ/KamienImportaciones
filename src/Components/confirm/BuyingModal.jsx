@@ -410,7 +410,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     >
                       <MenuItem value={"Efectivo"} sx={{ fontSize: "small" }}>Efectivo</MenuItem>
                       <MenuItem value={"Sinpe Móvil"} sx={{ fontSize: "small" }}>Sinpe Móvil</MenuItem>
-                      <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem>
+                      {/* <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem> */}
                     </Select>
                   </FormControl>
                 </div>
@@ -638,7 +638,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           )} */}
 
           {/* Renderizar el botón adicional si el método de pago es "PayPal" */}
-          {metodoPago === 'PayPal' && !camposCompletos && (
+          {/* {metodoPago === 'PayPal' && !camposCompletos && (
             <div>
               <Box
                 className='ResponsiveBox'
@@ -661,7 +661,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                 </Typography>
               </div>
             </div>
-          )}
+          )} */}
         </Box>
       </Modal>
     </>

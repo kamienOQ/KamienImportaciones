@@ -136,7 +136,7 @@ export const ProductsPage = () => {
             )}
             urlImage={activeProduct.urlImage}
             urlIcon={activeProduct.urlIcon}
-            urlPhoto={product.photo?.url}
+            urlPhoto={activeProduct.photo?.url}
             productName={activeProduct.productName}
             product={activeProduct}
           />
