@@ -248,6 +248,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           '@media (min-width: 1024px)': {
             width: "570px",
           },
+          '@media (min-width: 1060px)': {
+            width: "670px",
+          }
         }}>
           <GppBadIcon sx={{ marginRight: "5%" }} />
           <Typography sx={{ fontWeight: "bolder" }}>
@@ -272,12 +275,17 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             borderRadius: "20px",
             '@media (min-width: 200px)': {
               width: "250px",
-              height: "800px !important",
+              height: "600px !important",
               overflowY: "auto"
             },
             '@media (min-width: 280px) and (min-height: 500px)': {
               width: "400px",
-              height: "800px !important",
+              height: "700px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 280px) and (min-height: 800px)': {
+              width: "350px",
+              height: "790px !important",
               overflowY: "auto"
             },
             '@media (min-width: 360px) and (min-height: 700px)': {
@@ -286,8 +294,13 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               overflowY: "auto"
             },
             '@media (min-width: 375px) and (min-height: 600px)': {
-              width: "380px",
-              height: "800px !important",
+              width: "360px",
+              height: "590px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 376px) and (min-height: 600px)': {
+              width: "360px",
+              height: "750px !important",
               overflowY: "auto"
             },
             '@media (min-width: 412px) and (min-height: 800px)': {
@@ -295,37 +308,69 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               height: "800px !important",
               overflowY: "auto"
             },
-            '@media (min-width: 414px)': {
-              width: "400px"
+            '@media (min-width: 414px) and (min-height: 800px)': {
+              width: "385px",
+              height: "780px !important",
+              overflowY: "auto"
             },
             '@media (min-width: 540px)': {
               width: "480px",
-              height: "800px !important",
+              height: "600px !important",
               overflowY: "auto"
             },
             '@media (min-width: 768px)': {
               width: "650px",
-              height: "910px !important",
+              height: "710px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 768px) and (min-height: 1000px)': {
+              width: "650px",
+              height: "920px !important",
               overflowY: "auto"
             },
             '@media (min-width: 800px) and (min-height: 1000px)': {
               width: "730px",
+              height: "710px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 820px) and (min-height: 1000px)': {
+              width: "730px",
               height: "910px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 820px) and (min-height: 1200px)': {
+              width: "730px",
+              height: "1150px !important",
               overflowY: "auto"
             },
             '@media (min-width: 912px) and (min-height: 600px)': {
               width: "800px",
-              height: "940px !important",
+              height: "620px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 912px) and (min-height: 1000px)': {
+              width: "800px",
+              height: "1250px !important",
               overflowY: "auto"
             },
             '@media (min-width: 1024px) and (min-height: 600px)': {
-              width: "550px",
+              width: "800px",
               height: "550px !important",
               overflowY: "auto"
             },
-            '@media (min-width: 1024px) and (min-height: 800px)': {
+            '@media (min-width: 1024px) and (min-height: 601px)': {
+              width: "800px",
+              height: "550px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 1100px) and (min-height: 800px)': {
               width: "960px",
-              height: "900px !important",
+              height: "740px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 1100px) and (min-height: 1100px)': {
+              width: "960px",
+              height: "940px !important",
               overflowY: "auto"
             },
             '@media (min-width: 1300px) and (min-height: 900px)': {
@@ -408,6 +453,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                         style: { fontSize: "small" },
                       }}
                     >
+                      <MenuItem value={"Credix"} sx={{ fontSize: "small" }}> Pago con Credix</MenuItem>
                       <MenuItem value={"Efectivo"} sx={{ fontSize: "small" }}>Efectivo</MenuItem>
                       <MenuItem value={"Sinpe Móvil"} sx={{ fontSize: "small" }}>Sinpe Móvil</MenuItem>
                       {/* <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem> */}
@@ -462,7 +508,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     >
                       <MenuItem value={"Correos"} sx={{ fontSize: "small" }}> Correo de Costa Rica</MenuItem>
                       {/* <MenuItem value={"Presencial"} sx={{ fontSize: "small" }}> Presencial </MenuItem> */}
-                      <MenuItem value={"Express"} sx={{ fontSize: "small" }}> Express</MenuItem>
+                      <MenuItem value={"Express"} sx={{ fontSize: "small" }}> Express</MenuItem>+
                     </Select>
                   </FormControl>
                 </div>

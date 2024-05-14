@@ -24,7 +24,6 @@ const db = getFirestore(FirebaseApp);
 const googleProvider = new GoogleAuthProvider();
 export const crearPedido = async (data) => {
   try {
-    console.log(data);
     await addDoc(collection(FirebaseDB, "orders"), data);
   } catch (error) {
     console.log(error);

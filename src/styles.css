@@ -1179,3 +1179,9 @@ h4 {
 .buttonProductsCard button:hover {
     background-color: #ddd;
 }
+
+.floating-whatsapp,
+.floating-whatsapp-chatbox,
+.floating-whatsapp-button {
+    left: 2rem;
+}
