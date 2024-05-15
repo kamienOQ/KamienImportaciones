@@ -118,6 +118,7 @@ iframe {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    margin-bottom: -450px;
 }
 
 .contact-info-container,

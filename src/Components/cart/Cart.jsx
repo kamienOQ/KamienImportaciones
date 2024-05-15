@@ -8,6 +8,7 @@ import { CartItem } from './CartItem';
 import { CleanProductsModal } from './CleanProductsModal';
 import BuyingModal from '../confirm/BuyingModal';
 import { CartProductDetails } from './CartProductDetail';
+import { ProductsPage } from '../../Pages/ProductsPage';
 
 export const Cart = () => {
   const { products, activeProduct } = useSelector((state) => state.cart);

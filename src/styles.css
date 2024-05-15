@@ -13,6 +13,7 @@
     --footer: #0E1116;
     --roboto: 'Roboto', sans-serif;
     --modal: #D6DBDF;
+    --goToTopBackground: #1C2833;
 }
 
 * {
@@ -39,18 +40,16 @@ body {
 }
 
 #goToTopBtn {
-    display: none;
-    /* El botón estará oculto por defecto */
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 115px;
+    right: 25px;
     z-index: 99;
     font-size: 16px;
     padding: 10px 20px;
-    background-color: #1C2833;
-    color: rgb(255, 255, 255);
+    background-color: var(--goToTopBackground);
+    color: var(--white);
     border: none;
-    border-radius: 46%;
+    border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
     /* Agrega una transición suave al cambio de color de fondo */
@@ -334,23 +333,28 @@ h4 {
 /* *CategoriesEmpty Styles */
 
 .container-emptyCategories {
-    margin: 114px 0px 44px 0px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .emptyCategories-image {
     width: 30%;
 }
 
+.container-emptyCategories h2 {
+    margin-top: 20px;
+    /* Espacio entre la imagen y el texto */
+}
+
 /* *AboutPage Styles */
 .about-container {
-    height: 75vh;
-    margin-top: 70px;
+    height: 30vh;
+    margin-top: 165px;
+    margin-bottom: -410px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -453,6 +457,11 @@ h4 {
         margin-left: 40px;
     }
 
+    @media screen and (min-width: 800px) and (min-height: 1280px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 12px;
+    }
+
     @media screen and (min-width: 900px) {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
         margin-left: 20px;
@@ -517,7 +526,7 @@ h4 {
     @media screen and (min-width: 320px) {
         width: 250px;
         margin: auto;
-        height: 90%;
+        height: 95%;
     }
 
     @media screen and (min-width: 400px) {
@@ -529,7 +538,7 @@ h4 {
     @media screen and (min-width: 540px) {
         width: 245px;
         margin: auto;
-        height: 85%;
+        height: 90%;
     }
 
     @media screen and (min-width: 900px) {
@@ -734,6 +743,7 @@ h4 {
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
+    margin-bottom: -415px;
 }
 
 .developers-container {
@@ -1063,6 +1073,12 @@ h4 {
     text-align: center;
 }
 
+@media (max-width: 300px) {
+    .MuiToggleButton-root {
+        padding: 2px !important;
+    }
+}
+
 @media (max-width: 410px) {
     .MuiToggleButton-root {
         font-size: 10px !important;
@@ -1083,15 +1099,10 @@ h4 {
     }
 }
 
-@media (max-width: 300px) {
-    .MuiToggleButton-root {
-        padding: 2px !important;
-    }
-}
-
 .addProduct-modal-button {
     border-radius: 15px !important;
     bottom: 25px;
+    top: -30px;
     display: relative;
 
     &:hover {
@@ -1101,12 +1112,15 @@ h4 {
     /* Propiedades responsivas */
     @media screen and (min-width: 400px) {
         bottom: 38px;
-        display: inherit;
     }
 
-    @media screen and (max-width: 750px) {
+    @media screen and (mix-width: 750px) {
         bottom: 36px;
-        display: inherit;
+    }
+
+    @media screen and (min-width: 900px) {
+        bottom: 36px;
+        top: -35px;
     }
 }
 
@@ -1120,7 +1134,7 @@ h4 {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    margin-bottom: 20%;
+    margin-bottom: -18%;
 
     @media (max-width: 410px) {
         h2 {
@@ -1161,9 +1175,13 @@ h4 {
 
 .buttonProductsCard {
     position: relative;
-    top: 5px;
-    left: 75%;
-    transform: translateX(-50%);
+    top: 10px;
+    /* bottom: -14px; */
+    left: 30%;
+    display: flex;
+    /* align-items: center; */
+    /* align-self: center; */
+    /* transform: translateX(-50%); */
 }
 
 .buttonProductsCard button {
@@ -1171,17 +1189,13 @@ h4 {
     padding: 5px 10px;
     background-color: var(--border);
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 5px;
+    /* Importante para posicionar correctamente el contenido */
+    border-radius: 10% 10% 0 0;
+    mask-image: linear-gradient(rgb(233, 228, 228) 75%, transparent);
 }
 
 .buttonProductsCard button:hover {
     background-color: #ddd;
-}
-
-.floating-whatsapp,
-.floating-whatsapp-chatbox,
-.floating-whatsapp-button {
-    left: 2rem;
 }

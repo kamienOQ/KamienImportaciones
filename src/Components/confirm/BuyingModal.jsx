@@ -278,6 +278,11 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               height: "600px !important",
               overflowY: "auto"
             },
+            '@media (min-width: 240px)': {
+              width: "250px",
+              height: "300px !important",
+              overflowY: "auto"
+            },
             '@media (min-width: 280px) and (min-height: 500px)': {
               width: "400px",
               height: "700px !important",
@@ -286,6 +291,16 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             '@media (min-width: 280px) and (min-height: 800px)': {
               width: "350px",
               height: "790px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 320px)': {
+              width: "345px",
+              height: "500px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 360px) and (min-height: 100px)': {
+              width: "345px",
+              height: "580px !important",
               overflowY: "auto"
             },
             '@media (min-width: 360px) and (min-height: 700px)': {
@@ -298,8 +313,23 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               height: "590px !important",
               overflowY: "auto"
             },
+            '@media (min-width: 375px) and (min-height: 800px)': {
+              width: "360px",
+              height: "720px !important",
+              overflowY: "auto"
+            },
             '@media (min-width: 376px) and (min-height: 600px)': {
               width: "360px",
+              height: "750px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 384px) and (min-height: 600px)': {
+              width: "330px",
+              height: "600px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 402px) and (min-height: 800px)': {
+              width: "385px",
               height: "750px !important",
               overflowY: "auto"
             },
@@ -318,6 +348,16 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               height: "600px !important",
               overflowY: "auto"
             },
+            '@media (min-width: 600px) and (min-height: 900px)': {
+              width: "580px",
+              height: "810px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 640px)': {
+              width: "580px",
+              height: "1000px !important",
+              overflowY: "auto"
+            },
             '@media (min-width: 768px)': {
               width: "650px",
               height: "710px !important",
@@ -331,6 +371,11 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             '@media (min-width: 800px) and (min-height: 1000px)': {
               width: "730px",
               height: "710px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 800px) and (min-height: 1200px)': {
+              width: "730px",
+              height: "990px !important",
               overflowY: "auto"
             },
             '@media (min-width: 820px) and (min-height: 1000px)': {
@@ -363,6 +408,16 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               height: "550px !important",
               overflowY: "auto"
             },
+            '@media (min-width: 1024px) and (min-height: 800px)': {
+              width: "890px",
+              height: "700px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 1024px) and (min-height: 1200px)': {
+              width: "800px",
+              height: "1210px !important",
+              overflowY: "auto"
+            },
             '@media (min-width: 1100px) and (min-height: 800px)': {
               width: "960px",
               height: "740px !important",
@@ -377,7 +432,17 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               width: "1000px",
               height: "950px !important",
               overflowY: "auto"
-            }
+            },
+            '@media (min-width: 1400px) and (min-height: 900px)': {
+              width: "1000px",
+              height: "800px !important",
+              overflowY: "auto"
+            },
+            '@media (min-width: 1400px) and (min-height: 100px)': {
+              width: "1000px",
+              height: "900px !important",
+              overflowY: "auto"
+            },
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px" }}>

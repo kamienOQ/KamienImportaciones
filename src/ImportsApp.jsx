@@ -20,7 +20,6 @@ export const ImportsApp = () => {
         darkMode="true"
         allowClickAway="true"
         allowEsc="true"
-        className="floating-whatsapp"
         notification="true"
         notificationSound="true"
         notificationSoundSrc={Sound}

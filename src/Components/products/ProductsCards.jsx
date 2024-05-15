@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Skeleton } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useProductsStore } from '../../hooks/useProductsStore'
 import { useState } from 'react';
@@ -34,25 +34,31 @@ export const ProductsCards = ({ urlImage, urlIcon, urlPhoto, productName, relate
   return (
     <>
       <div className="main-container-productsCards-img">
-        <figure className='container-figure-img-product'>
-          <motion.img
-            src={images[currentImageIndex]}
-            alt=""
-            id="product-image"
-            className='productsCards-img'
-            loading="lazy"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          />
-        </figure>
-        <div className='buttonProductsCard'>
-          <button onClick={handlePreviousImage}>
-            <ArrowBackIosIcon />
-          </button>
-          <button onClick={handleNextImage}>
-            <ArrowForwardIosIcon />
-          </button>
-        </div>
+        {images[currentImageIndex] ? (
+          <figure className='container-figure-img-product'>
+            <motion.img
+              src={images[currentImageIndex]}
+              alt=""
+              id="product-image"
+              className='productsCards-img'
+              loading="lazy"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          </figure>
+        ) : (
+          <Skeleton variant='rectangular' width="100%" height={215} />
+        )}
+        {urlIcon && urlPhoto && (
+          <div className='buttonProductsCard'>
+            <button onClick={handlePreviousImage}>
+              <ArrowBackIosIcon />
+            </button>
+            <button onClick={handleNextImage}>
+              <ArrowForwardIosIcon />
+            </button>
+          </div>
+        )}
         <div className='container-productsCards'>
           <div className='container-productsCards-content'>
             <h1 className='productsCards-text'>

@@ -1,10 +1,12 @@
-import emptyCategorites from '../../assets/Cargando.webp';
+import { Skeleton } from '@mui/material';
 
 export const CategoriesEmpty = () => {
   return (
     <div className='container-emptyCategories'>
-        <img src={emptyCategorites} alt="" className='Cargando-image' loading="lazy"/>
-        <h2>Cargando espere</h2>
+      <Skeleton variant="rectangular" width={200} height={200} />
+      <Skeleton animation="wave" width={100} height={30} style={{ marginTop: 10 }} />
     </div>
   )
 }
+
+

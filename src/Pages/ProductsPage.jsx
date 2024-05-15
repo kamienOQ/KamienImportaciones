@@ -24,12 +24,9 @@ import { imagePaths, numberOfImages } from "./NoticesImages";
 export const ProductsPage = () => {
   const { startGetAttributesByCategory, setIsOpen, isOpen } =
     useAttributesStore();
-
   const { closeProductModal, isProductModalOpen } = useUiStore();
-
   const { products, startGetProducts, message, activeProduct } =
     useProductsStore();
-
   const { categorySelected, setCategorySelected } = useCategoriesStore();
 
   function handleOpen() {
