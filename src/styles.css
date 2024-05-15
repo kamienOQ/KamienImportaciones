@@ -361,6 +361,11 @@ h4 {
     padding: 0px 80px;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 1400px) {
+        margin-top: 290px;
+        margin-bottom: -290px;
+    }
 }
 
 .about-container-firstSection {
