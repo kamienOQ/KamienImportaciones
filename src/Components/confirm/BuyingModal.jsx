@@ -68,6 +68,37 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     dispatch(onCleanProducts());
   };
 
+  const SendPaypalLink = async () => {
+    let fecha = new Date();
+    const data = {
+      address: direccion,
+      cellphone: numero,
+      date: fecha.getTime(),
+      name: name,
+      nameLowerCase: name.toLowerCase(),
+      status: "Pendiente",
+      wayToPay: metodoPago,
+      sendMethod: envio,
+      products: datosCompra,
+      totalPrice: calculateTotal(),
+    };
+
+    // Obtener el número de teléfono de la URL de WhatsApp
+    const phoneNumber = whatsapp.match(/\+\d+/)[0];
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${phoneNumber}`
+    window.open(url);
+    setNumero("")
+    setname("")
+    setDireccion("")
+    setenvio("")
+    setMetodoPago("")
+    setdisable(false)
+    setOpen(!open)
+    await crearPedido(data);
+    dispatch(onChangeSuccess(true));
+    dispatch(onCleanProducts());
+  }
+
   // const confirmPaymend = () => {
   //   navigate('/PaymenCard')
   // };
@@ -85,11 +116,14 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     return total;
   };
 
+  const linkPaypalMe = `https://paypal.me/pagosKamien?country.x=CR&locale.x=es_XC`;
+
   const manageMsg = () => {
     setMensajeEnvio(
       "Compra Kámien" +
       "\n Nombre: " + name +
       "\n Método de pago: " + metodoPago +
+      "\n Link de pago de Paypal: " + linkPaypalMe +
       "\n Método de envío: " + envio +
       "\n Número de teléfono: " + numero +
       "\n Precio Total de la compra: " + calculateTotal() +
@@ -521,7 +555,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                       <MenuItem value={"Credix"} sx={{ fontSize: "small" }}> Pago con Credix</MenuItem>
                       <MenuItem value={"Efectivo"} sx={{ fontSize: "small" }}>Efectivo</MenuItem>
                       <MenuItem value={"Sinpe Móvil"} sx={{ fontSize: "small" }}>Sinpe Móvil</MenuItem>
-                      {/* <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem> */}
+                      <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -749,7 +783,48 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           )} */}
 
           {/* Renderizar el botón adicional si el método de pago es "PayPal" */}
-          {/* {metodoPago === 'PayPal' && !camposCompletos && (
+          {metodoPago === 'PayPal' && !camposCompletos && (
+            <div>
+              <Box
+                className='ResponsiveBox'
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-evenly",
+                  marginLeft: "3%",
+                  marginRight: "3%",
+                  marginTop: "5%",
+                  marginBottom: "3%",
+                  alignSelf: "center"
+                }}
+              >
+                <Button
+                  onClick={SendPaypalLink}
+                  disabled={!disable}
+                  sx={{
+                    background: '#357A38',
+                    border: "0.2em solid white",
+                    marginRight: "10px",
+                    marginBottom: '5px',
+                    color: 'white',
+                    '&:hover': {
+                      background: '#00d084',
+                    }
+                  }}
+                >
+                  Pagar con PayPal link
+                </Button>
+              </Box>
+              <div className="additional-content">
+                <Typography sx={disable ? { color: "green", fontSize: 10 } : { color: "quaternary", fontSize: 9 }}>
+                  {disable ? "¡Datos Válidos para la compra!" : "Los Datos ingresados son inválidos"}
+                </Typography>
+              </div>
+            </div>
+          )}
+
+          {/* Renderizar el botón adicional si el método de pago es "PayPal"
+          {metodoPago === 'PayPal' && !camposCompletos && (
             <div>
               <Box
                 className='ResponsiveBox'

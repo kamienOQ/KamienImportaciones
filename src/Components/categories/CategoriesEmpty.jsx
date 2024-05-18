@@ -1,12 +1,11 @@
-import { Skeleton } from '@mui/material';
+import React from 'react';
+import './CategoriesEmpty.css';
 
 export const CategoriesEmpty = () => {
   return (
     <div className='container-emptyCategories'>
-      <Skeleton variant="rectangular" width={200} height={200} />
-      <Skeleton animation="wave" width={100} height={30} style={{ marginTop: 10 }} />
+      <span className="loader">Load&nbsp;ng</span>
     </div>
-  )
-}
-
-
+  );
+};
+ 

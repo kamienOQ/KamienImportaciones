@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
 import { CategoriesCards } from '../Components/categories/CategoriesCards';
-import { useCategoriesStore } from '../hooks/useCategoriesStore';
 import { CategoriesEmpty } from '../Components/categories/CategoriesEmpty';
+import { useCategoriesStore } from '../hooks/useCategoriesStore';
+import { useEffect, useState } from 'react';
 
 export const CategoriesPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { categories, startGetCategories } = useCategoriesStore();
 
   useEffect(() => {
@@ -43,23 +44,39 @@ export const CategoriesPage = () => {
     return indexA - indexB; // Ordenamos según los índices en desiredOrder
   });
 
+  const handleSelectCategory = (categoryName) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 4000); // Esperar 4 segundos antes de cargar la nueva categoría
+  };
+
   return (
     <>
       <>
-        {categories.length > 0 ? (
-          <div className="grid-container">
-            {sortedCategories.map((category) => (
-              <CategoriesCards
-                key={category.categoryName}
-                urlImage={category.image?.url}
-                urlIcon={category.icon?.url}
-                categoryName={category.categoryName}
-              />
-            ))}
-          </div>)
-          : (
+        <div className='categories-page'>
+          {isLoading ? (
             <CategoriesEmpty />
+          ) : (
+            <div className='categories-grid'>
+              {categories.length > 0 ? (
+                <div className="grid-container">
+                  {sortedCategories.map((category) => (
+                    <CategoriesCards
+                      key={category.categoryName}
+                      urlImage={category.image?.url}
+                      urlIcon={category.icon?.url}
+                      categoryName={category.categoryName}
+                      onSelectCategory={handleSelectCategory}
+                    />
+                  ))}
+                </div>)
+                : (
+                  <CategoriesEmpty />
+                )}
+            </div>
           )}
+        </div>
       </>
     </>
   )

@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { useCategoriesStore } from '../../hooks/useCategoriesStore';
 import { Skeleton } from '@mui/material';
 
-export const CategoriesCards = ({ urlImage, urlIcon, categoryName }) => {
+export const CategoriesCards = ({ urlImage, urlIcon, categoryName, onSelectCategory }) => {
   const { setCategorySelected } = useCategoriesStore();
   const navigate = useNavigate();
 
   const onhandleSelectCategory = () => {
-    setCategorySelected(categoryName);
+    onSelectCategory(categoryName);
     localStorage.setItem('categorySelected', categoryName);
     navigate('/Producto');
   }

@@ -12,6 +12,8 @@ export const ProductsModalDetail = ({ product, productName, price, relatedAttrib
 
     const [firstAttribute, setFirstAttribute] = useState([])
 
+    const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
         let tempList = []
         let tempListObj = {}
@@ -25,8 +27,8 @@ export const ProductsModalDetail = ({ product, productName, price, relatedAttrib
             }
         });
         setAttributesSelected(tempListObj);
-
         setFirstAttribute(tempList)
+        setIsLoading(false);
     }, [])
 
     const handleAttributeSelected = (event, attribute) => {
@@ -43,68 +45,72 @@ export const ProductsModalDetail = ({ product, productName, price, relatedAttrib
         >
             <DialogContent>
                 <div>
-                    <div className='product-form'>
-                        <h1>{productName}</h1>
-                        <h2 className='productsDetailCards-text'>Precio: ₡{price}</h2>
-                        <TableContainer
-                            className='TableContainer'
-                            sx={{
-                                maxHeight: "400px",
-                                '@media (min-width: 200px)': {
-                                    marginLeft: '-45px',
-                                    overflow: 'unset'
-                                },
-                                '@media (min-width: 360px)': {
-                                    marginLeft: '-20px',
-                                },
-                                '@media (min-width: 912px)': {
-                                    maxHeight: "460px",
-                                },
-                                '@media (min-width: 1024px)': {
-                                    width: "460px",
-                                }
-                            }}
-                        >
-                            <Box sx={{ textAlign: 'center', display: 'flex', marginLeft: '50px' }}>
-                                <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-                                    <label component="legend">Atributos relacionados al producto:</label>
-                                    <FormGroup>
-                                        {relatedAttributes.map((attribute, index) => (
-                                            <div key={index}>
-                                                <ListItem sx={{ display: 'block' }}>
-                                                    <label>{attribute}</label>
-                                                </ListItem>
-                                                <ListItem sx={{ display: 'grid', ml: 2 }}>
-                                                    {firstAttribute.length !== 0 &&
-                                                        <RadioGroup
-                                                            onChange={(event) => handleAttributeSelected(event, attribute)}
-                                                            defaultValue={firstAttribute[index]}
-                                                        >
-                                                            {relatedListAttributes.map((relatedAttribute, index) => (
-                                                                relatedAttribute.attributeSelected === attribute &&
-                                                                <FormControlLabel
-                                                                    value={relatedAttribute.feature}
-                                                                    key={index}
-                                                                    control={
-                                                                        <Radio
-                                                                            id={relatedAttribute.feature}
-                                                                            name={relatedAttribute.feature}
-                                                                        />
-                                                                    }
-                                                                    label={relatedAttribute.feature}
-                                                                />
-                                                            ))}
-                                                        </RadioGroup>}
-                                                </ListItem>
-                                            </div>
-                                        ))}
-                                    </FormGroup>
-                                    <FormHelperText className='formHelperTex'>Selecciona los atributos que deseas</FormHelperText>
-                                </FormControl>
-                            </Box>
-                        </TableContainer>
-                        <ItemCount product={product} selectedAttributes={attributesSelected} />
-                    </div>
+                    {isLoading ? (
+                        <Skeleton variant="rectangular" width="100%" height={400} />
+                    ) : (
+                        <div className='product-form'>
+                            <h1>{productName}</h1>
+                            <h2 className='productsDetailCards-text'>Precio: ₡{price}</h2>
+                            <TableContainer
+                                className='TableContainer'
+                                sx={{
+                                    maxHeight: "400px",
+                                    '@media (min-width: 200px)': {
+                                        marginLeft: '-45px',
+                                        overflow: 'unset'
+                                    },
+                                    '@media (min-width: 360px)': {
+                                        marginLeft: '-20px',
+                                    },
+                                    '@media (min-width: 912px)': {
+                                        maxHeight: "460px",
+                                    },
+                                    '@media (min-width: 1024px)': {
+                                        width: "460px",
+                                    }
+                                }}
+                            >
+                                <Box sx={{ textAlign: 'center', display: 'flex', marginLeft: '50px' }}>
+                                    <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                                        <label component="legend">Atributos relacionados al producto:</label>
+                                        <FormGroup>
+                                            {relatedAttributes.map((attribute, index) => (
+                                                <div key={index}>
+                                                    <ListItem sx={{ display: 'block' }}>
+                                                        <label>{attribute}</label>
+                                                    </ListItem>
+                                                    <ListItem sx={{ display: 'grid', ml: 2 }}>
+                                                        {firstAttribute.length !== 0 &&
+                                                            <RadioGroup
+                                                                onChange={(event) => handleAttributeSelected(event, attribute)}
+                                                                defaultValue={firstAttribute[index]}
+                                                            >
+                                                                {relatedListAttributes.map((relatedAttribute, index) => (
+                                                                    relatedAttribute.attributeSelected === attribute &&
+                                                                    <FormControlLabel
+                                                                        value={relatedAttribute.feature}
+                                                                        key={index}
+                                                                        control={
+                                                                            <Radio
+                                                                                id={relatedAttribute.feature}
+                                                                                name={relatedAttribute.feature}
+                                                                            />
+                                                                        }
+                                                                        label={relatedAttribute.feature}
+                                                                    />
+                                                                ))}
+                                                            </RadioGroup>}
+                                                    </ListItem>
+                                                </div>
+                                            ))}
+                                        </FormGroup>
+                                        <FormHelperText className='formHelperTex'>Selecciona los atributos que deseas</FormHelperText>
+                                    </FormControl>
+                                </Box>
+                            </TableContainer>
+                            <ItemCount product={product} selectedAttributes={attributesSelected} />
+                        </div>
+                    )}
                 </div>
             </DialogContent>
         </Dialog>

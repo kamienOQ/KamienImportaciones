@@ -7,6 +7,7 @@ import { useUiStore } from '../../hooks';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { ProductsModalDetail } from './ProductsModalDetail';
 
 export const ProductsCards = ({ urlImage, urlIcon, urlPhoto, productName, relatedAttributes, price, relatedListAttributes, product }) => {
   const { openProductModal } = useUiStore();
@@ -14,9 +15,11 @@ export const ProductsCards = ({ urlImage, urlIcon, urlPhoto, productName, relate
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const images = [urlImage, urlIcon, urlPhoto];
 
   const onOpenModal = () => {
+    setIsLoading(true);
     setActiveProduct(product);
     openProductModal();
   }

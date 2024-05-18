@@ -272,7 +272,7 @@ const ContactInfo = () => {
               onChange={handleCheckboxChange}
             />
             <label htmlFor="PrivacyPolitic" className="excluir">
-              He leido y acepto la <a href="kamien.store/policy-politics" style={{ color: 'red' }}>política de privacidad.</a>
+              He leido y acepto la <a href="https://kamien.store/policy-politics" style={{ color: 'red' }}>política de privacidad.</a>
             </label>
 
             <div className='button-contact-info'>
