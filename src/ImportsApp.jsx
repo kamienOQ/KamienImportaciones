@@ -43,6 +43,8 @@ export const ImportsApp = () => {
             notificationSoundSrc={Sound}
             onClick=''
             onClose=''
+            className='floating-whatsapp'
+            chatboxClassName='floating-whatsapp-chatbox'
           />
         </div>
       )}
