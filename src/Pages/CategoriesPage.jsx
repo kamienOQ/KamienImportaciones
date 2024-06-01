@@ -15,14 +15,15 @@ export const CategoriesPage = () => {
   // Definimos el orden deseado de las categorias
   const desiredOrder = [
     "Lentes",
-    "Joyas",
     "Perfumes",
     "Relojes",
     "Relojes deportivos",
     "Bolsos",
-    "Tenis",
+    "Tennis",
     "Zapatos",
-    "Sandalias"
+    "Sandalias",
+    "Anime",
+    "En Promoción ",
   ];
 
   /* Usamos el arreglo categories directamente después de obtenerlo del hook 
