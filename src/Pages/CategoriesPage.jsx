@@ -12,6 +12,8 @@ export const CategoriesPage = () => {
     startGetCategories();
   }, [])
 
+  console.log(categories);
+
   // Definimos el orden deseado de las categorias
   const desiredOrder = [
     "Lentes",
@@ -23,6 +25,8 @@ export const CategoriesPage = () => {
     "Zapatos",
     "Sandalias",
     "Anime",
+    "Ropa Deportiva",
+    "Accesorios para Celulares",
     "En Promoción ",
   ];
 
