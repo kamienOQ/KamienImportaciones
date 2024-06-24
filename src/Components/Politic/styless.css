@@ -18,8 +18,8 @@ iframe {
 
 .notice-cookies-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 120px;
     z-index: 1000;
     animation: slide-in 0.5s forwards;
     filter: drop-shadow(0 0 12px var(--black));
@@ -46,6 +46,7 @@ iframe {
 .cookie-icon {
     width: 100%;
     height: 100%;
+    aspect-ratio: 1/49;
 }
 
 .notice-cookies {
