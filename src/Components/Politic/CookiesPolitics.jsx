@@ -165,7 +165,7 @@ const CookiesPolitics = () => {
     ]
 
     return (
-        <div className='main-cookies-politics-container'>
+        <div className='main-cookies-politics-container animate__animated animate__fadeIn'>
             <div className='cookies-politics-container'>
                 <div className='cookies-politics-title-container'>
                     <Typography variant="h4">Política de cookies</Typography>

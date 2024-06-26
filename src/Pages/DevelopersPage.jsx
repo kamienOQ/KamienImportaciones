@@ -18,7 +18,7 @@ const DevelopersPage = () => {
     ];
 
     return (
-        <div className='main-developers-container'>
+        <div className='main-developers-container animate__animated animate__fadeIn animate__slow'>
             <div className='developers-container'>
                 <div className='developers-title-container'>
                     <Typography variant="h4">Desarrolladores</Typography>

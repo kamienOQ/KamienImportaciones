@@ -13,7 +13,7 @@ export const AboutPage = () => {
   };
 
   return (
-    <div className='about-container'>
+    <div className='about-container animate__animated animate__fadeIn animate__slow'>
       <div className='about-container-firstSection'>
         <div className='firstSection-data-container'>
           <div className='data-container'>

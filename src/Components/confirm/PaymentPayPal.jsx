@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { v4 as uuidv4 } from 'uuid';
 
 const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
     const [message, setMessage] = useState('');
     const [convertedPrice, setConvertedPrice] = useState(null);
-    const [convertedUnitPrice, setConvertedUnitPrice] = useState(null); 
+    const [convertedUnitPrice, setConvertedUnitPrice] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const url = import.meta.env.VITE_APP_SERVER_URL;
     const clientId = import.meta.env.VITE_APP_PAYPAL_API_CLIENT;
-
     const urlExchange = import.meta.env.VITE_APP_SERVER_URL_EXCHANGE;
 
+    // Generar un reference_id único
+    const referenceId = uuidv4();
+
     const initialOptions = {
-        clientId: clientId,
+        "client-id": clientId,
         currency: 'USD',
         intent: "capture",
     };
@@ -46,21 +49,6 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
         }
     };
 
-    const convertCurrencyPrice = async (from, to, amount) => {
-        try {
-            const response = await fetch(`${urlExchange}?from=${from}&to=${to}&amount=${amount}`);
-            if (!response.ok) {
-                throw new Error('Error en la solicitud de conversión de moneda');
-            }
-            const data = await response.json();
-            return data.conversion_result; // Devolver el resultado para usarlo más tarde
-        } catch (error) {
-            console.error('Error al convertir la moneda: ', error.message);
-            // Maneja el error según tu lógica de aplicación
-            throw error;
-        }
-    };
-
     useEffect(() => {
         const convertCurrencyData = async () => {
             try {
@@ -73,18 +61,18 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                 const totalPrice = await Promise.all(datosCompra.map(async (product) => {
                     try {
                         const amount = parseFloat(product.price) * product.quantity;
-                        const convertUnitPrice = await convertCurrencyPrice(fromCurrency, toCurrency, amount);
+                        const convertUnitPrice = await convertCurrency(fromCurrency, toCurrency, amount);
                         return { id: product.id, value: convertUnitPrice };
                     } catch (error) {
                         console.error(`Error al convertir el precio del producto ${product.id}: ${error.message}`);
                         return null;
                     }
-                })); 
-                
+                }));
+
                 // Filtrar los productos que se pudieron convertir exitosamente
                 const convertedTotalPrice = totalPrice.filter(price => price !== null);
 
-                setConvertedUnitPrice(convertedTotalPrice);  
+                setConvertedUnitPrice(convertedTotalPrice);
             } catch (error) {
                 console.error(error);
             } finally {
@@ -113,7 +101,7 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
     const datosCompraBuyer = {
         purchase_units: [
             {
-                reference_id: 'default',
+                order_id: referenceId,
                 amount: {
                     currency_code: 'USD',
                     value: convertedPrice.toFixed(2),
@@ -133,19 +121,29 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
 
     const createOrder = async () => {
         try {
+            const payload = { datosCompraBuyer };
+            console.log("Sending payload: ", payload);
+
             const response = await fetch(`${url}/api/orders`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    id: 'default',
                     datosCompraBuyer,
                 }),
             });
 
-            const orderData = await response.json();
+            if (!response.ok) {
+                throw new Error('Network response was not ok' + response.statusText);
+            }
 
+            const textResponse = await response.text();
+            if (!textResponse) {
+                throw new Error('Empty response from server');
+            }
+
+            const orderData = await response.json();
             console.log(orderData);
 
             if (orderData.id) {
@@ -155,14 +153,12 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                 const errorMessage = errorDetail
                     ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
                     : JSON.stringify(orderData);
-                
-                console.log(errorMessage);
 
+                console.log(errorMessage);
                 throw new Error(errorMessage);
             }
         } catch (error) {
-            console.error(error);
-            console.log(error);
+            console.error('Error creating order: ', error);
             resultMessage(`Could not initiate PayPal Checkout...${error}`);
         }
     };
@@ -178,6 +174,10 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                     orderID: data.orderID
                 })
             });
+
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
 
             const orderData = await response.json();
             // Three cases to handle:
@@ -209,11 +209,12 @@ const PaymentPayPal = ({ datosCompra, dataInfoBuyer }) => {
                     "Capture result",
                     orderData,
                     JSON.stringify(orderData, null, 2),
-                  );
+                );
 
                 // Si la transacción se ha completado con éxito, redirige al usuario a otra página
                 if (transaction.status === 'COMPLETED') {
                     actions.redirect('http://localhost:5173/ThankYouBuyer');
+                    //actions.redirect('https://kamien.store/ThankYouBuyer');
                     clearCart();
                 }
             }

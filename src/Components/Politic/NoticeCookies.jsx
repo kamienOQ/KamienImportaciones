@@ -68,7 +68,7 @@ const NoticeCookies = () => {
 
     return (
         showNotice && (
-            <div className="notice-cookies-container">
+            <div className="notice-cookies-container animate__animated animate__fadeIn">
                 <div className="cookie-icon-container">
                     <img src={cookie} alt="Cookies" className="cookie-icon" />
                 </div>

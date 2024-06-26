@@ -23,9 +23,10 @@
 
     /* Propiedades responsivas */
     @media screen and (min-width: 200px) {
-        max-width: 20rem;
+        max-width: 21rem;
         height: auto;
         --slide-height: 8rem;
+        margin-left: 15px;
     }
 
     @media screen and (min-width: 350px) {
@@ -97,7 +98,7 @@
     @media screen and (min-width: 1300px) {
         max-width: 80rem;
         height: auto;
-        --slide-height: 25rem;
+        --slide-height: 28rem;
     }
 }
 

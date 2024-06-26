@@ -179,7 +179,7 @@ const ContactInfo = () => {
   }
 
   return (
-    <div className='main-contact-info-container'>
+    <div className='main-contact-info-container animate__animated animate__fadeIn'>
       <div className='contact-info-container'>
         <div className='contact-info-title-container'>
           <Typography variant="h4">Contacto</Typography>

@@ -7,9 +7,17 @@ import { useUiStore } from '../../hooks';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { ProductsModalDetail } from './ProductsModalDetail';
 
-export const ProductsCards = ({ urlImage, urlIcon, urlPhoto, productName, relatedAttributes, price, relatedListAttributes, product }) => {
+export const ProductsCards = ({ 
+  urlImage, 
+  urlIcon, 
+  urlPhoto, 
+  productName, 
+  relatedAttributes, 
+  price, 
+  relatedListAttributes, 
+  product 
+}) => {
   const { openProductModal } = useUiStore();
   const { isSaving, setActiveProduct } = useProductsStore();
   const theme = useTheme();

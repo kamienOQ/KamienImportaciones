@@ -127,7 +127,7 @@ export const MasterPage = ({ children }) => {
   const redirectContactInfo = () => {
     navigate('/contact-info');
   }
-  
+
   const onCloseBuyingSuccess = () => {
     dispatch(onChangeSuccess(false));
   }
@@ -157,6 +157,7 @@ export const MasterPage = ({ children }) => {
 
       </header>
       {children}
+
       <footer id='masterFooter' className='footer'>
         <div className='footer-contactInfo'>
           <a onClick={redirectAbout} className='redirectToAbout'>Acerca de nosotros</a>
@@ -183,6 +184,7 @@ export const MasterPage = ({ children }) => {
           Todos los derechos reservados hasta 2024.
         </div>
       </footer>
+      
       <Snackbar open={message.error} autoHideDuration={6000} onClose={onCloseMessageError} sx={{ alignItems: "flex-start", mt: "42px" }}
         anchorOrigin={{
           vertical: "top",

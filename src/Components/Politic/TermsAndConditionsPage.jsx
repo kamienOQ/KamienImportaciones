@@ -499,7 +499,7 @@ const TermsAndConditionsPage = () => {
         },
     ]
     return (
-        <div className='main-terms-and-conditions-container'>
+        <div className='main-terms-and-conditions-container animate__animated animate__fadeIn'>
             <div className='terms-and-conditions-container'>
                 <div className='terms-and-conditions-title-container'>
                     <Typography variant="h4">Términos y Condiciones</Typography>

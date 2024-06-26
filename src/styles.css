@@ -53,12 +53,27 @@ body {
     border-radius: 30%;
     cursor: pointer;
     filter: drop-shadow(0px 0px 10px rgb(245, 242, 242));
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
     /* Agrega una transición suave al cambio de color de fondo */
+
+    @media (min-width: 900px) {
+        margin-right: -10px;
+        font-size: 70px;
+    }
+
+    @media (min-width: 1000px) {
+        font-size: 65px;
+    }
 }
 
 #goToTopBtn:hover {
     background-color: var(--border);
+}
+
+.styles-module_whatsappButton__tVits {
+    @media (min-width: 900px) {
+        font-size: 90px;
+    }
 }
 
 a {
@@ -166,7 +181,79 @@ a {
     margin-top: 100px;
 
     & a {
-        height: 24px;
+        height: 12px;
+    }
+
+    @media (min-width: 200px) {
+        font-size: 16px;
+        gap: 25px;
+
+        & a {
+            height: 12px;
+        }
+    }
+
+    @media (min-width: 300px) {
+        font-size: 20px;
+        gap: 25px;
+
+        & a {
+            height: 12px;
+        }
+    }
+
+    @media (min-width: 400px) {
+        font-size: 20px;
+        gap: 25px;
+
+        & a {
+            height: 14px;
+        }
+    }
+
+    @media (min-width: 700px) {
+        font-size: 24px;
+        gap: 20px;
+
+        & a {
+            height: 24px;
+        }
+    }
+
+    @media (min-width: 800px) {
+        font-size: 24px;
+        gap: 20px;
+
+        & a {
+            height: 26px;
+        }
+    }
+
+    @media (min-width: 910px) {
+        font-size: 28px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 35px;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
     }
 }
 
@@ -178,7 +265,115 @@ a {
     margin-top: 8px;
 
     & a {
-        height: 24px;
+        height: 12px;
+    }
+
+    @media (min-width: 200px) {
+        font-size: 16px;
+        gap: 15px;
+
+        & a {
+            height: 24px;
+        }
+    }
+
+    @media (min-width: 300px) {
+        font-size: 20px;
+        gap: 10px;
+
+        & a {
+            height: 24px;
+        }
+    }
+
+    @media (min-width: 400px) {
+        font-size: 20px;
+        gap: 10px;
+
+        & a {
+            height: 24px;
+        }
+    }
+
+    @media (min-width: 700px) {
+        font-size: 24px;
+        gap: 20px;
+
+        & a {
+            height: 26px;
+        }
+    }
+
+    @media (min-width: 800px) {
+        font-size: 24px;
+        gap: 20px;
+
+        & a {
+            height: 26px;
+        }
+    }
+
+    @media (min-width: 910px) {
+        font-size: 24px;
+        gap: 20px;
+
+        & a {
+            height: 26px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 35px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
+    }
+
+    @media (min-width: 1100px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 25px;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 26px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 25px;
+        }
+    }
+
+    @media (min-width: 1700px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
     }
 }
 
@@ -189,6 +384,83 @@ a {
     background-color: var(--white);
     padding: 5px;
     border-radius: 50%;
+
+    @media (min-width: 200px) {
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    @media (min-width: 300px) {
+        padding: 5px;
+        font-size: 20px;
+    }
+
+    @media (min-width: 400px) {
+        padding: 8px;
+        font-size: 18px;
+    }
+
+    @media (min-width: 500px) {
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    @media (min-width: 600px) {
+        padding: 10px;
+        font-size: 24px;
+    }
+
+    @media (min-width: 700px) {
+        padding: 10px;
+        font-size: 24px;
+    }
+
+    @media (min-width: 800px) {
+        padding: 10px;
+        font-size: 24px;
+    }
+
+    @media (min-width: 910px) {
+        padding: 10px;
+        font-size: 24px;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 10px;
+        font-size: 25px;
+    }
+
+    @media (min-width: 1400px) {
+        padding: 15px;
+        font-size: 26px;
+    }
+
+    @media (min-width: 1600px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
+    }
+
+    @media (min-width: 1700px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        font-size: 30px;
+        padding-top: 5px;
+
+        & a {
+            height: 30px;
+        }
+    }
 }
 
 h4 {
@@ -197,6 +469,43 @@ h4 {
 
 .footer-copyright {
     padding: 20px 0px;
+
+    @media (min-width: 200px) {
+        font-size: 15px;
+    }
+
+    @media (min-width: 300px) {
+        font-size: 16px;
+    }
+
+    @media (min-width: 400px) {
+        font-size: 16px;
+    }
+
+    @media (min-width: 700px) {
+        font-size: 24px;
+    }
+
+    @media (min-width: 800px) {
+        font-size: 24px;
+    }
+
+    @media (min-width: 910px) {
+        font-size: 28px;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 35px;
+    }
+
+    @media (min-width: 1400px) {
+        font-size: 30px;
+    }
+}
+
+.category {
+    font-weight: 500 !important;
+    text-shadow: 5px 5px 5px rgba(38, 36, 36, 0.9);
 }
 
 .redirectToAbout {
@@ -448,6 +757,7 @@ h4 {
     @media screen and (min-width: 200px) {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
         margin-left: 20px;
+        margin-top: 80px;
     }
 
     @media screen and (min-width: 540px) {
@@ -473,6 +783,13 @@ h4 {
     @media screen and (min-width: 900px) {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
         margin-left: 20px;
+        height: calc(100% - 5px);
+    }
+
+    @media screen and (min-width: 950px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 38px;
+        height: calc(100% - 5px);
     }
 
     @media screen and (min-width: 1000px) {
@@ -480,31 +797,470 @@ h4 {
         margin-left: 38px;
     }
 
-    @media screen and (min-width: 1025px) {
+    @media screen and (min-width: 1050px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
     }
 
-    @media screen and (min-width: 1198px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
+    @media screen and (min-width: 1100px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
     }
 
     @media screen and (min-width: 1200px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
+        height: calc(100% - 350px);
+    }
+
+    @media screen and (min-width: 1300px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 250px);
+    }
+
+    @media screen and (min-width: 1400px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 350px);
+    }
+
+    @media screen and (min-width: 1500px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 300px);
     }
 
     @media screen and (min-width: 1550px) {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
         margin-left: 20px;
+        height: calc(100% - 290px);
+    }
+
+    @media screen and (min-width: 1600px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 290px);
+    }
+
+    @media screen and (min-width: 1700px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 490px);
     }
 
     @media screen and (min-width: 1810px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
+        height: calc(100% - 350px);
+    }
+}
+
+.grid-container-product.small-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    gap: 5px;
+    width: calc(100% - 20px);
+    height: 100%;
+    overflow: hidden;
+    margin-left: 35px;
+
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        grid-template-columns: repeat(1, minmax(100px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 380px);
     }
 
+    @media screen and (min-width: 250px) {
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 400px);
+    }
+
+    @media screen and (min-width: 300px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 400px);
+    }
+
+    @media screen and (min-width: 400px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 420px);
+    }
+
+    @media screen and (min-width: 550px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 15px;
+        height: calc(100% - 400px);
+    }
+
+    @media screen and (min-width: 600px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 40px;
+        height: calc(100% - 420px);
+    }
+
+    @media screen and (min-width: 650px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 40px;
+        height: calc(100% - 420px);
+    }
+
+    @media screen and (min-width: 700px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 40px;
+        height: calc(100% - 460px);
+    }
+
+    @media screen and (min-width: 750px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 40px;
+        height: calc(100% - 460px);
+    }
+
+    @media screen and (min-width: 800px) and (min-height: 1280px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 12px;
+        height: calc(100% - 500px);
+    }
+
+    @media screen and (min-width: 800px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 500px);
+    }
+
+    @media screen and (min-width: 850px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 500px);
+    }
+
+    @media screen and (min-width: 900px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 400px);
+    }
+
+    @media screen and (min-width: 950px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 38px;
+        height: calc(100% - 400px);
+    }
+
+    @media screen and (min-width: 1000px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        margin-left: 38px;
+        height: calc(85% - 230px);
+    }
+
+    @media screen and (min-width: 1050px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 230px);
+    }
+
+    @media screen and (min-width: 1100px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 240px);
+    }
+
+    @media screen and (min-width: 1150px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 240px);
+    }
+
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 340px);
+    }
+
+    @media screen and (min-width: 1250px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 340px);
+    }
+
+    @media screen and (min-width: 1300px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 340px);
+    }
+
+    @media screen and (min-width: 1350px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 340px);
+    }
+
+    @media screen and (min-width: 1400px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 350px);
+    }
+
+    @media screen and (min-width: 1450px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 310px);
+    }
+
+    @media screen and (min-width: 1500px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 340px);
+    }
+
+    @media screen and (min-width: 1550px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 340px);
+    }
+
+    @media screen and (min-width: 1600px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 590px);
+    }
+
+    @media screen and (min-width: 1650px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 590px);
+    }
+
+    @media screen and (min-width: 1700px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 490px);
+    }
+
+    @media screen and (min-width: 1810px) {
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 360px);
+    }
+}
+
+.grid-container-search-results {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    gap: 5px;
+    width: calc(100% - 20px);
+    height: 100%;
+    overflow: hidden;
+    margin-left: 35px;
+
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        grid-template-columns: repeat(1, minmax(100px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 380px);
+    }
+
+    @media screen and (min-width: 250px) {
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 400px);
+    }
+
+    @media screen and (min-width: 300px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 400px);
+    }
+
+    @media screen and (min-width: 400px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 420px);
+    }
+
+    @media screen and (min-width: 500px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 15px;
+        height: calc(100% - 460px);
+    }
+
+    @media screen and (min-width: 600px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 40px;
+        height: calc(100% - 480px);
+    }
+
+    @media screen and (min-width: 650px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        height: calc(100% - 480px);
+    }
+
+    @media screen and (min-width: 700px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        height: calc(100% - 590px);
+    }
+
+    @media screen and (min-width: 750px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        height: calc(100% - 550px);
+    }
+
+    @media screen and (min-width: 800px) and (min-height: 1280px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        height: calc(100% - 500px);
+    }
+
+    @media screen and (min-width: 800px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        height: calc(100% - 570px);
+    }
+
+    @media screen and (min-width: 900px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        height: calc(100% - 550px);
+    }
+
+    @media screen and (min-width: 1000px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        height: calc(85% - 420px);
+    }
+
+    @media screen and (min-width: 1100px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        height: calc(85% - 420px);
+    }
+
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        height: calc(85% - 500px);
+    }
+
+    @media screen and (min-width: 1300px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        height: calc(85% - 390px);
+    }
+
+    @media screen and (min-width: 1400px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        height: calc(100% - 620px);
+    }
+
+    @media screen and (min-width: 1500px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        height: calc(85% - 500px);
+    }
+
+    @media screen and (min-width: 1600px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 710px);
+    }
+
+    @media screen and (min-width: 1700px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        height: calc(100% - 700px);
+    }
+
+    @media screen and (min-width: 1800px) {
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
+        height: calc(100% - 700px);
+    }
+}
+
+.spinner {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    width: 100%;
+    height: 100%;
+    margin-left: 200px;
+    margin-top: -130%;
+    margin-bottom: -150%;
+
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        margin-top: 130px;
+        margin-bottom: -40px;
+    }
+
+    @media screen and (min-width: 250px) {
+        margin-top: 130px;
+        margin-bottom: 40px;
+    }
+
+    @media screen and (min-width: 300px) {
+        margin-top: 130px;
+        margin-bottom: -70px;
+    }
+
+    @media screen and (min-width: 350px) {
+        margin-top: 130px;
+        margin-bottom: -70px;
+    }
+
+    @media screen and (min-width: 400px) {
+        margin-top: 130px;
+        margin-bottom: -70px;
+    }
+
+    @media screen and (min-width: 450px) {
+        margin-top: 130px;
+        margin-bottom: -80px;
+    }
+
+    @media screen and (min-width: 500px) {
+        margin-top: 130px;
+        margin-bottom: -90px;
+    }
+
+    @media screen and (min-width: 550px) {
+        margin-top: 130px;
+        margin-bottom: -90px;
+    }
+
+    @media screen and (min-width: 600px) {
+        margin-top: 130px;
+        margin-bottom: -150px;
+    }
+
+    @media screen and (min-width: 700px) {
+        margin-top: 100px;
+        margin-bottom: -150px;
+    }
+
+    @media screen and (min-width: 750px) {
+        margin-top: 100px;
+        margin-bottom: -150px;
+    }
+
+    @media screen and (min-width: 1000px) {
+        margin-top: 135px;
+        margin-bottom: -150px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        margin-top: 5px;
+        margin-bottom: -200px;
+    }
+
+    @media screen and (min-width: 1250px) {
+        margin-top: 5px;
+        margin-bottom: -200px;
+    }
+
+    @media screen and (min-width: 1400px) {
+        margin-top: 5px;
+        margin-bottom: -250px;
+    }
+
+    @media screen and (min-width: 1600px) {
+        margin-top: 6px;
+        margin-bottom: -200px;
+    }
 }
 
 .main-container-productsCards-img {
@@ -595,7 +1351,8 @@ h4 {
     width: 100%;
     height: 0;
     /* Establecer altura cero para permitir que el padding-top proporcione la relación de aspecto */
-    padding-top: calc(3 / 3 * 100%);
+    padding-top: calc(6 / 2 * 40%);
+    padding-bottom: calc(2 / 4 * 40%);
     /* Calcula el padding-top basado en la relación de aspecto 3/4 */
     overflow: hidden;
     position: relative;
@@ -608,8 +1365,8 @@ h4 {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: cover;
         /* Ajustar la imagen para cubrir el contenedor */
     }
@@ -1142,11 +1899,204 @@ h4 {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    margin-bottom: -18%;
+    margin-top: -30%;
+    margin-bottom: 46%;
 
-    @media (max-width: 410px) {
+    @media (min-width: 200px) {
+        margin-top: -45%;
+        margin-bottom: 45%;
+
         h2 {
-            font-size: 12px;
+            font-size: 14px;
+        }
+    }
+
+    @media (min-width: 250px) {
+        margin-top: -45%;
+        margin-bottom: 45%;
+
+        h2 {
+            font-size: 16px;
+        }
+    }
+
+    @media (min-width: 300px) {
+        margin-top: -35%;
+        margin-bottom: 35%;
+
+        h2 {
+            font-size: 18px;
+        }
+    }
+
+    @media (min-width: 350px) {
+        margin-top: -35%;
+        margin-bottom: 35%;
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+
+    @media (min-width: 400px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 22px;
+        }
+    }
+
+    @media (min-width: 450px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 500px) {
+        margin-top: -35%;
+        margin-bottom: 35%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 550px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 600px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 700px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 750px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 800px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 950px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1300px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1450px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1500px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1550px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1700px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        margin-top: -20%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1850px) {
+        margin-top: -19%;
+        margin-bottom: 20%;
+
+        h2 {
+            font-size: 24px;
         }
     }
 }
@@ -1214,6 +2164,10 @@ h4 {
     @media (min-width: 400px) {
         height: 280px;
     }
+
+    @media (min-width: 910px) {
+        height: 280px;
+    }
 }
 
 .floating-whatsapp-chatbox {
@@ -1221,25 +2175,25 @@ h4 {
         height: 340px !important;
     }
 
-    @media (min-width: 301px) and (min-height: 700px){
+    @media (min-width: 301px) and (min-height: 700px) {
         height: 440px !important;
         width: 260px !important;
         margin-right: 90px !important;
     }
 
-    @media (min-width: 324px) and (min-height: 700px){
+    @media (min-width: 324px) and (min-height: 700px) {
         height: 440px !important;
         width: 260px !important;
         margin-right: 55px !important;
     }
 
-    @media (min-width: 344px) and (min-height: 800px){
+    @media (min-width: 344px) and (min-height: 800px) {
         height: 420px !important;
         width: 260px !important;
         margin-right: 75px !important;
     }
 
-    @media (min-width: 360px) and (min-height: 700px){
+    @media (min-width: 360px) and (min-height: 700px) {
         height: 440px !important;
         width: 260px !important;
         margin-right: 90px !important;
@@ -1251,45 +2205,52 @@ h4 {
         margin-right: 95px !important;
     }
 
-    @media (min-width: 412px) and (min-height: 732px){
+    @media (min-width: 412px) and (min-height: 732px) {
         height: 380px !important;
         width: 300px !important;
         margin-right: 100px !important;
     }
 
-    @media (min-width: 540px) and (min-height: 720px){
+    @media (min-width: 540px) and (min-height: 720px) {
         height: 320px !important;
         width: 360px !important;
         margin-right: 100px !important;
     }
 
-    @media (min-width: 600px) and (min-height: 900px){
+    @media (min-width: 600px) and (min-height: 900px) {
         height: 340px !important;
         width: 400px !important;
         margin-right: 50px !important;
     }
 
-    @media (min-width: 800px) and (min-height: 1280px){
+    @media (min-width: 800px) and (min-height: 1280px) {
         height: 340px !important;
         width: 400px !important;
         margin-right: 60px !important;
     }
 
-    @media (min-width: 1000px) and (min-height: 700px){
+    @media (min-width: 1000px) and (min-height: 700px) {
         height: 340px !important;
         width: 450px !important;
         margin-right: 60px !important;
     }
 
-    @media (min-width: 1024px) and (min-height: 500px){
+    @media (min-width: 1024px) and (min-height: 500px) {
         height: 320px !important;
         width: 450px !important;
         margin-right: 60px !important;
     }
 
-    @media (min-width: 1200px) and (min-height: 800px){
+    @media (min-width: 1200px) and (min-height: 800px) {
         height: 340px !important;
         width: 450px !important;
         margin-right: 60px !important;
+    }
+
+    @media (min-width: 900px) and (min-height: 1300px) {
+        height: 360px !important;
+        width: 400px !important;
+        margin-right: 90px !important;
+        font-size: 40px;
     }
 }

@@ -10,7 +10,7 @@ export const ProductsEmpty = () => {
         className='emptyProducts-image'
         loading="lazy"
       />
-      <h2>No hay productos disponibles en este momento</h2>
+      <h2 style={{ marginTop: '20px', textAlign: 'center' }}>No hay productos disponibles en este momento</h2>
     </div>
   )
 }

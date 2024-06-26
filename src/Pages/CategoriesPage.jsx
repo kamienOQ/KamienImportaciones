@@ -57,7 +57,7 @@ export const CategoriesPage = () => {
   return (
     <>
       <>
-        <div className='categories-page'>
+        <div className='categories-page animate__animated animate__fadeIn animate__slow'>
           {isLoading ? (
             <CategoriesEmpty />
           ) : (

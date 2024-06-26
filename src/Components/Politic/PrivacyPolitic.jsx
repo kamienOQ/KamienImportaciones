@@ -194,7 +194,7 @@ const PrivacyPolitic = () => {
     ];
 
     return (
-        <div className='main-privacy-politics-container'>
+        <div className='main-privacy-politics-container animate__animated animate__fadeIn'>
             <div className='privacy-politics-container'>
                 <div className='privacy-politics-title-container'>
                     <Typography variant="h4">Política de privacidad</Typography>
