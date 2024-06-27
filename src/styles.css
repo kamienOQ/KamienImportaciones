@@ -130,6 +130,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: #ffffff;
 
     @media (min-width: 500px) {
@@ -140,6 +141,15 @@ a {
         margin-left: 10px !important;
     }
 }
+
+.filter-products-title {
+    display: block;
+    margin-bottom: -5px;
+  }
+  
+  .filter-products-subtitle {
+    display: block;
+  }
 
 /* .navbar-shoppingCar{
     display: inline-flex;

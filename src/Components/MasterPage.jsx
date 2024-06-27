@@ -171,6 +171,14 @@ export const MasterPage = ({ children }) => {
               '@media (min-width: 550px)': {
                 ml: "-15px",
               },
+              '@media (min-width: 600px)': {
+                mr: "1px",
+                ml: "-170px",
+              },
+              '@media (min-width: 1200px)': {
+                mr: "-10px",
+                ml: "-170px",
+              },
             }}
               src={logo}
             />
@@ -183,33 +191,43 @@ export const MasterPage = ({ children }) => {
               mr: 5,
               '@media (min-width: 200px)': {
                 ml: "-10px",
-                fontSize: "8px",
+                fontSize: "16px",
               },
               '@media (min-width: 250px)': {
                 ml: "-5px",
-                fontSize: "10px",
+                fontSize: "16px",
               },
               '@media (min-width: 300px)': {
                 ml: "5px",
-                fontSize: "10px",
+                fontSize: "16px",
               },
               '@media (min-width: 350px)': {
-                ml: "-10px",
-                fontSize: "12px",
+                ml: "5px",
+                fontSize: "16px",
               },
               '@media (min-width: 400px)': {
                 ml: "10px",
-                fontSize: "14px",
+                fontSize: "16px",
               },
               '@media (min-width: 450px)': {
                 ml: "10px",
                 fontSize: "16px",
               },
               '@media (min-width: 500px)': {
-                ml: "42px",
+                ml: "5px",
+                fontSize: "16px",
               },
               '@media (min-width: 550px)': {
-                ml: "30px",
+                ml: "5px",
+                fontSize: "16px",
+              },
+              '@media (min-width: 600px)': {
+                mr: "15px",
+                ml: "-60px",
+                fontSize: "16px",
+              },
+              '@media (min-width: 1200px)': {
+                ml: "-65px",
               },
             }}
           >
@@ -217,76 +235,151 @@ export const MasterPage = ({ children }) => {
           </Typography>
         </div>
         <div className='filter-products-container-title'>
-          <Typography
-            variant="h6"
-            noWrap component="div"
-            sx={{
-              flexGrow: 1,
-              mr: 5,
-              '@media (min-width: 200px)': {
-                ml: "-35px",
-                fontSize: "8px",
-              },
-              '@media (min-width: 250px)': {
-                ml: "-30px",
-                fontSize: "10px",
-              },
-              '@media (min-width: 300px)': {
-                ml: "-25px",
-                fontSize: "10px",
-              },
-              '@media (min-width: 350px)': {
-                ml: "-30px",
-                fontSize: "12px",
-              },
-              '@media (min-width: 400px)': {
-                ml: "-15px",
-                fontSize: "14px",
-              },
-              '@media (min-width: 450px)': {
-                ml: "-10px",
-                fontSize: "16px",
-              },
-              '@media (min-width: 500px)': {
-                ml: "-52px",
-              },
-              '@media (min-width: 550px)': {
-                ml: "-35px",
-              },
-            }}
-          >
-            Compra de manera fácil y segura
-          </Typography>
+          <div className="col">
+            <div className="row">
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                className="filter-products-title"
+                sx={{
+                  flexGrow: 1,
+                  mr: 5,
+                  '@media (min-width: 200px)': {
+                    ml: "-35px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 250px)': {
+                    ml: "-30px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 300px)': {
+                    ml: "-25px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 350px)': {
+                    ml: "-30px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 400px)': {
+                    ml: "-15px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 450px)': {
+                    ml: "-10px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 500px)': {
+                    ml: "-52px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 550px)': {
+                    ml: "-35px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 600px)': {
+                    ml: "-35px",
+                    fontSize: "16px",
+                  },
+                }}
+              >
+                Compra
+              </Typography>
+              <Typography
+                variant="h6"
+                component="div"
+                className="filter-products-subtitle"
+                sx={{
+                  flexGrow: 1,
+                  mr: 5,
+                  '@media (min-width: 200px)': {
+                    ml: "-35px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 250px)': {
+                    ml: "-30px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 300px)': {
+                    ml: "-25px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 350px)': {
+                    ml: "-30px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 400px)': {
+                    ml: "-15px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 450px)': {
+                    ml: "-10px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 500px)': {
+                    ml: "-52px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 550px)': {
+                    ml: "-35px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 600px)': {
+                    ml: "-35px",
+                    fontSize: "16px",
+                  },
+                  '@media (min-width: 1200px)': {
+                    ml: "-35px",
+                    fontSize: "16px",
+                  },
+                }}
+              >
+                Fácil y Segura
+              </Typography>
+            </div>
+          </div>
         </div>
         <IconButton
           sx={{
             color: '#ffffff',
             '@media (min-width: 200px)': {
-              ml: "-60px",
+              ml: "-50px",
             },
             '@media (min-width: 250px)': {
-              ml: "-66px",
+              ml: "-40px",
             },
             '@media (min-width: 300px)': {
-              ml: "-60px",
+              ml: "-40px",
+              mr: "-25px",
             },
             '@media (min-width: 350px)': {
               ml: "-40px",
+              mr: "-25px",
             },
             '@media (min-width: 400px)': {
-              ml: "-60px",
+              ml: "-50px",
+              mr: "-25px",
             },
             '@media (min-width: 500px)': {
               ml: "-70px",
+              mr: "-25px",
             },
             '@media (min-width: 550px)': {
               ml: "-35px",
+              mr: "-25px",
+            },
+            '@media (min-width: 600px)': {
+              ml: "-35px",
+              mr: "-110px",
+              fontSize: "16px",
+            },
+            '@media (min-width: 1200px)': {
+              ml: "35px",
             },
           }}
         >
           <Cart />
         </IconButton>
-
       </header>
       {children}
 
