@@ -145,13 +145,145 @@ export const MasterPage = ({ children }) => {
       <header id="masterHeader" className='header-navbar'>
         <div className='filter-products-container'>
           <IconButton sx={{ mr: 1 }} onClick={redirectHome}>
-            <Avatar src={logo} />
+            <Avatar sx={{
+              ml: -16,
+              '@media (min-width: 200px)': {
+                ml: "-25px",
+              },
+              '@media (min-width: 250px)': {
+                ml: "-25px",
+              },
+              '@media (min-width: 300px)': {
+                ml: "-25px",
+              },
+              '@media (min-width: 350px)': {
+                ml: "-25px",
+              },
+              '@media (min-width: 400px)': {
+                ml: "-20px",
+              },
+              '@media (min-width: 450px)': {
+                ml: "-5px",
+              },
+              '@media (min-width: 500px)': {
+                ml: "-15px",
+              },
+              '@media (min-width: 550px)': {
+                ml: "-15px",
+              },
+            }}
+              src={logo}
+            />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            noWrap component="div"
+            sx={{
+              flexGrow: 1,
+              mr: 5,
+              '@media (min-width: 200px)': {
+                ml: "-10px",
+                fontSize: "8px",
+              },
+              '@media (min-width: 250px)': {
+                ml: "-5px",
+                fontSize: "10px",
+              },
+              '@media (min-width: 300px)': {
+                ml: "5px",
+                fontSize: "10px",
+              },
+              '@media (min-width: 350px)': {
+                ml: "-10px",
+                fontSize: "12px",
+              },
+              '@media (min-width: 400px)': {
+                ml: "10px",
+                fontSize: "14px",
+              },
+              '@media (min-width: 450px)': {
+                ml: "10px",
+                fontSize: "16px",
+              },
+              '@media (min-width: 500px)': {
+                ml: "42px",
+              },
+              '@media (min-width: 550px)': {
+                ml: "30px",
+              },
+            }}
+          >
             Kámien
           </Typography>
         </div>
-        <IconButton sx={{ color: '#ffffff' }}>
+        <div className='filter-products-container-title'>
+          <Typography
+            variant="h6"
+            noWrap component="div"
+            sx={{
+              flexGrow: 1,
+              mr: 5,
+              '@media (min-width: 200px)': {
+                ml: "-35px",
+                fontSize: "8px",
+              },
+              '@media (min-width: 250px)': {
+                ml: "-30px",
+                fontSize: "10px",
+              },
+              '@media (min-width: 300px)': {
+                ml: "-25px",
+                fontSize: "10px",
+              },
+              '@media (min-width: 350px)': {
+                ml: "-30px",
+                fontSize: "12px",
+              },
+              '@media (min-width: 400px)': {
+                ml: "-15px",
+                fontSize: "14px",
+              },
+              '@media (min-width: 450px)': {
+                ml: "-10px",
+                fontSize: "16px",
+              },
+              '@media (min-width: 500px)': {
+                ml: "-52px",
+              },
+              '@media (min-width: 550px)': {
+                ml: "-35px",
+              },
+            }}
+          >
+            Compra de manera fácil y segura
+          </Typography>
+        </div>
+        <IconButton
+          sx={{
+            color: '#ffffff',
+            '@media (min-width: 200px)': {
+              ml: "-60px",
+            },
+            '@media (min-width: 250px)': {
+              ml: "-66px",
+            },
+            '@media (min-width: 300px)': {
+              ml: "-60px",
+            },
+            '@media (min-width: 350px)': {
+              ml: "-40px",
+            },
+            '@media (min-width: 400px)': {
+              ml: "-60px",
+            },
+            '@media (min-width: 500px)': {
+              ml: "-70px",
+            },
+            '@media (min-width: 550px)': {
+              ml: "-35px",
+            },
+          }}
+        >
           <Cart />
         </IconButton>
 
@@ -178,13 +310,35 @@ export const MasterPage = ({ children }) => {
               <a href={whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon style={{ color: 'SeaGreen' }} /></a>
             </div>
           </div>
-          <h4 style={{ marginTop: '15px', marginBottom: '5px' }}><LocalPhoneIcon sx={{ fontSize: 'small' }} /> 71095580</h4>
+          <h4 style={{ marginTop: '15px', marginBottom: '5px' }}>
+            <LocalPhoneIcon
+              sx={{
+                fontSize: 'small',
+                '@media (min-width: 200px)': {
+                  width: '15px',
+                  height: '15px',
+                  marginRight: '10px',
+                },
+                '@media (min-width: 550px)': {
+                  width: '20px',
+                  height: '20px',
+                  marginRight: '10px',
+                },
+                '@media (min-width: 1200px)': {
+                  width: '22px',
+                  height: '22px',
+                  marginRight: '10px',
+                },
+              }}
+            />
+            71095580
+          </h4>
         </div>
         <div className='footer-copyright'>
           Todos los derechos reservados hasta 2024.
         </div>
       </footer>
-      
+
       <Snackbar open={message.error} autoHideDuration={6000} onClose={onCloseMessageError} sx={{ alignItems: "flex-start", mt: "42px" }}
         anchorOrigin={{
           vertical: "top",

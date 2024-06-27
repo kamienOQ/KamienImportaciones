@@ -112,10 +112,33 @@ a {
     justify-content: center;
     align-items: center;
     color: #ffffff;
+
+    @media (min-width: 500px) {
+        margin-right: 25px !important;
+    }
+
+    @media (min-width: 550px) {
+        margin-left: 10px !important;
+    }
 }
 
 .filter-products-container a {
     padding: 8px !important;
+}
+
+.filter-products-container-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+
+    @media (min-width: 500px) {
+        margin-right: 20px !important;
+    }
+
+    @media (min-width: 750px) {
+        margin-left: 10px !important;
+    }
 }
 
 /* .navbar-shoppingCar{
@@ -230,7 +253,7 @@ a {
     }
 
     @media (min-width: 910px) {
-        font-size: 28px;
+        font-size: 25px;
         padding-top: 5px;
 
         & a {
@@ -239,7 +262,7 @@ a {
     }
 
     @media (min-width: 1024px) {
-        font-size: 30px;
+        font-size: 25px;
         padding-top: 5px;
 
         & a {
@@ -248,7 +271,7 @@ a {
     }
 
     @media (min-width: 1400px) {
-        font-size: 30px;
+        font-size: 25px;
         padding-top: 5px;
 
         & a {
@@ -746,6 +769,7 @@ h4 {
 .grid-container-product {
     display: grid;
     grid-template-columns: repeat(1, minmax(200px, 1fr));
+    filter: drop-shadow(15px 15px 10px rgb(12, 9, 9));
     grid-auto-rows: auto;
     gap: 5px;
     width: calc(100% - 20px);
@@ -859,6 +883,7 @@ h4 {
 .grid-container-product.small-grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(200px, 1fr));
+    filter: drop-shadow(15px 15px 10px rgb(12, 9, 9));
     grid-auto-rows: auto;
     gap: 5px;
     width: calc(100% - 20px);
@@ -1051,6 +1076,7 @@ h4 {
 .grid-container-search-results {
     display: grid;
     grid-template-columns: repeat(1, minmax(200px, 1fr));
+    filter: drop-shadow(15px 15px 10px rgb(12, 9, 9));
     grid-auto-rows: auto;
     gap: 5px;
     width: calc(100% - 20px);

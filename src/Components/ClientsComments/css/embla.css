@@ -140,6 +140,7 @@
 
 .embla__viewport {
     overflow: hidden;
+    filter: drop-shadow(20px 20px 12px rgb(12, 9, 9));
 }
 
 .embla__container {
@@ -173,7 +174,47 @@
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     gap: 1.2rem;
-    margin-top: 1.8rem;
+    margin-top: 2.4rem;
+    margin-bottom: -35px;
+
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        margin-top: 40px;
+        margin-bottom: 5px;
+    }
+
+    @media screen and (min-width: 300px) {
+        margin-top: 40px;
+        margin-bottom: 5px;
+    }
+
+    @media screen and (min-width: 400px) {
+        margin-top: 40px;
+        margin-bottom: 5px;
+    }
+
+    @media screen and (min-width: 500px) {
+        margin-top: 40px;
+        margin-bottom: 5px;
+    }
+
+    @media screen and (min-width: 600px) {
+        margin-top: 40px;
+        margin-bottom: 5px;
+    }
+
+    @media screen and (min-width: 700px) {
+        margin-top: 40px;
+        margin-bottom: -15px;
+    }
+
+    @media screen and (min-width: 900px) {
+        margin-top: 40px;
+    }
+
+    @media screen and (min-width: 1000px) {
+        margin-top: 40px;
+    }
 }
 
 .embla__buttons {
@@ -203,6 +244,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        width: 3.1rem;
+        height: 3.1rem;
+    }
+
+    @media screen and (min-width: 300px) {
+        width: 3.1rem;
+        height: 3.1rem;
+    }
+
+    @media screen and (min-width: 400px) {
+        width: 3.1rem;
+        height: 3.1rem;
+    }
+
+    @media screen and (min-width: 500px) {
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+
+    @media screen and (min-width: 600px) {
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+
+    @media screen and (min-width: 700px) {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 4.3rem;
+        height: 4.3rem;
+    }
 }
 
 .embla__button:disabled {
@@ -322,7 +399,7 @@
     }
 
     @media (min-width: 750px) {
-        margin-top: 770px;
+        margin-top: 840px;
         margin-bottom: -430px;
     }
 
@@ -367,7 +444,7 @@
     }
 
     @media (min-width: 1400px) {
-        margin-top: 620px;
+        margin-top: 550px;
         margin-bottom: -390px;
     }
 
@@ -382,7 +459,7 @@
     }
 
     @media (min-width: 1600px) {
-        margin-top: 620px;
+        margin-top: 610px;
         margin-bottom: -390px;
     }
 
