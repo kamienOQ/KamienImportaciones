@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -38,15 +38,20 @@ export const SearchProduct = ({ onSearch }) => {
                     onChange={handleChange}
                 />
 
-                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Button type='submit' className='search-button' style={{textTransform: 'none'}} endIcon={<SearchIcon />}>
+                <Grid
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <Button type='submit' className='search-button' style={{ textTransform: 'none' }} endIcon={<SearchIcon />}>
                         Buscar
                     </Button>
 
-                    <Button className='deleteSearch-button' style={{textTransform: 'none'}} onClick={handleClear} endIcon={<ClearIcon />}>
+                    <Button className='deleteSearch-button' style={{ textTransform: 'none' }} onClick={handleClear} endIcon={<ClearIcon />}>
                         Borrar
                     </Button>
-                </Box>
+                </Grid>
 
             </form>
         </div>

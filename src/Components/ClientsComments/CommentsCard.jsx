@@ -1,5 +1,6 @@
 import CommentsCarousel from './CommentsCarousel';
 import { imagePaths, numberOfImages } from "./CommentsData";
+import ImageBuy from '../../assets/imageNavBar.webp';
 
 export const CommentsCard = () => {
   return (
@@ -7,11 +8,11 @@ export const CommentsCard = () => {
       <div>
         <h1 className='title-comments'>Opiniones de los clientes</h1>
       </div>
-      <div className="container animate__animated animate__fadeInLeft animate__slow">
+      <div className="container">
         <CommentsCarousel slides={imagePaths} options={numberOfImages} />
       </div>
-      <div>
-        <h1 className='title-comments2'>Compra de manera fácil y segura</h1>
+      <div className='image-container'>
+        <img src={ImageBuy} className="image-buy-secure" alt="Imagen compra segura" />
       </div>
     </>
   );

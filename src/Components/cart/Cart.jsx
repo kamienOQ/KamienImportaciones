@@ -97,16 +97,7 @@ export const Cart = () => {
               maxHeight: "570px",
               overflow: "auto",
               '@media (min-width: 200px)': {
-                maxHeight: "480px",
-              },
-              '@media (min-width: 820px)': {
-                width: "360px",
-              },
-              '@media (min-width: 912px)': {
-                width: "460px",
-              },
-              '@media (min-width: 1024px)': {
-                width: "570px",
+                maxHeight: "830px",
               },
             }}>
             {products.map((item) => (

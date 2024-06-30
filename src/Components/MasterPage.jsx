@@ -148,32 +148,44 @@ export const MasterPage = ({ children }) => {
             <Avatar sx={{
               ml: -16,
               '@media (min-width: 200px)': {
-                ml: "-25px",
+                ml: "-24px",
+                width: "40px",
+                height: "40px",
               },
               '@media (min-width: 250px)': {
                 ml: "-25px",
               },
               '@media (min-width: 300px)': {
                 ml: "-25px",
+                width: "45px",
+                height: "45px",
               },
               '@media (min-width: 350px)': {
-                ml: "-25px",
+                ml: "-20px",
+                width: "45px",
+                height: "45px",
               },
               '@media (min-width: 400px)': {
                 ml: "-20px",
               },
               '@media (min-width: 450px)': {
-                ml: "-5px",
+                ml: "-20px",
               },
               '@media (min-width: 500px)': {
-                ml: "-15px",
+                ml: "-18px",
+                width: "48px",
+                height: "48px",
               },
               '@media (min-width: 550px)': {
-                ml: "-15px",
+                ml: "-35px",
               },
               '@media (min-width: 600px)': {
                 mr: "1px",
                 ml: "-170px",
+              },
+              '@media (min-width: 650px)': {
+                mr: "1px",
+                ml: "-175px",
               },
               '@media (min-width: 1200px)': {
                 mr: "-10px",
@@ -186,104 +198,99 @@ export const MasterPage = ({ children }) => {
           <Typography
             variant="h6"
             noWrap component="div"
+            className='filter-products-title'
             sx={{
               flexGrow: 1,
               mr: 5,
               '@media (min-width: 200px)': {
                 ml: "-10px",
-                fontSize: "16px",
               },
               '@media (min-width: 250px)': {
-                ml: "-5px",
-                fontSize: "16px",
+                ml: "-10px",
               },
               '@media (min-width: 300px)': {
-                ml: "5px",
-                fontSize: "16px",
+                ml: "-10px",
               },
               '@media (min-width: 350px)': {
-                ml: "5px",
-                fontSize: "16px",
+                ml: "-8px",
               },
               '@media (min-width: 400px)': {
-                ml: "10px",
-                fontSize: "16px",
+                ml: "-8px",
               },
               '@media (min-width: 450px)': {
-                ml: "10px",
-                fontSize: "16px",
+                ml: "-8px",
               },
               '@media (min-width: 500px)': {
-                ml: "5px",
-                fontSize: "16px",
+                ml: "-8px",
               },
               '@media (min-width: 550px)': {
-                ml: "5px",
-                fontSize: "16px",
+                ml: "-8px",
               },
               '@media (min-width: 600px)': {
-                mr: "15px",
-                ml: "-60px",
-                fontSize: "16px",
+                ml: "-70px",
               },
               '@media (min-width: 1200px)': {
-                ml: "-65px",
+                ml: "-66px",
               },
             }}
           >
             Kámien
           </Typography>
         </div>
-        <div className='filter-products-container-title'>
+        {/* <div className='filter-products-container-title'>
           <div className="col">
             <div className="row">
               <Typography
                 variant="h6"
                 noWrap
                 component="div"
-                className="filter-products-title"
+                className="filter-products-subtitle"
                 sx={{
                   flexGrow: 1,
                   mr: 5,
                   '@media (min-width: 200px)': {
                     ml: "-35px",
-                    fontSize: "16px",
+                    fontSize: "10px",
                   },
                   '@media (min-width: 250px)': {
                     ml: "-30px",
-                    fontSize: "16px",
+                    fontSize: "10px",
                   },
                   '@media (min-width: 300px)': {
                     ml: "-25px",
-                    fontSize: "16px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 350px)': {
-                    ml: "-30px",
-                    fontSize: "16px",
+                    ml: "-40px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 400px)': {
-                    ml: "-15px",
-                    fontSize: "16px",
+                    ml: "-50px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 450px)': {
-                    ml: "-10px",
-                    fontSize: "16px",
+                    ml: "-100px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 500px)': {
-                    ml: "-52px",
-                    fontSize: "16px",
+                    ml: "-120px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 550px)': {
                     ml: "-35px",
-                    fontSize: "16px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 600px)': {
                     ml: "-35px",
-                    fontSize: "16px",
+                    fontSize: "14px",
+                  },
+                  '@media (min-width: 1200px)': {
+                    ml: "-35px",
+                    fontSize: "15px",
                   },
                 }}
               >
-                Compra
+                Compra de manera
               </Typography>
               <Typography
                 variant="h6"
@@ -294,87 +301,62 @@ export const MasterPage = ({ children }) => {
                   mr: 5,
                   '@media (min-width: 200px)': {
                     ml: "-35px",
-                    fontSize: "16px",
+                    fontSize: "10px",
                   },
                   '@media (min-width: 250px)': {
                     ml: "-30px",
-                    fontSize: "16px",
+                    fontSize: "10px",
                   },
                   '@media (min-width: 300px)': {
                     ml: "-25px",
-                    fontSize: "16px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 350px)': {
-                    ml: "-30px",
-                    fontSize: "16px",
+                    ml: "-40px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 400px)': {
-                    ml: "-15px",
-                    fontSize: "16px",
+                    ml: "-50px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 450px)': {
-                    ml: "-10px",
-                    fontSize: "16px",
+                    ml: "-100px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 500px)': {
-                    ml: "-52px",
-                    fontSize: "16px",
+                    ml: "-125px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 550px)': {
                     ml: "-35px",
-                    fontSize: "16px",
+                    fontSize: "12px",
                   },
                   '@media (min-width: 600px)': {
                     ml: "-35px",
-                    fontSize: "16px",
+                    fontSize: "14px",
                   },
                   '@media (min-width: 1200px)': {
                     ml: "-35px",
-                    fontSize: "16px",
+                    fontSize: "15px",
                   },
                 }}
               >
-                Fácil y Segura
+                fácil y segura
               </Typography>
             </div>
           </div>
-        </div>
+        </div> */}
         <IconButton
           sx={{
             color: '#ffffff',
             '@media (min-width: 200px)': {
-              ml: "-50px",
-            },
-            '@media (min-width: 250px)': {
-              ml: "-40px",
-            },
-            '@media (min-width: 300px)': {
-              ml: "-40px",
-              mr: "-25px",
-            },
-            '@media (min-width: 350px)': {
-              ml: "-40px",
-              mr: "-25px",
-            },
-            '@media (min-width: 400px)': {
-              ml: "-50px",
-              mr: "-25px",
-            },
-            '@media (min-width: 500px)': {
-              ml: "-70px",
-              mr: "-25px",
+              mr: "-32px",
             },
             '@media (min-width: 550px)': {
-              ml: "-35px",
-              mr: "-25px",
+              ml: "-40px",
             },
             '@media (min-width: 600px)': {
-              ml: "-35px",
               mr: "-110px",
-              fontSize: "16px",
-            },
-            '@media (min-width: 1200px)': {
-              ml: "35px",
             },
           }}
         >

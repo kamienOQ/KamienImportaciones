@@ -24,6 +24,7 @@ import { imagePaths, numberOfImages } from "./NoticesImages";
 import { CommentsCard } from "../Components/ClientsComments/CommentsCard";
 import { SearchProduct } from "../Components/products/SearchProduct";
 import Spinner from "../Spinner";
+import ImageBuy from '../assets/imageNavBar.webp';
 
 export const ProductsPage = () => {
   const { startGetAttributesByCategory, setIsOpen, isOpen } =
@@ -66,7 +67,7 @@ export const ProductsPage = () => {
     return () => clearTimeout(timer);
   }, [categorySelected]);
 
-  const filteredProducts = products.filter((product) => 
+  const filteredProducts = products.filter((product) =>
     product.productName.toLowerCase().includes(searchProduct.toLowerCase())
   );
 
@@ -107,29 +108,448 @@ export const ProductsPage = () => {
             justifyContent: "center",
           }}
         >
-          <Grid item sx={{ width: "90%", display: "flex", alignItems: "center" }}>
+          <Grid item sx={{
+            width: "90%", display: "flex", alignItems: "center",
+            '@media (min-width: 200px)': {
+              mt: "-65px",
+            },
+            '@media (min-width: 250px)': {
+              mt: "-220px",
+            },
+            '@media (min-width: 300px)': {
+              mt: "-220px",
+            },
+            '@media (min-width: 350px)': {
+              mt: "-220px",
+            },
+            '@media (min-width: 400px)': {
+              mt: "-220px",
+            },
+          }}>
             <Tooltip title="Filtros">
               <IconButton onClick={handleOpen}>
-                <FilterAltIcon sx={{ fontSize: 45 }} />
+                <FilterAltIcon
+                  sx={{
+                    fontSize: 45,
+                    '@media (min-width: 200px)': {
+                      ml: "-27px",
+                      mt: "-120px",
+                      fontSize: "38px",
+                    },
+                    '@media (min-width: 250px)': {
+                      ml: "-25px",
+                      mt: "40px",
+                    },
+                    '@media (min-width: 300px)': {
+                      ml: "-25px",
+                      mt: "50px",
+                    },
+                    '@media (min-width: 350px)': {
+                      ml: "-30px",
+                      mt: "-105px",
+                      fontSize: "40px",
+                    },
+                    '@media (min-width: 400px)': {
+                      ml: "-30px",
+                      mt: "-120px",
+                      fontSize: "40px",
+                    },
+                    '@media (min-width: 700px)': {
+                      ml: "-30px",
+                      mt: "-124px",
+                      fontSize: "42px",
+                    },
+                    '@media (min-width: 900px)': {
+                      ml: "1px",
+                      mt: "-120px",
+                    },
+                    '@media (min-width: 1000px)': {
+                      ml: "1px",
+                      mt: "-120px",
+                    },
+                    '@media (min-width: 1100px)': {
+                      ml: "1px",
+                      mt: "-120px",
+                    },
+                    '@media (min-width: 1200px)': {
+                      ml: "1px",
+                      mt: "-120px",
+                    },
+                    '@media (min-width: 1300px)': {
+                      ml: "2px",
+                      mt: "-120px",
+                    },
+                    '@media (min-width: 1400px)': {
+                      ml: "1px",
+                      mt: "-120px",
+                    },
+                    '@media (min-width: 1500px)': {
+                      mt: "-80px",
+                      fontSize: "40px",
+                    },
+                  }}
+                />
               </IconButton>
             </Tooltip>
-            <Typography className="category" variant="h4">
+            <Typography
+              className="category"
+              variant="h4"
+              sx={{
+                '@media (min-width: 200px)': {
+                  mt: "-120px",
+                  fontSize: "25px",
+                },
+                '@media (min-width: 250px)': {
+                  mt: "40px",
+                },
+                '@media (min-width: 300px)': {
+                  mt: "50px",
+                },
+                '@media (min-width: 350px)': {
+                  mt: "-100px",
+                },
+                '@media (min-width: 400px)': {
+                  mt: "-120px",
+                },
+                '@media (min-width: 700px)': {
+                  mt: "-120px",
+                  fontSize: "32px",
+                },
+                '@media (min-width: 1400px)': {
+                  fontSize: "28px",
+                },
+                '@media (min-width: 1500px)': {
+                  mt: "-80px",
+                  fontSize: "30px",
+                },
+              }}
+            >
               {categorySelected}
             </Typography>
+            <div>
+              <Grid
+                item
+                sx={{
+                  width: "90%",
+                  display: "flex",
+                  justifyContent: 'end',
+                  '@media (min-width: 200px)': {
+                    mt: "60px",
+                    ml: "31px",
+                  },
+                  '@media (min-width: 250px)': {
+                    mt: "110px",
+                    ml: "-50px",
+                  },
+                  '@media (min-width: 300px)': {
+                    mt: "180px",
+                    ml: "-60px",
+                  },
+                  '@media (min-width: 350px)': {
+                    mb: "170px",
+                    ml: "-40px",
+                  },
+                  '@media (min-width: 400px)': {
+                    mt: "190px",
+                    ml: "-26px",
+                  },
+                  '@media (min-width: 450px)': {
+                    mt: "190px",
+                    ml: "-15px",
+                  },
+                  '@media (min-width: 500px)': {
+                    mt: "190px",
+                    ml: "-10px",
+                  },
+                  '@media (min-width: 550px)': {
+                    mt: "190px",
+                    ml: "-10px",
+                  },
+                  '@media (min-width: 600px)': {
+                    mt: "190px",
+                    ml: "-10px",
+                  },
+                  '@media (min-width: 650px)': {
+                    mt: "190px",
+                    ml: "-15px",
+                  },
+                  '@media (min-width: 700px)': {
+                    mt: "170px",
+                    ml: "-10px",
+                  },
+                  '@media (min-width: 750px)': {
+                    mt: "170px",
+                    ml: "2px",
+                  },
+                  '@media (min-width: 800px)': {
+                    mt: "180px",
+                    ml: "30px",
+                  },
+                  '@media (min-width: 850px)': {
+                    mt: "180px",
+                    ml: "50px",
+                  },
+                  '@media (min-width: 900px)': {
+                    mt: "180px",
+                    ml: "60px",
+                  },
+                  '@media (min-width: 950px)': {
+                    mt: "180px",
+                    ml: "75px",
+                  },
+                  '@media (min-width: 1000px)': {
+                    mt: "180px",
+                    ml: "105px",
+                  },
+                  '@media (min-width: 1050px)': {
+                    mt: "180px",
+                    ml: "115px",
+                  },
+                  '@media (min-width: 1100px)': {
+                    mt: "180px",
+                    ml: "145px",
+                  },
+                  '@media (min-width: 1150px)': {
+                    mt: "180px",
+                    ml: "155px",
+                  },
+                  '@media (min-width: 1200px)': {
+                    mt: "180px",
+                    ml: "185px",
+                  },
+                  '@media (min-width: 1250px)': {
+                    mt: "180px",
+                    ml: "200px",
+                  },
+                  '@media (min-width: 1300px)': {
+                    mt: "180px",
+                    ml: "210px",
+                  },
+                  '@media (min-width: 1350px)': {
+                    mt: "180px",
+                    ml: "215px",
+                  },
+                  '@media (min-width: 1400px)': {
+                    mt: "180px",
+                    ml: "240px",
+                  },
+                  '@media (min-width: 1450px)': {
+                    mt: "180px",
+                    ml: "255px",
+                  },
+                  '@media (min-width: 1500px)': {
+                    mt: "180px",
+                    ml: "270px",
+                  },
+                  '@media (min-width: 1550px)': {
+                    mt: "180px",
+                    ml: "270px",
+                  },
+                  '@media (min-width: 1600px)': {
+                    mt: "180px",
+                    ml: "290px",
+                  },
+                  '@media (min-width: 1650px)': {
+                    mt: "180px",
+                    ml: "310px",
+                  },
+                  '@media (min-width: 1700px)': {
+                    mt: "180px",
+                    ml: "330px",
+                  },
+                  '@media (min-width: 1750px)': {
+                    mt: "180px",
+                    ml: "320px",
+                  },
+                  '@media (min-width: 1800px)': {
+                    mt: "180px",
+                    ml: "340px",
+                  },
+                  '@media (min-width: 1850px)': {
+                    mt: "180px",
+                    ml: "360px",
+                  },
+                  '@media (min-width: 1900px)': {
+                    mt: "180px",
+                    ml: "370px",
+                  },
+                }}
+              >
+                <img src={ImageBuy} className="image-buy-secure" alt="Imagen compra segura" />
+              </Grid>
+            </div>
           </Grid>
 
-          <div>
+          <div className="animate__animated animate__fadeInLeft animate__slow">
             <Carousel slides={imagePaths} options={numberOfImages} />
           </div>
 
-          <Grid item sx={{ width: "90%", display: "flex", justifyContent: 'start' }}>
+          <Grid
+            item
+            className="animate__animated animate__fadeInLeft animate__slow"
+            sx={{
+              width: "90%",
+              display: "flex",
+              justifyContent: 'start',
+              '@media (min-width: 200px)': {
+                mt: "-60px",
+                mb: "-40px;",
+                ml: "-15px",
+              },
+              '@media (min-width: 250px)': {
+                mt: "-60px;",
+                mb: "-20px;",
+                ml: "-12px;",
+              },
+              '@media (min-width: 300px)': {
+                mt: "-20px;",
+                mb: "-30px;",
+                ml: "-12px;",
+              },
+              '@media (min-width: 350px)': {
+                mt: "-159px;",
+                mb: "-30px;",
+                ml: "-24px;",
+              },
+              '@media (min-width: 400px)': {
+                mt: "-140px;",
+                mb: "-25px;",
+                ml: "-20px;",
+              },
+              '@media (min-width: 450px)': {
+                mt: "-110px;",
+                mb: "-20px;",
+                ml: "-20px;",
+              },
+              '@media (min-width: 500px)': {
+                mt: "-90px;",
+                mb: "-20px;",
+                ml: "-20px;",
+              },
+              '@media (min-width: 550px)': {
+                mt: "-90px;",
+                mb: "-25px;",
+                ml: "-18px;",
+              },
+              '@media (min-width: 600px)': {
+                mt: "-80px;",
+                mb: "-25px;",
+                ml: "-20px;",
+              },
+              '@media (min-width: 650px)': {
+                mt: "-50px;",
+                mb: "-20px;",
+                ml: "-18px;",
+              },
+              '@media (min-width: 700px)': {
+                mt: "-10px;",
+                ml: "-20px;",
+              },
+              '@media (min-width: 750px)': {
+                ml: "-18px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 800px)': {
+                ml: "-20px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 830px)': {
+                ml: "-20px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 850px)': {
+                ml: "-20px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 900px)': {
+                ml: "38px;",
+                mb: "-5px;",
+              },
+              '@media (min-width: 950px)': {
+                ml: "40px;",
+                mb: "-5px;",
+              },
+              '@media (min-width: 1000px)': {
+                ml: "34px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1050px)': {
+                ml: "32px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1100px)': {
+                ml: "30px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1150px)': {
+                ml: "35px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1200px)': {
+                ml: "32px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1250px)': {
+                ml: "35px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1300px)': {
+                ml: "32px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1350px)': {
+                ml: "30px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1400px)': {
+                ml: "35px;",
+                mb: "5px;",
+                mt: "15px",
+              },
+              '@media (min-width: 1450px)': {
+                ml: "35px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1500px)': {
+                ml: "34px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1550px)': {
+                ml: "24px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1600px)': {
+                ml: "27px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1650px)': {
+                mt: "15px;",
+                ml: "29px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1700px)': {
+                mt: "15px;",
+                ml: "25px;",
+                mb: "5px;",
+              },
+              '@media (min-width: 1750px)': {
+                ml: "26px;",
+              },
+              '@media (min-width: 1800px)': {
+                ml: "36px;",
+              },
+              '@media (min-width: 1850px)': {
+                ml: "25px;",
+              },
+            }}
+          >
             <SearchProduct onSearch={handleSearch} />
           </Grid>
 
           {loading ? (
             <Spinner />
           ) : filteredProducts.length > 0 ? (
-            <div className={`${gridClassName} ${filteredProducts.length <=  10 ? 'small-grid' : ''}`}>
+            <div className={`${gridClassName} ${filteredProducts.length <= 10 ? 'small-grid' : ''}`}>
               {filteredProducts.map((product) => (
                 <ProductsCards
                   key={product.productName}
@@ -170,7 +590,7 @@ export const ProductsPage = () => {
             />
           )}
         </Grid>
-      </Box>
+      </Box >
       <div className={`${gridClassNameComment} ${filteredProducts.length <= 10 ? 'small' : ''}`}>
         <CommentsCard />
       </div>

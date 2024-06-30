@@ -42,8 +42,8 @@ body {
 #goToTopBtn {
     display: none;
     position: fixed;
-    bottom: 115px;
-    right: 18px;
+    bottom: 5px;
+    right: 12px;
     z-index: 99;
     font-size: 50px;
     padding: 10px 20px;
@@ -56,13 +56,21 @@ body {
     transition: background-color 0.5s ease;
     /* Agrega una transición suave al cambio de color de fondo */
 
-    @media (min-width: 900px) {
+    @media (min-width: 200px) {
+        font-size: 45px;
+        bottom: 35px;
+        margin-right: -8px;
+    }
+
+    @media (min-width: 700px) {
         margin-right: -10px;
-        font-size: 70px;
+        font-size: 50px;
+        bottom: 25px;
     }
 
     @media (min-width: 1000px) {
-        font-size: 65px;
+        font-size: 55px;
+        margin-right: -10px;
     }
 }
 
@@ -142,14 +150,146 @@ a {
     }
 }
 
+.filter-products-subtitle,
 .filter-products-title {
-    display: block;
-    margin-bottom: -5px;
-  }
-  
-  .filter-products-subtitle {
-    display: block;
-  }
+    filter: drop-shadow(0px 0px 5px rgb(245, 242, 242));
+}
+
+.image-buy-secure {
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    box-shadow: none;
+    border-top: none;
+    justify-content: end;
+
+    @media (min-width: 200px) {
+        width: 160%;
+        height: 160%;
+        margin-top: 15px;
+        margin-left: -70px;
+        margin-bottom: 200px;
+    }
+
+    @media (min-width: 250px) {
+        width: 150%;
+        height: 150%;
+        margin-top: 120px;
+        margin-right: -90px;
+        margin-bottom: 180px;
+    }
+
+    @media (min-width: 300px) {
+        width: 120%;
+        height: 120%;
+        margin-top: 45px;
+        margin-right: -80px;
+        margin-bottom: 160px;
+    }
+
+    @media (min-width: 350px) {
+        width: 90%;
+        height: 90%;
+        margin-top: 25px;
+        margin-right: -70px;
+        margin-bottom: 160px;
+    }
+
+    @media (min-width: 400px) {
+        width: 85%;
+        height: 85%;
+    }
+
+    @media (min-width: 450px) {
+        width: 70%;
+        height: 70%;
+    }
+
+    @media (min-width: 500px) {
+        width: 65%;
+        height: 65%;
+    }
+
+    @media (min-width: 550px) {
+        width: 60%;
+        height: 60%;
+    }
+
+    @media (min-width: 600px) {
+        width: 50%;
+        height: 50%;
+    }
+
+    @media (min-width: 650px) {
+        width: 48%;
+        height: 48%;
+    }
+
+    @media (min-width: 700px) {
+        width: 45%;
+        height: 45%;
+    }
+
+    @media (min-width: 800px) {
+        width: 40%;
+        height: 40%;
+    }
+
+    @media (min-width: 900px) {
+        width: 35%;
+        height: 35%;
+    }
+
+    @media (min-width: 1000px) {
+        width: 35%;
+        height: 35%;
+    }
+
+    @media (min-width: 1100px) {
+        width: 32%;
+        height: 32%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 30%;
+        height: 30%;
+    }
+
+    @media (min-width: 1300px) {
+        width: 30%;
+        height: 30%;
+    }
+
+    @media (min-width: 1400px) {
+        width: 26%;
+        height: 26%;
+    }
+
+    @media (min-width: 1500px) {
+        width: 26%;
+        height: 26%;
+    }
+
+    @media (min-width: 1600px) {
+        width: 25%;
+        height: 25%;
+    }
+
+    @media (min-width: 1700px) {
+        width: 25%;
+        height: 25%;
+    }
+
+    @media (min-width: 1800px) {
+        width: 25%;
+        height: 25%;
+    }
+
+    @media (min-width: 1900px) {
+        width: 25%;
+        height: 25%;
+    }
+}
 
 /* .navbar-shoppingCar{
     display: inline-flex;
@@ -272,20 +412,20 @@ a {
     }
 
     @media (min-width: 1024px) {
-        font-size: 25px;
+        font-size: 22px;
         padding-top: 5px;
 
         & a {
-            height: 35px;
+            height: 25px;
         }
     }
 
     @media (min-width: 1400px) {
-        font-size: 25px;
+        font-size: 23px;
         padding-top: 5px;
 
         & a {
-            height: 30px;
+            height: 26px;
         }
     }
 }
@@ -523,16 +663,16 @@ h4 {
         font-size: 24px;
     }
 
-    @media (min-width: 910px) {
-        font-size: 28px;
+    @media (min-width: 900px) {
+        font-size: 24px;
     }
 
-    @media (min-width: 1024px) {
-        font-size: 35px;
+    @media (min-width: 1000px) {
+        font-size: 25px;
     }
 
     @media (min-width: 1400px) {
-        font-size: 30px;
+        font-size: 24px;
     }
 }
 
@@ -789,104 +929,197 @@ h4 {
 
     /* Propiedades responsivas */
     @media screen and (min-width: 200px) {
-        grid-template-columns: repeat(1, minmax(200px, 1fr));
-        margin-left: 20px;
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
+        margin-left: 15px;
         margin-top: 80px;
     }
 
-    @media screen and (min-width: 540px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        margin-left: 20px;
+    @media screen and (min-width: 250px) {
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
+        margin-left: 15px;
+        margin-top: 60px;
     }
 
-    @media screen and (min-width: 580px) {
+    @media screen and (min-width: 300px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 15px;
+        margin-top: 80px;
+    }
+
+    @media screen and (min-width: 350px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 25px;
+        margin-top: 80px;
+    }
+
+    @media screen and (min-width: 400px) {
+        grid-template-columns: repeat(2, minmax(185px, 1fr));
+        margin-left: 5px;
+        margin-top: 80px;
+    }
+
+    @media screen and (min-width: 420px) {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        margin-left: 10px;
+        margin-top: 80px;
+    }
+
+    @media screen and (min-width: 450px) {
         grid-template-columns: repeat(2, minmax(200px, 1fr));
-        margin-left: 40px;
+        margin-left: 10px;
+        margin-top: 80px;
+    }
+
+    @media screen and (min-width: 500px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% + 2%);
+    }
+
+    @media screen and (min-width: 550px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% + 2%);
+    }
+
+    @media screen and (min-width: 600px) {
+        grid-template-columns: repeat(3, minmax(190px, 1fr));
+        margin-left: 15px;
+        height: calc(100% + 2%);
+    }
+
+    @media screen and (min-width: 650px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 25px;
+    }
+
+    @media screen and (min-width: 700px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 5px;
+        height: calc(100% + 9%);
+    }
+
+    @media screen and (min-width: 750px) {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        margin-left: 5px;
+        height: calc(100% + 9%);
     }
 
     @media screen and (min-width: 800px) {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
-        margin-left: 40px;
+        margin-left: 35px;
+        height: calc(100% + 8%);
     }
 
-    @media screen and (min-width: 800px) and (min-height: 1280px) {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
-        margin-left: 12px;
+    @media screen and (min-width: 850px) {
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        margin-left: 5px;
+        height: calc(100% - 5px);
     }
 
     @media screen and (min-width: 900px) {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 5px);
     }
 
     @media screen and (min-width: 950px) {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 38px;
         height: calc(100% - 5px);
     }
 
     @media screen and (min-width: 1000px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
-        margin-left: 38px;
+        margin-left: 5px;
     }
 
     @media screen and (min-width: 1050px) {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
-        margin-left: 20px;
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        margin-left: 15px;
     }
 
     @media screen and (min-width: 1100px) {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        grid-template-columns: repeat(5, minmax(190px, 1fr));
         margin-left: 20px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1150px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
-        margin-left: 20px;
-        height: calc(100% - 350px);
+        margin-left: 5px;
+        height: calc(100% - 200px);
+    }
+
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: repeat(5, minmax(190px, 1fr));
+        margin-left: 4px;
+        height: calc(100% - 310px);
+    }
+
+    @media screen and (min-width: 1250px) {
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        margin-left: 5px;
+        height: calc(100% - 250px);
     }
 
     @media screen and (min-width: 1300px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
-        margin-left: 20px;
+        margin-left: 5px;
+        height: calc(100% - 200px);
+    }
+
+    @media screen and (min-width: 1350px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 5px;
         height: calc(100% - 250px);
     }
 
     @media screen and (min-width: 1400px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
-        margin-left: 20px;
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        margin-left: 5px;
         height: calc(100% - 350px);
     }
 
+    @media screen and (min-width: 1450px) {
+        grid-template-columns: repeat(7, minmax(185px, 1fr));
+        margin-left: 15px;
+        height: calc(100% - 340px);
+    }
+
     @media screen and (min-width: 1500px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
-        margin-left: 20px;
+        grid-template-columns: repeat(7, minmax(185px, 1fr));
+        margin-left: 25px;
         height: calc(100% - 300px);
     }
 
     @media screen and (min-width: 1550px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 290px);
     }
 
     @media screen and (min-width: 1600px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 290px);
+    }
+
+    @media screen and (min-width: 1650px) {
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 290px);
     }
 
     @media screen and (min-width: 1700px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(8, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 490px);
+        height: calc(100% - 300px);
     }
 
-    @media screen and (min-width: 1810px) {
-        grid-template-columns: repeat(7, minmax(200px, 1fr));
+    @media screen and (min-width: 1800px) {
+        grid-template-columns: repeat(8, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 350px);
+        height: calc(100% - 360px);
     }
 }
 
@@ -905,7 +1138,7 @@ h4 {
     @media screen and (min-width: 200px) {
         grid-template-columns: repeat(1, minmax(100px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 380px);
+        height: calc(100% - 390px);
     }
 
     @media screen and (min-width: 250px) {
@@ -917,169 +1150,181 @@ h4 {
     @media screen and (min-width: 300px) {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 400px);
+        height: calc(100% - 450px);
+    }
+
+    @media screen and (min-width: 350px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 460px);
     }
 
     @media screen and (min-width: 400px) {
-        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 420px);
+        height: calc(100% - 490px);
+    }
+
+    @media screen and (min-width: 450px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 15px;
+        height: calc(100% - 510px);
     }
 
     @media screen and (min-width: 550px) {
         grid-template-columns: repeat(2, minmax(200px, 1fr));
         margin-left: 15px;
-        height: calc(100% - 400px);
+        height: calc(100% - 510px);
     }
 
     @media screen and (min-width: 600px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        grid-template-columns: repeat(3, minmax(185px, 1fr));
         margin-left: 40px;
-        height: calc(100% - 420px);
+        height: calc(100% - 500px);
     }
 
     @media screen and (min-width: 650px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
         margin-left: 40px;
-        height: calc(100% - 420px);
+        height: calc(100% - 520px);
     }
 
     @media screen and (min-width: 700px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
         margin-left: 40px;
-        height: calc(100% - 460px);
+        height: calc(100% - 530px);
     }
 
     @media screen and (min-width: 750px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        margin-left: 40px;
-        height: calc(100% - 460px);
-    }
-
-    @media screen and (min-width: 800px) and (min-height: 1280px) {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
-        margin-left: 12px;
-        height: calc(100% - 500px);
+        margin-left: 40px;
+        height: calc(100% - 540px);
     }
 
     @media screen and (min-width: 800px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 500px);
+        height: calc(100% - 550px);
     }
 
     @media screen and (min-width: 850px) {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 500px);
+        height: calc(100% - 580px);
     }
 
     @media screen and (min-width: 900px) {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 400px);
+        height: calc(100% - 570px);
     }
 
     @media screen and (min-width: 950px) {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 38px;
-        height: calc(100% - 400px);
+        height: calc(100% - 570px);
     }
 
     @media screen and (min-width: 1000px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 38px;
-        height: calc(85% - 230px);
+        height: calc(85% - 400px);
     }
 
     @media screen and (min-width: 1050px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 230px);
+        height: calc(85% - 410px);
     }
 
     @media screen and (min-width: 1100px) {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 240px);
+        height: calc(85% - 420px);
     }
 
     @media screen and (min-width: 1150px) {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 240px);
+        height: calc(85% - 420px);
     }
 
     @media screen and (min-width: 1200px) {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 340px);
+        height: calc(85% - 470px);
     }
 
     @media screen and (min-width: 1250px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 340px);
+        height: calc(85% - 480px);
     }
 
     @media screen and (min-width: 1300px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 340px);
+        height: calc(85% - 470px);
     }
 
     @media screen and (min-width: 1350px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 340px);
+        height: calc(85% - 470px);
     }
 
     @media screen and (min-width: 1400px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 350px);
+        height: calc(85% - 480px);
     }
 
     @media screen and (min-width: 1450px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 310px);
+        height: calc(85% - 480px);
     }
 
     @media screen and (min-width: 1500px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 340px);
+        height: calc(85% - 470px);
     }
 
     @media screen and (min-width: 1550px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 340px);
+        height: calc(85% - 460px);
     }
 
     @media screen and (min-width: 1600px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 590px);
+        height: calc(100% - 640px);
     }
 
     @media screen and (min-width: 1650px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 590px);
+        height: calc(100% - 650px);
     }
 
     @media screen and (min-width: 1700px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(8, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 490px);
+        height: calc(100% - 640px);
     }
 
-    @media screen and (min-width: 1810px) {
-        grid-template-columns: repeat(7, minmax(200px, 1fr));
+    @media screen and (min-width: 1750px) {
+        grid-template-columns: repeat(8, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(85% - 360px);
+        height: calc(100% - 640px);
+    }
+
+    @media screen and (min-width: 1800px) {
+        grid-template-columns: repeat(8, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(85% - 450px);
     }
 }
 
@@ -1098,6 +1343,7 @@ h4 {
     @media screen and (min-width: 200px) {
         grid-template-columns: repeat(1, minmax(100px, 1fr));
         margin-left: 20px;
+        margin-top: 80px;
         height: calc(100% - 380px);
     }
 
@@ -1110,40 +1356,64 @@ h4 {
     @media screen and (min-width: 300px) {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 400px);
+        height: calc(100% - 420px);
+    }
+
+    @media screen and (min-width: 330px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 440px);
+    }
+
+    @media screen and (min-width: 360px) {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 470px);
     }
 
     @media screen and (min-width: 400px) {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 420px);
+        height: calc(100% - 460px);
+    }
+
+    @media screen and (min-width: 450px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 15px;
+        height: calc(100% - 470px);
     }
 
     @media screen and (min-width: 500px) {
         grid-template-columns: repeat(2, minmax(200px, 1fr));
         margin-left: 15px;
-        height: calc(100% - 460px);
+        height: calc(100% - 390px);
+    }
+
+    @media screen and (min-width: 550px) {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        margin-left: 15px;
+        height: calc(100% - 380px);
     }
 
     @media screen and (min-width: 600px) {
         grid-template-columns: repeat(2, minmax(200px, 1fr));
         margin-left: 40px;
-        height: calc(100% - 480px);
+        height: calc(100% - 390px);
     }
 
-    @media screen and (min-width: 650px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        height: calc(100% - 480px);
+    @media screen and (min-width: 640px) {
+        grid-template-columns: repeat(3, minmax(195px, 1fr));
+        height: calc(100% - 400px);
     }
 
     @media screen and (min-width: 700px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        height: calc(100% - 590px);
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        height: calc(100% - 440px);
     }
 
     @media screen and (min-width: 750px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        height: calc(100% - 550px);
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        height: calc(100% - 420px);
     }
 
     @media screen and (min-width: 800px) and (min-height: 1280px) {
@@ -1152,59 +1422,95 @@ h4 {
     }
 
     @media screen and (min-width: 800px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        height: calc(100% - 570px);
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        height: calc(100% - 470px);
+    }
+
+    @media screen and (min-width: 856px) {
+        grid-template-columns: repeat(4, minmax(195px, 1fr));
+        height: calc(100% - 560px);
     }
 
     @media screen and (min-width: 900px) {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
-        height: calc(100% - 550px);
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        height: calc(100% - 530px);
+    }
+
+    @media screen and (min-width: 950px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        height: calc(100% - 540px);
     }
 
     @media screen and (min-width: 1000px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
-        height: calc(85% - 420px);
+        height: calc(85% - 270px);
+    }
+
+    @media screen and (min-width: 1050px) {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        height: calc(85% - 300px);
     }
 
     @media screen and (min-width: 1100px) {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
-        height: calc(85% - 420px);
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        height: calc(85% - 310px);
     }
 
     @media screen and (min-width: 1200px) {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
-        height: calc(85% - 500px);
+        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        height: calc(85% - 370px);
     }
 
     @media screen and (min-width: 1300px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
-        height: calc(85% - 390px);
+        height: calc(85% - 350px);
+    }
+
+    @media screen and (min-width: 1350px) {
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        height: calc(85% - 340px);
     }
 
     @media screen and (min-width: 1400px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
+        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        height: calc(100% - 620px);
+    }
+
+    @media screen and (min-width: 1450px) {
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         height: calc(100% - 620px);
     }
 
     @media screen and (min-width: 1500px) {
-        grid-template-columns: repeat(5, minmax(200px, 1fr));
-        height: calc(85% - 500px);
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
+        height: calc(85% - 330px);
+    }
+
+    @media screen and (min-width: 1550px) {
+        grid-template-columns: repeat(7, minmax(190px, 1fr));
+        height: calc(85% - 320px);
     }
 
     @media screen and (min-width: 1600px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 710px);
+        height: calc(100% - 620px);
+    }
+
+    @media screen and (min-width: 1650px) {
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
+        margin-left: 20px;
+        height: calc(100% - 620px);
     }
 
     @media screen and (min-width: 1700px) {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
-        height: calc(100% - 700px);
+        grid-template-columns: repeat(7, minmax(200px, 1fr));
+        height: calc(100% - 605px);
     }
 
     @media screen and (min-width: 1800px) {
-        grid-template-columns: repeat(7, minmax(200px, 1fr));
-        height: calc(100% - 700px);
+        grid-template-columns: repeat(8, minmax(200px, 1fr));
+        height: calc(100% - 670px);
     }
 }
 
@@ -1310,63 +1616,188 @@ h4 {
 
     /* Propiedades responsivas */
     @media screen and (min-width: 200px) {
-        width: 190px;
-        margin: auto;
-        margin-right: 10px;
-        height: 95%;
-    }
-
-    @media screen and (min-width: 260px) {
-        width: 230px;
-        margin: auto;
-        margin-right: 25px;
-        height: 90%;
-    }
-
-    @media screen and (min-width: 320px) {
-        width: 250px;
+        width: 160px;
         margin: auto;
         height: 95%;
     }
 
-    @media screen and (min-width: 400px) {
-        width: 250px;
+    @media screen and (min-width: 250px) {
+        width: 200px;
         margin: auto;
         height: 92%;
     }
 
-    @media screen and (min-width: 540px) {
-        width: 245px;
+    @media screen and (min-width: 300px) {
+        width: 250px;
+        margin: auto;
+        height: 95%;
+    }
+
+    @media screen and (min-width: 350px) {
+        width: 240px;
+        margin: auto;
+        height: 92%;
+    }
+
+    @media screen and (min-width: 400px) {
+        width: 160px;
+        margin: auto;
+        height: 92%;
+    }
+
+    @media screen and (min-width: 420px) {
+        width: 180px;
+        margin: auto;
+        height: 92%;
+    }
+
+    @media screen and (min-width: 450px) {
+        width: 200px;
+        margin: auto;
+        height: 92%;
+    }
+
+    @media screen and (min-width: 500px) {
+        width: 210px;
         margin: auto;
         height: 90%;
     }
 
+    @media screen and (min-width: 550px) {
+        width: 200px;
+        margin: auto;
+        height: 90%;
+    }
+
+    @media screen and (min-width: 600px) {
+        width: 160px;
+        right: 15px;
+        margin: auto;
+        height: 90%;
+    }
+
+    @media screen and (min-width: 650px) {
+        width: 180px;
+        margin: auto;
+        height: 86%;
+    }
+
+    @media screen and (min-width: 700px) {
+        width: 200px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 750px) {
+        width: 200px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 800px) {
+        width: 200px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 850px) {
+        width: 180px;
+        margin: auto;
+        height: 85%;
+    }
+
     @media screen and (min-width: 900px) {
-        width: 270px;
+        width: 180px;
         margin: auto;
         height: 85%;
     }
 
     @media screen and (min-width: 1000px) {
-        width: 225px;
+        width: 200px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1050px) {
+        width: 200px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1100px) {
+        width: 180px;
         margin: auto;
         height: 85%;
     }
 
     @media screen and (min-width: 1200px) {
-        width: 230px;
+        width: 200px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1250px) {
+        width: 210px;
         margin: auto;
         height: 85%;
     }
 
     @media screen and (min-width: 1300px) {
-        width: 250px;
+        width: 210px;
         margin: auto;
         height: 85%;
     }
 
-    @media screen and (min-width: 1810px) {
-        width: 245px;
+    @media screen and (min-width: 1350px) {
+        width: 180px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1400px) {
+        width: 190px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1450px) {
+        width: 180px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1500px) {
+        width: 175px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1550px) {
+        width: 180px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1600px) {
+        width: 190px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1650px) {
+        width: 190px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1700px) {
+        width: 190px;
+        margin: auto;
+        height: 85%;
+    }
+
+    @media screen and (min-width: 1800px) {
+        width: 190px;
         margin: auto;
         height: 85%;
     }
@@ -1380,6 +1811,95 @@ h4 {
     height: 215px;
     overflow: hidden;
     margin-top: 10px;
+
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 250px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 300px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 350px) {
+        height: 212px;
+    }
+
+    @media screen and (min-width: 400px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 450px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 500px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 550px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 600px) {
+        height: 210px;
+    }
+
+    @media screen and (min-width: 650px) {
+        height: 210px;
+    }
+
+    @media screen and (max-width: 750px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 800px) {
+        height: 215px;
+    }   
+
+    @media screen and (min-width: 850px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 900px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 950px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 1000px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 1050px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 1100px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 1300px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 1400px) {
+        height: 215px;
+    }
+
+    @media screen and (min-width: 1500px) {
+        height: 215px;
+    }
 }
 
 .container-figure-img-product {
@@ -1407,8 +1927,33 @@ h4 {
         /* Ajustar la imagen para cubrir el contenedor */
     }
 
-    @media screen and (max-width: 400px) {
-        max-height: 200px;
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        height: 150px;
+    }
+
+    @media screen and (min-width: 250px) {
+        height: 160px;
+    }
+
+    @media screen and (min-width: 400px) {
+        height: 150px;
+    }
+
+    @media screen and (min-width: 450px) {
+        height: 200px;
+    }
+
+    @media screen and (min-width: 650px) {
+        height: 200px;
+    }
+
+    @media screen and (min-width: 700px) {
+        height: 200px;
+    }
+
+    @media screen and (min-width: 900px) {
+        height: 200px;
     }
 }
 
@@ -1488,12 +2033,56 @@ h4 {
     top: 10px;
 
     /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        bottom: 10px;
+    }
+
+    @media screen and (min-width: 250px) {
+        bottom: 12px;
+    }
+
+    @media screen and (min-width: 300px) {
+        bottom: 10px;
+    }
+
+    @media screen and (min-width: 350px) {
+        bottom: 10px;
+    }
+
     @media screen and (min-width: 400px) {
+        bottom: -4px;
+    }
+
+    @media screen and (min-width: 450px) {
+        bottom: -4px;
+    }
+
+    @media screen and (min-width: 500px) {
+        bottom: -4px;
+    }
+
+    @media screen and (min-width: 550px) {
+        bottom: -4px;
+    }
+
+    @media screen and (min-width: 600px) {
+        bottom: -4px;
+    }
+
+    @media screen and (min-width: 650px) {
         bottom: -4px;
     }
 
     @media screen and (max-width: 750px) {
         bottom: 13px;
+    }
+
+    @media screen and (min-width: 800px) {
+        bottom: 13px;
+    }
+
+    @media screen and (min-width: 850px) {
+        top: -1px;
     }
 }
 
@@ -1527,14 +2116,40 @@ h4 {
     width: 100%;
 
     /* *Propiedades responsivas */
-    @media screen and (min-width: 768px) {
-        font-size: 16px;
+    @media screen and (min-width: 200px) {
+        font-size: 14px;
     }
 
-    @media screen and (min-width: 200px) and (min-width: 400px) {
+    @media screen and (min-width: 300px) {
         font-size: 14px;
-        bottom: 30px;
+        margin-top: 5px;
     }
+
+    @media screen and (min-width: 350px) {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    @media screen and (min-width: 400px) {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    @media screen and (min-width: 420px) {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+    }
+
+    @media screen and (min-width: 1300px) {
+        margin-bottom: 1px;
+        font-size: 14px;
+    }
+
+    
 }
 
 /* *DevelopersPage Styles */
@@ -1911,17 +2526,213 @@ h4 {
     }
 
     /* Propiedades responsivas */
-    @media screen and (min-width: 400px) {
-        bottom: 38px;
+    @media screen and (min-width: 200px) {
+        left: 1px;
+        width: 140px;
+        height: 55px;
+        top: -15px;
+        font-size: 13px !important;
     }
 
-    @media screen and (mix-width: 750px) {
-        bottom: 36px;
+    @media screen and (min-width: 250px) {
+        left: 1px;
+        top: -22px;
+        width: 180px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 300px) {
+        left: 5px;
+        width: 200px;
+        height: 40px;
+        top: -20px;
+        font-size: 13px !important;
+    }
+
+    @media screen and (min-width: 350px) {
+        left: 2px;
+        width: 220px;
+        height: 40px;
+        top: -24px;
+        font-size: 13px !important;
+    }
+
+    @media screen and (min-width: 400px) {
+        left: 2px;
+        width: 140px;
+        height: 45px;
+        top: -28px;
+        font-size: 13px !important;
+    }
+
+    @media screen and (min-width: 420px) {
+        left: 2px;
+        width: 130px;
+        height: 50px;
+        top: -28px;
+        font-size: 13px !important;
+    }
+
+    @media screen and (min-width: 450px) {
+        top: -30px;
+        width: 160px;
+        height: 55px;
+        left: 5px;
+    }
+
+    @media screen and (min-width: 500px) {
+        top: -20px;
+        width: 170px;
+        height: 55px;
+        left: 1px;
+    }
+
+    @media screen and (min-width: 550px) {
+        top: -25px;
+        width: 180px;
+        height: 50px;
+        left: 1px;
+    }
+
+    @media screen and (min-width: 600px) {
+        width: 125px;
+        height: 50px;
+        left: 1px;
+        top: -15px;
+        font-size: 12px !important;
+    }
+
+    @media screen and (min-width: 650px) {
+        width: 150px;
+        height: 50px;
+        left: 5px;
+        top: -15px;
+    }
+
+    @media screen and (min-width: 700px) {
+        top: -15px;
+        width: 160px;
+        height: 45px;
+    }
+
+    @media screen and (min-width: 750px) {
+        top: -10px;
+        width: 160px;
+        height: 50px;
+        left: 3px;
+    }
+
+    @media screen and (min-width: 800px) {
+        top: -25px;
+        width: 140px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 850px) {
+        top: -20px;
+        width: 140px;
+        height: 55px;
     }
 
     @media screen and (min-width: 900px) {
-        bottom: 36px;
-        top: -35px;
+        width: 165px;
+        height: 50px;
+        top: -25px;
+    }
+
+    @media screen and (min-width: 950px) {
+        width: 160px;
+        height: 50px;
+        top: -25px;
+    }
+
+    @media screen and (min-width: 1000px) {
+        top: -20px;
+        width: 150px;
+        height: 60px;
+        left: 2px;
+    }
+
+    @media screen and (min-width: 1050px) {
+        top: -22px;
+        width: 160px;
+        height: 60px;
+        left: 1px;
+    }
+
+    @media screen and (min-width: 1100px) {
+        top: -24px;
+        width: 160px;
+        height: 60px;
+        left: 1px;
+    }
+
+    @media screen and (min-width: 1150px) {
+        top: -24px;
+        width: 160px;
+        height: 50px;
+        left: 1px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        top: -24px;
+        width: 140px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 1250px) {
+        top: -24px;
+        width: 165px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 1300px) {
+        top: -10px;
+        width: 160px;
+        height: 50px;
+        left: 1px;
+    }
+
+    @media screen and (min-width: 1350px) {
+        top: -5px;
+        width: 160px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 1400px) {
+        top: -20px;
+        width: 165px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 1450px) {
+        top: -8px;
+        width: 150px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 1500px) {
+        top: -25px;
+        width: 155px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 1550px) {
+        top: -18px;
+        width: 160px;
+        height: 50px;
+    }
+
+    @media screen and (min-width: 1600px) {
+        top: -24px;
+        width: 160px;
+        height: 52px;
+    }
+
+    @media screen and (min-width: 1700px) {
+        top: -20px;
+        width: 160px;
+        height: 50px;
     }
 }
 
@@ -2176,6 +2987,171 @@ h4 {
     /* align-items: center; */
     /* align-self: center; */
     /* transform: translateX(-50%); */
+
+    /* Propiedades responsivas */
+    @media screen and (min-width: 200px) {
+        left: 15%;
+    }
+
+    @media screen and (min-width: 250px) {
+        left: 22%;
+        top: 20px;
+    }
+
+    @media screen and (min-width: 300px) {
+        left: 28%;
+        top: 25px;
+    }
+
+    @media screen and (min-width: 350px) {
+        left: 30%;
+        top: 25px;
+    }
+
+    @media screen and (min-width: 400px) {
+        left: 20%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 420px) {
+        left: 23%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 450px) {
+        left: 24%;
+        top: 8px;
+    }
+
+    @media screen and (min-width: 500px) {
+        left: 25%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 550px) {
+        left: 25%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 600px) {
+        left: 16%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 650px) {
+        left: 23%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 700px) {
+        left: 25%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 750px) {
+        left: 25%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 800px) {
+        left: 24%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 850px) {
+        left: 20%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 900px) {
+        left: 20%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 950px) {
+        left: 22%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 1000px) {
+        left: 24%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 1050px) {
+        left: 24%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 1100px) {
+        left: 22%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 1150px) {
+        left: 20%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        left: 25%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 1250px) {
+        left: 25%;
+        top: 16px;
+    }
+
+    @media screen and (min-width: 1300px) {
+        left: 25%;
+        top: 16px;
+    }
+
+    @media screen and (min-width: 1350px) {
+        left: 22%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 1400px) {
+        left: 24%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 1450px) {
+        left: 22%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 1500px) {
+        left: 22%;
+        top: 15px;
+    }
+
+    @media screen and (min-width: 1550px) {
+        left: 20%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 1600px) {
+        left: 24%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 1650px) {
+        left: 24%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 1700px) {
+        left: 24%;
+        top: 10px;
+    }
+
+    @media screen and (min-width: 1800px) {
+        left: 24%;
+        top: 10px;
+    }
 }
 
 .buttonProductsCard button {
@@ -2207,86 +3183,86 @@ h4 {
 }
 
 .floating-whatsapp-chatbox {
+
+    @media (min-width: 200px) {
+        height: 500px !important;
+        width: 280px !important;
+        margin-right: 8px !important;
+        margin-bottom: 80px !important;
+    }
+
     @media (min-width: 300px) {
+        margin-left: 20px !important;
+    }
+
+    @media (min-width: 300px) {
+        margin-left: 8px !important;
+    }
+
+    @media (min-width: 350px) {
         height: 340px !important;
     }
 
-    @media (min-width: 301px) and (min-height: 700px) {
-        height: 440px !important;
-        width: 260px !important;
-        margin-right: 90px !important;
+    @media (min-width: 400px) {
+        width: 280px !important;
+        height: 395px !important;
+        margin-left: 25px !important;
+        margin-bottom: 15px !important;
     }
 
-    @media (min-width: 324px) and (min-height: 700px) {
-        height: 440px !important;
-        width: 260px !important;
-        margin-right: 55px !important;
+    @media (min-width: 450px) {
+        height: 340px !important;
+        width: 320px !important;
+        margin-left: 20px !important;
+        margin-bottom: 20px !important;
     }
 
-    @media (min-width: 344px) and (min-height: 800px) {
-        height: 420px !important;
-        width: 260px !important;
-        margin-right: 75px !important;
-    }
-
-    @media (min-width: 360px) and (min-height: 700px) {
-        height: 440px !important;
-        width: 260px !important;
-        margin-right: 90px !important;
-    }
-
-    @media (min-width: 375px) {
-        height: 420px !important;
-        width: 270px !important;
-        margin-right: 95px !important;
-    }
-
-    @media (min-width: 412px) and (min-height: 732px) {
-        height: 380px !important;
-        width: 300px !important;
-        margin-right: 100px !important;
-    }
-
-    @media (min-width: 540px) and (min-height: 720px) {
+    @media (min-width: 500px) {
         height: 320px !important;
         width: 360px !important;
-        margin-right: 100px !important;
+        margin-left: 25px !important;
     }
 
-    @media (min-width: 600px) and (min-height: 900px) {
-        height: 340px !important;
-        width: 400px !important;
-        margin-right: 50px !important;
-    }
-
-    @media (min-width: 800px) and (min-height: 1280px) {
-        height: 340px !important;
-        width: 400px !important;
-        margin-right: 60px !important;
-    }
-
-    @media (min-width: 1000px) and (min-height: 700px) {
-        height: 340px !important;
-        width: 450px !important;
-        margin-right: 60px !important;
-    }
-
-    @media (min-width: 1024px) and (min-height: 500px) {
+    @media (min-width: 550px) {
         height: 320px !important;
-        width: 450px !important;
-        margin-right: 60px !important;
+        width: 360px !important;
+        margin-left: 70px !important;
     }
 
-    @media (min-width: 1200px) and (min-height: 800px) {
+    @media (min-width: 580px) {
         height: 340px !important;
-        width: 450px !important;
-        margin-right: 60px !important;
-    }
-
-    @media (min-width: 900px) and (min-height: 1300px) {
-        height: 360px !important;
         width: 400px !important;
         margin-right: 90px !important;
-        font-size: 40px;
+    }
+
+    @media (min-width: 600px) {
+        height: 340px !important;
+        width: 400px !important;
+        margin-right: 90px !important;
+    }
+
+    @media (min-width: 800px) {
+        height: 340px !important;
+        width: 400px !important;
+        margin-right: 90px !important;
+    }
+
+    @media (min-width: 1000px) {
+        height: 340px !important;
+        width: 450px !important;
+        margin-right: 60px !important;
+    }
+
+    @media (min-width: 1200px) {
+        height: 340px !important;
+        width: 450px !important;
+        margin-right: 60px !important;
+    }
+
+    @media (min-width: 900px) {
+        height: 360px !important;
+        width: 370px !important;
+        margin-right: 90px !important;
+        font-size: 38px;
     }
 }

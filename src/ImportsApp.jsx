@@ -1,8 +1,8 @@
 import { AppTheme } from './theme';
 import { AppRouter } from './router/AppRouter';
-import { FloatingWhatsApp } from 'react-floating-whatsapp'
-import Avatar from "../src/assets/uifaces-avatar.webp"
-import Sound from "../src/assets/whatsapp-notification.mp3"
+import { FloatingWhatsApp } from 'react-floating-whatsapp';
+import Avatar from '../src/assets/uifaces-avatar.webp';
+import Sound from '../src/assets/whatsapp-notification.mp3';
 import { useEffect, useState } from 'react';
 import { CategoriesEmpty } from './Components/categories/CategoriesEmpty';
 
@@ -45,9 +45,17 @@ export const ImportsApp = () => {
             onClose=''
             className='floating-whatsapp'
             chatboxClassName='floating-whatsapp-chatbox'
+            buttonStyle={{ bottom: "120px", right: "18px" }}
+            chatboxStyle={{
+              bottom: "120px",
+              right: "10px",
+              borderRadius: "10px",
+              boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)"
+            }}
           />
         </div>
       )}
     </>
   );
 };
+
