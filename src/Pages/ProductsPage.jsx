@@ -192,7 +192,7 @@ export const ProductsPage = () => {
               </IconButton>
             </Tooltip>
             <Typography
-              className="category"
+              className="category-selected animate__animated animate__fadeInLeft animate__slow"
               variant="h4"
               sx={{
                 '@media (min-width: 200px)': {
@@ -215,6 +215,14 @@ export const ProductsPage = () => {
                   mt: "-120px",
                   fontSize: "32px",
                 },
+                '@media (min-width: 900px)': {
+                  mt: "-120px",
+                  fontSize: "26px",
+                },
+                '@media (min-width: 1100px)': {
+                  mt: "-120px",
+                  fontSize: "26px",
+                },
                 '@media (min-width: 1400px)': {
                   fontSize: "28px",
                 },
@@ -229,6 +237,7 @@ export const ProductsPage = () => {
             <div>
               <Grid
                 item
+                className="animate__animated animate__fadeInLeft animate__slow"
                 sx={{
                   width: "90%",
                   display: "flex",
@@ -287,19 +296,19 @@ export const ProductsPage = () => {
                   },
                   '@media (min-width: 850px)': {
                     mt: "180px",
-                    ml: "50px",
+                    ml: "30px",
                   },
                   '@media (min-width: 900px)': {
                     mt: "180px",
-                    ml: "60px",
+                    ml: "35px",
                   },
                   '@media (min-width: 950px)': {
                     mt: "180px",
-                    ml: "75px",
+                    ml: "70px",
                   },
                   '@media (min-width: 1000px)': {
                     mt: "180px",
-                    ml: "105px",
+                    ml: "90px",
                   },
                   '@media (min-width: 1050px)': {
                     mt: "180px",
@@ -307,7 +316,7 @@ export const ProductsPage = () => {
                   },
                   '@media (min-width: 1100px)': {
                     mt: "180px",
-                    ml: "145px",
+                    ml: "80px",
                   },
                   '@media (min-width: 1150px)': {
                     mt: "180px",

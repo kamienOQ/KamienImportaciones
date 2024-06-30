@@ -2750,8 +2750,8 @@ h4 {
     margin-bottom: 46%;
 
     @media (min-width: 200px) {
-        margin-top: -45%;
-        margin-bottom: 45%;
+        margin-top: -50%;
+        margin-bottom: 85%;
 
         h2 {
             font-size: 14px;
@@ -2759,8 +2759,8 @@ h4 {
     }
 
     @media (min-width: 250px) {
-        margin-top: -45%;
-        margin-bottom: 45%;
+        margin-top: -50%;
+        margin-bottom: 80%;
 
         h2 {
             font-size: 16px;
@@ -2786,8 +2786,8 @@ h4 {
     }
 
     @media (min-width: 400px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: -38%;
+        margin-bottom: 50%;
 
         h2 {
             font-size: 22px;
@@ -2795,8 +2795,8 @@ h4 {
     }
 
     @media (min-width: 450px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: -38%;
+        margin-bottom: 50%;
 
         h2 {
             font-size: 24px;
@@ -2813,8 +2813,8 @@ h4 {
     }
 
     @media (min-width: 550px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: -35%;
+        margin-bottom: 45%;
 
         h2 {
             font-size: 24px;
