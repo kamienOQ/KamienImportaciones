@@ -2755,8 +2755,8 @@ h4 {
     margin-bottom: 46%;
 
     @media (min-width: 200px) {
-        margin-top: -50%;
-        margin-bottom: 85%;
+        margin-top: -60%;
+        margin-bottom: 105%;
 
         h2 {
             font-size: 14px;
@@ -2764,8 +2764,8 @@ h4 {
     }
 
     @media (min-width: 250px) {
-        margin-top: -50%;
-        margin-bottom: 80%;
+        margin-top: -60%;
+        margin-bottom: 100%;
 
         h2 {
             font-size: 16px;
@@ -2773,8 +2773,8 @@ h4 {
     }
 
     @media (min-width: 300px) {
-        margin-top: -35%;
-        margin-bottom: 35%;
+        margin-top: -38%;
+        margin-bottom: 55%;
 
         h2 {
             font-size: 18px;
@@ -2782,8 +2782,8 @@ h4 {
     }
 
     @media (min-width: 350px) {
-        margin-top: -35%;
-        margin-bottom: 35%;
+        margin-top: -40%;
+        margin-bottom: 50%;
 
         h2 {
             font-size: 20px;
@@ -2800,7 +2800,7 @@ h4 {
     }
 
     @media (min-width: 450px) {
-        margin-top: -38%;
+        margin-top: -35%;
         margin-bottom: 50%;
 
         h2 {
@@ -2809,8 +2809,8 @@ h4 {
     }
 
     @media (min-width: 500px) {
-        margin-top: -35%;
-        margin-bottom: 35%;
+        margin-top: -30%;
+        margin-bottom: 40%;
 
         h2 {
             font-size: 24px;
@@ -2818,7 +2818,7 @@ h4 {
     }
 
     @media (min-width: 550px) {
-        margin-top: -35%;
+        margin-top: -30%;
         margin-bottom: 45%;
 
         h2 {
@@ -2827,8 +2827,8 @@ h4 {
     }
 
     @media (min-width: 600px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: -25%;
+        margin-bottom: 28%;
 
         h2 {
             font-size: 24px;
@@ -2836,8 +2836,8 @@ h4 {
     }
 
     @media (min-width: 700px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: -25%;
+        margin-bottom: 25%;
 
         h2 {
             font-size: 24px;
@@ -2845,8 +2845,8 @@ h4 {
     }
 
     @media (min-width: 750px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: -25%;
+        margin-bottom: 25%;
 
         h2 {
             font-size: 24px;
@@ -2854,8 +2854,8 @@ h4 {
     }
 
     @media (min-width: 800px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: -22%;
+        margin-bottom: 22%;
 
         h2 {
             font-size: 24px;
@@ -2872,7 +2872,7 @@ h4 {
     }
 
     @media (min-width: 1300px) {
-        margin-top: -20%;
+        margin-top: -18%;
         margin-bottom: 20%;
 
         h2 {
@@ -2881,7 +2881,7 @@ h4 {
     }
 
     @media (min-width: 1400px) {
-        margin-top: -20%;
+        margin-top: -15%;
         margin-bottom: 20%;
 
         h2 {
@@ -2890,7 +2890,7 @@ h4 {
     }
 
     @media (min-width: 1450px) {
-        margin-top: -20%;
+        margin-top: -15%;
         margin-bottom: 20%;
 
         h2 {
@@ -2899,7 +2899,7 @@ h4 {
     }
 
     @media (min-width: 1500px) {
-        margin-top: -20%;
+        margin-top: -15%;
         margin-bottom: 20%;
 
         h2 {
@@ -2908,7 +2908,7 @@ h4 {
     }
 
     @media (min-width: 1550px) {
-        margin-top: -20%;
+        margin-top: -15%;
         margin-bottom: 20%;
 
         h2 {
@@ -2917,7 +2917,7 @@ h4 {
     }
 
     @media (min-width: 1600px) {
-        margin-top: -20%;
+        margin-top: -15%;
         margin-bottom: 20%;
 
         h2 {
@@ -2926,7 +2926,7 @@ h4 {
     }
 
     @media (min-width: 1700px) {
-        margin-top: -20%;
+        margin-top: -15%;
         margin-bottom: 20%;
 
         h2 {
@@ -2935,16 +2935,7 @@ h4 {
     }
 
     @media (min-width: 1800px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
-
-        h2 {
-            font-size: 24px;
-        }
-    }
-
-    @media (min-width: 1850px) {
-        margin-top: -19%;
+        margin-top: -12%;
         margin-bottom: 20%;
 
         h2 {
@@ -3182,6 +3173,14 @@ h4 {
         height: 280px;
     }
 
+    @media (min-width: 450px) {
+        height: 280px;
+    }
+
+    @media (min-width: 500px) {
+        height: 280px;
+    }
+
     @media (min-width: 910px) {
         height: 280px;
     }
@@ -3204,51 +3203,51 @@ h4 {
     }
 
     @media (min-width: 300px) {
-        height: 410px !important;
-        width: 290px !important;
-        margin-left: 15px !important;
+        height: 430px !important;
+        width: 320px !important;
+        margin-left: 10px !important;
         margin-bottom: 80px !important;
     }
 
     @media (min-width: 350px) {
-        height: 415px !important;
-        width: 260px !important;
+        height: 380px !important;
+        width: 330px !important;
         margin-left: 20px !important;
-        margin-bottom: 70px !important;
+        margin-bottom: 80px !important;
     }
 
     @media (min-width: 370px) {
-        height: 415px !important;
-        width: 260px !important;
-        margin-left: 15px !important;
-        margin-bottom: 60px !important;
+        height: 340px !important;
+        width: 330px !important;
+        margin-left: 20px !important;
+        margin-bottom: 80px !important;
     }
 
     @media (min-width: 400px) {
-        width: 260px !important;
-        height: 415px !important;
-        margin-left: 30px !important;
-        margin-bottom: 15px !important;
+        width: 350px !important;
+        height: 340px !important;
+        margin-left: 25px !important;
+        margin-bottom: 80px !important;
     }
 
     @media (min-width: 450px) {
-        height: 375px !important;
-        width: 300px !important;
-        margin-right: 50px !important;
-        margin-bottom: 20px !important;
+        height: 350px !important;
+        width: 340px !important;
+        margin-left: 30px !important;
+        margin-bottom: 80px !important;
     }
 
-    @media (min-width: 485px) {
+    @media (min-width: 470px) {
         height: 340px !important;
-        width: 320px !important;
-        margin-right: 90px !important;
-        margin-bottom: 20px !important;
+        width: 350px !important;
+        margin-left: 80px !important;
+        margin-bottom: 80px !important;
     }
 
     @media (min-width: 500px) {
         height: 340px !important;
         width: 320px !important;
-        margin-right: 90px !important;
+        margin-left: 40px !important;
         margin-bottom: 20px !important;
     }
 
@@ -3262,6 +3261,24 @@ h4 {
         height: 340px !important;
         width: 310px !important;
         margin-left: 140px !important;
+    }
+
+    @media (min-width: 570px) {
+        height: 340px !important;
+        width: 310px !important;
+        margin-left: 140px !important;
+    }
+
+    @media (min-width: 575px) {
+        height: 340px !important;
+        width: 310px !important;
+        margin-left: 140px !important;
+    }
+
+    @media (min-width: 576px) {
+        height: 340px !important;
+        width: 310px !important;
+        margin-right: 95px !important;
     }
 
     @media (min-width: 600px) {
@@ -3306,3 +3323,9 @@ h4 {
     right: -10px;
     z-index: 1;
 }
+
+.floating-whatsapp {
+    bottom: 20px;
+    right: 80px !important;
+}
+
