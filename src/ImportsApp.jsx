@@ -45,6 +45,7 @@ export const ImportsApp = () => {
             onClose=''
             className='floating-whatsapp'
             chatboxClassName='floating-whatsapp-chatbox'
+            notificationClassName='floating-whatsapp-notification'
             buttonStyle={{ bottom: "120px", right: "18px" }}
             chatboxStyle={{
               bottom: "120px",

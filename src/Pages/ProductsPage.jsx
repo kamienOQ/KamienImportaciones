@@ -197,38 +197,38 @@ export const ProductsPage = () => {
               sx={{
                 '@media (min-width: 200px)': {
                   mt: "-120px",
-                  fontSize: "25px",
+                  fontSize: "18px",
                 },
                 '@media (min-width: 250px)': {
                   mt: "40px",
+                  fontSize: "18px",
                 },
                 '@media (min-width: 300px)': {
                   mt: "50px",
+                  fontSize: "28px",
                 },
                 '@media (min-width: 350px)': {
                   mt: "-100px",
                 },
                 '@media (min-width: 400px)': {
                   mt: "-120px",
+                  fontSize: "30px",
                 },
                 '@media (min-width: 700px)': {
                   mt: "-120px",
-                  fontSize: "32px",
+                  fontSize: "30px",
                 },
                 '@media (min-width: 900px)': {
                   mt: "-120px",
-                  fontSize: "26px",
                 },
                 '@media (min-width: 1100px)': {
                   mt: "-120px",
-                  fontSize: "26px",
                 },
                 '@media (min-width: 1400px)': {
-                  fontSize: "28px",
                 },
                 '@media (min-width: 1500px)': {
                   mt: "-80px",
-                  fontSize: "30px",
+                  fontSize: "32px",
                 },
               }}
             >
@@ -292,27 +292,27 @@ export const ProductsPage = () => {
                   },
                   '@media (min-width: 800px)': {
                     mt: "180px",
-                    ml: "30px",
+                    ml: "20px",
                   },
                   '@media (min-width: 850px)': {
                     mt: "180px",
-                    ml: "30px",
+                    ml: "25px",
                   },
                   '@media (min-width: 900px)': {
                     mt: "180px",
-                    ml: "35px",
+                    ml: "30px",
                   },
                   '@media (min-width: 950px)': {
                     mt: "180px",
-                    ml: "70px",
+                    ml: "30px",
                   },
                   '@media (min-width: 1000px)': {
                     mt: "180px",
-                    ml: "90px",
+                    ml: "45px",
                   },
                   '@media (min-width: 1050px)': {
                     mt: "180px",
-                    ml: "115px",
+                    ml: "50px",
                   },
                   '@media (min-width: 1100px)': {
                     mt: "180px",
@@ -320,31 +320,31 @@ export const ProductsPage = () => {
                   },
                   '@media (min-width: 1150px)': {
                     mt: "180px",
-                    ml: "155px",
+                    ml: "100px",
                   },
                   '@media (min-width: 1200px)': {
                     mt: "180px",
-                    ml: "185px",
+                    ml: "130px",
                   },
                   '@media (min-width: 1250px)': {
                     mt: "180px",
-                    ml: "200px",
+                    ml: "150px",
                   },
                   '@media (min-width: 1300px)': {
                     mt: "180px",
-                    ml: "210px",
+                    ml: "176px",
                   },
                   '@media (min-width: 1350px)': {
                     mt: "180px",
-                    ml: "215px",
+                    ml: "200px",
                   },
                   '@media (min-width: 1400px)': {
                     mt: "180px",
-                    ml: "240px",
+                    ml: "210px",
                   },
                   '@media (min-width: 1450px)': {
                     mt: "180px",
-                    ml: "255px",
+                    ml: "250px",
                   },
                   '@media (min-width: 1500px)': {
                     mt: "180px",

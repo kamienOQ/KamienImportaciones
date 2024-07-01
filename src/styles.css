@@ -914,6 +914,10 @@ h4 {
     padding: 5px 5px 0px 5px;
 }
 
+.category-selected {
+    filter: drop-shadow(5px 5px 10px rgb(12, 9, 9));
+    text-shadow: 2px 2px 5px rgba(16, 15, 15, 0.9);
+}
 
 /* *ProductsPage Styles */
 .grid-container-product {
@@ -1372,8 +1376,8 @@ h4 {
     }
 
     @media screen and (min-width: 400px) {
-        grid-template-columns: repeat(1, minmax(200px, 1fr));
-        margin-left: 20px;
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        margin-left: -25px;
         height: calc(100% - 460px);
     }
 
@@ -1396,8 +1400,8 @@ h4 {
     }
 
     @media screen and (min-width: 600px) {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        margin-left: 40px;
+        grid-template-columns: repeat(3, minmax(190px, 1fr));
+        margin-left: 10px;
         height: calc(100% - 390px);
     }
 
@@ -1426,91 +1430,91 @@ h4 {
         height: calc(100% - 470px);
     }
 
-    @media screen and (min-width: 856px) {
+    @media screen and (min-width: 850px) {
         grid-template-columns: repeat(4, minmax(195px, 1fr));
         height: calc(100% - 560px);
     }
 
     @media screen and (min-width: 900px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
-        height: calc(100% - 530px);
+        height: calc(100% - 560px);
     }
 
     @media screen and (min-width: 950px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
-        height: calc(100% - 540px);
+        height: calc(100% - 580px);
     }
 
     @media screen and (min-width: 1000px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
-        height: calc(85% - 270px);
+        height: calc(85% - 420px);
     }
 
     @media screen and (min-width: 1050px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
-        height: calc(85% - 300px);
+        height: calc(85% - 420px);
     }
 
     @media screen and (min-width: 1100px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
-        height: calc(85% - 310px);
+        height: calc(85% - 430px);
     }
 
     @media screen and (min-width: 1200px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
-        height: calc(85% - 370px);
+        height: calc(85% - 490px);
     }
 
     @media screen and (min-width: 1300px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
-        height: calc(85% - 350px);
+        height: calc(85% - 495px);
     }
 
     @media screen and (min-width: 1350px) {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
-        height: calc(85% - 340px);
+        height: calc(85% - 485px);
     }
 
     @media screen and (min-width: 1400px) {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
-        height: calc(100% - 620px);
+        height: calc(100% - 670px);
     }
 
     @media screen and (min-width: 1450px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
-        height: calc(100% - 620px);
+        height: calc(100% - 670px);
     }
 
     @media screen and (min-width: 1500px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
-        height: calc(85% - 330px);
+        height: calc(85% - 470px);
     }
 
     @media screen and (min-width: 1550px) {
         grid-template-columns: repeat(7, minmax(190px, 1fr));
-        height: calc(85% - 320px);
+        height: calc(85% - 460px);
     }
 
     @media screen and (min-width: 1600px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 620px);
+        height: calc(100% - 650px);
     }
 
     @media screen and (min-width: 1650px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
-        height: calc(100% - 620px);
+        height: calc(100% - 650px);
     }
 
     @media screen and (min-width: 1700px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
-        height: calc(100% - 605px);
+        height: calc(100% - 640px);
     }
 
     @media screen and (min-width: 1800px) {
         grid-template-columns: repeat(8, minmax(200px, 1fr));
-        height: calc(100% - 670px);
+        height: calc(100% - 650px);
     }
 }
 
@@ -1859,7 +1863,7 @@ h4 {
 
     @media screen and (min-width: 800px) {
         height: 215px;
-    }   
+    }
 
     @media screen and (min-width: 850px) {
         height: 215px;
@@ -2149,7 +2153,7 @@ h4 {
         font-size: 14px;
     }
 
-    
+
 }
 
 /* *DevelopersPage Styles */
@@ -2637,13 +2641,14 @@ h4 {
     @media screen and (min-width: 900px) {
         width: 165px;
         height: 50px;
-        top: -25px;
+        top: -15px;
+        left: 1px;
     }
 
     @media screen and (min-width: 950px) {
         width: 160px;
         height: 50px;
-        top: -25px;
+        top: -15px;
     }
 
     @media screen and (min-width: 1000px) {
@@ -3185,84 +3190,119 @@ h4 {
 .floating-whatsapp-chatbox {
 
     @media (min-width: 200px) {
-        height: 500px !important;
+        height: 485px !important;
+        width: 280px !important;
+        margin-right: 8px !important;
+        margin-bottom: 80px !important;
+    }
+
+    @media (min-width: 250px) {
+        height: 485px !important;
         width: 280px !important;
         margin-right: 8px !important;
         margin-bottom: 80px !important;
     }
 
     @media (min-width: 300px) {
-        margin-left: 20px !important;
-    }
-
-    @media (min-width: 300px) {
-        margin-left: 8px !important;
+        height: 410px !important;
+        width: 290px !important;
+        margin-left: 15px !important;
+        margin-bottom: 80px !important;
     }
 
     @media (min-width: 350px) {
-        height: 340px !important;
+        height: 415px !important;
+        width: 260px !important;
+        margin-left: 20px !important;
+        margin-bottom: 70px !important;
+    }
+
+    @media (min-width: 370px) {
+        height: 415px !important;
+        width: 260px !important;
+        margin-left: 15px !important;
+        margin-bottom: 60px !important;
     }
 
     @media (min-width: 400px) {
-        width: 280px !important;
-        height: 395px !important;
-        margin-left: 25px !important;
+        width: 260px !important;
+        height: 415px !important;
+        margin-left: 30px !important;
         margin-bottom: 15px !important;
     }
 
     @media (min-width: 450px) {
+        height: 375px !important;
+        width: 300px !important;
+        margin-right: 50px !important;
+        margin-bottom: 20px !important;
+    }
+
+    @media (min-width: 485px) {
         height: 340px !important;
         width: 320px !important;
-        margin-left: 20px !important;
+        margin-right: 90px !important;
         margin-bottom: 20px !important;
     }
 
     @media (min-width: 500px) {
-        height: 320px !important;
-        width: 360px !important;
-        margin-left: 25px !important;
+        height: 340px !important;
+        width: 320px !important;
+        margin-right: 90px !important;
+        margin-bottom: 20px !important;
+    }
+
+    @media (min-width: 520px) {
+        height: 340px !important;
+        width: 310px !important;
+        margin-left: 105px !important;
     }
 
     @media (min-width: 550px) {
-        height: 320px !important;
-        width: 360px !important;
-        margin-left: 70px !important;
-    }
-
-    @media (min-width: 580px) {
         height: 340px !important;
-        width: 400px !important;
-        margin-right: 90px !important;
+        width: 310px !important;
+        margin-left: 140px !important;
     }
 
     @media (min-width: 600px) {
         height: 340px !important;
-        width: 400px !important;
+        width: 350px !important;
         margin-right: 90px !important;
     }
 
     @media (min-width: 800px) {
-        height: 340px !important;
-        width: 400px !important;
+        height: 350px !important;
+        width: 350px !important;
+        margin-right: 90px !important;
+    }
+
+    @media (min-width: 900px) {
+        height: 300px !important;
+        width: 370px !important;
         margin-right: 90px !important;
     }
 
     @media (min-width: 1000px) {
-        height: 340px !important;
-        width: 450px !important;
-        margin-right: 60px !important;
+        height: 355px !important;
+        width: 390px !important;
+        margin-right: 85px !important;
     }
 
     @media (min-width: 1200px) {
-        height: 340px !important;
-        width: 450px !important;
-        margin-right: 60px !important;
+        height: 355px !important;
+        width: 400px !important;
+        margin-right: 85px !important;
     }
+}
 
-    @media (min-width: 900px) {
-        height: 360px !important;
-        width: 370px !important;
-        margin-right: 90px !important;
-        font-size: 38px;
-    }
+.floating-whatsapp-notification {
+    background-color: var(--main-color);
+    color: var(--white);
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: 1;
 }
