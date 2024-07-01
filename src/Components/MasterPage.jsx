@@ -181,11 +181,15 @@ export const MasterPage = ({ children }) => {
               },
               '@media (min-width: 600px)': {
                 mr: "1px",
+                ml: "-30px",
+              },
+              '@media (min-width: 601px)': {
+                mr: "1px",
                 ml: "-170px",
               },
               '@media (min-width: 650px)': {
                 mr: "1px",
-                ml: "-175px",
+                ml: "-170px",
               },
               '@media (min-width: 1200px)': {
                 mr: "-10px",
@@ -227,7 +231,13 @@ export const MasterPage = ({ children }) => {
                 ml: "-8px",
               },
               '@media (min-width: 600px)': {
-                ml: "-70px",
+                ml: "-8px",
+              },
+              '@media (min-width: 601px)': {
+                ml: "-68px",
+              },
+              '@media (min-width: 650px)': {
+                ml: "-68px",
               },
               '@media (min-width: 1200px)': {
                 ml: "-66px",
@@ -350,13 +360,121 @@ export const MasterPage = ({ children }) => {
           sx={{
             color: '#ffffff',
             '@media (min-width: 200px)': {
-              mr: "-32px",
+              ml: "-15px",
+            },
+            '@media (min-width: 250px)': {
+              ml: "20px",
+            },
+            '@media (min-width: 300px)': {
+              ml: "65px",
+            },
+            '@media (min-width: 350px)': {
+              ml: "110px",
+            },
+            '@media (min-width: 400px)': {
+              ml: "160px",
+            },
+            '@media (min-width: 450px)': {
+              ml: "210px",
+            },
+            '@media (min-width: 500px)': {
+              ml: "240px",
             },
             '@media (min-width: 550px)': {
-              ml: "-40px",
+              ml: "290px ",
             },
             '@media (min-width: 600px)': {
-              mr: "-110px",
+              ml: "320px",
+            },
+            '@media (min-width: 601px)': {
+              ml: "310px",
+            },
+            '@media (min-width: 650px)': {
+              ml: "390px",
+            },
+            '@media (min-width: 700px)': {
+              ml: "440px",
+            },
+            '@media (min-width: 750px)': {
+              ml: "490px",
+            },
+            '@media (min-width: 800px)': {
+              ml: "540px",
+            },
+            '@media (min-width: 850px)': {
+              ml: "590px",
+            },
+            '@media (min-width: 900px)': {
+              ml: "640px",
+            },
+            '@media (min-width: 950px)': {
+              ml: "690px",
+            },
+            '@media (min-width: 1000px)': {
+              ml: "740px",
+            },
+            '@media (min-width: 1050px)': {
+              ml: "790px",
+            },
+            '@media (min-width: 1100px)': {
+              ml: "840px",
+            },
+            '@media (min-width: 1150px)': {
+              ml: "890px",
+            },
+            '@media (min-width: 1200px)': {
+              ml: "940px",
+            },
+            '@media (min-width: 1200px)': {
+              ml: "970px",
+            },
+            '@media (min-width: 1250px)': {
+              ml: "970px",
+            },
+            '@media (min-width: 1300px)': {
+              ml: "1030px",
+            },
+            '@media (min-width: 1350px)': {
+              ml: "1080px",
+            },
+            '@media (min-width: 1400px)': {
+              ml: "1130px",
+            },
+            '@media (min-width: 1450px)': {
+              ml: "1180px",
+            },
+            '@media (min-width: 1500px)': {
+              ml: "1230px",
+            },
+            '@media (min-width: 1550px)': {
+              ml: "1285px",
+            },
+            '@media (min-width: 1600px)': {
+              ml: "1330px",
+            },
+            '@media (min-width: 1650px)': {
+              ml: "1380px",
+            },
+            '@media (min-width: 1700px)': {
+              ml: "1430px",
+            },
+            '@media (min-width: 1750px)': {
+              ml: "1480px",
+            },
+            '@media (min-width: 1800px)': {
+              ml: "1530px",
+            },
+            '@media (min-width: 1850px)': {
+              ml: "1580px",
+            },
+            '@media (min-width: 1900px)': {
+              ml: "1630px",
+            },
+            '@media (min-width: 1950px)': {
+              ml: "1680px",
+            },
+            '@media (min-width: 2000px)': {
+              ml: "1730px",
             },
           }}
         >

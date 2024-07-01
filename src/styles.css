@@ -2565,7 +2565,7 @@ h4 {
         left: 2px;
         width: 140px;
         height: 45px;
-        top: -28px;
+        top: -20px;
         font-size: 13px !important;
     }
 
@@ -2573,12 +2573,12 @@ h4 {
         left: 2px;
         width: 130px;
         height: 50px;
-        top: -28px;
+        top: -18px;
         font-size: 13px !important;
     }
 
     @media screen and (min-width: 450px) {
-        top: -30px;
+        top: -18px;
         width: 160px;
         height: 55px;
         left: 5px;
@@ -2592,7 +2592,7 @@ h4 {
     }
 
     @media screen and (min-width: 550px) {
-        top: -25px;
+        top: -18px;
         width: 180px;
         height: 50px;
         left: 1px;
@@ -2601,8 +2601,8 @@ h4 {
     @media screen and (min-width: 600px) {
         width: 125px;
         height: 50px;
-        left: 1px;
-        top: -15px;
+        left: 2px;
+        top: -5px;
         font-size: 12px !important;
     }
 
@@ -2610,11 +2610,11 @@ h4 {
         width: 150px;
         height: 50px;
         left: 5px;
-        top: -15px;
+        top: -8px;
     }
 
     @media screen and (min-width: 700px) {
-        top: -15px;
+        top: -8px;
         width: 160px;
         height: 45px;
     }
@@ -2627,13 +2627,13 @@ h4 {
     }
 
     @media screen and (min-width: 800px) {
-        top: -25px;
+        top: -10px;
         width: 140px;
         height: 50px;
     }
 
     @media screen and (min-width: 850px) {
-        top: -20px;
+        top: -10px;
         width: 140px;
         height: 55px;
     }
@@ -2641,52 +2641,52 @@ h4 {
     @media screen and (min-width: 900px) {
         width: 165px;
         height: 50px;
-        top: -15px;
+        top: -5px;
         left: 1px;
     }
 
     @media screen and (min-width: 950px) {
         width: 160px;
         height: 50px;
-        top: -15px;
+        top: -5px;
     }
 
     @media screen and (min-width: 1000px) {
-        top: -20px;
+        top: -10px;
         width: 150px;
         height: 60px;
         left: 2px;
     }
 
     @media screen and (min-width: 1050px) {
-        top: -22px;
+        top: -12px;
         width: 160px;
         height: 60px;
         left: 1px;
     }
 
     @media screen and (min-width: 1100px) {
-        top: -24px;
+        top: -10px;
         width: 160px;
         height: 60px;
         left: 1px;
     }
 
     @media screen and (min-width: 1150px) {
-        top: -24px;
+        top: -10px;
         width: 160px;
         height: 50px;
         left: 1px;
     }
 
     @media screen and (min-width: 1200px) {
-        top: -24px;
+        top: -10px;
         width: 140px;
         height: 50px;
     }
 
     @media screen and (min-width: 1250px) {
-        top: -24px;
+        top: -10px;
         width: 165px;
         height: 50px;
     }
@@ -2705,7 +2705,7 @@ h4 {
     }
 
     @media screen and (min-width: 1400px) {
-        top: -20px;
+        top: -10px;
         width: 165px;
         height: 50px;
     }
@@ -2717,25 +2717,25 @@ h4 {
     }
 
     @media screen and (min-width: 1500px) {
-        top: -25px;
+        top: -10px;
         width: 155px;
         height: 50px;
     }
 
     @media screen and (min-width: 1550px) {
-        top: -18px;
+        top: -10px;
         width: 160px;
         height: 50px;
     }
 
     @media screen and (min-width: 1600px) {
-        top: -24px;
+        top: -10px;
         width: 160px;
         height: 52px;
     }
 
     @media screen and (min-width: 1700px) {
-        top: -20px;
+        top: -10px;
         width: 160px;
         height: 50px;
     }

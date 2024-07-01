@@ -394,72 +394,67 @@
     align-items: center;
 
     @media (min-width: 200px) {
-        margin-top: 420px;
+        margin-top: 490px;
         margin-bottom: -480px;
     }
 
     @media (min-width: 250px) {
-        margin-top: 420px;
+        margin-top: 480px;
         margin-bottom: -480px;
     }
 
     @media (min-width: 280px) {
-        margin-top: 430px;
+        margin-top: 490px;
         margin-bottom: -500px;
     }
 
     @media (min-width: 300px) {
-        margin-top: 470px;
+        margin-top: 510px;
         margin-bottom: -500px;
     }
 
     @media (min-width: 350px) {
-        margin-top: 500px;
+        margin-top: 540px;
         margin-bottom: -450px;   
     }
 
     @media (min-width: 400px) {
-        margin-top: 540px;
+        margin-top: 560px;
         margin-bottom: -420px;
     }
 
     @media (min-width: 450px) {
-        margin-top: 580px;
+        margin-top: 590px;
         margin-bottom: -450px;
     }
 
     @media (min-width: 500px) {
-        margin-top: 850px;
-        margin-bottom: -450px;
-    }
-
-    @media (min-width: 540px) {
-        margin-top: 930px;
+        margin-top: 870px;
         margin-bottom: -450px;
     }
 
     @media (min-width: 600px) {
-        margin-top: 850px;
+        margin-top: 840px;
         margin-bottom: -420px;
     }
 
     @media (min-width: 650px) {
-        margin-top: 900px;
+        margin-top: 870px;
         margin-bottom: -430px;
     }
 
     @media (min-width: 700px) {
-        margin-top: 1530px;
+        margin-top: 1310px;
         margin-bottom: -430px;
     }
 
     @media (min-width: 750px) {
-        margin-top: 1540px;
+        margin-top: 1330px;
         margin-bottom: -430px;
     }
 
     @media (min-width: 800px) {
-        margin-top: 1410px;
+        margin-top: 1220px;
         margin-bottom: -390px;
     }
 
@@ -484,7 +479,7 @@
     }
 
     @media (min-width: 1050px) {
-        margin-top: 710px;
+        margin-top: 720px;
         margin-bottom: -390px;
     }
 
