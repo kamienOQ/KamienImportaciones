@@ -37,6 +37,12 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
 
   const navigate = useNavigate();
 
+  let orderNumber = Math.random();
+
+  const apiUser = process.env.VITE_TILOPAY_API_USER;
+  const apiPassword = process.env.VITE_TILOPAY_API_PASSWORD;
+  const key = process.env.REACT_APP_TILOPAY_KEY;
+
   const SendMessage = async () => {
     let fecha = new Date();
     const data = {
@@ -97,6 +103,74 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     await crearPedido(data);
     dispatch(onChangeSuccess(true));
     dispatch(onCleanProducts());
+  }
+
+  // Crear new payment method Tilopay
+  const SendTilopayLink = async () => {
+    // Authentication data
+    const apiUser = apiuser;
+    const apiPassword = password;
+
+    // Get token
+    try {
+      // Realize the POST request to obtain the token
+      const response = await fetch('https://app.tilopay.com/api/v1/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          apiuser: apiUser,
+          password: apiPassword
+        })
+      });
+
+      // Verify if the request was successful
+      if (!response.ok) {
+        throw new Error('Error en la solicitud: ${response.statusText}');
+      }
+
+      const data = await response.json();
+
+      // Here we have the token
+      const token = data.token; 
+
+      console.log('Token obtenido', token);
+
+      // Now we can take the token is time to payment process
+      const paymentResponse = await fetch('https://app.tilopay.com/api/v1/processPayment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `bearer ${token}`
+        },
+        body: JSON.stringify({
+          redirect: 'https://www.urlToRedirect.com',
+          key: key,
+          amount: calculateTotal(),
+          currency: 'CRC',
+          billToFirstName: 'name',
+          billToLastName: 'name',
+          billToAddress: direccion,
+          billToAddress2: direccion,
+          billToCity: direccion,
+          billToState: direccion,
+          billToZipPostCode: direccion,
+          billToCountry: 'CR',
+          billToTelephone: numero,
+          billToEmail: numero,
+          orderNumber: orderNumber,
+          capture: '1',
+          subscription: '0',
+          platform: 'api'
+        })
+      });
+
+      console.log('Respuesta del pago', paymentResponse);
+
+    } catch (error) {
+      console.error('Error al iniciar el pago: ', error);
+    }
   }
 
   // const confirmPaymend = () => {
@@ -801,6 +875,47 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               >
                 <Button
                   onClick={SendPaypalLink}
+                  disabled={!disable}
+                  sx={{
+                    background: '#357A38',
+                    border: "0.2em solid white",
+                    marginRight: "10px",
+                    marginBottom: '5px',
+                    color: 'white',
+                    '&:hover': {
+                      background: '#00d084',
+                    }
+                  }}
+                >
+                  Pagar con PayPal link
+                </Button>
+              </Box>
+              <div className="additional-content">
+                <Typography sx={disable ? { color: "green", fontSize: 10 } : { color: "quaternary", fontSize: 9 }}>
+                  {disable ? "¡Datos Válidos para la compra!" : "Los Datos ingresados son inválidos"}
+                </Typography>
+              </div>
+            </div>
+          )}
+
+          {/* Renderizar el botón adicional si el método de pago es "Tilopay" */}
+          {metodoPago === 'Tilopay' && !camposCompletos && (
+            <div>
+              <Box
+                className='ResponsiveBox'
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-evenly",
+                  marginLeft: "3%",
+                  marginRight: "3%",
+                  marginTop: "5%",
+                  marginBottom: "3%",
+                  alignSelf: "center"
+                }}
+              >
+                <Button
+                  onClick={SendTilopayLink}
                   disabled={!disable}
                   sx={{
                     background: '#357A38',

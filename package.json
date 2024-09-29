@@ -20,7 +20,7 @@
     "@paypal/checkout-server-sdk": "^1.0.3",
     "@paypal/react-paypal-js": "^8.3.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "axios": "^1.6.8",
+    "axios": "^1.7.7",
     "bl": "^6.0.13",
     "bootstrap-icons": "^1.11.3",
     "brace-expansion": "^4.0.0",
@@ -29,7 +29,7 @@
     "embla-carousel": "^8.0.2",
     "embla-carousel-autoplay": "^8.0.2",
     "embla-carousel-react": "^8.0.2",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "extend": "^3.0.2",
     "firebase": "^9.23.0",
     "framer-motion": "^11.2.12",
@@ -39,6 +39,7 @@
     "json-schema": "^0.4.0",
     "jsonschema": "^1.4.1",
     "jsprim": "^2.0.2",
+    "kamien-importaciones": "file:",
     "latest": "^0.2.0",
     "leaflet": "^1.9.4",
     "minimist": "^1.2.8",
@@ -72,9 +73,9 @@
     "@vitejs/plugin-react": "^3.1.0",
     "hawk": "^9.0.2",
     "minimatch": "^9.0.5",
+    "npm-user-validate": "^2.0.1",
     "qs": "^6.2.4",
     "tar": "^7.4.0",
-    "npm-user-validate": "^2.0.1",
     "vite": "^4.5.3"
   }
 }
