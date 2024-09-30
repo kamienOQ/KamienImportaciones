@@ -23,6 +23,8 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
   const [unitaryPricetotal, setunitaryPriceTotal] = useState(0);
   const [metodoPago, setMetodoPago] = useState("");
   const [name, setname] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [numero, setNumero] = useState("");
   const [envio, setenvio] = useState("");
   const [mensajeEnvio, setMensajeEnvio] = useState("");
@@ -37,11 +39,18 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
 
   const navigate = useNavigate();
 
-  let orderNumber = Math.random();
+  // Generar un número aleatorio entre 1 y 10,000
+  const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
-  const apiUser = process.env.VITE_TILOPAY_API_USER;
-  const apiPassword = process.env.VITE_TILOPAY_API_PASSWORD;
-  const key = process.env.REACT_APP_TILOPAY_KEY;
+  const randomNumber = getRandomInt(1, 10000);
+
+  let orderNumber = randomNumber;
+
+  const apiuser = import.meta.env.VITE_TILOPAY_API_USER;
+  const apiPassword = import.meta.env.VITE_TILOPAY_API_PASSWORD;
+  const key = import.meta.env.VITE_TILOPAY_API_KEY;
 
   const SendMessage = async () => {
     let fecha = new Date();
@@ -50,7 +59,10 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       cellphone: numero,
       date: fecha.getTime(),
       name: name,
+      lastName: lastName,
       nameLowerCase: name.toLowerCase(),
+      lastNameLowerCase: lastName.toLowerCase(),
+      email: email,
       status: "Pendiente",
       wayToPay: metodoPago,
       sendMethod: envio,
@@ -64,6 +76,8 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     window.open(url);
     setNumero("")
     setname("")
+    setLastName("")
+    setEmail("")
     setDireccion("")
     setenvio("")
     setMetodoPago("")
@@ -74,6 +88,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     dispatch(onCleanProducts());
   };
 
+
+  const linkPaypalMe = `https://paypal.me/pagosKamien?country.x=CR&locale.x=es_XC`;
+
   const SendPaypalLink = async () => {
     let fecha = new Date();
     const data = {
@@ -82,8 +99,11 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       date: fecha.getTime(),
       name: name,
       nameLowerCase: name.toLowerCase(),
+      lastName: lastName,
+      lastNameLowerCase: lastName.toLowerCase(),
+      email: email,
       status: "Pendiente",
-      wayToPay: metodoPago,
+      wayToPay: linkPaypalMe,
       sendMethod: envio,
       products: datosCompra,
       totalPrice: calculateTotal(),
@@ -95,6 +115,8 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     window.open(url);
     setNumero("")
     setname("")
+    setLastName("")
+    setEmail("")
     setDireccion("")
     setenvio("")
     setMetodoPago("")
@@ -107,9 +129,38 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
 
   // Crear new payment method Tilopay
   const SendTilopayLink = async () => {
-    // Authentication data
-    const apiUser = apiuser;
-    const apiPassword = password;
+
+    let fecha = new Date();
+    const data = {
+      address: direccion,
+      cellphone: numero,
+      date: fecha.getTime(),
+      name: name,
+      lastName: lastName,
+      nameLowerCase: name.toLowerCase(),
+      lastNameLowerCase: lastName.toLowerCase(),
+      email: email,
+      status: "Pendiente",
+      wayToPay: metodoPago,
+      sendMethod: envio,
+      products: datosCompra,
+      totalPrice: calculateTotal()
+    };
+
+    // Obtener el número de teléfono de la URL de WhatsApp
+    const phoneNumber = whatsapp.match(/\+\d+/)[0];
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${phoneNumber}`
+    window.open(url);
+    setNumero("")
+    setname("")
+    setLastName("")
+    setEmail("")
+    setDireccion("")
+    setenvio("")
+    setMetodoPago("")
+    setdisable(false)
+    setOpen(!open)
+    await crearPedido(data);
 
     // Get token
     try {
@@ -120,9 +171,10 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          apiuser: apiUser,
+          apiuser: apiuser,
           password: apiPassword
-        })
+        }),
+        redirect: 'follow'
       });
 
       // Verify if the request was successful
@@ -131,26 +183,28 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
       }
 
       const data = await response.json();
-
       // Here we have the token
-      const token = data.token; 
+      const token = data.access_token;
 
-      console.log('Token obtenido', token);
+      if (!token) {
+        throw new Error('No se ha recibido un token válido');
+      }
 
       // Now we can take the token is time to payment process
       const paymentResponse = await fetch('https://app.tilopay.com/api/v1/processPayment', {
         method: 'POST',
         headers: {
+          'Authorization': `bearer ${token}`,
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `bearer ${token}`
         },
         body: JSON.stringify({
-          redirect: 'https://www.urlToRedirect.com',
+          redirect: 'http://localhost:5173/ThankYouBuyer',
           key: key,
           amount: calculateTotal(),
           currency: 'CRC',
-          billToFirstName: 'name',
-          billToLastName: 'name',
+          billToFirstName: name,
+          billToLastName: lastName,
           billToAddress: direccion,
           billToAddress2: direccion,
           billToCity: direccion,
@@ -158,27 +212,37 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
           billToZipPostCode: direccion,
           billToCountry: 'CR',
           billToTelephone: numero,
-          billToEmail: numero,
+          billToEmail: email,
           orderNumber: orderNumber,
           capture: '1',
           subscription: '0',
-          platform: 'api'
-        })
+          platform: 'Kamien Store'
+        }),
+        redirect: 'follow'
       });
 
-      console.log('Respuesta del pago', paymentResponse);
+      const paymentData = await paymentResponse.json();
+
+      if (!paymentResponse.ok) {
+        throw new Error(`Error en la respuesta del pago: ${paymentResponse.statusText}`);
+      }
+
+      // Redirect to payment link
+      if (paymentData.url) {
+        window.location.href = paymentData.url;
+      }
 
     } catch (error) {
       console.error('Error al iniciar el pago: ', error);
     }
-  }
+  };
 
   // const confirmPaymend = () => {
   //   navigate('/PaymenCard')
   // };
 
   const checkNull = () => {
-    if (numero.length < 7 || envio === "" || metodoPago === "" || name.length < 4) {
+    if (numero.length < 7 || envio === "" || metodoPago === "" || name.length < 4 || lastName.length < 4 || direccion.length < 4) {
       setdisable(false)
     } else {
       setdisable(true)
@@ -190,21 +254,20 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     return total;
   };
 
-  const linkPaypalMe = `https://paypal.me/pagosKamien?country.x=CR&locale.x=es_XC`;
-
   const manageMsg = () => {
     setMensajeEnvio(
       "Compra Kámien" +
       "\n Nombre: " + name +
+      "\n Apellidos: " + lastName +
+      "\n Email: " + email +
       "\n Método de pago: " + metodoPago +
-      "\n Link de pago de Paypal: " + linkPaypalMe +
       "\n Método de envío: " + envio +
       "\n Número de teléfono: " + numero +
       "\n Precio Total de la compra: " + calculateTotal() +
       "\n Dirección: " + direccion +
       "\n Total de Artículos: \n" +
       datosCompra.map((row) => {
-        let fila = "x" + row.quantity + "   " + row.name + " " + Object.keys(row.relatedListAttributes).map((key) => {
+        let fila = "x" + row.quantity + "   " + row.name + " " + row.lastName + " " + row.email + " " + Object.keys(row.relatedListAttributes).map((key) => {
           return " " + row.relatedListAttributes[key]
         }
         )
@@ -252,6 +315,33 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     manageMsg()
     checkNull()
   };
+
+  const handleLastName = (event) => {
+    // Verificar si el campo de apellido está lleno
+    if (event.target.value.trim() === '') {
+      setCamposCompletos(true);
+    } else {
+      setCamposCompletos(false);
+    }
+
+    setLastName(event.target.value)
+    manageMsg()
+    checkNull()
+  };
+
+  const handleEmail = (event) => {
+    // Verificar si el campo de correo está lleno
+    if (event.target.value.trim() === '') {
+      setCamposCompletos(true);
+    } else {
+      setCamposCompletos(false);
+    }
+
+    setEmail(event.target.value)
+    manageMsg()
+    checkNull()
+  };
+  ;
 
   const handleNumber = (event) => {
     // Verificar si el campo de nombre está lleno
@@ -315,6 +405,9 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     date: fecha.getTime(),
     name: name,
     nameLowerCase: name.toLowerCase(),
+    lastName: lastName,
+    lastNameLowerCase: lastName.toLowerCase(),
+    email: email,
     status: "Pendiente",
     wayToPay: metodoPago,
     sendMethod: envio
@@ -600,6 +693,53 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     value={name}
                   />
                 </div>
+
+                <div
+                  className='MetodoDePago'
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <AccountCircle sx={{ color: 'action.active', marginRight: '5px' }} />
+                  <TextField
+                    color='quaternary'
+                    id="input-with-sx"
+                    label="Apellidos"
+                    variant="filled"
+                    onChange={(e) => handleLastName(e)}
+                    fullWidth
+                    sx={{
+                      fontSize: "small"
+                    }}
+                    inputlabelprops={{
+                      style: { fontSize: "x-small" }
+                    }}
+                    inputProps={{ maxLength: 50 }}
+                    value={lastName}
+                  />
+                </div>
+
+                <div
+                  className='MetodoDePago'
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <AccountCircle sx={{ color: 'action.active', marginRight: '5px' }} />
+                  <TextField
+                    color='quaternary'
+                    id="input-with-sx"
+                    label="Email"
+                    variant="filled"
+                    onChange={(e) => handleEmail(e)}
+                    fullWidth
+                    sx={{
+                      fontSize: "small"
+                    }}
+                    inputlabelprops={{
+                      style: { fontSize: "x-small" }
+                    }}
+                    inputProps={{ maxLength: 50 }}
+                    value={email}
+                  />
+                </div>
+
                 <div
                   className='MetodoDePago'
                   style={{ display: "flex" }}
@@ -626,11 +766,12 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                         style: { fontSize: "small" },
                       }}
                     >
-                      <MenuItem value={"Credix"} sx={{ fontSize: "small" }}> Pago con Credix</MenuItem>
+                      {/* <MenuItem value={"Credix"} sx={{ fontSize: "small" }}> Pago con Credix</MenuItem> */}
                       <MenuItem value={"Efectivo"} sx={{ fontSize: "small" }}>Efectivo</MenuItem>
                       <MenuItem value={"Sinpe Móvil"} sx={{ fontSize: "small" }}>Sinpe Móvil</MenuItem>
                       {/* <MenuItem value={"CardPayPal"} sx={{ fontSize: "small" }}>Cuenta PayPal</MenuItem> */}
-                      <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem>
+                      <MenuItem value={"Tilopay"} sx={{ fontSize: "small" }}>Tilopay</MenuItem>
+                      {/* <MenuItem value={"PayPal"} sx={{ fontSize: "small" }}>PayPal</MenuItem> */}
                     </Select>
                   </FormControl>
                 </div>
@@ -746,7 +887,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
               <TableHead >
                 <TableRow>
                   <TableCell sx={{ fontSize: "x-small", fontWeight: "bolder", border: "2px solid black" }}>Cantidad</TableCell>
-                  <TableCell sx={{ fontSize: "x-small", fontWeight: "bolder", border: "2px solid black" }} >Nombre del Producto</TableCell>
+                  <TableCell sx={{ fontSize: "x-small", fontWeight: "bolder", border: "2px solid black" }}>Nombre del Producto</TableCell>
                   <TableCell sx={{ fontSize: "x-small", fontWeight: "bolder", border: "2px solid black" }}>Precio Unitario </TableCell>
                   <TableCell sx={{ fontSize: "x-small", fontWeight: "bolder", border: "2px solid black" }}>Precio Total del Artículo</TableCell>
                 </TableRow>
@@ -788,7 +929,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
             </Typography>
           </Box>
 
-          {metodoPago !== 'PayPal' && (
+          {metodoPago === 'Efectivo' && (
             <Box
               sx={{
                 display: "flex",
@@ -928,7 +1069,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
                     }
                   }}
                 >
-                  Pagar con PayPal link
+                  Pagar con Tilopay link
                 </Button>
               </Box>
               <div className="additional-content">

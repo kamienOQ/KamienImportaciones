@@ -422,9 +422,9 @@ export const MasterPage = ({ children }) => {
             '@media (min-width: 1150px)': {
               ml: "890px",
             },
-            '@media (min-width: 1200px)': {
-              ml: "940px",
-            },
+            // '@media (min-width: 1200px)': {
+            //   ml: "940px",
+            // },
             '@media (min-width: 1200px)': {
               ml: "970px",
             },

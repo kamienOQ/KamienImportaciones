@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import KamienGif from '../../assets/KámienStore.gif';
 import { Typography } from '@mui/material';
+import { onChangeSuccess } from '../../store/buying/buyingSlice';
+import { onCleanProducts } from '../../store/cart/cartSlice';
 
 const ThankYouBuyProduct = () => {
+    const dispatch = useDispatch();
+
+    dispatch(onChangeSuccess(true));
+    dispatch(onCleanProducts());
+
     return (
         <div className='main-thanks-container'>
             <div className='thanks-container'>
