@@ -50,7 +50,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
 
   const apiuser = import.meta.env.VITE_TILOPAY_API_USER;
   const apiPassword = import.meta.env.VITE_TILOPAY_API_PASSWORD;
-  const key = import.meta.env.VITE_TILOPAY_API_KEY;
+  const apiKey = import.meta.env.VITE_TILOPAY_API_KEY;
 
   const SendMessage = async () => {
     let fecha = new Date();
@@ -167,7 +167,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
         },
         body: JSON.stringify({
           redirect: 'http://localhost:5173/ThankYouBuyer',
-          key: key,
+          apiKey: apiKey,
           amount: calculateTotal(),
           currency: 'CRC',
           billToFirstName: name,
