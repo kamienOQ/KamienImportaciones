@@ -167,7 +167,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
         },
         body: JSON.stringify({
           redirect: 'http://localhost:5173/ThankYouBuyer',
-          apiKey: apiKey,
+          key: apiKey,
           amount: calculateTotal(),
           currency: 'CRC',
           billToFirstName: name,
