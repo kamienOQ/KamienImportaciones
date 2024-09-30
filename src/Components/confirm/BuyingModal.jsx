@@ -129,39 +129,6 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
 
   // Crear new payment method Tilopay
   const SendTilopayLink = async () => {
-
-    let fecha = new Date();
-    const data = {
-      address: direccion,
-      cellphone: numero,
-      date: fecha.getTime(),
-      name: name,
-      lastName: lastName,
-      nameLowerCase: name.toLowerCase(),
-      lastNameLowerCase: lastName.toLowerCase(),
-      email: email,
-      status: "Pendiente",
-      wayToPay: metodoPago,
-      sendMethod: envio,
-      products: datosCompra,
-      totalPrice: calculateTotal()
-    };
-
-    // Obtener el número de teléfono de la URL de WhatsApp
-    const phoneNumber = whatsapp.match(/\+\d+/)[0];
-    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${phoneNumber}`
-    window.open(url);
-    setNumero("")
-    setname("")
-    setLastName("")
-    setEmail("")
-    setDireccion("")
-    setenvio("")
-    setMetodoPago("")
-    setdisable(false)
-    setOpen(!open)
-    await crearPedido(data);
-
     // Get token
     try {
       // Realize the POST request to obtain the token
@@ -235,6 +202,38 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
     } catch (error) {
       console.error('Error al iniciar el pago: ', error);
     }
+
+    let fecha = new Date();
+    const data = {
+      address: direccion,
+      cellphone: numero,
+      date: fecha.getTime(),
+      name: name,
+      lastName: lastName,
+      nameLowerCase: name.toLowerCase(),
+      lastNameLowerCase: lastName.toLowerCase(),
+      email: email,
+      status: "Pendiente",
+      wayToPay: metodoPago,
+      sendMethod: envio,
+      products: datosCompra,
+      totalPrice: calculateTotal()
+    };
+
+    // Obtener el número de teléfono de la URL de WhatsApp
+    const phoneNumber = whatsapp.match(/\+\d+/)[0];
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensajeEnvio + `https://www.google.com/maps?q=${markerPosition[0]},${markerPosition[1]}`)}&phone=${phoneNumber}`
+    window.open(url);
+    setNumero("")
+    setname("")
+    setLastName("")
+    setEmail("")
+    setDireccion("")
+    setenvio("")
+    setMetodoPago("")
+    setdisable(false)
+    setOpen(!open)
+    await crearPedido(data);
   };
 
   // const confirmPaymend = () => {
