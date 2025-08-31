@@ -255,7 +255,7 @@ const BuyingModal = ({ open, setOpen, datosCompra }) => {
 
   const manageMsg = () => {
     setMensajeEnvio(
-      "Compra Kámien" +
+      "Compra ChayCR" +
       "\n Nombre: " + name +
       "\n Apellidos: " + lastName +
       "\n Email: " + email +

@@ -30,10 +30,10 @@ export const ImportsApp = () => {
           </AppTheme>
           <FloatingWhatsApp
             phoneNumber="+50671095580"
-            accountName="Kámien"
+            accountName="ChayCR"
             avatar={Avatar}
             statusMessage="En línea"
-            chatMessage={`¡Hola bienvenido a Kámien un gusto atenderle! 🤝 \n¿Cómo te podemos ayudar?`}
+            chatMessage={`¡Hola bienvenido a ChayCR un gusto atenderle! 🤝 \n¿Cómo te podemos ayudar?`}
             placeholder="Escribir un mensaje"
             darkMode="true"
             allowClickAway="true"

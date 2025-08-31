@@ -31,7 +31,7 @@
     "embla-carousel-react": "^8.0.2",
     "express": "^4.21.0",
     "extend": "^3.0.2",
-    "firebase": "^9.23.0",
+    "firebase": "^11.5.0",
     "framer-motion": "^11.2.12",
     "fstream": "^1.0.12",
     "hawk": "^9.0.2",

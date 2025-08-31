@@ -15,7 +15,7 @@ const ThankYouBuyProduct = () => {
         <div className='main-thanks-container'>
             <div className='thanks-container'>
                 <div className='thanks-title-container'>
-                    <Typography variant="h3">Muchas gracias por la compra de los productos de Kámien</Typography>
+                    <Typography variant="h3">Muchas gracias por la compra de los productos de ChayCR</Typography>
                 </div>
                 <img src={KamienGif} alt="Gif de agradecimiento" />
             </div>

@@ -8,9 +8,9 @@ const TermsAndConditionsPage = () => {
             title: 'Información general',
             content: (
                 <>
-                    Este sitio web es operado por Kamienimportaciones con nombre comercial Kámien. En todo el sitio,
+                    Este sitio web es operado por Kamienimportaciones con nombre comercial ChayCR. En todo el sitio,
                     los términos “nosotros”, “nos” y “nuestro” se refieren a Kamienimportaciones con nombre comercial
-                    Kámien ofrece este sitio web, incluyendo toda la información, herramientas y servicios disponibles
+                    ChayCR ofrece este sitio web, incluyendo toda la información, herramientas y servicios disponibles
                     para ti en este sitio, el usuario, está condicionado a la aceptación de todos los términos, condiciones,
                     políticas y notificaciones aquí establecidos. <br /> <br />
                     Al visitar nuestro sitio y/o comprar algo de nosotros, participas en nuestro “Servicio” y aceptas los
