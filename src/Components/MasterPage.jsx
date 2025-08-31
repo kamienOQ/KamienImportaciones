@@ -244,7 +244,7 @@ export const MasterPage = ({ children }) => {
               },
             }}
           >
-            Kámien
+            ChayCR
           </Typography>
         </div>
         {/* <div className='filter-products-container-title'>
