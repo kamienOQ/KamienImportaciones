@@ -117,9 +117,21 @@ export const ProductsPage = () => {
 
   return (
     <>
+      <div
+        className={`${gridClassNameComment} ${filteredProducts.length <= 10 ? "small" : ""
+          }`}
+      >
+        <CommentsCard />
+      </div>
       <Box
         className="animate__animated animate__fadeIn animate__slower"
-        sx={{ display: "flex" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          mt: 65,
+        }}
       >
         <div>
           <Drawer

@@ -2755,8 +2755,8 @@ h4 {
     margin-bottom: 46%;
 
     @media (min-width: 200px) {
-        margin-top: -60%;
-        margin-bottom: 105%;
+        margin-top: 60%;
+        margin-bottom: 10%;
 
         h2 {
             font-size: 14px;
@@ -2764,8 +2764,8 @@ h4 {
     }
 
     @media (min-width: 250px) {
-        margin-top: -60%;
-        margin-bottom: 100%;
+        margin-top: 60%;
+        margin-bottom: 10%;
 
         h2 {
             font-size: 16px;
@@ -2773,8 +2773,8 @@ h4 {
     }
 
     @media (min-width: 300px) {
-        margin-top: -38%;
-        margin-bottom: 55%;
+        margin-top: 38%;
+        margin-bottom: 5%;
 
         h2 {
             font-size: 18px;
@@ -2782,8 +2782,8 @@ h4 {
     }
 
     @media (min-width: 350px) {
-        margin-top: -40%;
-        margin-bottom: 50%;
+        margin-top: 40%;
+        margin-bottom: 5%;
 
         h2 {
             font-size: 20px;
@@ -2791,8 +2791,8 @@ h4 {
     }
 
     @media (min-width: 400px) {
-        margin-top: -38%;
-        margin-bottom: 50%;
+        margin-top: 38%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 22px;
@@ -2800,8 +2800,7 @@ h4 {
     }
 
     @media (min-width: 450px) {
-        margin-top: -35%;
-        margin-bottom: 50%;
+        margin-top: 35%;
 
         h2 {
             font-size: 24px;
@@ -2809,8 +2808,7 @@ h4 {
     }
 
     @media (min-width: 500px) {
-        margin-top: -30%;
-        margin-bottom: 40%;
+        margin-top: 30%;
 
         h2 {
             font-size: 24px;
@@ -2818,7 +2816,7 @@ h4 {
     }
 
     @media (min-width: 550px) {
-        margin-top: -30%;
+        margin-top: 30%;
         margin-bottom: 45%;
 
         h2 {
@@ -2827,8 +2825,8 @@ h4 {
     }
 
     @media (min-width: 600px) {
-        margin-top: -25%;
-        margin-bottom: 28%;
+        margin-top: 25%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2836,8 +2834,8 @@ h4 {
     }
 
     @media (min-width: 700px) {
-        margin-top: -25%;
-        margin-bottom: 25%;
+        margin-top: 25%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2845,8 +2843,8 @@ h4 {
     }
 
     @media (min-width: 750px) {
-        margin-top: -25%;
-        margin-bottom: 25%;
+        margin-top: 25%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2854,8 +2852,8 @@ h4 {
     }
 
     @media (min-width: 800px) {
-        margin-top: -22%;
-        margin-bottom: 22%;
+        margin-top: 22%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2863,8 +2861,8 @@ h4 {
     }
 
     @media (min-width: 950px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: 20%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2872,8 +2870,8 @@ h4 {
     }
 
     @media (min-width: 1300px) {
-        margin-top: -18%;
-        margin-bottom: 20%;
+        margin-top: 18%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2881,8 +2879,8 @@ h4 {
     }
 
     @media (min-width: 1400px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: 15%;
+        margin-bottom: 2%;
 
         h2 {
             font-size: 24px;
@@ -2890,8 +2888,8 @@ h4 {
     }
 
     @media (min-width: 1450px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: 15%;
+        margin-bottom: 1%;
 
         h2 {
             font-size: 24px;
@@ -2899,8 +2897,8 @@ h4 {
     }
 
     @media (min-width: 1500px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: 15%;
+        margin-bottom: 2%;
 
         h2 {
             font-size: 24px;
@@ -2908,8 +2906,8 @@ h4 {
     }
 
     @media (min-width: 1550px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: 15%;
+        margin-bottom: 1%;
 
         h2 {
             font-size: 24px;
@@ -2917,8 +2915,8 @@ h4 {
     }
 
     @media (min-width: 1600px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: 15%;
+        margin-bottom: 1%;
 
         h2 {
             font-size: 24px;
@@ -2926,8 +2924,8 @@ h4 {
     }
 
     @media (min-width: 1700px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: 15%;
+        margin-bottom: 1%;
 
         h2 {
             font-size: 24px;
@@ -2935,8 +2933,8 @@ h4 {
     }
 
     @media (min-width: 1800px) {
-        margin-top: -12%;
-        margin-bottom: 20%;
+        margin-top: 12%;
+        margin-bottom: -1%;
 
         h2 {
             font-size: 24px;
