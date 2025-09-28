@@ -248,6 +248,8 @@ a {
     @media (min-width: 1100px) {
         width: 32%;
         height: 32%;
+        margin-top: 805px;
+        margin-bottom: 915px;
     }
 
     @media (min-width: 1200px) {
@@ -258,11 +260,15 @@ a {
     @media (min-width: 1300px) {
         width: 30%;
         height: 30%;
+        margin-top: 450px;
+        margin-bottom: 625px;
     }
 
     @media (min-width: 1400px) {
         width: 26%;
         height: 26%;
+        margin-top: 805px;
+        margin-bottom: 915px;
     }
 
     @media (min-width: 1500px) {
@@ -330,7 +336,7 @@ a {
 
 .footer {
     margin-bottom: -60px;
-    margin-top: 410px;
+    margin-top: 1220px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -338,6 +344,32 @@ a {
     align-items: center;
     font-size: 12px;
     padding-top: 15px;
+
+    @media (min-width: 200px) {
+        font-size: 12px;
+        margin-top: 570px;
+    }
+
+    @media (min-width: 300px) {
+        font-size: 14px;
+        margin-top: 600px;
+    }
+
+    @media (min-width: 400px) {
+        font-size: 16px;
+        margin-top: 540px;
+    }
+
+    @media (min-width: 450px) {
+        font-size: 16px;
+        margin-top: 530px;
+    }
+
+    @media (min-width: 1000px) {
+        font-size: 16px;
+        margin-top: 1250px;
+    }
+
 }
 
 .footer-contactInfo {
@@ -953,13 +985,13 @@ h4 {
     @media screen and (min-width: 350px) {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
         margin-left: 25px;
-        margin-top: 80px;
+        margin-top: -60px;
     }
 
     @media screen and (min-width: 400px) {
         grid-template-columns: repeat(2, minmax(185px, 1fr));
         margin-left: 5px;
-        margin-top: 80px;
+        margin-top: -40px;
     }
 
     @media screen and (min-width: 420px) {
@@ -978,6 +1010,7 @@ h4 {
         grid-template-columns: repeat(2, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% + 2%);
+        margin-top: -70px;
     }
 
     @media screen and (min-width: 550px) {
@@ -990,6 +1023,7 @@ h4 {
         grid-template-columns: repeat(3, minmax(190px, 1fr));
         margin-left: 15px;
         height: calc(100% + 2%);
+        margin-top: -180px;
     }
 
     @media screen and (min-width: 650px) {
@@ -1019,12 +1053,14 @@ h4 {
         grid-template-columns: repeat(4, minmax(180px, 1fr));
         margin-left: 5px;
         height: calc(100% - 5px);
+        margin-top: -130px;
     }
 
     @media screen and (min-width: 900px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 5px);
+        margin-top: -90px;
     }
 
     @media screen and (min-width: 950px) {
@@ -1036,6 +1072,7 @@ h4 {
     @media screen and (min-width: 1000px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 5px;
+        margin-top: -100px;
     }
 
     @media screen and (min-width: 1050px) {
@@ -1070,6 +1107,7 @@ h4 {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 5px;
         height: calc(100% - 200px);
+        margin-top: -520px;
     }
 
     @media screen and (min-width: 1350px) {
@@ -1082,12 +1120,14 @@ h4 {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
         margin-left: 5px;
         height: calc(100% - 350px);
+        margin-top: -815px;
     }
 
     @media screen and (min-width: 1450px) {
         grid-template-columns: repeat(7, minmax(185px, 1fr));
         margin-left: 15px;
         height: calc(100% - 340px);
+        margin-top: -890px;
     }
 
     @media screen and (min-width: 1500px) {
@@ -1233,24 +1273,32 @@ h4 {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 38px;
         height: calc(85% - 400px);
+        margin-top: -120px;
+        margin-bottom: 50px;
     }
 
     @media screen and (min-width: 1050px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(85% - 410px);
+        margin-top: -120px;
+        margin-bottom: 50px;
     }
 
     @media screen and (min-width: 1100px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(85% - 420px);
+        margin-top: -1240px;
+        margin-bottom: -36px;
     }
 
     @media screen and (min-width: 1150px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(85% - 420px);
+        margin-top: -1240px;
+        margin-bottom: -40px;
     }
 
     @media screen and (min-width: 1200px) {
@@ -1269,6 +1317,8 @@ h4 {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(85% - 470px);
+        margin-bottom: 80px;
+        margin-top: -520px;
     }
 
     @media screen and (min-width: 1350px) {
@@ -1281,12 +1331,15 @@ h4 {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(85% - 480px);
+        margin-bottom: -160px;
+        margin-top: -1200px;
     }
 
     @media screen and (min-width: 1450px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(85% - 480px);
+        margin-bottom: -90px;
     }
 
     @media screen and (min-width: 1500px) {
@@ -1367,12 +1420,16 @@ h4 {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 440px);
+        margin-top: -60px;
+        margin-bottom: 60px;
     }
 
     @media screen and (min-width: 360px) {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 470px);
+        margin-top: -60px;
+        margin-bottom: 60px;
     }
 
     @media screen and (min-width: 400px) {
@@ -1403,6 +1460,8 @@ h4 {
         grid-template-columns: repeat(3, minmax(190px, 1fr));
         margin-left: 10px;
         height: calc(100% - 390px);
+        margin-top: -115px;
+        margin-bottom: 65px;
     }
 
     @media screen and (min-width: 640px) {
@@ -1413,6 +1472,8 @@ h4 {
     @media screen and (min-width: 700px) {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
         height: calc(100% - 440px);
+        margin-top: -100px;
+        margin-bottom: 75px;
     }
 
     @media screen and (min-width: 750px) {
@@ -1428,6 +1489,8 @@ h4 {
     @media screen and (min-width: 800px) {
         grid-template-columns: repeat(3, minmax(200px, 1fr));
         height: calc(100% - 470px);
+        margin-top: -110px;
+        margin-bottom: 50px;
     }
 
     @media screen and (min-width: 850px) {
@@ -1448,73 +1511,100 @@ h4 {
     @media screen and (min-width: 1000px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         height: calc(85% - 420px);
+        margin-top: -60px;
+        margin-bottom: 80px;
     }
 
     @media screen and (min-width: 1050px) {
         grid-template-columns: repeat(4, minmax(200px, 1fr));
         height: calc(85% - 420px);
+        margin-top: -50px;
+        margin-bottom: 50px;
     }
 
     @media screen and (min-width: 1100px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         height: calc(85% - 430px);
+        margin-top: -900px;
+        margin-bottom: 80px;
     }
 
     @media screen and (min-width: 1200px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         height: calc(85% - 230px);
+        margin-top: -1060px;
     }
 
     @media screen and (min-width: 1300px) {
         grid-template-columns: repeat(5, minmax(200px, 1fr));
         height: calc(85% - 495px);
+        margin-top: -565px;
+        margin-bottom: 80px;
     }
 
     @media screen and (min-width: 1350px) {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
         height: calc(85% - 485px);
+        margin-top: -565px;
+        margin-bottom: 80px;
     }
 
     @media screen and (min-width: 1400px) {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
         height: calc(100% - 670px);
+        margin-top: -850px;
+        margin-bottom: 80px;
     }
 
     @media screen and (min-width: 1450px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         height: calc(100% - 670px);
+        margin-top: -870px;
+        margin-bottom: 80px;
     }
 
     @media screen and (min-width: 1500px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         height: calc(85% - 470px);
+        margin-top: -910px;
+        margin-bottom: 130px;
     }
 
     @media screen and (min-width: 1550px) {
         grid-template-columns: repeat(7, minmax(190px, 1fr));
         height: calc(85% - 460px);
+        margin-top: -900px;
+        margin-bottom: 100px;
     }
 
     @media screen and (min-width: 1600px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 650px);
+        margin-top: -920px;
+        margin-bottom: 120px;
     }
 
     @media screen and (min-width: 1650px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         margin-left: 20px;
         height: calc(100% - 650px);
+        margin-top: -920px;
+        margin-bottom: 120px;
     }
 
     @media screen and (min-width: 1700px) {
         grid-template-columns: repeat(7, minmax(200px, 1fr));
         height: calc(100% - 640px);
+        margin-top: -920px;
+        margin-bottom: 120px;
     }
 
     @media screen and (min-width: 1800px) {
         grid-template-columns: repeat(8, minmax(200px, 1fr));
         height: calc(100% - 650px);
+        margin-top: -920px;
+        margin-bottom: 120px;
     }
 }
 
@@ -2755,8 +2845,8 @@ h4 {
     margin-bottom: 46%;
 
     @media (min-width: 200px) {
-        margin-top: -60%;
-        margin-bottom: 105%;
+        margin-top: 40%;
+        margin-bottom: -8%;
 
         h2 {
             font-size: 14px;
@@ -2764,8 +2854,8 @@ h4 {
     }
 
     @media (min-width: 250px) {
-        margin-top: -60%;
-        margin-bottom: 100%;
+        margin-top: 60%;
+        margin-bottom: 10%;
 
         h2 {
             font-size: 16px;
@@ -2773,26 +2863,22 @@ h4 {
     }
 
     @media (min-width: 300px) {
-        margin-top: -38%;
-        margin-bottom: 55%;
+        margin-top: 38%;
+        margin-bottom: 5%;
 
         h2 {
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 
     @media (min-width: 350px) {
-        margin-top: -40%;
-        margin-bottom: 50%;
-
-        h2 {
-            font-size: 20px;
-        }
+        margin-top: -12%;
+        margin-bottom: -15%;
     }
 
     @media (min-width: 400px) {
-        margin-top: -38%;
-        margin-bottom: 50%;
+        margin-top: -10%;
+        margin-bottom: -10%;
 
         h2 {
             font-size: 22px;
@@ -2800,8 +2886,7 @@ h4 {
     }
 
     @media (min-width: 450px) {
-        margin-top: -35%;
-        margin-bottom: 50%;
+        margin-top: -10%;
 
         h2 {
             font-size: 24px;
@@ -2809,8 +2894,7 @@ h4 {
     }
 
     @media (min-width: 500px) {
-        margin-top: -30%;
-        margin-bottom: 40%;
+        margin-top: -10%;
 
         h2 {
             font-size: 24px;
@@ -2818,7 +2902,7 @@ h4 {
     }
 
     @media (min-width: 550px) {
-        margin-top: -30%;
+        margin-top: -10%;
         margin-bottom: 45%;
 
         h2 {
@@ -2827,8 +2911,8 @@ h4 {
     }
 
     @media (min-width: 600px) {
-        margin-top: -25%;
-        margin-bottom: 28%;
+        margin-top: -20%;
+        margin-bottom: -15%;
 
         h2 {
             font-size: 24px;
@@ -2836,8 +2920,8 @@ h4 {
     }
 
     @media (min-width: 700px) {
-        margin-top: -25%;
-        margin-bottom: 25%;
+        margin-top: -10%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2845,8 +2929,8 @@ h4 {
     }
 
     @media (min-width: 750px) {
-        margin-top: -25%;
-        margin-bottom: 25%;
+        margin-top: -10%;
+        margin-bottom: -10%;
 
         h2 {
             font-size: 24px;
@@ -2854,8 +2938,8 @@ h4 {
     }
 
     @media (min-width: 800px) {
-        margin-top: -22%;
-        margin-bottom: 22%;
+        margin-top: -10%;
+        margin-bottom: -10%;
 
         h2 {
             font-size: 24px;
@@ -2863,17 +2947,36 @@ h4 {
     }
 
     @media (min-width: 950px) {
-        margin-top: -20%;
-        margin-bottom: 20%;
+        margin-top: 20%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
         }
     }
 
+    @media (min-width: 1000px) {
+        margin-top: -6%;
+        margin-bottom: -6%;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1100px) {
+        margin-top: -140%;
+        margin-bottom: -6%;
+    }
+
+    @media (min-width: 1200px) {
+        margin-top: -120%;
+        margin-bottom: -6%;
+    }
+        
     @media (min-width: 1300px) {
-        margin-top: -18%;
-        margin-bottom: 20%;
+        margin-top: -65%;
+        margin-bottom: -5%;
 
         h2 {
             font-size: 24px;
@@ -2881,8 +2984,8 @@ h4 {
     }
 
     @media (min-width: 1400px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: -95%;
+        margin-bottom: -2%;
 
         h2 {
             font-size: 24px;
@@ -2890,8 +2993,8 @@ h4 {
     }
 
     @media (min-width: 1450px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-top: -95%;
+        margin-bottom: -2%;
 
         h2 {
             font-size: 24px;
@@ -2899,8 +3002,7 @@ h4 {
     }
 
     @media (min-width: 1500px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-bottom: -2%;
 
         h2 {
             font-size: 24px;
@@ -2908,8 +3010,7 @@ h4 {
     }
 
     @media (min-width: 1550px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-bottom: 1%;
 
         h2 {
             font-size: 24px;
@@ -2917,8 +3018,7 @@ h4 {
     }
 
     @media (min-width: 1600px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-bottom: -4%;
 
         h2 {
             font-size: 24px;
@@ -2926,8 +3026,7 @@ h4 {
     }
 
     @media (min-width: 1700px) {
-        margin-top: -15%;
-        margin-bottom: 20%;
+        margin-bottom: -4%;
 
         h2 {
             font-size: 24px;
@@ -2935,8 +3034,7 @@ h4 {
     }
 
     @media (min-width: 1800px) {
-        margin-top: -12%;
-        margin-bottom: 20%;
+        margin-bottom: -20%;
 
         h2 {
             font-size: 24px;
@@ -3328,4 +3426,3 @@ h4 {
     bottom: 20px;
     right: 80px !important;
 }
-
