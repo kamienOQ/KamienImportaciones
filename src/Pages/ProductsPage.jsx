@@ -23,6 +23,7 @@ import { useAttributesStore } from "../hooks";
 import Carousel from "../Components/Carousel/Carousel";
 import { imagePaths, numberOfImages } from "./NoticesImages";
 import { CommentsCard } from "../Components/ClientsComments/CommentsCard";
+import { CommentsCardTop } from "../Components/ClientsComments/CommentsCardTop";
 import { SearchProduct } from "../Components/products/SearchProduct";
 import Spinner from "../Spinner";
 import ImageBuy from "../assets/imageNavBar.webp";
@@ -117,11 +118,8 @@ export const ProductsPage = () => {
 
   return (
     <>
-      <div
-        className={`${gridClassNameComment} ${filteredProducts.length <= 10 ? "small" : ""
-          }`}
-      >
-        <CommentsCard />
+      <div className="comments-top-container">
+        <CommentsCardTop />
       </div>
       <Box
         className="animate__animated animate__fadeIn animate__slower"
@@ -453,9 +451,9 @@ export const ProductsPage = () => {
             </div>
           </Grid>
 
-          <div className="animate__animated animate__fadeInLeft animate__slow">
+          {/* <div className="animate__animated animate__fadeInLeft animate__slow">
             <Carousel slides={imagePaths} options={numberOfImages} />
-          </div>
+          </div> */}
 
           <Grid
             item
@@ -577,7 +575,7 @@ export const ProductsPage = () => {
               "@media (min-width: 1400px)": {
                 ml: "35px;",
                 mb: "5px;",
-                mt: "15px",
+                mt: "5px",
               },
               "@media (min-width: 1450px)": {
                 ml: "35px;",
