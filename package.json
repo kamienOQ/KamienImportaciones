@@ -24,6 +24,7 @@
     "bl": "^6.0.13",
     "bootstrap-icons": "^1.11.3",
     "brace-expansion": "^4.0.0",
+    "cloudinary": "^2.8.0",
     "cors": "^2.8.5",
     "date-fns": "^3.6.0",
     "embla-carousel": "^8.0.2",
@@ -39,13 +40,10 @@
     "json-schema": "^0.4.0",
     "jsonschema": "^1.4.1",
     "jsprim": "^2.0.2",
-    "kamien-importaciones": "file:",
-    "latest": "^0.2.0",
     "leaflet": "^1.9.4",
     "minimist": "^1.2.8",
     "node": "^20.13.1",
     "nodemon": "^3.1.0",
-    "npm": "^10.8.1",
     "npm-user-validate": "^2.0.1",
     "protobufjs": "^7.2.6",
     "qs": "^6.12.1",
@@ -70,12 +68,12 @@
   "devDependencies": {
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitejs/plugin-react": "^5.1.1",
     "hawk": "^9.0.2",
     "minimatch": "^9.0.5",
     "npm-user-validate": "^2.0.1",
     "qs": "^6.2.4",
     "tar": "^7.4.0",
-    "vite": "^4.5.3"
+    "vite": "^7.2.4"
   }
 }
