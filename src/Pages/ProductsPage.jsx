@@ -21,7 +21,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { GenderFilter, AttributeFilter } from "../filters";
 import { useAttributesStore } from "../hooks";
 import Carousel from "../Components/Carousel/Carousel";
-import { imagePaths, numberOfImages } from "./NoticesImages";
+//import { imagePaths, numberOfImages } from "./NoticesImages";
 import { CommentsCard } from "../Components/ClientsComments/CommentsCard";
 import { CommentsCardTop } from "../Components/ClientsComments/CommentsCardTop";
 import { SearchProduct } from "../Components/products/SearchProduct";
