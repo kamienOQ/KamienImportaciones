@@ -1,2 +1,2 @@
-export * from './categoryInformed';
-export * from './thunks';
+export * from "./categoryInformed";
+export * from "./thunks";
