@@ -26,7 +26,7 @@ import { CommentsCard } from "../Components/ClientsComments/CommentsCard";
 import { CommentsCardTop } from "../Components/ClientsComments/CommentsCardTop";
 import { SearchProduct } from "../Components/products/SearchProduct";
 import Spinner from "../Spinner";
-import ImageBuy from "../assets/imageNavBar.webp";
+const ImageBuy = "https://res.cloudinary.com/de2d4zo8n/image/upload/v1763935701/imageNavBar_hohzgz.webp";
 
 export const ProductsPage = () => {
   const { startGetAttributesByCategory, setIsOpen, isOpen } =
